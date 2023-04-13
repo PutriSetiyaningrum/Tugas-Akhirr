@@ -60,10 +60,10 @@
                                                     <a href="/kontak">Kontak</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a href="contact.html">Login</a>
+                                                    <a href="/login">Login</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a href="contact.html">Daftar</a>
+                                                    <a href="register">Daftar</a>
                                                 </li>
                                             </ul>
                                         </nav>
