@@ -25,9 +25,10 @@
     <div class="card-body">
       <p class="login-box-msg">Ayo masuk untuk memulainya</p>
 
-      <form action="../../index3.html" method="post">
+      <form action="{{ route('postlogin') }}" method="post">
+        {{ csrf_field() }}
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" class="form-control" name="email" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -35,7 +36,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" name="password" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -73,7 +74,7 @@
         <a href="forgot-password.html">Lupa password?</a>
       </p>
       <p class="mb-0">
-        <a href="register.html" class="text-center">Daftar</a>
+        <a href="/register" class="text-center">Daftar</a>
       </p>
     </div>
     <!-- /.card-body -->

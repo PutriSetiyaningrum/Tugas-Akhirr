@@ -112,7 +112,7 @@
         </a>
       </div> -->
 
-      <a href="login.html" class="text-center">Saya Mempunyai Akun</a>
+      <a href="/login" class="text-center">Saya Mempunyai Akun</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
