@@ -14,7 +14,7 @@ class LoginController extends Controller
 
     public function postlogin(Request $request){
         if(Auth::attempt($request->only('email','password'))){
-            return redirect('pengurus/home');
+            return redirect('/home');
         }
         return redirect('/');
     }
