@@ -23,4 +23,12 @@ class LoginController extends Controller
        Auth::logout();
        return redirect ('/');
     }
+
+    public function registrasi(){
+        return view ('user/landingpage/register');
+    }
+
+    public function simpanregistrasi(Request $request){
+        dd($request->all());
+    }
 }

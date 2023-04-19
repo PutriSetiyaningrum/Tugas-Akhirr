@@ -20,7 +20,7 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>PERBASI IMY</b></a>
+      <a href="{{ url('/') }}" class="h1"><b>PERBASI IMY</b></a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Ayo masuk untuk memulainya</p>
@@ -45,12 +45,6 @@
         </div>
         <div class="row">
           <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Ingatkan saya
-              </label>
-            </div>
           </div>
           <!-- /.col -->
           <div class="col-4">

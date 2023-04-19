@@ -22,14 +22,15 @@
 <div class="register-box">
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>PERBASI IMY</b></a>
+      <a href="{{ url('/') }}" class="h1"><b>PERBASI IMY</b></a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Ayo Daftar Untuk memulainya</p>
 
-      <form action="../../index.html" method="post">
+      <form action="{{ route('simpanregistrasi') }} " method="post">
+        {{ csrf_field() }}
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Nama">
+          <input type="text" class="form-control" name="name" placeholder="Nama">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -37,7 +38,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" class="form-control" name="email" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -45,7 +46,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" name="password" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -53,15 +54,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="konfirmasi Password" class="form-control" placeholder="Konfirmasi Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="Alamat" class="form-control" placeholder="Alamat">
+          <input type="Alamat" class="form-control" name="alamat" placeholder="Alamat">
           <div class="input-group-append">
             <div class="input-group-text">
                 <i class="bi bi-geo-alt-fill"></i>
@@ -69,7 +62,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="No.Telp" class="form-control" placeholder="No.Telp">
+          <input type="No.Telp" class="form-control" name="no.telp" placeholder="No.Telp">
           <div class="input-group-append">
             <div class="input-group-text">
                 <i class="bi bi-telephone-fill"></i>
@@ -77,7 +70,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="Foto" class="form-control" placeholder="Foto">
+          <input type="File" class="form-control" name="foto" placeholder="Foto">
           <div class="input-group-append">
             <div class="input-group-text">
                 <i class="bi bi-camera-fill"></i>
@@ -86,12 +79,6 @@
         </div>
         <div class="row">
           <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-              <label for="agreeTerms">
-               Saya setuju dengan persyaratan<a href="#"></a>
-              </label>
-            </div>
           </div>
           <!-- /.col -->
           <div class="col-4">
