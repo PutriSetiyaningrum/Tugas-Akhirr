@@ -23,6 +23,7 @@ Route::get('/kontak', function () {return view('/user/landingpage/kontak');});
 Route::get('/login', function () {return view('/user/landingpage/login');});
 Route::get('/register', function () {return view('/user/landingpage/register');});
 Route::get('/login', [LoginController::class,'halamanlogin'])->name('login');
+Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 Route::post('/postlogin', [LoginController::class,'postlogin'])->name('postlogin');
 
 Route::get('/pengurus/home', function (){
