@@ -29,7 +29,7 @@ Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 Route::post('/postlogin', [LoginController::class,'postlogin'])->name('postlogin');
 
 Route::get('/pengurus/home', function (){
-    return view('pengurus/home');
+    return view('/home');
 });
 
 Route::group(["middleware" => "autentikasi"], function () {
