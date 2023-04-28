@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PERBASIIMY | Dashboard Pelatih</title>
+  <title>PERBASIIMY | Dashboard Pengunjung</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -22,10 +22,10 @@
     <img class="animation__wobble" src="../AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
-  @include('pelatih/header')
-  @include('pelatih/sidebar')
+  @include('pengunjung/header')
+  @include('pengunjung/sidebar')
   @yield('content')
-  @include('pelatih/footer')
+  @include('pengunjung/footer')
 
 
   <!-- Control Sidebar -->

@@ -27,13 +27,12 @@ Route::post('/simpanregister', [LoginController::class,'simpanregistrasi'])->nam
 Route::get('/login', [LoginController::class,'halamanlogin'])->name('login');
 Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 Route::post('/postlogin', [LoginController::class,'postlogin'])->name('postlogin');
+Route::get('/home', [HomeController::class,'index'])->name('home');
 
-Route::get('/pengurus/home', function (){
-    return view('/home');
-});
-
+Route::get('panitia/home', [HomeController::class,'home'])->name('home');
+Route::get('pelatih/home', [HomeController::class,'pelatih'])->name('home');
+Route::get('pengunjung/home', [HomeController::class,'pengunjung'])->name('home');
 Route::group(["middleware" => "autentikasi"], function () {
-    Route::get('/home', [HomeController::class,'index'])->name('home');
+    Route::get('pengurus/home', [HomeController::class,'index'])->name('home');
     });
-   
 

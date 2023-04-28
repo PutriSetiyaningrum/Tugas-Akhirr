@@ -13,7 +13,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Pelatih</a>
+          <a href="#" class="d-block">Pengunjung</a>
         </div>
       </div>
 
@@ -32,9 +32,25 @@
           </li>
           <li class="nav-item">
             <a href="pages/dashboard.html" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
+              <i class="nav-icon far fa-file-alt"></i>
               <p>
-                Persyaratan Tim
+                Tentang Event
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/dashboard.html" class="nav-link">
+              <i class="nav-icon far fa-file-alt"></i>
+              <p>
+                Bagan Event
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/dashboard.html" class="nav-link">
+              <i class="nav-icon far fa-clone"></i>
+              <p>
+                Hasil Pertandingan
               </p>
             </a>
           </li>
