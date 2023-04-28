@@ -58,7 +58,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="/tentangperbasi" class="nav-link">
                   <i class="nav-icon far fa-file-alt"></i>
                   <p>Data Tentang PERBASI</p>
                 </a>

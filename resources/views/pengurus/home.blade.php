@@ -1,5 +1,4 @@
-@extends('pengurus/panel')
-
+@extends('pengurus.panel')
 @section('content')
 
     <div class="content-wrapper">

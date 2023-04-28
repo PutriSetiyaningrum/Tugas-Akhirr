@@ -34,5 +34,7 @@ Route::get('pelatih/home', [HomeController::class,'pelatih'])->name('home');
 Route::get('pengunjung/home', [HomeController::class,'pengunjung'])->name('home');
 Route::group(["middleware" => "autentikasi"], function () {
     Route::get('pengurus/home', [HomeController::class,'index'])->name('home');
+    Route::get('/tentangperbasi', function () {return view('/pengurus/tentangperbasi');});
     });
+
 

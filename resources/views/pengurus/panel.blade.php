@@ -22,10 +22,10 @@
     <img class="animation__wobble" src="../AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
-  @include('pengurus/header')
-  @include('pengurus/sidebar')
+  @include('pengurus.header')
+  @include('pengurus.sidebar')
   @yield('content')
-  @include('pengurus/footer')
+  @include('pengurus.footer')
 
 
   <!-- Control Sidebar -->

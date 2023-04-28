@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <title>Perbasi | @yield('title')</title>
+    <title>PERBASIIMY | LandingPage</title>
 
     <meta name="author" content="themesflat.com">
 
