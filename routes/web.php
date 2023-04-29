@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TentangperbasiController;
 use Doctrine\DBAL\Driver\Middleware;
 
 /*
@@ -32,9 +33,11 @@ Route::get('/home', [HomeController::class,'index'])->name('home');
 Route::get('panitia/home', [HomeController::class,'home'])->name('home');
 Route::get('pelatih/home', [HomeController::class,'pelatih'])->name('home');
 Route::get('pengunjung/home', [HomeController::class,'pengunjung'])->name('home');
+
 Route::group(["middleware" => "autentikasi"], function () {
     Route::get('pengurus/home', [HomeController::class,'index'])->name('home');
     Route::get('/tentangperbasi', function () {return view('/pengurus/tentangperbasi');});
+    Route::get('/create-tentangperbasi', [TentangperbasiController::class,'create'])->name('create-tentangperbasi');
     });
 
 

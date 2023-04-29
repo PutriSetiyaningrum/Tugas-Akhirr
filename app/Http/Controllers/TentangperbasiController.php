@@ -26,7 +26,7 @@ class TentangperbasiController extends Controller
      */
     public function create()
     {
-        //
+        return view('pengurus.create-tentangperbasi');
     }
 
     /**
