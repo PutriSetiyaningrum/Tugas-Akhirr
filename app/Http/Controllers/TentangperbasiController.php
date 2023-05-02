@@ -16,7 +16,8 @@ class TentangperbasiController extends Controller
      */
     public function index()
     {
-        return view('pengurus.tentangperbasi');
+        $tentangperbasi = tentangperbasi::latest()->get();
+        return view('pengurus.tentangperbasi', compact('tentangperbasi'));
     }
 
     /**
@@ -37,7 +38,17 @@ class TentangperbasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nm = $request->gambar;
+        $namaFile = time().rand(100,999).".".$nm->getClientOriginalExtension();
+
+            $dtUpload = new tentangperbasi;
+            $dtUpload->gambar = $namaFile;
+            $dtUpload->deskripsi = $request->deskripsi;
+
+            $nm->move(public_path().'/img', $namaFile);
+            $dtUpload->save();
+
+            return redirect ('tentangperbasi');
     }
 
     /**

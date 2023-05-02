@@ -1,6 +1,5 @@
 @extends('pengurus.panel')
 @section('content')
-
     <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -23,38 +22,27 @@
         </div>
               <div class="card-body">
                 <table class="table table-bordered">
-                  <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
+                      <th style="width: 10px">No</th>
                       <th>Gambar</th>
                       <th>Deskripsi</th>
-                      <th style="width: 40px">Label</th>
-                    </tr>
-                  </thead>
-                
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td><td><span class="badge bg-danger"></span></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td><td><span class="badge bg-warning"></span></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td><span class="badge bg-primary"></span></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td><span class="badge bg-success"></span></td>
+                      <th>Aksi</th>
                     </tr>
                   
+                    <tr>
+                      @foreach ($tentangperbasi  as $item)
+                      <td>{{ $loop->iteration }}</td>
+                      <td width="10%">
+                        <img src="{{ asset('img/'.$item->gambar) }}" height="100%" width="150" alt="srcset">
+                      </td>
+                      <td>{{ $item->Deskripsi }}</td>
+                      <td width="10%">
+                        <a href="{{ url('edit-tentangperbasi',$item->id) }}"><i class="fas fa-edit"></i></a>
+                        |
+                        <a href="{{ url('delete-tentangperbasi',$item->id) }}"><i class="fas fa-trash-alt" style="color: red"></i></a>
+                      </td>
+                       @endforeach
+                    </tr>
                 </table>
               </div>
       </div>

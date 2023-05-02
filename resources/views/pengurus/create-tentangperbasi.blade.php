@@ -17,15 +17,16 @@
     <div class="content">
       <div class="card card-info card-outline">
             <div class="card-body">
-              <form action="" method="post">
+              <form action="{{ route('simpan-tentangperbasi') }}" method="post" enctype="multipart/form-data">
+              {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
                     <label for="gambar">Gambar</label>
-                    <input type="file" class="form-control" id="gambar" placeholder="Gambar">
+                    <input type="file" class="form-control" id="gambar" name="gambar" placeholder="gambar">
                   </div>
                   <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
-                    <input type="text" class="form-control" id="deskripsi" placeholder="Deskripsi">
+                    <input type="text" class="form-control" id="Deskripsi" name="deskripsi" placeholder="Deskripsi">
                   </div>
                 </div>
                 <!-- /.card-body -->

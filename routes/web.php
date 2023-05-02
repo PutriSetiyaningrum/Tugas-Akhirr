@@ -36,8 +36,9 @@ Route::get('pengunjung/home', [HomeController::class,'pengunjung'])->name('home'
 
 Route::group(["middleware" => "autentikasi"], function () {
     Route::get('pengurus/home', [HomeController::class,'index'])->name('home');
-    Route::get('/tentangperbasi', function () {return view('/pengurus/tentangperbasi');});
+    Route::resource('/tentangperbasi', TentangperbasiController::class);
     Route::get('/create-tentangperbasi', [TentangperbasiController::class,'create'])->name('create-tentangperbasi');
+    Route::post('/simpan-tentangperbasi', [TentangperbasiController::class,'store'])->name('simpan-tentangperbasi');
     });
 
 

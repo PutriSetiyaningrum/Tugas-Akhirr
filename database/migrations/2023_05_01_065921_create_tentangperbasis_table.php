@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tentangperbasi', function (Blueprint $table) {
+        Schema::create('tentangperbasis', function (Blueprint $table) {
             $table->id();
-            $table->string('gambartentangperbasi');
-            $table->text('deskripsi', 200);
+            $table->string('gambar', 100);
+            $table->string('Deskripsi', 300);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tentangperbasi');
+        Schema::dropIfExists('tentangperbasis');
     }
 };

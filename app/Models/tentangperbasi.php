@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class tentangperbasi extends Model
 {
-    protected $table = "tentangperbasi";
-    protected $primarykey ="id";
-    protected $fillable = [
-        'id', 'gambartentangperbasi', 'deskripsi'];
+    protected $table ="tentangperbasis";
+    protected $primaryKey ="id";
+    protected $fillable =[
+        'id', 'gambar', 'Deskripsi'];
 }
