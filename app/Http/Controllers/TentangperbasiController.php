@@ -70,7 +70,8 @@ class TentangperbasiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dt = tentangperbasi::findorfail($id);
+        return view('pengurus.edit-tentangperbasi', compact('dt'));
     }
 
     /**
@@ -82,7 +83,16 @@ class TentangperbasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ubah = tentangperbasi::findorfail($id);
+        $awal = $ubah->gambar;
+
+        $dt = [
+            'gambar' => $awal,
+            'Deskripsi' => $request['deskripsi'],
+        ];
+        $request->gambar->move(public_path().'/img', $awal);
+        $ubah->update($dt);
+        return redirect('tentangperbasi');
     }
 
     /**

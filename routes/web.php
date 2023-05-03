@@ -39,6 +39,8 @@ Route::group(["middleware" => "autentikasi"], function () {
     Route::resource('/tentangperbasi', TentangperbasiController::class);
     Route::get('/create-tentangperbasi', [TentangperbasiController::class,'create'])->name('create-tentangperbasi');
     Route::post('/simpan-tentangperbasi', [TentangperbasiController::class,'store'])->name('simpan-tentangperbasi');
+    Route::get('/edit-tentangperbasi/{id}', [TentangperbasiController::class,'edit'])->name('edit-tentangperbasi');
+    Route::post('/update-tentangperbasi/{id}', [TentangperbasiController::class,'update'])->name('update-tentangperbasi');
     });
 
 
