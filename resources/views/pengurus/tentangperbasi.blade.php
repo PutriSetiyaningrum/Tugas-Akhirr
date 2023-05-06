@@ -29,20 +29,19 @@
                       <th>Aksi</th>
                     </tr>
                   
+                    @foreach ($tentangperbasi  as $item)
                     <tr>
-                      @foreach ($tentangperbasi  as $item)
                       <td>{{ $loop->iteration }}</td>
                       <td width="10%">
-                        <img src="{{ asset('img/'.$item->gambar) }}" height="100%" width="150" alt="srcset">
-                      </td>
+                        <img src="{{ url('/storage/'.$item->gambar) }}" height="100%" width="150" alt="srcset">
                       <td>{{ $item->Deskripsi }}</td>
                       <td width="10%">
                         <a href="{{ url('edit-tentangperbasi',$item->id) }}"><i class="fas fa-edit"></i></a>
                         |
                         <a href="{{ url('delete-tentangperbasi',$item->id) }}"><i class="fas fa-trash-alt" style="color: red"></i></a>
                       </td>
-                       @endforeach
                     </tr>
+                    @endforeach
                 </table>
               </div>
       </div>

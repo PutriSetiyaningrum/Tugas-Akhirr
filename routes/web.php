@@ -41,6 +41,7 @@ Route::group(["middleware" => "autentikasi"], function () {
     Route::post('/simpan-tentangperbasi', [TentangperbasiController::class,'store'])->name('simpan-tentangperbasi');
     Route::get('/edit-tentangperbasi/{id}', [TentangperbasiController::class,'edit'])->name('edit-tentangperbasi');
     Route::post('/update-tentangperbasi/{id}', [TentangperbasiController::class,'update'])->name('update-tentangperbasi');
+    Route::get('/delete-tentangperbasi/{id}', [TentangperbasiController::class,'destroy'])->name('delete-tentangperbasi');
     });
 
 

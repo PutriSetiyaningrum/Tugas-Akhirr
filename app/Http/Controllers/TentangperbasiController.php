@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\tentangperbasi;
+use Illuminate\Support\Facades\Storage;
 
 class TentangperbasiController extends Controller
 {
@@ -38,17 +39,16 @@ class TentangperbasiController extends Controller
      */
     public function store(Request $request)
     {
-        $nm = $request->gambar;
-        $namaFile = time().rand(100,999).".".$nm->getClientOriginalExtension();
-
-            $dtUpload = new tentangperbasi;
-            $dtUpload->gambar = $namaFile;
-            $dtUpload->deskripsi = $request->deskripsi;
-
-            $nm->move(public_path().'/img', $namaFile);
-            $dtUpload->save();
-
-            return redirect ('tentangperbasi');
+        if ($request->file("gambar")) {
+            $gambar = $request->file("gambar")->store("img");
+        }
+        
+        $dtUpload = new tentangperbasi;
+        $dtUpload->gambar = $gambar;
+        $dtUpload->deskripsi = $request->deskripsi;
+        $dtUpload->save();
+        
+        return redirect ('tentangperbasi');
     }
 
     /**
@@ -83,14 +83,23 @@ class TentangperbasiController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        if ($request->file("gambar")) {
+            if ($request->gambarLama) {
+                Storage::delete($request->gambarLama);
+            }
+
+            $gambar = $request->file("gambar")->store("img");
+        } else {
+            $gambar = $request->file("gambar")->store("img");
+        }
         $ubah = tentangperbasi::findorfail($id);
         $awal = $ubah->gambar;
 
         $dt = [
-            'gambar' => $awal,
+            'gambar' => $gambar,
             'Deskripsi' => $request['deskripsi'],
         ];
-        $request->gambar->move(public_path().'/img', $awal);
         $ubah->update($dt);
         return redirect('tentangperbasi');
     }
@@ -103,6 +112,12 @@ class TentangperbasiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $hapus = tentangperbasi::findorfail($id);
+
+        Storage::delete($hapus->gambar);
+
+        $hapus->delete();
+        
+        return back();
     }
 }

@@ -19,13 +19,14 @@
             <div class="card-body">
               <form action="{{ url('update-tentangperbasi', $dt->id) }}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
+              <input type="hidden" name="gambarLama" value="{{ $dt->gambar }}" />
                 <div class="card-body">
                   <div class="form-group">
                     <label for="gambar">Gambar</label>
                     <input type="file" class="form-control" id="gambar" name="gambar" placeholder="gambar">
                   </div>
                   <div class="form-group">
-                    <img src="{{ asset('img/'. $dt->gambar) }}" height="100%" width="150" alt="" srcset="">
+                    <img src="{{ url('/storage/'.$dt->gambar) }}" height="100%" width="150" alt="srcset">
                   </div>
                   <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>

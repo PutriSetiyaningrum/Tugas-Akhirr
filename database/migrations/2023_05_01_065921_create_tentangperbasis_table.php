@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tentangperbasis', function (Blueprint $table) {
             $table->id();
-            $table->string('gambar', 100);
+            $table->string('gambar', 255);
             $table->string('Deskripsi', 300);
             $table->timestamps();
         });
