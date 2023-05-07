@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TentangperbasiController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\KategoriController;
 use Doctrine\DBAL\Driver\Middleware;
 
 /*
@@ -38,6 +39,12 @@ Route::post('/simpan-event', [EventController::class,'store'])->name('simpan-eve
 Route::get('/edit-event/{id}', [EventController::class,'edit'])->name('edit-event');
 Route::post('/update-event/{id}', [EventController::class,'update'])->name('update-event');
 Route::get('/delete-event/{id}', [EventController::class,'destroy'])->name('delete-event');
+Route::resource('/kategorievent', KategoriController::class);
+Route::get('/create-kategorievent', [KategoriController::class,'create'])->name('create-kategorievent');
+Route::post('/simpan-kategorievent', [KategoriController::class,'store'])->name('simpan-kategorievent');
+Route::get('/edit-kategorievent/{id}', [KategoriController::class,'edit'])->name('edit-kategorievent');
+Route::post('/update-kategorievent/{id}', [KategoriController::class,'update'])->name('update-kategorievent');
+Route::get('/delete-kategorievent/{id}', [KategoriController::class,'destroy'])->name('delete-kategorievent');
 
 Route::get('pelatih/home', [HomeController::class,'pelatih'])->name('home');
 Route::get('pengunjung/home', [HomeController::class,'pengunjung'])->name('home');

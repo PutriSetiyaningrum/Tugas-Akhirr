@@ -74,7 +74,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="/kategorievent" class="nav-link">
                   <i class="nav-icon far fa-file-alt"></i>
                   <p>Data kategori Event</p>
                 </a>
