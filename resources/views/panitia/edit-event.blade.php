@@ -1,4 +1,4 @@
-@extends('pengurus.panel')
+@extends('panitia.panel')
 @section('content')
 
   <div class="content-wrapper">
@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-10">
-            <h1 class="m-0">Ubah Tentang PERBASI</h1>
+            <h1 class="m-0">Ubah Event</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -17,20 +17,12 @@
     <div class="content">
       <div class="card card-info card-outline">
             <div class="card-body">
-              <form action="{{ url('update-tentangperbasi', $dt->id) }}" method="post" enctype="multipart/form-data">
+              <form action="{{ url('update-event', $dt->id) }}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
-              <input type="hidden" name="gambarLama" value="{{ $dt->gambar }}" />
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="gambar">Gambar</label>
-                    <input type="file" class="form-control" id="gambar" name="gambar" placeholder="gambar">
-                  </div>
-                  <div class="form-group">
-                    <img src="{{ url('/storage/'.$dt->gambar) }}" height="100%" width="150" alt="srcset">
-                  </div>
-                  <div class="form-group">
-                    <label for="deskripsi">Deskripsi</label>
-                    <input type="text" class="form-control" id="Deskripsi" name="Deskripsi" placeholder="Deskripsi" value="{{ $dt->Deskripsi }}">
+                    <label for="Nama Event">Deskripsi</label>
+                    <input type="text" class="form-control" id="Nama_Event" name="Nama_Event" placeholder="Nama_Event" value="{{ $dt->Nama_Event }}">
                   </div>
                 </div>
                 <!-- /.card-body -->

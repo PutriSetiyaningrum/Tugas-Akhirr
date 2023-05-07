@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\tentangperbasi;
+use App\Models\event;
 use Illuminate\Support\Facades\Storage;
 
-class TentangperbasiController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class TentangperbasiController extends Controller
      */
     public function index()
     {
-        $tentangperbasi = tentangperbasi::latest()->get();
-        return view('pengurus.tentangperbasi', compact('tentangperbasi'));
+        $event = event::latest()->get();
+        return view('panitia.event', compact('event'));
     }
 
     /**
@@ -28,7 +28,7 @@ class TentangperbasiController extends Controller
      */
     public function create()
     {
-        return view('pengurus.create-tentangperbasi');
+        return view('panitia.create-event');
     }
 
     /**
@@ -39,16 +39,12 @@ class TentangperbasiController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->file("gambar")) {
-            $gambar = $request->file("gambar")->store("img");
-        }
         
-        $dtUpload = new tentangperbasi;
-        $dtUpload->gambar = $gambar;
-        $dtUpload->deskripsi = $request->deskripsi;
+        $dtUpload = new event;
+        $dtUpload->Nama_Event = $request->Nama_Event;
         $dtUpload->save();
         
-        return redirect ('tentangperbasi');
+        return redirect ('event');
     }
 
     /**
@@ -70,8 +66,8 @@ class TentangperbasiController extends Controller
      */
     public function edit($id)
     {
-        $dt = tentangperbasi::findorfail($id);
-        return view('pengurus.edit-tentangperbasi', compact('dt'));
+        $dt = event::findorfail($id);
+        return view('panitia.edit-event', compact('dt'));
     }
 
     /**
@@ -83,21 +79,10 @@ class TentangperbasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        if ($request->file("gambar")) {
-            if ($request->gambarLama) {
-                Storage::delete($request->gambarLama);
-            }
-
-            $gambar = $request->file("gambar")->store("img");
-        } else {
-            $gambar = $request->gambarLama;
-        }
-            tentangperbasi::where("id", $id)->update([
-            "gambar" => $gambar,
-            "Deskripsi" => $request->Deskripsi
+        event::where("id", $id)->update([
+            "Nama_Event" => $request->Nama_Event
             ]);
-        return redirect('tentangperbasi');
+        return redirect('event');
     }
 
     /**
@@ -108,9 +93,9 @@ class TentangperbasiController extends Controller
      */
     public function destroy($id)
     {
-        $hapus = tentangperbasi::findorfail($id);
+        $hapus = event::findorfail($id);
 
-        Storage::delete($hapus->gambar);
+        Storage::delete($hapus->Nama_Event);
 
         $hapus->delete();
         

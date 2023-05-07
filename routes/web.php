@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TentangperbasiController;
+use App\Http\Controllers\EventController;
 use Doctrine\DBAL\Driver\Middleware;
 
 /*
@@ -31,6 +32,13 @@ Route::post('/postlogin', [LoginController::class,'postlogin'])->name('postlogin
 Route::get('/home', [HomeController::class,'index'])->name('home');
 
 Route::get('panitia/home', [HomeController::class,'home'])->name('home');
+Route::resource('/event', EventController::class);
+Route::get('/create-event', [EventController::class,'create'])->name('create-event');
+Route::post('/simpan-event', [EventController::class,'store'])->name('simpan-event');
+Route::get('/edit-event/{id}', [EventController::class,'edit'])->name('edit-event');
+Route::post('/update-event/{id}', [EventController::class,'update'])->name('update-event');
+Route::get('/delete-event/{id}', [EventController::class,'destroy'])->name('delete-event');
+
 Route::get('pelatih/home', [HomeController::class,'pelatih'])->name('home');
 Route::get('pengunjung/home', [HomeController::class,'pengunjung'])->name('home');
 
