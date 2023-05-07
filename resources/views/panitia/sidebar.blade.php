@@ -82,9 +82,9 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="/jeniscabangevent" class="nav-link">
                   <i class="nav-icon far fa-file-alt"></i>
-                  <p>Data jenis Kelamin</p>
+                  <p>Data Jenis Cabang Event</p>
                 </a>
               </li>
             </ul>

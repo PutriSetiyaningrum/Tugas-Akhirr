@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\kategorievent;
+use App\Models\event;
+use App\Models\JenisCabangEvent;
 use Illuminate\Support\Facades\Storage;
 
-class KategoriController extends Controller
+class CabangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $kategorievent = kategorievent::latest()->get();
-        return view('panitia.kategorievent', compact('kategorievent'));
+        $jeniscabangevent = JenisCabangEvent::latest()->get();
+        return view('panitia.jeniscabangevent', compact('jeniscabangevent'));
     }
 
     /**
@@ -28,7 +29,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('panitia.create-kategorievent');
+        return view('panitia.create-jeniscabangevent');
     }
 
     /**
@@ -39,11 +40,11 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        $dtUpload = new kategorievent;
-        $dtUpload->Nama_Kategori_Event = $request->Nama_Kategori_Event;
+        $dtUpload = new jeniscabangevent;
+        $dtUpload->Nama_Jenis_Cabang_Event = $request->Nama_Jenis_Cabang_Event;
         $dtUpload->save();
         
-        return redirect ('kategorievent');
+        return redirect ('jeniscabangevent');
     }
 
     /**
@@ -65,8 +66,8 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        $dt = kategorievent::findorfail($id);
-        return view('panitia.edit-kategorievent', compact('dt'));
+        $dt = jeniscabangevent::findorfail($id);
+        return view('panitia.edit-jeniscabangevent', compact('dt'));
     }
 
     /**
@@ -78,10 +79,10 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        kategorievent::where("id", $id)->update([
-            "Nama_Kategori_Event" => $request->Nama_Kategori_Event
+        jeniscabangevent::where("id", $id)->update([
+            "Nama_Jenis_Cabang_Event" => $request->Nama_Jenis_Cabang_Event
             ]);
-        return redirect('kategorievent');
+        return redirect('jeniscabangevent');
     }
 
     /**
@@ -92,9 +93,9 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        $hapus = kategorievent::findorfail($id);
+        $hapus = jeniscabangevent::findorfail($id);
 
-        Storage::delete($hapus->Nama_Kategori_Event);
+        Storage::delete($hapus->Nama_Jenis_Cabang_Event);
 
         $hapus->delete();
         
