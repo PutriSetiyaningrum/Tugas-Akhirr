@@ -52,18 +52,10 @@
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-list-alt"></i>
               <p>
-                Content
+                Content Event
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
-                  <i class="nav-icon far fa-file-alt"></i>
-                  <p>Data Tentang Event</p>
-                </a>
-              </li>
-            </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="/event" class="nav-link">
@@ -85,6 +77,39 @@
                 <a href="/jeniscabangevent" class="nav-link">
                   <i class="nav-icon far fa-file-alt"></i>
                   <p>Data Jenis Cabang Event</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-list-alt"></i>
+              <p>
+                Content Pengunjung
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/tentangevent" class="nav-link">
+                  <i class="nav-icon far fa-file-alt"></i>
+                  <p>Data Tentang Event</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/kategorievent" class="nav-link">
+                  <i class="nav-icon far fa-file-alt"></i>
+                  <p>Data Bagan Event</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/jeniscabangevent" class="nav-link">
+                  <i class="nav-icon far fa-file-alt"></i>
+                  <p>Data Hasil Pertandingan</p>
                 </a>
               </li>
             </ul>

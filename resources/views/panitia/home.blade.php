@@ -1,5 +1,4 @@
-@extends('panitia/panel')
-
+@extends('panitia.panel')
 @section('content')
 
     <div class="content-wrapper">
@@ -30,19 +29,6 @@
                   10
                   <small>%</small>
                 </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="far fa-file-alt"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Data Tentang Event</span>
-                <span class="info-box-number">41,410</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -82,6 +68,45 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Data Jenis Kelamin</span>
+                <span class="info-box-number">41,410</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-danger elevation-1"><i class="far fa-file-alt"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Data Tentang Event</span>
+                <span class="info-box-number">41,410</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-danger elevation-1"><i class="far fa-file-alt"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Data Bagan Event</span>
+                <span class="info-box-number">41,410</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-danger elevation-1"><i class="far fa-file-alt"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Data Hasil Pertandingan</span>
                 <span class="info-box-number">41,410</span>
               </div>
               <!-- /.info-box-content -->
