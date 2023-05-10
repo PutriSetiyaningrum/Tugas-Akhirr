@@ -7,6 +7,7 @@ use App\Http\Controllers\TentangperbasiController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\CabangController;
+use App\Http\Controllers\TentangEventController;
 use Doctrine\DBAL\Driver\Middleware;
 
 /*
@@ -52,6 +53,12 @@ Route::post('/simpan-jeniscaangevent', [CabangController::class,'store'])->name(
 Route::get('/edit-jeniscabangevent/{id}', [CabangController::class,'edit'])->name('edit-jeniscabangevent');
 Route::post('/update-jeniscabangevent/{id}', [CabangController::class,'update'])->name('update-jeniscabangevent');
 Route::get('/delete-jeniscabangevent/{id}', [CabangController::class,'destroy'])->name('delete-jeniscabangevent');
+Route::resource('/tentangevent', TentangeventController::class);
+    Route::get('/create-tentangevent', [TentangeventController::class,'create'])->name('create-tentangevent');
+    Route::post('/simpan-tentangevent', [TentangeventController::class,'store'])->name('simpan-tentangevent');
+    Route::get('/edit-tentangevent/{id}', [TentangeventController::class,'edit'])->name('edit-tentangevent');
+    Route::post('/update-tentangevent/{id}', [TentangeventController::class,'update'])->name('update-tentangevent');
+    Route::get('/delete-tentangevent/{id}', [TentangeventController::class,'destroy'])->name('delete-tentangevent');
 
 Route::get('pelatih/home', [HomeController::class,'pelatih'])->name('home');
 Route::get('pengunjung/home', [HomeController::class,'pengunjung'])->name('home');
