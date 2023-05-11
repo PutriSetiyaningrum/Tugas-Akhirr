@@ -99,7 +99,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/kategorievent" class="nav-link">
+                <a href="/baganevent" class="nav-link">
                   <i class="nav-icon far fa-file-alt"></i>
                   <p>Data Bagan Event</p>
                 </a>
@@ -107,7 +107,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/jeniscabangevent" class="nav-link">
+                <a href="/hasilpertandingan" class="nav-link">
                   <i class="nav-icon far fa-file-alt"></i>
                   <p>Data Hasil Pertandingan</p>
                 </a>

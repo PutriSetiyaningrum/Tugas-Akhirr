@@ -8,6 +8,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\CabangController;
 use App\Http\Controllers\TentangEventController;
+use App\Http\Controllers\BaganEventController;
 use Doctrine\DBAL\Driver\Middleware;
 
 /*
@@ -54,11 +55,17 @@ Route::get('/edit-jeniscabangevent/{id}', [CabangController::class,'edit'])->nam
 Route::post('/update-jeniscabangevent/{id}', [CabangController::class,'update'])->name('update-jeniscabangevent');
 Route::get('/delete-jeniscabangevent/{id}', [CabangController::class,'destroy'])->name('delete-jeniscabangevent');
 Route::resource('/tentangevent', TentangeventController::class);
-    Route::get('/create-tentangevent', [TentangeventController::class,'create'])->name('create-tentangevent');
-    Route::post('/simpan-tentangevent', [TentangeventController::class,'store'])->name('simpan-tentangevent');
-    Route::get('/edit-tentangevent/{id}', [TentangeventController::class,'edit'])->name('edit-tentangevent');
-    Route::post('/update-tentangevent/{id}', [TentangeventController::class,'update'])->name('update-tentangevent');
-    Route::get('/delete-tentangevent/{id}', [TentangeventController::class,'destroy'])->name('delete-tentangevent');
+Route::get('/create-tentangevent', [TentangeventController::class,'create'])->name('create-tentangevent');
+Route::post('/simpan-tentangevent', [TentangeventController::class,'store'])->name('simpan-tentangevent');
+Route::get('/edit-tentangevent/{id}', [TentangeventController::class,'edit'])->name('edit-tentangevent');
+Route::post('/update-tentangevent/{id}', [TentangeventController::class,'update'])->name('update-tentangevent');
+Route::get('/delete-tentangevent/{id}', [TentangeventController::class,'destroy'])->name('delete-tentangevent');
+Route::resource('/baganevent', BaganEventController::class);
+Route::get('/create-baganevent', [BaganEventController::class,'create'])->name('create-baganevent');
+Route::post('/simpan-baganevent', [BaganEventController::class,'store'])->name('simpan-baganevent');
+Route::get('/edit-baganevent/{id}', [BaganEventController::class,'edit'])->name('edit-baganevent');
+Route::post('/update-baganevent/{id}', [BaganEventController::class,'update'])->name('update-baganevent');
+Route::get('/delete-baganevent/{id}', [BaganEventController::class,'destroy'])->name('delete-baganevent');
 
 Route::get('pelatih/home', [HomeController::class,'pelatih'])->name('home');
 Route::get('pengunjung/home', [HomeController::class,'pengunjung'])->name('home');
