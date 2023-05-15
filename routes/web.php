@@ -52,33 +52,17 @@ Route::get('panitia/home', [HomeController::class, 'home'])->name('home');
 Route::prefix("master")->group(function () {
     Route::resource('/event', EventController::class);
     Route::resource('/kategorievent', KategoriController::class);
+    Route::resource('/jeniscabangevent', CabangController::class);
 });
-Route::post('/simpan-event', [EventController::class, 'store'])->name('simpan-event');
-Route::post('/update-event/{id}', [EventController::class, 'update'])->name('update-event');
-Route::get('/create-kategorievent', [KategoriController::class, 'create'])->name('create-kategorievent');
-Route::post('/simpan-kategorievent', [KategoriController::class, 'store'])->name('simpan-kategorievent');
-Route::get('/edit-kategorievent/{id}', [KategoriController::class, 'edit'])->name('edit-kategorievent');
-Route::post('/update-kategorievent/{id}', [KategoriController::class, 'update'])->name('update-kategorievent');
-Route::get('/delete-kategorievent/{id}', [KategoriController::class, 'destroy'])->name('delete-kategorievent');
-Route::resource('/jeniscabangevent', CabangController::class);
-Route::get('/create-jeniscabangevent', [CabangController::class, 'create'])->name('create-jeniscabangevent');
-Route::post('/simpan-jeniscaangevent', [CabangController::class, 'store'])->name('simpan-jeniscabangevent');
-Route::get('/edit-jeniscabangevent/{id}', [CabangController::class, 'edit'])->name('edit-jeniscabangevent');
-Route::post('/update-jeniscabangevent/{id}', [CabangController::class, 'update'])->name('update-jeniscabangevent');
-Route::get('/delete-jeniscabangevent/{id}', [CabangController::class, 'destroy'])->name('delete-jeniscabangevent');
-Route::resource('/tentangevent', TentangeventController::class);
-Route::get('/create-tentangevent', [TentangeventController::class, 'create'])->name('create-tentangevent');
-Route::post('/simpan-tentangevent', [TentangeventController::class, 'store'])->name('simpan-tentangevent');
-Route::get('/edit-tentangevent/{id}', [TentangeventController::class, 'edit'])->name('edit-tentangevent');
-Route::post('/update-tentangevent/{id}', [TentangeventController::class, 'update'])->name('update-tentangevent');
-Route::get('/delete-tentangevent/{id}', [TentangeventController::class, 'destroy'])->name('delete-tentangevent');
-Route::resource('/baganevent', BaganEventController::class);
-Route::get('/create-baganevent', [BaganEventController::class, 'create'])->name('create-baganevent');
-Route::post('/simpan-baganevent', [BaganEventController::class, 'store'])->name('simpan-baganevent');
-Route::get('/edit-baganevent/{id}', [BaganEventController::class, 'edit'])->name('edit-baganevent');
-Route::post('/update-baganevent/{id}', [BaganEventController::class, 'update'])->name('update-baganevent');
-Route::get('/delete-baganevent/{id}', [BaganEventController::class, 'destroy'])->name('delete-baganevent');
-Route::resource('/hasilpertandingan', HasilpertandinganController::class);
+
+Route::prefix("dashboard")->group(function () {
+    Route::resource('/tentangevent', TentangeventController::class);
+    Route::resource('/baganevent', BaganEventController::class);
+    Route::resource('/hasilpertandingan', HasilpertandinganController::class);
+});
+
+
+
 Route::get('/create-hasilpertandingan', [HasilpertandinganController::class, 'create'])->name('create-hasilpertandingan');
 Route::post('/simpan-hasilpertandingan', [HasilpertandinganController::class, 'store'])->name('simpan-hasilpertandingan');
 Route::get('/edit-hasilpertandingan/{id}', [HasilpertandinganController::class, 'edit'])->name('edit-hasilpertandingan');

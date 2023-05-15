@@ -16,11 +16,6 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function export()
-    {
-        echo "ada";
-    }
-
     public function index()
     {
         $event = event::latest()->get();

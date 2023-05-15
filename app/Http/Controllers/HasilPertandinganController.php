@@ -42,13 +42,13 @@ class HasilPertandinganController extends Controller
         if ($request->file("gambar")) {
             $gambar = $request->file("gambar")->store("img");
         }
-        
+
         $dtUpload = new hasilpertandingan();
         $dtUpload->gambar = $gambar;
         $dtUpload->deskripsi = $request->deskripsi;
         $dtUpload->save();
-        
-        return redirect ('hasilpertandingan');
+
+        return redirect("/dashboard/hasilpertandingan");
     }
 
     /**
@@ -92,11 +92,11 @@ class HasilPertandinganController extends Controller
         } else {
             $gambar = $request->gambarLama;
         }
-            hasilpertandingan::where("id", $id)->update([
+        hasilpertandingan::where("id", $id)->update([
             "gambar" => $gambar,
             "Deskripsi" => $request->Deskripsi
-            ]);
-        return redirect('hasilpertandingan');
+        ]);
+        return redirect("/dashboard/hasilpertandingan");
     }
 
     /**
@@ -107,12 +107,8 @@ class HasilPertandinganController extends Controller
      */
     public function destroy($id)
     {
-        $hapus = hasilpertandingan::findorfail($id);
+        hasilpertandingan::where("id", $id)->delete();
 
-        Storage::delete($hapus->gambar);
-
-        $hapus->delete();
-        
         return back();
     }
 }

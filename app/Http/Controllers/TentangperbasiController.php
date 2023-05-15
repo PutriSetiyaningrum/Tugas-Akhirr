@@ -42,12 +42,12 @@ class TentangperbasiController extends Controller
         if ($request->file("gambar")) {
             $gambar = $request->file("gambar")->store("img");
         }
-        
+
         $dtUpload = new tentangperbasi;
         $dtUpload->gambar = $gambar;
         $dtUpload->deskripsi = $request->deskripsi;
         $dtUpload->save();
-        
+
         return redirect ('tentangperbasi');
     }
 
@@ -113,7 +113,7 @@ class TentangperbasiController extends Controller
         Storage::delete($hapus->gambar);
 
         $hapus->delete();
-        
+
         return back();
     }
 }

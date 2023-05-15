@@ -72,7 +72,7 @@
           </ul>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ url('/master/kategorievent') }}" class="nav-link {{ Request::is('master/kategorievent') ? 'active' : '' }} ">
+              <a href="{{ url('/master/kategorievent') }}" class="nav-link {{ Request::segment(2) == 'kategorievent' ? 'active' : '' }} ">
                 <i class="nav-icon far fa-file-alt"></i>
                 <p>Data kategori Event</p>
               </a>
@@ -80,15 +80,15 @@
           </ul>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="/jeniscabangevent" class="nav-link">
+              <a href="{{ url('/master/jeniscabangevent') }}" class="nav-link {{ Request::segment(2) == 'jeniscabangevent' ? 'active' : '' }}">
                 <i class="nav-icon far fa-file-alt"></i>
                 <p>Data Jenis Cabang Event</p>
               </a>
             </li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
+        <li class="nav-item  {{ Request::segment(1) == 'dashboard' ? 'menu-open' : '' }}">
+          <a href="#" class="nav-link ">
             <i class="nav-icon far fa-list-alt"></i>
             <p>
               Content Pengunjung
@@ -97,7 +97,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="/tentangevent" class="nav-link">
+              <a href="{{ url('/dashboard/tentangevent') }}" class="nav-link {{ Request::segment(2) == 'tentangevent' ? 'active' : '' }}" class="nav-link">
                 <i class="nav-icon far fa-file-alt"></i>
                 <p>Data Tentang Event</p>
               </a>
@@ -105,7 +105,7 @@
           </ul>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="/baganevent" class="nav-link">
+              <a href="{{ url('/dashboard/baganevent') }}" class="nav-link {{ Request::segment(2) == 'baganevent' ? 'active' : '' }}" class="nav-link">
                 <i class="nav-icon far fa-file-alt"></i>
                 <p>Data Bagan Event</p>
               </a>
@@ -113,7 +113,7 @@
           </ul>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="/hasilpertandingan" class="nav-link">
+              <a href="{{ url('/dashboard/hasilpertandingan') }}" class="nav-link {{ Request::segment(2) == 'hasilpertandingan' ? 'active' : '' }}" class="nav-link">
                 <i class="nav-icon far fa-file-alt"></i>
                 <p>Data Hasil Pertandingan</p>
               </a>

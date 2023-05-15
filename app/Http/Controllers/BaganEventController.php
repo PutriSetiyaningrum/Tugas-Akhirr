@@ -42,13 +42,13 @@ class BaganEventController extends Controller
         if ($request->file("gambar")) {
             $gambar = $request->file("gambar")->store("img");
         }
-        
+
         $dtUpload = new baganevent();
         $dtUpload->gambar = $gambar;
         $dtUpload->deskripsi = $request->deskripsi;
         $dtUpload->save();
-        
-        return redirect ('baganevent');
+
+        return redirect("/dashboard/baganevent");
     }
 
     /**
@@ -92,11 +92,11 @@ class BaganEventController extends Controller
         } else {
             $gambar = $request->gambarLama;
         }
-            baganevent::where("id", $id)->update([
+        baganevent::where("id", $id)->update([
             "gambar" => $gambar,
             "Deskripsi" => $request->Deskripsi
-            ]);
-        return redirect('baganevent');
+        ]);
+        return redirect("/dashboard/baganevent");
     }
 
     /**
@@ -107,12 +107,8 @@ class BaganEventController extends Controller
      */
     public function destroy($id)
     {
-        $hapus = baganevent::findorfail($id);
+        baganevent::where("id", $id)->delete();
 
-        Storage::delete($hapus->gambar);
-
-        $hapus->delete();
-        
         return back();
     }
 }

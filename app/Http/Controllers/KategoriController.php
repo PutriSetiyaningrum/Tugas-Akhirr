@@ -42,8 +42,8 @@ class KategoriController extends Controller
         $dtUpload = new kategorievent;
         $dtUpload->Nama_Kategori_Event = $request->Nama_Kategori_Event;
         $dtUpload->save();
-        
-        return redirect ('kategorievent');
+
+        return redirect ("/master/kategorievent");
     }
 
     /**
@@ -81,7 +81,7 @@ class KategoriController extends Controller
         kategorievent::where("id", $id)->update([
             "Nama_Kategori_Event" => $request->Nama_Kategori_Event
             ]);
-        return redirect('kategorievent');
+        return redirect("/master/kategorievent");
     }
 
     /**
@@ -92,12 +92,8 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        $hapus = kategorievent::findorfail($id);
+        kategorievent::where("id", $id)->delete();
 
-        Storage::delete($hapus->Nama_Kategori_Event);
-
-        $hapus->delete();
-        
         return back();
     }
 }

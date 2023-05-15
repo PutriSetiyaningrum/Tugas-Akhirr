@@ -43,8 +43,8 @@ class CabangController extends Controller
         $dtUpload = new jeniscabangevent;
         $dtUpload->Nama_Jenis_Cabang_Event = $request->Nama_Jenis_Cabang_Event;
         $dtUpload->save();
-        
-        return redirect ('jeniscabangevent');
+
+        return redirect("/master/jeniscabangevent");
     }
 
     /**
@@ -81,8 +81,8 @@ class CabangController extends Controller
     {
         jeniscabangevent::where("id", $id)->update([
             "Nama_Jenis_Cabang_Event" => $request->Nama_Jenis_Cabang_Event
-            ]);
-        return redirect('jeniscabangevent');
+        ]);
+        return redirect("/master/jeniscabangevent");
     }
 
     /**
@@ -93,12 +93,8 @@ class CabangController extends Controller
      */
     public function destroy($id)
     {
-        $hapus = jeniscabangevent::findorfail($id);
+        jeniscabangevent::where("id", $id)->delete();
 
-        Storage::delete($hapus->Nama_Jenis_Cabang_Event);
-
-        $hapus->delete();
-        
         return back();
     }
 }

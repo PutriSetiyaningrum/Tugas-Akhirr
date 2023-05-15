@@ -2,22 +2,20 @@
 @section('content')
 
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-10">
             <h1 class="m-0">Data Jenis Cabang Event</h1>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- /.content-header -->
-    <!-- Main Content -->
+
     <div class="content">
       <div class="card card-info card-outline">
             <div class="card-body">
-              <form action="{{ route('simpan-jeniscabangevent') }}" method="post" enctype="multipart/form-data">
+              <form action="{{ url('/master/jeniscabangevent') }}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">

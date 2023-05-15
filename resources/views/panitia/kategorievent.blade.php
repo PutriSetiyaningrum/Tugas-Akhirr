@@ -17,7 +17,7 @@
       <div class="card card-info card-outline">
         <div class="card-header">
           <div class="card-tools">
-            <a href="/create-kategorievent" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+            <a href="{{ url('/master/kategorievent/create') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
           </div>
         </div>
               <div class="card-body">
@@ -27,16 +27,22 @@
                       <th>Nama Kategori Event</th>
                       <th>Aksi</th>
                     </tr>
-                  
+
                     @foreach ($kategorievent  as $item)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $item->Nama_Kategori_Event }}</td>
-                      <td width="10%">
-                        <a href="{{ url('edit-kategorievent',$item->id) }}"><i class="fas fa-edit"></i></a>
-                        |
-                        <a href="{{ url('delete-kategorievent',$item->id) }}"><i class="fas fa-trash-alt" style="color: red"></i></a>
-                      </td>
+                        <td width="10%">
+                            <a href="{{ url('/master/kategorievent/' . $item->id . '/edit') }}"><i class="fas fa-edit"></i></a>
+                            |
+                            <form action="{{ url('/master/kategorievent/'.$item->id) }}" method="POST" style="display: inline;">
+                                @csrf
+                                @method("DELETE")
+                                <button type="submit">
+                                    <i class="fas fa-trash-alt" style="color: red"></i>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </table>

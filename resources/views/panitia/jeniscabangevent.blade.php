@@ -17,7 +17,7 @@
       <div class="card card-info card-outline">
         <div class="card-header">
           <div class="card-tools">
-            <a href="/create-jeniscabangevent" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+            <a href="{{ url('/master/jeniscabangevent/create') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
           </div>
         </div>
               <div class="card-body">
@@ -27,16 +27,22 @@
                       <th>Nama Jenis Cabang Event</th>
                       <th>Aksi</th>
                     </tr>
-                  
+
                     @foreach ($jeniscabangevent  as $item)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $item->Nama_Jenis_Cabang_Event }}</td>
-                      <td width="10%">
-                        <a href="{{ url('edit-jeniscabangevent',$item->id) }}"><i class="fas fa-edit"></i></a>
-                        |
-                        <a href="{{ url('delete-jeniscabangevent',$item->id) }}"><i class="fas fa-trash-alt" style="color: red"></i></a>
-                      </td>
+                        <td width="10%">
+                            <a href="{{ url('/master/jeniscabangevent/' . $item->id . '/edit') }}"><i class="fas fa-edit"></i></a>
+                            |
+                            <form action="{{ url('/master/jeniscabangevent/'.$item->id) }}" method="POST" style="display: inline;">
+                                @csrf
+                                @method("DELETE")
+                                <button type="submit">
+                                    <i class="fas fa-trash-alt" style="color: red"></i>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </table>

@@ -42,13 +42,13 @@ class TentangEventController extends Controller
         if ($request->file("gambar")) {
             $gambar = $request->file("gambar")->store("img");
         }
-        
+
         $dtUpload = new tentangevent;
         $dtUpload->gambar = $gambar;
         $dtUpload->deskripsi = $request->deskripsi;
         $dtUpload->save();
-        
-        return redirect ('tentangevent');
+
+        return redirect("/dashboard/tentangevent");
     }
 
     /**
@@ -92,11 +92,11 @@ class TentangEventController extends Controller
         } else {
             $gambar = $request->gambarLama;
         }
-            tentangevent::where("id", $id)->update([
+        tentangevent::where("id", $id)->update([
             "gambar" => $gambar,
             "Deskripsi" => $request->Deskripsi
-            ]);
-        return redirect('tentangevent');
+        ]);
+        return redirect("/dashboard/tentangevent");
     }
 
     /**
@@ -107,12 +107,8 @@ class TentangEventController extends Controller
      */
     public function destroy($id)
     {
-        $hapus = tentangevent::findorfail($id);
+        tentangevent::where("id", $id)->delete();
 
-        Storage::delete($hapus->gambar);
-
-        $hapus->delete();
-        
         return back();
     }
 }
