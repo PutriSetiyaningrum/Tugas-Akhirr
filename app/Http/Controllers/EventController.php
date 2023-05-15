@@ -15,6 +15,12 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function export()
+    {
+        echo "ada";
+    }
+
     public function index()
     {
         $event = event::latest()->get();
@@ -39,12 +45,11 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        
         $dtUpload = new event;
         $dtUpload->Nama_Event = $request->Nama_Event;
         $dtUpload->save();
-        
-        return redirect ('event');
+
+        return redirect("/master/event");
     }
 
     /**
@@ -81,8 +86,8 @@ class EventController extends Controller
     {
         event::where("id", $id)->update([
             "Nama_Event" => $request->Nama_Event
-            ]);
-        return redirect('event');
+        ]);
+        return redirect("/master/event");
     }
 
     /**
@@ -93,12 +98,8 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        $hapus = event::findorfail($id);
+        event::where("id", $id)->delete();
 
-        Storage::delete($hapus->Nama_Event);
-
-        $hapus->delete();
-        
         return back();
     }
 }
