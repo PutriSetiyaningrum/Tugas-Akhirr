@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
@@ -27,6 +28,7 @@ use Doctrine\DBAL\Driver\Middleware;
 Route::get('/', function () {return view('/user/landingpage/home');});
 Route::get('/s&k', function () {return view('/user/landingpage/s&k');});
 Route::get('/kontak', function () {return view('/user/landingpage/kontak');});
+Route::get('/tentang-perbasi',[AppController::class,'about'])->name('app.about');
 Route::get('/login', function () {return view('/user/landingpage/login');});
 Route::get('/register', function () {return view('/user/landingpage/register');});
 Route::get('/register', [LoginController::class,'registrasi'])->name('registrasi');

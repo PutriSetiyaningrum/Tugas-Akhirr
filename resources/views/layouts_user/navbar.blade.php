@@ -51,7 +51,7 @@
                                                     <a href="/">Home</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a href="about-us.html">Tentang PERBASI</a>
+                                                    <a href="{{ route('app.about') }}">Tentang PERBASI</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a href="/s&k">Syarat & Ketentuan</a>
