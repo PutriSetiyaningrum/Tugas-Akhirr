@@ -48,7 +48,7 @@ class TentangperbasiController extends Controller
         $dtUpload->deskripsi = $request->deskripsi;
         $dtUpload->save();
 
-        return redirect ('tentangperbasi');
+        return redirect("/home/tentangperbasi");
     }
 
     /**
@@ -93,11 +93,11 @@ class TentangperbasiController extends Controller
         } else {
             $gambar = $request->gambarLama;
         }
-            tentangperbasi::where("id", $id)->update([
+        tentangperbasi::where("id", $id)->update([
             "gambar" => $gambar,
             "Deskripsi" => $request->Deskripsi
-            ]);
-        return redirect('tentangperbasi');
+        ]);
+        return redirect("/home/tentangperbasi");
     }
 
     /**
@@ -108,11 +108,7 @@ class TentangperbasiController extends Controller
      */
     public function destroy($id)
     {
-        $hapus = tentangperbasi::findorfail($id);
-
-        Storage::delete($hapus->gambar);
-
-        $hapus->delete();
+        tentangperbasi::where("id", $id)->delete();
 
         return back();
     }

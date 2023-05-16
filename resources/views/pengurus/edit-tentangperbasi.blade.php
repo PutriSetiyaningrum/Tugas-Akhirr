@@ -17,8 +17,9 @@
     <div class="content">
       <div class="card card-info card-outline">
             <div class="card-body">
-              <form action="{{ url('update-tentangperbasi', $dt->id) }}" method="post" enctype="multipart/form-data">
+              <form action="{{ url('/home/tentangperbasi/' . $dt->id) }}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
+              @method("PUT")
               <input type="hidden" name="gambarLama" value="{{ $dt->gambar }}" />
                 <div class="card-body">
                   <div class="form-group">

@@ -17,7 +17,7 @@
       <div class="card card-info card-outline">
         <div class="card-header">
           <div class="card-tools">
-            <a href="/create-tentangperbasi" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+            <a href="{{ url('/home/tentangperbasi/create') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
           </div>
         </div>
               <div class="card-body">
@@ -28,7 +28,7 @@
                       <th>Deskripsi</th>
                       <th>Aksi</th>
                     </tr>
-                  
+
                     @foreach ($tentangperbasi  as $item)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
@@ -36,9 +36,15 @@
                         <img src="{{ url('/storage/'.$item->gambar) }}" height="100%" width="150" alt="srcset">
                       <td>{{ $item->Deskripsi }}</td>
                       <td width="10%">
-                        <a href="{{ url('edit-tentangperbasi',$item->id) }}"><i class="fas fa-edit"></i></a>
+                        <a href="{{ url('/home/tentangperbasi/' . $item->id . '/edit') }}"><i class="fas fa-edit"></i></a>
                         |
-                        <a href="{{ url('delete-tentangperbasi',$item->id) }}"><i class="fas fa-trash-alt" style="color: red"></i></a>
+                        <form action="{{ url('/home/tentangperbasi/'.$item->id) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method("DELETE")
+                            <button type="submit">
+                                <i class="fas fa-trash-alt" style="color: red"></i>
+                            </button>
+                        </form>
                       </td>
                     </tr>
                     @endforeach

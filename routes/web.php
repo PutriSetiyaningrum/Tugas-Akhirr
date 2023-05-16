@@ -42,12 +42,14 @@ Route::get('/register', function () {
 });
 Route::get('/register', [LoginController::class, 'registrasi'])->name('registrasi');
 Route::post('/simpanregister', [LoginController::class, 'simpanregistrasi'])->name('simpanregistrasi');
-Route::get('/login', [LoginController::class, 'halamanlogin'])->name('login');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('panitia/home', [HomeController::class, 'home'])->name('home');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::group(["middleware" => ["guest"]], function () {
+    Route::get('/login', [LoginController::class, 'halamanlogin'])->name('login');
+    Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
+});
+
 
 Route::prefix("master")->group(function () {
     Route::resource('/event', EventController::class);
@@ -61,23 +63,14 @@ Route::prefix("dashboard")->group(function () {
     Route::resource('/hasilpertandingan', HasilpertandinganController::class);
 });
 
-
-
-Route::get('/create-hasilpertandingan', [HasilpertandinganController::class, 'create'])->name('create-hasilpertandingan');
-Route::post('/simpan-hasilpertandingan', [HasilpertandinganController::class, 'store'])->name('simpan-hasilpertandingan');
-Route::get('/edit-hasilpertandingan/{id}', [HasilpertandinganController::class, 'edit'])->name('edit-hasilpertandingan');
-Route::post('/update-hasilpertandingan/{id}', [HasilpertandinganController::class, 'update'])->name('update-hasilpertandingan');
-Route::get('/delete-hasilpertandingan/{id}', [HasilpertandinganController::class, 'destroy'])->name('delete-hasilpertandingan');
-
+Route::get('panitia/home', [HomeController::class, 'home'])->name('home');
 Route::get('pelatih/home', [HomeController::class, 'pelatih'])->name('home');
 Route::get('pengunjung/home', [HomeController::class, 'pengunjung'])->name('home');
 
-Route::group(["middleware" => "autentikasi"], function () {
-    Route::get('pengurus/home', [HomeController::class, 'index'])->name('home');
-    Route::resource('/tentangperbasi', TentangperbasiController::class);
-    Route::get('/create-tentangperbasi', [TentangperbasiController::class, 'create'])->name('create-tentangperbasi');
-    Route::post('/simpan-tentangperbasi', [TentangperbasiController::class, 'store'])->name('simpan-tentangperbasi');
-    Route::get('/edit-tentangperbasi/{id}', [TentangperbasiController::class, 'edit'])->name('edit-tentangperbasi');
-    Route::post('/update-tentangperbasi/{id}', [TentangperbasiController::class, 'update'])->name('update-tentangperbasi');
-    Route::get('/delete-tentangperbasi/{id}', [TentangperbasiController::class, 'destroy'])->name('delete-tentangperbasi');
+Route::group(["middleware" => ["autentikasi"]], function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::prefix("home")->group(function () {
+        Route::get('pengurus/home', [HomeController::class, 'index'])->name('home');
+        Route::resource('/tentangperbasi', TentangperbasiController::class);
+    });
 });
