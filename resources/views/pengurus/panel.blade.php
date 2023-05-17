@@ -51,7 +51,7 @@
 <script src="{{ url('') }}/AdminLTE/plugins/jquery-mapael/jquery.mapael.min.js"></script>
 <script src="{{ url('') }}/AdminLTE/plugins/jquery-mapael/maps/usa_states.min.js"></script>
 <!-- ChartJS -->
-<script src="../AdminLTE/plugins/chart.js/Chart.min.js"></script>
+<script src="{{ url('') }}/AdminLTE/plugins/chart.js/Chart.min.js"></script>
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url('') }}/AdminLTE/dist/js/demo.js"></script>

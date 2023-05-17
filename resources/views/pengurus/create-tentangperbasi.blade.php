@@ -17,7 +17,7 @@
     <div class="content">
       <div class="card card-info card-outline">
             <div class="card-body">
-              <form action="{{ url('/home/tentangperbasi') }}" method="post" enctype="multipart/form-data">
+              <form action="{{ url('/dashboard/tentangperbasi') }}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">

@@ -1,14 +1,14 @@
 @extends('layouts_user.main')
 @section('container')
             <section class="flat-title-page"><div class="overlay-page"></div>
-                    
+
                 <div class="container">
-                    <div class="row">                          
-                        <div class="col-lg-12 col-md-12">                              
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
                             <div class="breadcrumbs">
                                 <h1>Tentang PERBASI<span class="style-color"></h1>
-                            </div>                                                           
-                        </div>                          
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -21,7 +21,7 @@
                                 @forelse($about_perbasi as $data)
                                 <div class="text-center">
                                     <img src="{{ asset('storage/'. $data['gambar']) }}" alt="gambar" width="1000px">
-                                </div>                 
+                                </div>
                                 <div class="mt-5">
                                     <p class="text-center">{{ $data['Deskripsi'] }}</p>
                                 </div>

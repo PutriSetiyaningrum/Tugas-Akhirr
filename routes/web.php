@@ -69,7 +69,7 @@ Route::get('pengunjung/home', [HomeController::class, 'pengunjung'])->name('home
 
 Route::group(["middleware" => ["autentikasi"]], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::prefix("home")->group(function () {
+    Route::prefix("dashboard")->group(function () {
         Route::get('pengurus/home', [HomeController::class, 'index'])->name('home');
         Route::resource('/tentangperbasi', TentangperbasiController::class);
     });

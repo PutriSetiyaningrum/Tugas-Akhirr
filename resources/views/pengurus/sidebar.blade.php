@@ -48,7 +48,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item {{ Request::segment(1) == 'home' ? 'menu-open' : '' }} ">
+          <li class="nav-item {{ Request::segment(1) == 'dashboard' ? 'menu-open' : '' }} ">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-list-alt"></i>
               <p>
@@ -58,7 +58,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/home/tentangperbasi') }}" class="nav-link {{ Request::segment(2) == 'tentangperbasi' ? 'active' : '' }} "" class="nav-link">
+                <a href="{{ url('/dashboard/tentangperbasi') }}" class="nav-link {{ Request::segment(2) == 'tentangperbasi' ? 'active' : '' }} ">
                   <i class="nav-icon far fa-file-alt"></i>
                   <p>Data Tentang PERBASI</p>
                 </a>
