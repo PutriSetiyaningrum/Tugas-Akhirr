@@ -38,6 +38,39 @@
               </p>
             </a>
           </li>
+          <li class="nav-item {{ Request::segment(1) == 'master' ? 'menu-open' : '' }} ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-list-alt"></i>
+              <p>
+                Event
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('/master/event') }}" class="nav-link {{ Request::segment(2) == 'event' ? 'active' : '' }} ">
+                  <i class="nav-icon far fa-file-alt"></i>
+                  <p>Tentang Event</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('/master/kategorievent') }}" class="nav-link {{ Request::segment(2) == 'kategorievent' ? 'active' : '' }} ">
+                  <i class="nav-icon far fa-file-alt"></i>
+                  <p>BaganEvent</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('/master/jeniscabangevent') }}" class="nav-link {{ Request::segment(2) == 'jeniscabangevent' ? 'active' : '' }}">
+                  <i class="nav-icon far fa-file-alt"></i>
+                  <p>Hasil Pertandingan</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>

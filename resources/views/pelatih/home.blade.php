@@ -31,10 +31,44 @@
               <div class="info-box-content">
                 <span class="info-box-text">Persyaratan Tim</span>
               </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-danger elevation-1"><i class="far fa-file-alt"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Tentang Event</span>
+                <span class="info-box-number">41,410</span>
+              </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
           </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-danger elevation-1"><i class="far fa-file-alt"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Bagan Event</span>
+                <span class="info-box-number">41,410</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-danger elevation-1"><i class="far fa-file-alt"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Hasil Pertandingan</span>
+                <span class="info-box-number">41,410</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+
           <!-- /.col -->
         </div>
         <!-- /.row -->
