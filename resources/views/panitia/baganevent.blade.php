@@ -1,4 +1,4 @@
-@extends('Panitia.panel')
+@extends('layouts.main')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -17,7 +17,7 @@
       <div class="card card-info card-outline">
         <div class="card-header">
           <div class="card-tools">
-            <a href="{{ url('/contentpengunjung/baganevent/create') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+            <a href="{{ url('/informasi/baganevent/create') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
           </div>
         </div>
               <div class="card-body">
@@ -36,9 +36,9 @@
                         <img src="{{ url('/storage/'.$item->gambar) }}" height="100%" width="150" alt="srcset">
                       <td>{{ $item->Deskripsi }}</td>
                       <td width="10%">
-                        <a href="{{ url('/contentpengunjung/baganevent/' . $item->id . '/edit') }}"><i class="fas fa-edit"></i></a>
+                        <a href="{{ url('/informasi/baganevent/' . $item->id . '/edit') }}"><i class="fas fa-edit"></i></a>
                         |
-                        <form action="{{ url('/contentpengunjung/baganevent/'.$item->id) }}" method="POST" style="display: inline;">
+                        <form action="{{ url('/informasi/baganevent/'.$item->id) }}" method="POST" style="display: inline;">
                             @csrf
                             @method("DELETE")
                             <button type="submit">

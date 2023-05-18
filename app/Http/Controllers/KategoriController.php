@@ -43,7 +43,7 @@ class KategoriController extends Controller
         $dtUpload->Nama_Kategori_Event = $request->Nama_Kategori_Event;
         $dtUpload->save();
 
-        return redirect("/contentevent/kategorievent");
+        return redirect("/master/kategorievent");
     }
 
     /**
@@ -81,7 +81,7 @@ class KategoriController extends Controller
         kategorievent::where("id", $id)->update([
             "Nama_Kategori_Event" => $request->Nama_Kategori_Event
         ]);
-        return redirect("/contentevent/kategorievent");
+        return redirect("/master/kategorievent");
     }
 
     /**

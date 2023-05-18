@@ -48,7 +48,7 @@ class TentangperbasiController extends Controller
         $dtUpload->deskripsi = $request->deskripsi;
         $dtUpload->save();
 
-        return redirect("/contentperbasi/tentangperbasi");
+        return redirect("/master/tentangperbasi");
     }
 
     /**
@@ -97,7 +97,7 @@ class TentangperbasiController extends Controller
             "gambar" => $gambar,
             "Deskripsi" => $request->Deskripsi
         ]);
-        return redirect("/contentperbasi/tentangperbasi");
+        return redirect("/master/tentangperbasi");
     }
 
     /**

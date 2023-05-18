@@ -1,4 +1,4 @@
-@extends('panitia.panel')
+@extends('layouts.main')
 @section('content')
     <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -17,7 +17,7 @@
       <div class="card card-info card-outline">
         <div class="card-header">
           <div class="card-tools">
-            <a href="{{ url('/contentevent/jeniscabangevent/create') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+            <a href="{{ url('/master/jeniscabangevent/create') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
           </div>
         </div>
               <div class="card-body">
@@ -33,9 +33,9 @@
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $item->Nama_Jenis_Cabang_Event }}</td>
                         <td width="10%">
-                            <a href="{{ url('/contentevent/jeniscabangevent/' . $item->id . '/edit') }}"><i class="fas fa-edit"></i></a>
+                            <a href="{{ url('/master/jeniscabangevent/' . $item->id . '/edit') }}"><i class="fas fa-edit"></i></a>
                             |
-                            <form action="{{ url('/contentevent/jeniscabangevent/'.$item->id) }}" method="POST" style="display: inline;">
+                            <form action="{{ url('/master/jeniscabangevent/'.$item->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method("DELETE")
                                 <button type="submit">

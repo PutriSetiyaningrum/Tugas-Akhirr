@@ -48,7 +48,7 @@ class HasilPertandinganController extends Controller
         $dtUpload->deskripsi = $request->deskripsi;
         $dtUpload->save();
 
-        return redirect("/contentpengunjung/hasilpertandingan");
+        return redirect("/informasi/hasilpertandingan");
     }
 
     /**
@@ -96,7 +96,7 @@ class HasilPertandinganController extends Controller
             "gambar" => $gambar,
             "Deskripsi" => $request->Deskripsi
         ]);
-        return redirect("/contentpengunjung/hasilpertandingan");
+        return redirect("/informasi/hasilpertandingan");
     }
 
     /**

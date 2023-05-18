@@ -1,4 +1,4 @@
-@extends('pengunjung/panel')
+@extends('layouts.main')
 
 @section('content')
 

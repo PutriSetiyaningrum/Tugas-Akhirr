@@ -11,6 +11,8 @@ use App\Http\Controllers\CabangController;
 use App\Http\Controllers\TentangEventController;
 use App\Http\Controllers\BaganEventController;
 use App\Http\Controllers\HasilPertandinganController;
+use App\Http\Controllers\PanitiaController;
+use App\Http\Controllers\PelatihController;
 use Doctrine\DBAL\Driver\Middleware;
 
 /*
@@ -23,6 +25,10 @@ use Doctrine\DBAL\Driver\Middleware;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get("/layouting", function () {
+    return view("layouts.main");
+});
 
 Route::get('/', function () {
     return view('/user/landingpage/home');
@@ -50,24 +56,49 @@ Route::group(["middleware" => ["guest"]], function () {
 });
 
 Route::group(["middleware" => ["autentikasi"]], function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::prefix("contentperbasi")->group(function () {
-        Route::get('pengurus/home', [HomeController::class, 'index'])->name('home');
-        Route::resource('/tentangperbasi', TentangperbasiController::class);
+
+    // Pengurus
+    Route::group(["middleware" => ["can:pengurus"]], function () {
+        Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+        Route::prefix("akun")->group(function () {
+            Route::resource('panitia', PanitiaController::class);
+        });
+
+        Route::prefix("master")->group(function () {
+            Route::resource('/contentperbasi', ContenteventController::class);
+            Route::get('pengurus/home', [HomeController::class, 'index'])->name('home');
+            Route::resource('/tentangperbasi', TentangperbasiController::class);
+        });
+    });
+
+    // Pelatih
+    Route::group(["middleware" => ["can:pelatih"]], function () {
+        Route::get('pelatih/home', [HomeController::class, 'pelatih'])->name('home');
+    });
+
+    // Panitia
+    Route::group(["middleware" => ["can:panitia"]], function () {
+        Route::get('panitia/home', [HomeController::class, 'home'])->name('home');
+    });
+
+    // Pengunjung
+    Route::group(["middleware" => ["can:pengunjung"]], function () {
+        Route::get('pengunjung/home', [HomeController::class, 'pengunjung'])->name('home');
+    });
+
+    Route::prefix("akun")->group(function () {
+        Route::resource('pelatih', PelatihController::class);
     });
 });
 
-Route::prefix("contentevent")->group(function () {
+Route::prefix("master")->group(function () {
     Route::resource('/event', EventController::class);
     Route::resource('/kategorievent', KategoriController::class);
     Route::resource('/jeniscabangevent', CabangController::class);
 });
-Route::prefix("contentpengunjung")->group(function () {
+Route::prefix("informasi")->group(function () {
     Route::resource('/tentangevent', TentangeventController::class);
     Route::resource('/baganevent', BaganEventController::class);
     Route::resource('/hasilpertandingan', HasilpertandinganController::class);
 });
-
-Route::get('panitia/home', [HomeController::class, 'home'])->name('home');
-Route::get('pelatih/home', [HomeController::class, 'pelatih'])->name('home');
-Route::get('pengunjung/home', [HomeController::class, 'pengunjung'])->name('home');

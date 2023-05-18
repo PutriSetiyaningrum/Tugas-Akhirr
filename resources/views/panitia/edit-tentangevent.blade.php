@@ -1,4 +1,4 @@
-@extends('panitia.panel')
+@extends('layouts.main')
 @section('content')
 
   <div class="content-wrapper">
@@ -17,7 +17,7 @@
     <div class="content">
       <div class="card card-info card-outline">
             <div class="card-body">
-              <form action="{{ url('/contentpengunjung/tentangevent/' . $dt->id) }}" method="post" enctype="multipart/form-data">
+              <form action="{{ url('/informasi/tentangevent/' . $dt->id) }}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
               @method("PUT")
               <input type="hidden" name="gambarLama" value="{{ $dt->gambar }}" />

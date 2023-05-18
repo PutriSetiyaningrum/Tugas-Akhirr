@@ -20,8 +20,15 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, $guard = NULL)
     {
         if (Auth::guard($guard)->check()) {
-
-            return redirect("/home");
+            if (Auth::user()->level == "pengurus") {
+                return redirect("/home");
+            } else if (Auth::user()->level == "panitia") {
+                return redirect("/panitia/home");
+            } else if (Auth::user()->level == "pelatih") {
+                return redirect("/pelatih/home");
+            } else if (Auth::user()->level == "pengunjung") {
+                return redirect("/pengunjung/home");
+            }
         }
 
         return $next($request);

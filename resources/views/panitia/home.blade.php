@@ -1,4 +1,4 @@
-@extends('panitia.panel')
+@extends('layouts.main')
 @section('content')
 
     <div class="content-wrapper">

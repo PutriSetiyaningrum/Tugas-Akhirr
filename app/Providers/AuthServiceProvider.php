@@ -25,6 +25,36 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define("pengurus", function ($user) {
+            if (empty($user)) {
+                return redirect("/logout");
+            } else {
+                return $user->level == "pengurus";
+            }
+        });
+
+        Gate::define("panitia", function ($user) {
+            if (empty($user)) {
+                return redirect("/logout");
+            } else {
+                return $user->level == "panitia";
+            }
+        });
+
+        Gate::define("pelatih", function ($user) {
+            if (empty($user)) {
+                return redirect("/logout");
+            } else {
+                return $user->level == "pelatih";
+            }
+        });
+
+        Gate::define("pengunjung", function ($user) {
+            if (empty($user)) {
+                return redirect("/logout");
+            } else {
+                return $user->level == "pengunjung";
+            }
+        });
     }
 }
