@@ -48,7 +48,7 @@ class BaganEventController extends Controller
         $dtUpload->deskripsi = $request->deskripsi;
         $dtUpload->save();
 
-        return redirect("/dashboard/baganevent");
+        return redirect("/contentpengunjung/baganevent");
     }
 
     /**
@@ -96,7 +96,7 @@ class BaganEventController extends Controller
             "gambar" => $gambar,
             "Deskripsi" => $request->Deskripsi
         ]);
-        return redirect("/dashboard/baganevent");
+        return redirect("/contentpengunjung/baganevent");
     }
 
     /**

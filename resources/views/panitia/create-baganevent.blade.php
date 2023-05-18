@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-10">
-            <h1 class="m-0">Data Bagan Event</h1>
+            <h1 class="m-0">Tambah Data Bagan Event</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -17,7 +17,7 @@
     <div class="content">
       <div class="card card-info card-outline">
             <div class="card-body">
-              <form action="{{ url('/dashboard/baganevent') }}" method="post" enctype="multipart/form-data">
+              <form action="{{ url('/contentpengunjung/baganevent') }}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">

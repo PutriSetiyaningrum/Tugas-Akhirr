@@ -42,7 +42,6 @@ Route::get('/register', function () {
 });
 Route::get('/register', [LoginController::class, 'registrasi'])->name('registrasi');
 Route::post('/simpanregister', [LoginController::class, 'simpanregistrasi'])->name('simpanregistrasi');
-
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(["middleware" => ["guest"]], function () {
@@ -50,14 +49,20 @@ Route::group(["middleware" => ["guest"]], function () {
     Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 });
 
+Route::group(["middleware" => ["autentikasi"]], function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::prefix("contentperbasi")->group(function () {
+        Route::get('pengurus/home', [HomeController::class, 'index'])->name('home');
+        Route::resource('/tentangperbasi', TentangperbasiController::class);
+    });
+});
 
-Route::prefix("master")->group(function () {
+Route::prefix("contentevent")->group(function () {
     Route::resource('/event', EventController::class);
     Route::resource('/kategorievent', KategoriController::class);
     Route::resource('/jeniscabangevent', CabangController::class);
 });
-
-Route::prefix("dashboard")->group(function () {
+Route::prefix("contentpengunjung")->group(function () {
     Route::resource('/tentangevent', TentangeventController::class);
     Route::resource('/baganevent', BaganEventController::class);
     Route::resource('/hasilpertandingan', HasilpertandinganController::class);
@@ -66,11 +71,3 @@ Route::prefix("dashboard")->group(function () {
 Route::get('panitia/home', [HomeController::class, 'home'])->name('home');
 Route::get('pelatih/home', [HomeController::class, 'pelatih'])->name('home');
 Route::get('pengunjung/home', [HomeController::class, 'pengunjung'])->name('home');
-
-Route::group(["middleware" => ["autentikasi"]], function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::prefix("dashboard")->group(function () {
-        Route::get('pengurus/home', [HomeController::class, 'index'])->name('home');
-        Route::resource('/tentangperbasi', TentangperbasiController::class);
-    });
-});

@@ -44,7 +44,7 @@ class EventController extends Controller
         $dtUpload->Nama_Event = $request->Nama_Event;
         $dtUpload->save();
 
-        return redirect("/master/event");
+        return redirect("/contentevent/event");
     }
 
     /**
@@ -82,7 +82,7 @@ class EventController extends Controller
         event::where("id", $id)->update([
             "Nama_Event" => $request->Nama_Event
         ]);
-        return redirect("/master/event");
+        return redirect("/contentevent/event");
     }
 
     /**

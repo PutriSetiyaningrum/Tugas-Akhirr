@@ -48,7 +48,7 @@ class TentangEventController extends Controller
         $dtUpload->deskripsi = $request->deskripsi;
         $dtUpload->save();
 
-        return redirect("/dashboard/tentangevent");
+        return redirect("/contentpengunjung/tentangevent");
     }
 
     /**
@@ -96,7 +96,7 @@ class TentangEventController extends Controller
             "gambar" => $gambar,
             "Deskripsi" => $request->Deskripsi
         ]);
-        return redirect("/dashboard/tentangevent");
+        return redirect("/contentpengunjung/tentangevent");
     }
 
     /**

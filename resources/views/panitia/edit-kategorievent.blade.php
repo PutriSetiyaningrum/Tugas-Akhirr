@@ -15,7 +15,7 @@
     <div class="content">
       <div class="card card-info card-outline">
             <div class="card-body">
-              <form action="{{ url('/master/kategorievent/' . $dt->id) }}" method="post" enctype="multipart/form-data">
+              <form action="{{ url('/contentevent/kategorievent/' . $dt->id) }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 @method("PUT")
                     <div class="card-body">

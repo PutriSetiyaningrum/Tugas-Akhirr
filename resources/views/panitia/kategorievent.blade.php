@@ -17,7 +17,7 @@
       <div class="card card-info card-outline">
         <div class="card-header">
           <div class="card-tools">
-            <a href="{{ url('/master/kategorievent/create') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+            <a href="{{ url('/contentevent/kategorievent/create') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
           </div>
         </div>
               <div class="card-body">
@@ -33,9 +33,9 @@
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $item->Nama_Kategori_Event }}</td>
                         <td width="10%">
-                            <a href="{{ url('/master/kategorievent/' . $item->id . '/edit') }}"><i class="fas fa-edit"></i></a>
+                            <a href="{{ url('/contentevent/kategorievent/' . $item->id . '/edit') }}"><i class="fas fa-edit"></i></a>
                             |
-                            <form action="{{ url('/master/kategorievent/'.$item->id) }}" method="POST" style="display: inline;">
+                            <form action="{{ url('/contentevent/kategorievent/'.$item->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method("DELETE")
                                 <button type="submit">

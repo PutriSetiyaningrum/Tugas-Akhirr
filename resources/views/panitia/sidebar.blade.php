@@ -35,7 +35,7 @@
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-edit"></i>
             <p>
-              Manajement
+              Manajement Pelatih
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
@@ -54,7 +54,7 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item {{ Request::segment(1) == 'master' ? 'menu-open' : '' }} ">
+        <li class="nav-item {{ Request::segment(1) == 'contentevent' ? 'menu-open' : '' }} ">
           <a href="#" class="nav-link">
             <i class="nav-icon far fa-list-alt"></i>
             <p>
@@ -64,7 +64,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ url('/master/event') }}" class="nav-link {{ Request::segment(2) == 'event' ? 'active' : '' }} ">
+              <a href="{{ url('/contentevent/event') }}" class="nav-link {{ Request::segment(2) == 'event' ? 'active' : '' }} ">
                 <i class="nav-icon far fa-file-alt"></i>
                 <p>Data Event</p>
               </a>
@@ -72,7 +72,7 @@
           </ul>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ url('/master/kategorievent') }}" class="nav-link {{ Request::segment(2) == 'kategorievent' ? 'active' : '' }} ">
+              <a href="{{ url('/contentevent/kategorievent') }}" class="nav-link {{ Request::segment(2) == 'kategorievent' ? 'active' : '' }} ">
                 <i class="nav-icon far fa-file-alt"></i>
                 <p>Data kategori Event</p>
               </a>
@@ -80,14 +80,14 @@
           </ul>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ url('/master/jeniscabangevent') }}" class="nav-link {{ Request::segment(2) == 'jeniscabangevent' ? 'active' : '' }}">
+              <a href="{{ url('/contentevent/jeniscabangevent') }}" class="nav-link {{ Request::segment(2) == 'jeniscabangevent' ? 'active' : '' }}">
                 <i class="nav-icon far fa-file-alt"></i>
                 <p>Data Jenis Cabang Event</p>
               </a>
             </li>
           </ul>
         </li>
-        <li class="nav-item  {{ Request::segment(1) == 'dashboard' ? 'menu-open' : '' }}">
+        <li class="nav-item  {{ Request::segment(1) == 'contentpengunjung' ? 'menu-open' : '' }}">
           <a href="#" class="nav-link ">
             <i class="nav-icon far fa-list-alt"></i>
             <p>
@@ -97,7 +97,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ url('/dashboard/tentangevent') }}" class="nav-link {{ Request::segment(2) == 'tentangevent' ? 'active' : '' }}" class="nav-link">
+              <a href="{{ url('/contentpengunjung/tentangevent') }}" class="nav-link {{ Request::segment(2) == 'tentangevent' ? 'active' : '' }}" class="nav-link">
                 <i class="nav-icon far fa-file-alt"></i>
                 <p>Data Tentang Event</p>
               </a>
@@ -105,7 +105,7 @@
           </ul>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ url('/dashboard/baganevent') }}" class="nav-link {{ Request::segment(2) == 'baganevent' ? 'active' : '' }}" class="nav-link">
+              <a href="{{ url('/contentpengunjung/baganevent') }}" class="nav-link {{ Request::segment(2) == 'baganevent' ? 'active' : '' }}" class="nav-link">
                 <i class="nav-icon far fa-file-alt"></i>
                 <p>Data Bagan Event</p>
               </a>
@@ -113,7 +113,7 @@
           </ul>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ url('/dashboard/hasilpertandingan') }}" class="nav-link {{ Request::segment(2) == 'hasilpertandingan' ? 'active' : '' }}" class="nav-link">
+              <a href="{{ url('/contentpengunjung/hasilpertandingan') }}" class="nav-link {{ Request::segment(2) == 'hasilpertandingan' ? 'active' : '' }}" class="nav-link">
                 <i class="nav-icon far fa-file-alt"></i>
                 <p>Data Hasil Pertandingan</p>
               </a>

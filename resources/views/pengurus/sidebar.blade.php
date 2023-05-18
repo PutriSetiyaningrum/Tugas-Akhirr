@@ -35,7 +35,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-                Manajement
+                Manajement Akun
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -48,17 +48,17 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item {{ Request::segment(1) == 'dashboard' ? 'menu-open' : '' }} ">
+          <li class="nav-item {{ Request::segment(1) == 'contentperbasi' ? 'menu-open' : '' }} ">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-list-alt"></i>
               <p>
-                Content
+                Content PERBASI
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/dashboard/tentangperbasi') }}" class="nav-link {{ Request::segment(2) == 'tentangperbasi' ? 'active' : '' }} ">
+                <a href="{{ url('/contentperbasi/tentangperbasi') }}" class="nav-link {{ Request::segment(2) == 'tentangperbasi' ? 'active' : '' }} ">
                   <i class="nav-icon far fa-file-alt"></i>
                   <p>Data Tentang PERBASI</p>
                 </a>
