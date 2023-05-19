@@ -13,7 +13,7 @@
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
-                    Manajement Akun
+                    Akun
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -35,7 +35,7 @@
             </ul>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="pages/charts/chartjs.html" class="nav-link">
+                    <a href="{{ url('/akun/pengunjung') }}" class="nav-link {{ Request::segment(2) == 'pengunjung' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-solid fa-users"></i>
                         <p>Pengunjung</p>
                     </a>
@@ -73,12 +73,6 @@
                 <p>
                     Data Event
                 </p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('logout') }}" class="nav-link">
-                <i class="nav-icon fas fa-sign-out-alt"></i>
-                <p>Logout</p>
             </a>
         </li>
     </ul>

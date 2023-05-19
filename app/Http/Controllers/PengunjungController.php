@@ -15,7 +15,8 @@ class PengunjungController extends Controller
      */
     public function index()
     {
-        //
+        $data["pengunjung"] = Pengunjung::get();
+        return view('pengurus.akun.pengunjung.index', $data);
     }
 
     /**
@@ -36,7 +37,12 @@ class PengunjungController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Pengunjung::create([
+            "name" => $request->name,
+            "email" => $request->email,
+            "password" => bcrypt("pengunjung"),
+            "level" => "pengunjung",
+        ]);
     }
 
     /**
@@ -70,7 +76,6 @@ class PengunjungController extends Controller
      */
     public function update(Request $request, Pengunjung $pengunjung)
     {
-        //
     }
 
     /**
@@ -81,6 +86,8 @@ class PengunjungController extends Controller
      */
     public function destroy(Pengunjung $pengunjung)
     {
-        //
+        Pengunjung::where("id")->delete();
+
+        return back();
     }
 }

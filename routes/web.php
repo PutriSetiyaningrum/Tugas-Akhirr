@@ -13,6 +13,7 @@ use App\Http\Controllers\BaganEventController;
 use App\Http\Controllers\HasilPertandinganController;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\PelatihController;
+use App\Http\Controllers\PengunjungController;
 use Doctrine\DBAL\Driver\Middleware;
 
 /*
@@ -89,6 +90,9 @@ Route::group(["middleware" => ["autentikasi"]], function () {
 
     Route::prefix("akun")->group(function () {
         Route::resource('pelatih', PelatihController::class);
+    });
+    Route::prefix("akun")->group(function () {
+        Route::resource('pengunjung', PengunjungController::class);
     });
 });
 

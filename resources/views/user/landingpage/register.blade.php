@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="../AdminLTE/dist/css/adminlte.min.css">
   <!-- icon bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-  
+
 </head>
 <body class="hold-transition register-page">
 <div class="register-box">
@@ -54,7 +54,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="Alamat" class="form-control" name="alamat" placeholder="Alamat">
+          <input type="alamat" class="form-control" name="alamat" placeholder="alamat">
           <div class="input-group-append">
             <div class="input-group-text">
                 <i class="bi bi-geo-alt-fill"></i>
@@ -62,18 +62,10 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="No.Telp" class="form-control" name="no.telp" placeholder="No.Telp">
+          <input type="telepon" class="form-control" name="telepon" placeholder="telepon">
           <div class="input-group-append">
             <div class="input-group-text">
                 <i class="bi bi-telephone-fill"></i>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="File" class="form-control" name="foto" placeholder="Foto">
-          <div class="input-group-append">
-            <div class="input-group-text">
-                <i class="bi bi-camera-fill"></i>
             </div>
           </div>
         </div>

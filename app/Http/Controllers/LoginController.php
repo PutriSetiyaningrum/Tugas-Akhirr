@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pengunjung;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -49,14 +50,17 @@ class LoginController extends Controller
 
     public function simpanregistrasi(Request $request)
     {
-        // dd($request->all());
-
-        User::create([
+        $user = User::create([
             'name' => $request->name,
-            'level' => 'panitia',
+            'level' => 'pengunjung',
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'remember_token' => Str::random(60),
+        ]);
+
+        Pengunjung::create([
+            "user_id" => $user->id,
+            "alamat" => $request->alamat,
+            "telepon" => $request->telepon
         ]);
 
         return redirect('/');

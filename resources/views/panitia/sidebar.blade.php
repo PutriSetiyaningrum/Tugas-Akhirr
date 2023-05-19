@@ -13,7 +13,7 @@
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
-                    Manajement Pelatih
+                    Akun
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -100,11 +100,6 @@
                 </p>
             </a>
         </li>
-        <li class="nav-item">
-            <a href="{{ route('logout') }}" class="nav-link">
-                <i class="nav-icon fas fa-sign-out-alt"></i>
-                <p>Logout</p>
-            </a>
-        </li>
+        
     </ul>
 </nav>

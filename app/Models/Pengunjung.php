@@ -12,4 +12,9 @@ class Pengunjung extends Model
     protected $table = "pengunjung";
 
     protected $guarded = [''];
+
+    public function users()
+    {
+        return $this->belongsTo("App\Models\User", "user_id", "id");
+    }
 }
