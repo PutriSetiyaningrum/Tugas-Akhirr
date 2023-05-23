@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PERBASIIMY | Dashboard Panitia</title>
+    <title>PERBASI INDRAMAYU</title>
 
     @include("layouts.partials.css.style_css")
 
@@ -16,7 +16,7 @@
 
         @include("layouts.partials.sidebar.sidebar")
         @yield('content')
-        @include('panitia/footer')
+        @include('panitia.footer')
 
 
         <!-- Control Sidebar -->

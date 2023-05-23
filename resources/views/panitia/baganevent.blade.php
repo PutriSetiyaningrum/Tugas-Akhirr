@@ -35,14 +35,16 @@
                       <td width="10%">
                         <img src="{{ url('/storage/'.$item->gambar) }}" height="100%" width="150" alt="srcset">
                       <td>{{ $item->Deskripsi }}</td>
-                      <td width="10%">
-                        <a href="{{ url('/informasi/baganevent/' . $item->id . '/edit') }}"><i class="fas fa-edit"></i></a>
+                      <td width="11%">
+                        <button type="button" class="btn btn-warning btn-sm">
+                            <a href="{{ url('/informasi/baganevent/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
+                        </button>
                         |
                         <form action="{{ url('/informasi/baganevent/'.$item->id) }}" method="POST" style="display: inline;">
                             @csrf
                             @method("DELETE")
-                            <button type="submit">
-                                <i class="fas fa-trash-alt" style="color: red"></i>
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash"></i>
                             </button>
                         </form>
                       </td>

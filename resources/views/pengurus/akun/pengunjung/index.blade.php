@@ -30,7 +30,7 @@
                         <th>Email</th>
                         <th>Alamat</th>
                         <th>Telepon</th>
-                        @can("pengunjung")
+                        @can("pengurus")
                         <th>Aksi</th>
                         @endcan
                     </tr>
@@ -43,12 +43,8 @@
                         <td>{{ $item->users->email }}</td>
                         <td>{{ $item->alamat }}</td>
                         <td>{{ $item->telepon }}</td>
-                        @can("pengunjung")
+                        @can("pengurus")
                         <td>
-                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit-{{ $item->id }}">
-                                <i class="fa fa-edit"></i> Edit
-                            </button>
-                            |
                             <form action="{{ url('/akun/pengunjung/'.$item->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method("DELETE")
