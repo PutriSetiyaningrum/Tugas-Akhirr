@@ -45,7 +45,7 @@
                         <td>{{ $item->telepon }}</td>
                         @can("pengurus")
                         <td>
-                            <form action="{{ url('/akun/pengunjung/'.$item->id) }}" method="POST" style="display: inline;">
+                            <form action="{{ url('/akun/pengunjung/'.$item->users->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method("DELETE")
                                 <button type="submit" class="btn btn-danger btn-sm">

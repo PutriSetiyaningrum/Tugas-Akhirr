@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Pengunjung;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class PengunjungController extends Controller
 {
@@ -76,7 +78,6 @@ class PengunjungController extends Controller
      */
     public function update(Request $request, Pengunjung $pengunjung)
     {
-        
     }
 
     /**
@@ -85,9 +86,13 @@ class PengunjungController extends Controller
      * @param  \App\Models\Pengunjung  $pengunjung
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pengunjung $pengunjung)
+    public function destroy($id)
     {
-        Pengunjung::where("id")->delete();
+        $pengunjung = Pengunjung::where("user_id", $id)->first();
+
+        User::where("id", $pengunjung->user_id)->delete();
+
+        $pengunjung->delete();
 
         return back();
     }
