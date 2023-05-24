@@ -129,10 +129,10 @@
                         <label for="email"> Email </label>
                         <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email" value="{{ $item->email }}">
                     </div>
-                    <div class="form-group">
-                        <label for="sekolah"> sekolah </label>
-                        <input type="text" class="form-control" name="sekolah" id="sekolah" placeholder="Masukkan sekolah" value="{{ $item->sekolah }}">
-                    </div>
+                    @foreach ($item->pelatih as $item2)
+                    <label for="sekolah"> Sekolah </label>
+                    <input type="text" class="form-control" name="sekolah" id="sekolah" placeholder="Masukkan sekolah" value="{{ $item2->sekolah }}">
+                    @endforeach
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="reset" class="btn btn-danger btn-sm">

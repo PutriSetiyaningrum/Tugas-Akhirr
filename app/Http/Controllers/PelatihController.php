@@ -34,17 +34,25 @@ class PelatihController extends Controller
 
     public function update(Request $request, $id)
     {
-        User::where("id", $id)->update([
-            "name" => $request->name,
-            "email" => $request->email,
-        ]);
+        $user = User::findOrFail($id);
 
-        Pelatih::where("id", $id)->update([
-            "sekolah" => $request->sekolah,
-        ]);
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        // Simpan perubahan pada data pengguna
+        $user->save();
+
+        $pelatih = Pelatih::where('user_id', $user->id)->first();
+
+        if ($pelatih) {
+            $pelatih->sekolah = $request->sekolah;
+            // Simpan perubahan pada data pelatih
+            $pelatih->save();
+        }
 
         return back();
     }
+    
 
     public function destroy($id)
     {
