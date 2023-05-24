@@ -67,7 +67,7 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         });
 
         Route::prefix("master")->group(function () {
-            Route::resource('/contentperbasi', ContenteventController::class);
+            // Route::resource('/contentperbasi', ContenteventController::class);
             Route::get('pengurus/home', [HomeController::class, 'index'])->name('home');
             Route::resource('/tentangperbasi', TentangperbasiController::class);
         });

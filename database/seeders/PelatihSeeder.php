@@ -6,17 +6,18 @@ use App\Models\Pelatih;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class PelatihSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(UserSeeder::class);
-        $this->call(PengunjungSeeder::class);
-        $this->call(PelatihSeeder::class);
+        Pelatih::create([
+            'user_id' => 3,
+            'sekolah' => 'SMAN 1 INDRAMAYU',
+        ]);
     }
 }

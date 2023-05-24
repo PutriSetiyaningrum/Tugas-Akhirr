@@ -28,33 +28,37 @@
                         <th style="width: 10px">No</th>
                         <th>Nama</th>
                         <th>Email</th>
+                        <th>Sekolah</th>
                         @can("pengurus")
                         <th>Aksi</th>
                         @endcan
                     </tr>
 
-                    @foreach ($panitia  as $item)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
+                    @foreach ($pelatih as $item)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
 
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->email }}</td>
-                        @can("pengurus")
-                        <td>
-                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit-{{ $item->id }}">
-                                <i class="fa fa-edit"></i> Edit
-                            </button>
-                            |
-                            <form action="{{ url('/akun/pelatih/'.$item->id) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method("DELETE")
-                                <button type="submit" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-trash"></i> Hapus
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->email }}</td>
+                            @foreach ($item->pelatih as $item2)
+                                <td>{{ $item2->sekolah }}</td>
+                            @endforeach
+                            @can("pengurus")
+                            <td>
+                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit-{{ $item->id }}">
+                                    <i class="fa fa-edit"></i> Edit
                                 </button>
-                            </form>
-                        </td>
-                        @endcan
-                    </tr>
+                                |
+                                <form action="{{ url('/akun/pelatih/'.$item->id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i> Hapus
+                                    </button>
+                                </form>
+                            </td>
+                            @endcan
+                        </tr>
                     @endforeach
                 </table>
             </div>
@@ -83,6 +87,10 @@
                         <label for="email"> Email </label>
                         <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email">
                     </div>
+                    <div class="form-group">
+                        <label for="sekolah"> Sekolah </label>
+                        <input type="text" class="form-control" name="sekolah" id="sekolah" placeholder="Masukkan Sekolah">
+                    </div>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="reset" class="btn btn-danger btn-sm">
@@ -99,7 +107,7 @@
 <!-- END -->
 
 <!-- Edit Data -->
-@foreach ($panitia as $item)
+@foreach ($pelatih as $item)
 <div class="modal fade" id="modal-default-edit-{{ $item->id }}">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -120,6 +128,10 @@
                     <div class="form-group">
                         <label for="email"> Email </label>
                         <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email" value="{{ $item->email }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="sekolah"> sekolah </label>
+                        <input type="text" class="form-control" name="sekolah" id="sekolah" placeholder="Masukkan sekolah" value="{{ $item->sekolah }}">
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">

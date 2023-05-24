@@ -11,17 +11,22 @@ class PelatihController extends Controller
 {
     public function index()
     {
-        $data["panitia"] = User::where("level", "pelatih")->get();
+        $data["pelatih"] = User::with('pelatih')->where('level', 'pelatih')->get();
         return view('pengurus.akun.pelatih.index', $data);
     }
 
     public function store(Request $request)
     {
-        User::create([
+        $users = User::create([
             "name" => $request->name,
             "email" => $request->email,
             "password" => bcrypt("pelatih"),
             "level" => "pelatih",
+        ]);
+
+        Pelatih::create([
+            'user_id' => $users->id,
+            'sekolah' => $request->sekolah,
         ]);
 
         return back();
@@ -34,12 +39,20 @@ class PelatihController extends Controller
             "email" => $request->email,
         ]);
 
+        Pelatih::where("id", $id)->update([
+            "sekolah" => $request->sekolah,
+        ]);
+
         return back();
     }
 
     public function destroy($id)
     {
-        User::where("id", $id)->delete();
+        $pelatih = Pelatih::where("user_id", $id)->first();
+
+        User::where("id", $pelatih->user_id)->delete();
+
+        $pelatih->delete();
 
         return back();
     }
