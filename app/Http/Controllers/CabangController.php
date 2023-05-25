@@ -19,7 +19,7 @@ class CabangController extends Controller
     public function index()
     {
         $jeniscabangevent = JenisCabangEvent::latest()->get();
-        return view('panitia.jeniscabangevent', compact('jeniscabangevent'));
+        return view('panitia.master.jeniscabang.jeniscabangevent', compact('jeniscabangevent'));
     }
 
     /**
@@ -29,7 +29,7 @@ class CabangController extends Controller
      */
     public function create()
     {
-        return view('panitia.create-jeniscabangevent');
+        return view('panitia.master.jeniscabang.create-jeniscabangevent');
     }
 
     /**
@@ -67,7 +67,7 @@ class CabangController extends Controller
     public function edit($id)
     {
         $dt = jeniscabangevent::findorfail($id);
-        return view('panitia.edit-jeniscabangevent', compact('dt'));
+        return view('panitia.master.jeniscabang.edit-jeniscabangevent', compact('dt'));
     }
 
     /**

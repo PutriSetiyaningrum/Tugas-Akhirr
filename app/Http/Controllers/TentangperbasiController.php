@@ -18,7 +18,7 @@ class TentangperbasiController extends Controller
     public function index()
     {
         $tentangperbasi = tentangperbasi::latest()->get();
-        return view('pengurus.tentangperbasi', compact('tentangperbasi'));
+        return view('pengurus.master.tentangperbasi.tentangperbasi', compact('tentangperbasi'));
     }
 
     /**
@@ -28,7 +28,7 @@ class TentangperbasiController extends Controller
      */
     public function create()
     {
-        return view('pengurus.create-tentangperbasi');
+        return view('pengurus.master.tentangperbasi.create-tentangperbasi');
     }
 
     /**
@@ -71,7 +71,7 @@ class TentangperbasiController extends Controller
     public function edit($id)
     {
         $dt = tentangperbasi::findorfail($id);
-        return view('pengurus.edit-tentangperbasi', compact('dt'));
+        return view('pengurus.master.tentangperbasi.edit-tentangperbasi', compact('dt'));
     }
 
     /**

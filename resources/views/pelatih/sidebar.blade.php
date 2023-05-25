@@ -17,7 +17,7 @@
                 </p>
             </a>
         </li>
-        <li class="nav-item {{ Request::segment(1) == 'Berita' ? 'menu-open' : '' }} ">
+        <li class="nav-item {{ Request::segment(1) == 'berita' ? 'menu-open' : '' }} ">
             <a href="#" class="nav-link">
                 <i class="nav-icon far fa-list-alt"></i>
                 <p>
@@ -27,7 +27,7 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ url('/Berita/event') }}" class="nav-link {{ Request::segment(2) == 'event' ? 'active' : '' }} ">
+                    <a href="{{ url('/berita/tentangevent') }}" class="nav-link {{ Request::segment(2) == 'tentangevent' ? 'active' : '' }} ">
                         <i class="nav-icon far fa-file-alt"></i>
                         <p>Tentang Event</p>
                     </a>
@@ -35,7 +35,7 @@
             </ul>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ url('/Berita/kategorievent') }}" class="nav-link {{ Request::segment(2) == 'kategorievent' ? 'active' : '' }} ">
+                    <a href="{{ url('/berita/baganevent') }}" class="nav-link {{ Request::segment(2) == 'baganevent' ? 'active' : '' }} ">
                         <i class="nav-icon far fa-file-alt"></i>
                         <p>BaganEvent</p>
                     </a>
@@ -43,7 +43,7 @@
             </ul>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ url('/Berita/jeniscabangevent') }}" class="nav-link {{ Request::segment(2) == 'jeniscabangevent' ? 'active' : '' }}">
+                    <a href="{{ url('/berita/hasilpertandingan') }}" class="nav-link {{ Request::segment(2) == 'hasilpertandingan' ? 'active' : '' }}">
                         <i class="nav-icon far fa-file-alt"></i>
                         <p>Hasil Pertandingan</p>
                     </a>

@@ -18,7 +18,7 @@ class KategoriController extends Controller
     public function index()
     {
         $kategorievent = kategorievent::latest()->get();
-        return view('panitia.kategorievent', compact('kategorievent'));
+        return view('panitia.master.kategori.kategorievent', compact('kategorievent'));
     }
 
     /**
@@ -28,7 +28,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('panitia.create-kategorievent');
+        return view('panitia.master.kategori.create-kategorievent');
     }
 
     /**
@@ -66,7 +66,7 @@ class KategoriController extends Controller
     public function edit($id)
     {
         $dt = kategorievent::findorfail($id);
-        return view('panitia.edit-kategorievent', compact('dt'));
+        return view('panitia.master.kategori.edit-kategorievent', compact('dt'));
     }
 
     /**

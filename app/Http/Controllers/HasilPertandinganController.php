@@ -18,7 +18,7 @@ class HasilPertandinganController extends Controller
     public function index()
     {
         $hasilpertandingan = hasilpertandingan::latest()->get();
-        return view('panitia.hasilpertandingan', compact('hasilpertandingan'));
+        return view('panitia.informasi.hasilpertandingan.hasilpertandingan', compact('hasilpertandingan'));
     }
 
     /**
@@ -28,7 +28,7 @@ class HasilPertandinganController extends Controller
      */
     public function create()
     {
-        return view('panitia.create-hasilpertandingan');
+        return view('panitia.informasi.hasilpertandingan.create-hasilpertandingan');
     }
 
     /**
@@ -71,7 +71,7 @@ class HasilPertandinganController extends Controller
     public function edit($id)
     {
         $dt = hasilpertandingan::findorfail($id);
-        return view('panitia.edit-hasilpertandingan', compact('dt'));
+        return view('panitia.informasi.hasilpertandingan.edit-hasilpertandingan', compact('dt'));
     }
 
     /**

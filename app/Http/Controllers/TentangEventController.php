@@ -18,7 +18,7 @@ class TentangEventController extends Controller
     public function index()
     {
         $tentangevent = tentangevent::latest()->get();
-        return view('panitia.tentangevent', compact('tentangevent'));
+        return view('panitia.informasi.tentangevent.tentangevent', compact('tentangevent'));
     }
 
     /**
@@ -28,7 +28,7 @@ class TentangEventController extends Controller
      */
     public function create()
     {
-        return view('panitia.create-tentangevent');
+        return view('panitia.informasi.tentangevent.create-tentangevent');
     }
 
     /**
@@ -71,7 +71,7 @@ class TentangEventController extends Controller
     public function edit($id)
     {
         $dt = tentangevent::findorfail($id);
-        return view('panitia.edit-tentangevent', compact('dt'));
+        return view('panitia.informasi.tentangevent.edit-tentangevent', compact('dt'));
     }
 
     /**

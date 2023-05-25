@@ -66,21 +66,41 @@ Route::group(["middleware" => ["autentikasi"]], function () {
             Route::resource('panitia', PanitiaController::class);
         });
 
+        Route::prefix("akun")->group(function () {
+            Route::resource('pengunjung', PengunjungController::class);
+        });
+
         Route::prefix("master")->group(function () {
-            // Route::resource('/contentperbasi', ContenteventController::class);
-            Route::get('pengurus/home', [HomeController::class, 'index'])->name('home');
-            Route::resource('/tentangperbasi', TentangperbasiController::class);
+            Route::resource('tentangperbasi', TentangperbasiController::class);
+        });
+    });
+
+    // Panitia
+    Route::group(["middleware" => ["can:panitia"]], function () {
+        Route::get('panitia/home', [HomeController::class, 'home'])->name('home');
+
+        Route::prefix("master")->group(function () {
+            Route::resource('event', EventController::class);
+            Route::resource('kategorievent', KategoriController::class);
+            Route::resource('jeniscabangevent', CabangController::class);
+        });
+
+        Route::prefix("informasi")->group(function () {
+            Route::resource('tentangevent', TentangeventController::class);
+            Route::resource('baganevent', BaganEventController::class);
+            Route::resource('hasilpertandingan', HasilpertandinganController::class);
         });
     });
 
     // Pelatih
     Route::group(["middleware" => ["can:pelatih"]], function () {
         Route::get('pelatih/home', [HomeController::class, 'pelatih'])->name('home');
-    });
 
-    // Panitia
-    Route::group(["middleware" => ["can:panitia"]], function () {
-        Route::get('panitia/home', [HomeController::class, 'home'])->name('home');
+        Route::prefix("berita")->group(function () {
+            Route::resource('tentangevent', TentangeventController::class);
+            Route::resource('baganevent', BaganEventController::class);
+            Route::resource('hasilpertandingan', HasilpertandinganController::class);
+        });
     });
 
     // Pengunjung
@@ -91,18 +111,4 @@ Route::group(["middleware" => ["autentikasi"]], function () {
     Route::prefix("akun")->group(function () {
         Route::resource('pelatih', PelatihController::class);
     });
-    Route::prefix("akun")->group(function () {
-        Route::resource('pengunjung', PengunjungController::class);
-    });
-});
-
-Route::prefix("master")->group(function () {
-    Route::resource('/event', EventController::class);
-    Route::resource('/kategorievent', KategoriController::class);
-    Route::resource('/jeniscabangevent', CabangController::class);
-});
-Route::prefix("informasi")->group(function () {
-    Route::resource('/tentangevent', TentangeventController::class);
-    Route::resource('/baganevent', BaganEventController::class);
-    Route::resource('/hasilpertandingan', HasilpertandinganController::class);
 });

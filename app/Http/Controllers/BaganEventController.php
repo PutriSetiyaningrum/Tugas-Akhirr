@@ -18,7 +18,7 @@ class BaganEventController extends Controller
     public function index()
     {
         $baganevent = baganevent::latest()->get();
-        return view('panitia.baganevent', compact('baganevent'));
+        return view('panitia.informasi.baganevent.baganevent', compact('baganevent'));
     }
 
     /**
@@ -28,7 +28,7 @@ class BaganEventController extends Controller
      */
     public function create()
     {
-        return view('panitia.create-baganevent');
+        return view('panitia.informasi.baganevent.create-baganevent');
     }
 
     /**
@@ -71,7 +71,7 @@ class BaganEventController extends Controller
     public function edit($id)
     {
         $dt = baganevent::findorfail($id);
-        return view('panitia.edit-baganevent', compact('dt'));
+        return view('panitia.informasi.baganevent.edit-baganevent', compact('dt'));
     }
 
     /**

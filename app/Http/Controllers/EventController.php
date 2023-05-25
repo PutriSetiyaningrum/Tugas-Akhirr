@@ -19,7 +19,7 @@ class EventController extends Controller
     public function index()
     {
         $event = event::latest()->get();
-        return view('panitia.event', compact('event'));
+        return view('panitia.master.event.event', compact('event'));
     }
 
     /**
@@ -29,7 +29,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('panitia.create-event');
+        return view('panitia.master.event.create-event');
     }
 
     /**
@@ -67,7 +67,7 @@ class EventController extends Controller
     public function edit($id)
     {
         $dt = event::findorfail($id);
-        return view('panitia.edit-event', compact('dt'));
+        return view('panitia.master.event.edit-event', compact('dt'));
     }
 
     /**
