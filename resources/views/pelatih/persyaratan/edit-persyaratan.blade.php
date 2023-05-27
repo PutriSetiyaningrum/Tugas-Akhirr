@@ -19,6 +19,7 @@
             <div class="card-body">
                 <form action="{{ url('/persyaratan') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
+                    @method("PUT")
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
@@ -49,8 +50,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="deskripsi">Sekolah</label>
-                                    <input type="text" class="form-control" id="Deskripsi" name="sekolah" placeholder="Sekolah">
+                                    <label for="sekolah">Sekolah</label>
+                                    <input type="text" class="form-control" id="sekolah" name="sekolah" placeholder="Sekolah" value="{{ $item->sekolah }}">
                                 </div>
                             </div>
                             <div class="col-md-6">

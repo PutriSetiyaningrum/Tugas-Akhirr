@@ -17,7 +17,7 @@
         <div class="card card-info card-outline">
             <div class="card-header">
                 <div class="card-tools">
-                    <a href="{{ url('/persyaratan/create') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+                    <a href="{{ url('/persyaratan/create') }}" class="btn btn-success">Tambah Persyaratan <i class="fas fa-plus-square"></i></a>
                 </div>
             </div>
             <div class="card-body">
@@ -43,11 +43,7 @@
                             <td style="width: 10px">{{ $loop->iteration }}.</td>
                             <td class="text-center">{{$item->kategori->Nama_Kategori_Event}}</td>
                             <td class="text-center">{{$item->cabang->Nama_Jenis_Cabang_Event}}</td>
-                            <td class="text-center" style="width: 30px">
-                                <a href="">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                            </td>
+                            <td class="text-center">{{ $item->sekolah }}</td>
                             <td class="text-center" style="width: 30px">
                                 <a href="">
                                     <i class="fa fa-download"></i>
@@ -92,7 +88,7 @@
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </form>
-                              </td>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
