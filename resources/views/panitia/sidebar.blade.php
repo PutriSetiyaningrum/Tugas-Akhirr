@@ -93,13 +93,13 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a href="pages/dashboard.html" class="nav-link">
+            <a href="{{ url('/persyaratan')}}" class="nav-link">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
                     Persyaratan
                 </p>
             </a>
         </li>
-        
+
     </ul>
 </nav>

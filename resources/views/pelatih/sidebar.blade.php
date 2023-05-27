@@ -10,7 +10,7 @@
         </li>
         <li class="nav-header">COMPONENT</li>
         <li class="nav-item">
-            <a href="pages/dashboard.html" class="nav-link">
+            <a href="{{ url('event')}}" class="nav-link {{ Request::segment(1) == "event" ? 'active' : '' }} ">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
                     Event
@@ -49,12 +49,6 @@
                     </a>
                 </li>
             </ul>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('logout') }}" class="nav-link">
-                <i class="nav-icon fas fa-sign-out-alt"></i>
-                <p>Logout</p>
-            </a>
         </li>
     </ul>
 </nav>

@@ -22,6 +22,5 @@ class Autentikasi
         }
 
         return redirect("/login");
-
     }
 }

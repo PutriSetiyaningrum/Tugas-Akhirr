@@ -14,6 +14,7 @@ use App\Http\Controllers\HasilPertandinganController;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\PelatihController;
 use App\Http\Controllers\PengunjungController;
+use App\Http\Controllers\PersyaratanController;
 use Doctrine\DBAL\Driver\Middleware;
 
 /*
@@ -97,9 +98,19 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::get('pelatih/home', [HomeController::class, 'pelatih'])->name('home');
 
         Route::prefix("berita")->group(function () {
-            Route::resource('tentangevent', TentangeventController::class);
+            Route::get('/tentangevent', function () {
+                return view('/pelatih/berita/tentangevent');
+            });
             Route::resource('baganevent', BaganEventController::class);
             Route::resource('hasilpertandingan', HasilpertandinganController::class);
+        });
+
+        Route::get('/event', function () {
+            return view('/pelatih/event/event');
+        });
+
+        Route::get('/persyaratan', function () {
+            return view('/pelatih/persyaratan/persyaratan');
         });
     });
 
@@ -107,6 +118,8 @@ Route::group(["middleware" => ["autentikasi"]], function () {
     Route::group(["middleware" => ["can:pengunjung"]], function () {
         Route::get('pengunjung/home', [HomeController::class, 'pengunjung'])->name('home');
     });
+
+    Route::resource('persyaratan', PersyaratanController::class);
 
     Route::prefix("akun")->group(function () {
         Route::resource('pelatih', PelatihController::class);
