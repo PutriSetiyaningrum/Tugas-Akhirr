@@ -105,17 +105,13 @@ Route::group(["middleware" => ["autentikasi"]], function () {
             Route::resource('hasilpertandingan', HasilpertandinganController::class);
         });
 
-        Route::get('/persyaratan', function () {
-            return view('/pelatih/persyaratan/persyaratan');
-        });
+        Route::resource('persyaratan', PersyaratanController::class);
     });
 
     // Pengunjung
     Route::group(["middleware" => ["can:pengunjung"]], function () {
         Route::get('pengunjung/home', [HomeController::class, 'pengunjung'])->name('home');
     });
-
-    Route::resource('persyaratan', PersyaratanController::class);
 
     Route::prefix("akun")->group(function () {
         Route::resource('pelatih', PelatihController::class);
