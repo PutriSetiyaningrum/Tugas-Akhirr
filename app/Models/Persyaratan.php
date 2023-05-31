@@ -11,6 +11,11 @@ class Persyaratan extends Model
 
     protected $guarded = [''];
 
+    public function event()
+    {
+        return $this->belongsTo(event::class, "event_id", "id");
+    }
+
     public function kategori()
     {
         return $this->belongsTo("App\Models\kategorievent", "kategori_id", "id");

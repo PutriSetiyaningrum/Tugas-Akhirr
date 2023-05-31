@@ -26,25 +26,24 @@
                 <table class="table table-bordered">
                     <tr>
                         <th style="width: 10px">No</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Sekolah</th>
+                        <th class="text-center">Nama</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Sekolah</th>
                         @can("pengurus")
-                        <th>Aksi</th>
+                        <th class="text-center">Aksi</th>
                         @endcan
                     </tr>
 
                     @foreach ($pelatih as $item)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-
-                            <td>{{ $item->name }}</td>
-                            <td>{{ $item->email }}</td>
+                            <td class="text-center">{{ $loop->iteration }}</td>
+                            <td class="text-center">{{ $item->name }}</td>
+                            <td class="text-center">{{ $item->email }}</td>
                             @foreach ($item->pelatih as $item2)
-                                <td>{{ $item2->sekolah }}</td>
+                                <td class="text-center">{{ $item2->sekolah }}</td>
                             @endforeach
                             @can("pengurus")
-                            <td>
+                            <td class="text-center">
                                 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit-{{ $item->id }}">
                                     <i class="fa fa-edit"></i> Edit
                                 </button>

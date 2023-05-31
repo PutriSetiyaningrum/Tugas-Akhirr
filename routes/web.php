@@ -105,10 +105,6 @@ Route::group(["middleware" => ["autentikasi"]], function () {
             Route::resource('hasilpertandingan', HasilpertandinganController::class);
         });
 
-        Route::get('/event', function () {
-            return view('/pelatih/event/event');
-        });
-
         Route::get('/persyaratan', function () {
             return view('/pelatih/persyaratan/persyaratan');
         });

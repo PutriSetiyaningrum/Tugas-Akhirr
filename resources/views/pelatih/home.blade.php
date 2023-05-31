@@ -25,13 +25,12 @@
                     <div class="small-box bg-success">
                         <div class="inner">
                             <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                            <p>EVENT</p>
+                            <p>Persyaratan</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="{{ url ('/event')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ url ('/persyaratan')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 

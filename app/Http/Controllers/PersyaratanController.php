@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\event;
 use App\Models\JenisCabangEvent;
 use App\Models\kategorievent;
 use App\Models\Persyaratan;
@@ -19,6 +20,7 @@ class PersyaratanController extends Controller
 
     public function create()
     {
+        $data["event"] = event::get();
         $data["kategorievent"] = kategorievent::get();
         $data["jeniscabang"] = JenisCabangEvent::get();
         return view("pelatih.persyaratan.create-persyaratan", $data);
@@ -51,6 +53,7 @@ class PersyaratanController extends Controller
         }
 
         Persyaratan::create([
+            "event_id" => $request->event_id,
             "kategori_id" => $request->kategori_id,
             "jenis_cabang_id" => $request->jenis_cabang_id,
             "sekolah" => $request->sekolah,
@@ -67,6 +70,7 @@ class PersyaratanController extends Controller
 
     public function edit($id)
     {
+        $data["event"] = event::get();
         $data["kategorievent"] = kategorievent::get();
         $data["jeniscabang"] = JenisCabangEvent::get();
 

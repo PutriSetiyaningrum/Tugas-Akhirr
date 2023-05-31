@@ -24,18 +24,18 @@
                 <table class="table table-bordered">
                     <tr>
                       <th style="width: 10px">No</th>
-                      <th>Gambar</th>
-                      <th>Deskripsi</th>
-                      <th>Aksi</th>
+                      <th class="text-center">Gambar</th>
+                      <th class="text-center">Deskripsi</th>
+                      <th class="text-center">Aksi</th>
                     </tr>
 
                     @foreach ($hasilpertandingan  as $item)
                     <tr>
-                      <td>{{ $loop->iteration }}</td>
-                      <td width="11%">
+                      <td class="text-center">{{ $loop->iteration }}</td>
+                      <td width="11%" class="text-center">
                         <img src="{{ url('/storage/'.$item->gambar) }}" height="100%" width="150" alt="srcset">
-                      <td>{{ $item->Deskripsi }}</td>
-                      <td width="11%">
+                      <td class="text-center">{{ $item->Deskripsi }}</td>
+                      <td width="11%" class="text-center">
                         <button type="button" class="btn btn-warning btn-sm">
                             <a href="{{ url('/informasi/hasilpertandingan/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
                         </button>

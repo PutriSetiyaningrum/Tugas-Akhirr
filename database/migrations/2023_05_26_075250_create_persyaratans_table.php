@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('persyaratans', function (Blueprint $table) {
             $table->id();
+            $table->string('event_id');
             $table->string('kategori_id');
             $table->string('jenis_cabang_id');
             $table->string('sekolah');

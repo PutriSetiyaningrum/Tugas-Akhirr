@@ -1,38 +1,38 @@
 @extends('layouts.main')
 @section('content')
-    <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-10">
-            <h1 class="m-0">Data Jenis Cabang Event</h1>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-10">
+                    <h1 class="m-0">Data Jenis Cabang Event</h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
     <!-- Main Content -->
     <div class="content">
-      <div class="card card-info card-outline">
-        <div class="card-header">
-          <div class="card-tools">
-            <a href="{{ url('/master/jeniscabangevent/create') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
-          </div>
-        </div>
-              <div class="card-body">
+        <div class="card card-info card-outline">
+            <div class="card-header">
+                <div class="card-tools">
+                    <a href="{{ url('/master/jeniscabangevent/create') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+                </div>
+            </div>
+            <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
-                      <th style="width: 10px">No</th>
-                      <th>Nama Jenis Cabang Event</th>
-                      <th>Aksi</th>
+                        <th style="width: 10px">No</th>
+                        <th class="text-center">Nama Jenis Cabang Event</th>
+                        <th class="text-center">Aksi</th>
                     </tr>
 
                     @foreach ($jeniscabangevent  as $item)
                     <tr>
-                      <td>{{ $loop->iteration }}</td>
-                      <td>{{ $item->Nama_Jenis_Cabang_Event }}</td>
-                        <td width="11%">
+                        <td class="text-center">{{ $loop->iteration }}</td>
+                        <td>{{ $item->Nama_Jenis_Cabang_Event }}</td>
+                        <td width="11%" class="text-center">
                             <button type="button" class="btn btn-warning btn-sm">
                                 <a href="{{ url('/master/jeniscabangevent/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
                             </button>
@@ -48,9 +48,9 @@
                     </tr>
                     @endforeach
                 </table>
-              </div>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
 @endsection
 

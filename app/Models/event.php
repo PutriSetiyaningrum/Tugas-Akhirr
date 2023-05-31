@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class event extends Model
 {
-    protected $table ="events";
-    protected $primaryKey ="id";
-    protected $fillable =[
-        'id', 'Nama Event'];
+    protected $table = "events";
+    protected $primaryKey = "id";
+    protected $fillable = [
+        'id', 'Nama_Event'
+    ];
 }

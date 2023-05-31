@@ -25,6 +25,7 @@
                     <thead>
                         <tr>
                             <th style="width: 10px">No</th>
+                            <th class="text-center">Event</th>
                             <th class="text-center">Kategori</th>
                             <th class="text-center">Jenis Cabang</th>
                             <th class="text-center">Sekolah</th>
@@ -41,42 +42,43 @@
                         @foreach ($persyaratan as $item)
                         <tr>
                             <td style="width: 10px">{{ $loop->iteration }}.</td>
+                            <td class="text-center">{{$item->event->Nama_Event}}</td>
                             <td class="text-center">{{$item->kategori->Nama_Kategori_Event}}</td>
                             <td class="text-center">{{$item->cabang->Nama_Jenis_Cabang_Event}}</td>
                             <td class="text-center">{{ $item->sekolah }}</td>
-                            <td class="text-center" style="width: 30px">
+                            <td class="text-center" style="width: 10px">
                                 <a href="">
                                     <i class="fa fa-download"></i>
                                 </a>
                             </td>
-                            <td class="text-center" style="width: 30px">
+                            <td class="text-center" style="width: 10px">
                                 <a href="">
                                     <i class="fa fa-download"></i>
                                 </a>
                             </td>
-                            <td class="text-center" style="width: 30px">
+                            <td class="text-center" style="width: 10px">
                                 <a href="">
                                     <i class="fa fa-download"></i>
                                 </a>
                             </td>
-                            <td class="text-center"  style="width: 30px">
+                            <td class="text-center"  style="width: 10px">
                                 <a href="">
                                     <i class="fa fa-download"></i>
                                 </a>
                             </td>
-                            <td class="text-center"  style="width: 30px">
+                            <td class="text-center"  style="width: 10px">
                                 <a href="">
                                     <i class="fa fa-download"></i>
                                 </a>
                             </td>
-                            <td class="text-center"  style="width: 30px">
+                            <td class="text-center"  style="width: 10px">
                                 <a href="">
                                     <i class="fa fa-download"></i>
                                 </a>
                             </td>
                             <td width="11%">
                                 <button class="btn btn-warning btn-sm">
-                                    <a href="{{ url('/persyaratan/' . $item->id) . '/edit' }}">
+                                    <a href="">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                 </button>

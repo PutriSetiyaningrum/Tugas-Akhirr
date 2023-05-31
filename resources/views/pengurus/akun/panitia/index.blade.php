@@ -24,19 +24,19 @@
             <div class="card-body">
                 <table id="example2" class="table table-bordered table-striped">
                     <tr>
-                        <th style="width: 10px">No</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Aksi</th>
+                        <th style="width: 10px" >No</th>
+                        <th class="text-center">Nama</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Aksi</th>
                     </tr>
 
                     @foreach ($panitia  as $item)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td class="text-center">{{ $loop->iteration }}</td>
 
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->email }}</td>
-                        <td>
+                        <td class="text-center">{{ $item->name }}</td>
+                        <td class="text-center">{{ $item->email }}</td>
+                        <td class="text-center">
                             <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit-{{ $item->id }}">
                                 <i class="fa fa-edit"></i> Edit
                             </button>

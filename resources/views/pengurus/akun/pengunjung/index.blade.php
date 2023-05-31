@@ -26,25 +26,25 @@
                 <table class="table table-bordered">
                     <tr>
                         <th style="width: 10px">No</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Alamat</th>
-                        <th>Telepon</th>
+                        <th class="text-center">Nama</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Alamat</th>
+                        <th class="text-center">Telepon</th>
                         @can("pengurus")
-                        <th>Aksi</th>
+                        <th class="text-center">Aksi</th>
                         @endcan
                     </tr>
 
                     @foreach ($pengunjung  as $item)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td class="text-center">{{ $loop->iteration }}</td>
 
-                        <td>{{ $item->users->name }}</td>
-                        <td>{{ $item->users->email }}</td>
-                        <td>{{ $item->alamat }}</td>
-                        <td>{{ $item->telepon }}</td>
+                        <td class="text-center">{{ $item->users->name }}</td>
+                        <td class="text-center">{{ $item->users->email }}</td>
+                        <td class="text-center">{{ $item->alamat }}</td>
+                        <td class="text-center">{{ $item->telepon }}</td>
                         @can("pengurus")
-                        <td>
+                        <td class="text-center">
                             <form action="{{ url('/akun/pengunjung/'.$item->users->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method("DELETE")
