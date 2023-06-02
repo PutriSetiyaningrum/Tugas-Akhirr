@@ -93,7 +93,7 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a href="{{ url('/persyaratan')}}" class="nav-link">
+            <a href="{{ url('persyaratan')}}" class="nav-link {{ Request::segment(1) == "persyaratan" ? 'active' : '' }} ">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
                     Persyaratan

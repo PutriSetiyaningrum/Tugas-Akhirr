@@ -104,8 +104,6 @@ Route::group(["middleware" => ["autentikasi"]], function () {
             Route::resource('baganevent', BaganEventController::class);
             Route::resource('hasilpertandingan', HasilpertandinganController::class);
         });
-
-        Route::resource('persyaratan', PersyaratanController::class);
     });
 
     // Pengunjung
@@ -116,4 +114,6 @@ Route::group(["middleware" => ["autentikasi"]], function () {
     Route::prefix("akun")->group(function () {
         Route::resource('pelatih', PelatihController::class);
     });
+
+    Route::resource('persyaratan', PersyaratanController::class);
 });

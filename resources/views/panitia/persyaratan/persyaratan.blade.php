@@ -15,11 +15,13 @@
     <!-- Main Content -->
     <div class="content">
         <div class="card card-info card-outline">
+            @can("pelatih")
             <div class="card-header">
                 <div class="card-tools">
                     <a href="{{ url('/persyaratan/create') }}" class="btn btn-success">Tambah Persyaratan <i class="fas fa-plus-square"></i></a>
                 </div>
             </div>
+            @endcan
             <div class="card-body">
                 <table class="table table-bordered">
                     <thead>
@@ -35,7 +37,9 @@
                             <th class="text-center">Foto</th>
                             <th class="text-center">Ijazah</th>
                             <th class="text-center">Akte</th>
+                            @can("panitia")
                             <th class="text-center">Aksi</th>
+                            @endcan
                         </tr>
                     </thead>
                     <tbody>
@@ -76,14 +80,12 @@
                                     <i class="fa fa-download"></i>
                                 </a>
                             </td>
-                            <td width="11%">
-                                <button class="btn btn-warning btn-sm">
-                                    <a href="">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+                            @can("panitia")
+                            <td width="11%" class="text-center">
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    <a href="{{ url('/persyaratan/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
                                 </button>
-                                |
-                                <form action="{{ url('/informasi/hasilpertandingan/'.$item->id) }}" method="POST" style="display: inline;">
+                                <form action="{{ url('/persyaratan/'.$item->id) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method("DELETE")
                                     <button type="submit" class="btn btn-danger btn-sm">
@@ -91,6 +93,7 @@
                                     </button>
                                 </form>
                             </td>
+                            @endcan
                         </tr>
                         @endforeach
                     </tbody>
