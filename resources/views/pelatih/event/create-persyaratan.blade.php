@@ -23,19 +23,6 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="event_id">Event</label>
-                                    <select name="event_id" class="form-control" id="event_id">
-                                        <option value="">- Pilih -</option>
-                                        @foreach ($event as $item)
-                                        <option value="{{$item->id}}">
-                                            {{$item->Nama_Event}}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
                                     <label for="kategori_id">Kategori Event</label>
                                     <select name="kategori_id" class="form-control" id="kategori_id">
                                         <option value="">- Pilih -</option>

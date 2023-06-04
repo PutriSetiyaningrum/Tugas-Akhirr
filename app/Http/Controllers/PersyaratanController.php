@@ -20,10 +20,9 @@ class PersyaratanController extends Controller
 
     public function create()
     {
-        $data["event"] = event::get();
         $data["kategorievent"] = kategorievent::get();
         $data["jeniscabang"] = JenisCabangEvent::get();
-        return view("pelatih.persyaratan.create-persyaratan", $data);
+        return view("pelatih.event.create-persyaratan", $data);
     }
 
     public function store(Request $request)
@@ -53,7 +52,6 @@ class PersyaratanController extends Controller
         }
 
         Persyaratan::create([
-            "event_id" => $request->event_id,
             "kategori_id" => $request->kategori_id,
             "jenis_cabang_id" => $request->jenis_cabang_id,
             "sekolah" => $request->sekolah,
@@ -70,7 +68,6 @@ class PersyaratanController extends Controller
 
     public function edit($id)
     {
-        $data["event"] = event::get();
         $data["kategorievent"] = kategorievent::get();
         $data["jeniscabang"] = JenisCabangEvent::get();
         $data["edit"] = Persyaratan::where("id", $id)->first();
@@ -105,7 +102,6 @@ class PersyaratanController extends Controller
         }
 
         $persyaratan->update([
-            "event_id" => $request->event_id,
             "kategori_id" => $request->kategori_id,
             "jenis_cabang_id" => $request->jenis_cabang_id,
             "sekolah" => $request->sekolah,

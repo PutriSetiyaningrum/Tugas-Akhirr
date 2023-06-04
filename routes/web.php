@@ -11,6 +11,7 @@ use App\Http\Controllers\CabangController;
 use App\Http\Controllers\TentangEventController;
 use App\Http\Controllers\BaganEventController;
 use App\Http\Controllers\HasilPertandinganController;
+use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\PelatihController;
 use App\Http\Controllers\PengunjungController;
@@ -31,7 +32,6 @@ use Doctrine\DBAL\Driver\Middleware;
 Route::get("/layouting", function () {
     return view("layouts.main");
 });
-
 Route::get('/', function () {
     return view('/user/landingpage/home');
 });
@@ -73,6 +73,7 @@ Route::group(["middleware" => ["autentikasi"]], function () {
 
         Route::prefix("master")->group(function () {
             Route::resource('tentangperbasi', TentangperbasiController::class);
+            Route::resource('notifikasi', NotifikasiController::class);
         });
     });
 
@@ -103,6 +104,9 @@ Route::group(["middleware" => ["autentikasi"]], function () {
             });
             Route::resource('baganevent', BaganEventController::class);
             Route::resource('hasilpertandingan', HasilpertandinganController::class);
+        });
+        Route::get('/event', function () {
+            return view('/pelatih/event/event');
         });
     });
 
