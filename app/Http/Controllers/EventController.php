@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\event;
+use App\Models\Persyaratan;
 use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
@@ -96,5 +97,20 @@ class EventController extends Controller
         event::where("id", $id)->delete();
 
         return back();
+    }
+
+    public function data_event()
+    {
+        $data["event"] = event::get();
+
+        return view("pelatih.event.event", $data);
+    }
+
+    public function event_persyaratan($id)
+    {
+        $data["id"] = $id;
+        $data["persyaratan"] = Persyaratan::where("event_id", $id)->get();
+
+        return view('panitia.persyaratan.persyaratan', $data);
     }
 }

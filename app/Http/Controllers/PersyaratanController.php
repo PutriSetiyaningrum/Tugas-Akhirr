@@ -18,14 +18,15 @@ class PersyaratanController extends Controller
         return view('panitia.persyaratan.persyaratan', $data);
     }
 
-    public function create()
+    public function create($id)
     {
+        $data["id"] = $id;
         $data["kategorievent"] = kategorievent::get();
         $data["jeniscabang"] = JenisCabangEvent::get();
         return view("pelatih.event.create-persyaratan", $data);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         if ($request->file("logo_sekolah")) {
             $logo_sekolah = $request->file("logo_sekolah")->store("logo_sekolah");
@@ -52,6 +53,7 @@ class PersyaratanController extends Controller
         }
 
         Persyaratan::create([
+            "event_id" => $id,
             "kategori_id" => $request->kategori_id,
             "jenis_cabang_id" => $request->jenis_cabang_id,
             "sekolah" => $request->sekolah,
@@ -63,7 +65,7 @@ class PersyaratanController extends Controller
             "akte" => $akte,
         ]);
 
-        return redirect('/persyaratan');
+        return redirect('/event/persyaratan/'.$id);
     }
 
     public function edit($id)

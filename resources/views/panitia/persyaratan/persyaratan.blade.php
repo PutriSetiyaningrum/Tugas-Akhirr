@@ -18,7 +18,7 @@
             @can("pelatih")
             <div class="card-header">
                 <div class="card-tools">
-                    <a href="{{ url('/persyaratan/create') }}" class="btn btn-success">Tambah Persyaratan <i class="fas fa-plus-square"></i></a>
+                    <a href="{{ url('/event/persyaratan/'.$id.'/create') }}" class="btn btn-success">Tambah Persyaratan <i class="fas fa-plus-square"></i></a>
                 </div>
             </div>
             @endcan

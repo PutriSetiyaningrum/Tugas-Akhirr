@@ -17,7 +17,7 @@
     <div class="content">
         <div class="card card-info card-outline">
             <div class="card-body">
-                <form action="{{ url('/persyaratan') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('/event/persyaratan/'.$id) }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="card-body">
                         <div class="row">

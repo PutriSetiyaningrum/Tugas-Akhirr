@@ -105,9 +105,10 @@ Route::group(["middleware" => ["autentikasi"]], function () {
             Route::resource('baganevent', BaganEventController::class);
             Route::resource('hasilpertandingan', HasilpertandinganController::class);
         });
-        Route::get('/event', function () {
-            return view('/pelatih/event/event');
-        });
+        Route::get("event", [EventController::class, "data_event"]);
+        Route::get("/event/persyaratan/{id}", [EventController::class, "event_persyaratan"]);
+        Route::get("/event/persyaratan/{id}/create", [PersyaratanController::class, "create"]);
+        Route::post("/event/persyaratan/{id}", [PersyaratanController::class, "store"]);
     });
 
     // Pengunjung
@@ -118,6 +119,4 @@ Route::group(["middleware" => ["autentikasi"]], function () {
     Route::prefix("akun")->group(function () {
         Route::resource('pelatih', PelatihController::class);
     });
-
-    Route::resource('persyaratan', PersyaratanController::class);
 });
