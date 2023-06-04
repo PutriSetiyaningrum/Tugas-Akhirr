@@ -7,14 +7,22 @@ use App\Models\event;
 use App\Models\JenisCabangEvent;
 use App\Models\kategorievent;
 use App\Models\Persyaratan;
+use Faker\Provider\ar_EG\Person;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PersyaratanController extends Controller
 {
     public function index()
     {
-        $data["persyaratan"] = Persyaratan::get();
+        if (Auth::user()->level == "panitia") {
+            $data["persyaratan"] = event::get();
+        } else {
+            $data["persyaratan"] = event::get();
+        }
+
         return view('panitia.persyaratan.persyaratan', $data);
     }
 
@@ -65,62 +73,113 @@ class PersyaratanController extends Controller
             "akte" => $akte,
         ]);
 
-        return redirect('/event/persyaratan/'.$id);
+        return redirect('/event/persyaratan/' . $id);
     }
 
-    public function edit($id)
+    public function edit($id_event, $id_persyaratan)
     {
-        $data["kategorievent"] = kategorievent::get();
-        $data["jeniscabang"] = JenisCabangEvent::get();
-        $data["edit"] = Persyaratan::where("id", $id)->first();
+        $data = [
+            "id_event" => $id_event,
+            "kategorievent" => kategorievent::get(),
+            "jeniscabang" => JenisCabangEvent::get(),
+            "edit" => Persyaratan::where("id", $id_persyaratan)->first()
+        ];
 
         return view("panitia.persyaratan.edit-persyaratan", $data);
     }
 
-    public function update(Request $request, Persyaratan $persyaratan)
+    public function show($id)
+    {
+        $data["detail"] = Persyaratan::where("event_id", $id)->get();
+
+        return view("panitia.persyaratan.detail", $data);
+    }
+
+    public function update(Request $request, $id_event, $id_persyaratan)
     {
         if ($request->file("logo_sekolah")) {
+            if ($request->logo_sekolah_lama) {
+                Storage::delete($request->logo_sekolah_lama);
+            }
+
             $logo_sekolah = $request->file("logo_sekolah")->store("logo_sekolah");
+        } else {
+            $logo_sekolah = $request->logo_sekolah_lama;
         }
 
+
         if ($request->file("surat_rekomendasi_kepala_sekolah")) {
+            if ($request->surat_rekomendasi_kepala_sekolah_lama) {
+                Storage::delete($request->surat_rekomendasi_kepala_sekolah_lama);
+            }
             $surat_rekomendasi_kepala_sekolah = $request->file("surat_rekomendasi_kepala_sekolah")->store("surat_rekomendasi_kepala_sekolah");
+        } else {
+            $surat_rekomendasi_kepala_sekolah = $request->surat_rekomendasi_kepala_sekolah_lama;
         }
 
         if ($request->file("form_pendaftaran")) {
+            if ($request->form_pendaftaran_lama) {
+                Storage::delete($request->form_pendaftaran_lama);
+            }
             $form_pendaftaran = $request->file("form_pendaftaran")->store("form_pendaftaran");
+        } else {
+            $form_pendaftaran = $request->form_pendaftaran_lama;
         }
 
         if ($request->file("foto")) {
+            if ($request->foto_lama) {
+                Storage::delete($request->foto_lama);
+            }
             $foto = $request->file("foto")->store("foto");
+        } else {
+            $foto = $request->foto_lama;
         }
 
         if ($request->file("ijazah")) {
+            if ($request->ijazah_lama) {
+                Storage::delete($request->ijazah_lama);
+            }
             $ijazah = $request->file("ijazah")->store("ijazah");
+        } else {
+            $ijazah = $request->ijazah_lama;
         }
 
         if ($request->file("akte")) {
+            if ($request->akte_lama) {
+                Storage::delete($request->akte_lama);
+            }
             $akte = $request->file("akte")->store("akte");
+        } else {
+            $akte = $request->akte_lama;
         }
 
-        $persyaratan->update([
+        Persyaratan::where("id", $id_persyaratan)->update([
             "kategori_id" => $request->kategori_id,
             "jenis_cabang_id" => $request->jenis_cabang_id,
             "sekolah" => $request->sekolah,
-            "logo_sekolah" => $logo_sekolah ?? $persyaratan->logo_sekolah,
-            "surat_rekomendasi_kepala_sekolah" => $surat_rekomendasi_kepala_sekolah ?? $persyaratan->surat_rekomendasi_kepala_sekolah,
-            "form_pendaftaran" => $form_pendaftaran ?? $persyaratan->form_pendaftaran,
-            "foto" => $foto ?? $persyaratan->foto,
-            "ijazah" => $ijazah ?? $persyaratan->ijazah,
-            "akte" => $akte ?? $persyaratan->akte,
+            "logo_sekolah" => $logo_sekolah,
+            "surat_rekomendasi_kepala_sekolah" => $surat_rekomendasi_kepala_sekolah,
+            "form_pendaftaran" => $form_pendaftaran,
+            "foto" => $foto,
+            "ijazah" => $ijazah,
+            "akte" => $akte,
         ]);
 
-        return redirect('/persyaratan');
+        return redirect('/persyaratan/' . $id_event);
     }
 
-    public function destroy($id)
+    public function destroy($id_event, $id_persyaratan)
     {
-        Persyaratan::where("id", $id)->delete();
+        $persyaratan = Persyaratan::where("id", $id_persyaratan)->first();
+
+        Storage::delete($persyaratan->logo_sekolah);
+        Storage::delete($persyaratan->surat_rekomendasi_kepala_sekolah);
+        Storage::delete($persyaratan->form_pendaftaran);
+        Storage::delete($persyaratan->foto);
+        Storage::delete($persyaratan->ijazah);
+        Storage::delete($persyaratan->akte);
+
+        $persyaratan->delete();
 
         return back();
     }

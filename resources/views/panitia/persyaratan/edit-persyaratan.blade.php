@@ -17,7 +17,7 @@
     <div class="content">
         <div class="card card-info card-outline">
             <div class="card-body">
-                <form action="{{ url('/persyaratan/'. $edit->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('/persyaratan/event/'. $id_event . '/persyaratan/'. $edit['id']) }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @method("PUT")
                     <div class="card-body">
@@ -76,35 +76,35 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="gambar">Surat Rekomendasi Kepala Sekolah</label>
-                                    <input type="hidden" name="surat_rekomendasi_kepala_sekolah" value="{{ $edit->surat_rekomendasi_kepala_sekolah}}">
+                                    <input type="hidden" name="surat_rekomendasi_kepala_sekolah_lama" value="{{ $edit->surat_rekomendasi_kepala_sekolah}}">
                                     <input type="file" class="form-control" id="surat_rekomendasi_kepala_sekolah" name="surat_rekomendasi_kepala_sekolah" placeholder="Surat Rekomendasi Sekolah">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="gambar">Form Pendaftaran</label>
-                                    <input type="hidden" name="form_pendaftaran" value="{{ $edit->form_pendaftaran}}">
+                                    <input type="hidden" name="form_pendaftaran_lama" value="{{ $edit->form_pendaftaran}}">
                                     <input type="file" class="form-control" id="form_pendaftaran" name="form_pendaftaran" placeholder="From Pendaftaran">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="gambar">Foto</label>
-                                    <input type="hidden" name="foto" value="{{ $edit->foto}}">
+                                    <input type="hidden" name="foto_lama" value="{{ $edit->foto}}">
                                     <input type="file" class="form-control" id="foto" name="foto" placeholder="Foto">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="gambar">Ijazah</label>
-                                    <input type="hidden" name="ijazah" value="{{ $edit->ijazah}}">
+                                    <input type="hidden" name="ijazah_lama" value="{{ $edit->ijazah}}">
                                     <input type="file" class="form-control" id="ijazah" name="ijazah" placeholder="Ijazah">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="gambar">Akte</label>
-                                    <input type="hidden" name="akte" value="{{ $edit->akte}}">
+                                    <input type="hidden" name="akte_lama" value="{{ $edit->akte}}">
                                     <input type="file" class="form-control" id="akte" name="akte" placeholder="Akte">
                                 </div>
                             </div>

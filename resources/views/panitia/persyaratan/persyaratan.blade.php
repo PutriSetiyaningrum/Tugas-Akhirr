@@ -26,6 +26,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            @can("pelatih")
                             <th style="width: 10px">No</th>
                             <th class="text-center">Kategori</th>
                             <th class="text-center">Jenis Cabang</th>
@@ -36,63 +37,70 @@
                             <th class="text-center">Foto</th>
                             <th class="text-center">Ijazah</th>
                             <th class="text-center">Akte</th>
+                            @endcan
+
                             @can("panitia")
+                            <th class="text-center">No.</th>
+                            <th>Nama Event</th>
                             <th class="text-center">Aksi</th>
                             @endcan
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($persyaratan as $item)
-                        <tr>
-                            <td style="width: 10px">{{ $loop->iteration }}.</td>
-                            <td class="text-center">{{$item->kategori->Nama_Kategori_Event}}</td>
-                            <td class="text-center">{{$item->cabang->Nama_Jenis_Cabang_Event}}</td>
-                            <td class="text-center">{{ $item->sekolah }}</td>
-                            <td class="text-center" style="width: 10px">
-                                <a href="">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                            </td>
-                            <td class="text-center" style="width: 10px">
-                                <a href="">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                            </td>
-                            <td class="text-center" style="width: 10px">
-                                <a href="">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                            </td>
-                            <td class="text-center"  style="width: 10px">
-                                <a href="">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                            </td>
-                            <td class="text-center"  style="width: 10px">
-                                <a href="">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                            </td>
-                            <td class="text-center"  style="width: 10px">
-                                <a href="">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                            </td>
-                            @can("panitia")
-                            <td width="11%" class="text-center">
-                                <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('/persyaratan/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
-                                </button>
-                                <form action="{{ url('/persyaratan/'.$item->id) }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
+                            @can("pelatih")
+                            <tr>
+                                <td style="width: 10px">{{ $loop->iteration }}.</td>
+                                <td class="text-center">{{$item->kategori->Nama_Kategori_Event}}</td>
+                                <td class="text-center">{{$item->cabang->Nama_Jenis_Cabang_Event}}</td>
+                                <td class="text-center">{{ $item->sekolah }}</td>
+                                <td class="text-center" style="width: 10px">
+                                    <a href="">
+                                        <i class="fa fa-download"></i>
+                                    </a>
+                                </td>
+                                <td class="text-center" style="width: 10px">
+                                    <a href="">
+                                        <i class="fa fa-download"></i>
+                                    </a>
+                                </td>
+                                <td class="text-center" style="width: 10px">
+                                    <a href="">
+                                        <i class="fa fa-download"></i>
+                                    </a>
+                                </td>
+                                <td class="text-center"  style="width: 10px">
+                                    <a href="">
+                                        <i class="fa fa-download"></i>
+                                    </a>
+                                </td>
+                                <td class="text-center"  style="width: 10px">
+                                    <a href="">
+                                        <i class="fa fa-download"></i>
+                                    </a>
+                                </td>
+                                <td class="text-center"  style="width: 10px">
+                                    <a href="">
+                                        <i class="fa fa-download"></i>
+                                    </a>
+                                </td>
+                                @can("panitia")
+
+                                @endcan
+                            </tr>
                             @endcan
-                        </tr>
+
+                            @can("panitia")
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}.</td>
+                                <td>{{ $item["Nama_Event"] }}</td>
+                                <td width="11%" class="text-center">
+                                    <a href="{{ url('/persyaratan/'.$item["id"]) }}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-search"></i> Detail
+                                    </a>
+                                </td>
+                            </tr>
+                            @endcan
                         @endforeach
                     </tbody>
                 </table>

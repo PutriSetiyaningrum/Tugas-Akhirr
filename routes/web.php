@@ -92,6 +92,11 @@ Route::group(["middleware" => ["autentikasi"]], function () {
             Route::resource('baganevent', BaganEventController::class);
             Route::resource('hasilpertandingan', HasilpertandinganController::class);
         });
+
+        Route::get("/persyaratan/event/{id_event}/persyaratan/{id_persyaratan}/edit", [PersyaratanController::class, "edit"]);
+        Route::put("/persyaratan/event/{id_event}/persyaratan/{id_persyaratan}", [PersyaratanController::class, "update"]);
+        Route::delete("/persyaratan/event/{id_event}/persyaratan/{id_persyaratan}/destroy", [PersyaratanController::class, "destroy"]);
+        Route::resource('persyaratan', PersyaratanController::class);
     });
 
     // Pelatih
