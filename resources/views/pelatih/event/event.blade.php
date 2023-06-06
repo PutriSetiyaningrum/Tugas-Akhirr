@@ -35,7 +35,6 @@
                                 @endphp
                                 {{ $count }}
                             </h3>
-
                             <p>
                                 {{ $data->Nama_Event }}
                             </p>
