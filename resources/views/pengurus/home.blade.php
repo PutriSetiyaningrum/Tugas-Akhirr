@@ -20,8 +20,7 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
-
+                            <h3>200</h3>
                             <p>PANITIA</p>
                         </div>
                         <div class="icon">
@@ -65,8 +64,9 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>65</h3>
-
+                            <h3>
+                                150
+                            </h3>
                             <p>TENTANG PERBASI</p>
                         </div>
                         <div class="icon">

@@ -1,7 +1,7 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-            <a href="pages/dashboard.html" class="nav-link">
+            <a href="{{ url('/pengunjung/home') }}" class="nav-link {{ Request::segment(1) == "pengunjung" ? 'active' : '' }}" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                     Dashboard
