@@ -29,7 +29,7 @@
                             <p>PELATIH</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="nav-icon fas fa-solid fa-users"></i>
                         </div>
                         <a href="{{ url ('/akun/pelatih')}}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -45,7 +45,7 @@
                             <p>EVENT</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="nav-icon far fa-file-alt"></i>
                         </div>
                         <a href="{{ url ('/master/event')}}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -61,7 +61,7 @@
                             <p>KATEGORI EVENT</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="nav-icon far fa-file-alt"></i>
                         </div>
                         <a href="{{ url ('/master/kategorievent')}}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -77,7 +77,7 @@
                             <p>JENIS CABANG EVENT</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="nav-icon far fa-file-alt"></i>
                         </div>
                         <a href="{{ url ('/master/jeniscabangevent')}}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -92,7 +92,7 @@
                             <p>TENTANG EVENT</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="nav-icon far fa-file-alt"></i>
                         </div>
                         <a href="{{ url ('/informasi/tentangevent')}}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -108,7 +108,7 @@
                             <p>BAGAN EVENT</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="nav-icon far fa-file-alt"></i>
                         </div>
                         <a href="{{ url ('/informasi/baganevent')}}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -124,7 +124,7 @@
                             <p>HASIL PERTANDINGAN</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="nav-icon far fa-file-alt"></i>
                         </div>
                         <a href="{{ url ('/informasi/hasilpertandingan')}}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>

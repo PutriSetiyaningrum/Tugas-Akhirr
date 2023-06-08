@@ -30,7 +30,7 @@
                             <p>TENTANG EVENT</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="nav-icon far fa-file-alt"></i>
                         </div>
                         <a href="{{ url ('/berita/tentangevent')}}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -46,7 +46,7 @@
                             <p>BAGAN EVENT</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="nav-icon far fa-file-alt"></i>
                         </div>
                         <a href="{{ url ('/berita/baganevent')}}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -62,7 +62,7 @@
                             <p>HASIL PERTANDINGAN</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="nav-icon far fa-clone"></i>
                         </div>
                         <a href="{{ url ('/berita/hasilpertandingan')}}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>

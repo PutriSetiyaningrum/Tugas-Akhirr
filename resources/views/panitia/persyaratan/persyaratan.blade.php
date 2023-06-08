@@ -55,7 +55,7 @@
                                 <td class="text-center">{{$item->cabang->Nama_Jenis_Cabang_Event}}</td>
                                 <td class="text-center">{{ $item->sekolah }}</td>
                                 <td class="text-center" style="width: 10px">
-                                    <a href="">
+                                    <a href="{{ Storage::url($item->logo_sekolah) }}" download="logo_sekolah">
                                         <i class="fa fa-download"></i>
                                     </a>
                                 </td>

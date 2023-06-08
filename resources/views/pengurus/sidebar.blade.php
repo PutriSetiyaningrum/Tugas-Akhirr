@@ -58,20 +58,12 @@
                     </a>
                 </li>
             </ul>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ url('/master/notifikasi')}}" class="nav-link {{ Request::segment(2) == 'notifikasi' ? 'active' : '' }} ">
-                        <i class="nav-icon far fa-bell"></i>
-                        <p>Notifikasi</p>
-                    </a>
-                </li>
-            </ul>
         </li>
         <li class="nav-item">
             <a href="pages/dashboard.html" class="nav-link">
-                <i class="nav-icon far fa-calendar-alt"></i>
+                <i class="nav-icon far fa-regular fa-comments"></i>
                 <p>
-                    Histori
+                    Forum
                 </p>
             </a>
         </li>

@@ -26,7 +26,7 @@
                             <p>PANITIA</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="nav-icon fas fa-solid fa-users"></i>
                         </div>
                         <a href="{{ url('/akun/panitia') }}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -42,7 +42,7 @@
                             <p>PELATIH</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="nav-icon fas fa-solid fa-users"></i>
                         </div>
                         <a href="{{ url('/akun/pelatih') }}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -58,7 +58,7 @@
                             <p>PENGUNJUNG</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="nav-icon fas fa-solid fa-users"></i>
                         </div>
                         <a href="{{ url('/akun/pengunjung') }}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -74,24 +74,9 @@
                             <p>TENTANG PERBASI</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
+                            <i class="nav-icon far fa-file-alt"></i>
                         </div>
                         <a href="{{ url('/master/tentangperbasi') }}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>
-                                65
-                            </h3>
-                            <p>NOTIFIKASI EMAIL</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- /.row -->
