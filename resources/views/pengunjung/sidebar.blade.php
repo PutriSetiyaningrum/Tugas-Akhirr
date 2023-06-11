@@ -8,29 +8,38 @@
                 </p>
             </a>
         </li>
-        <li class="nav-item">
-            <a href="pages/dashboard.html" class="nav-link">
-                <i class="nav-icon far fa-file-alt"></i>
+        <li class="nav-item {{ Request::segment(1) == 'berita' ? 'menu-open' : '' }} ">
+            <a href="#" class="nav-link">
+                <i class="nav-icon far fa-list-alt"></i>
                 <p>
-                    Tentang Event
+                    Berita
+                    <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
-        </li>
-        <li class="nav-item">
-            <a href="pages/dashboard.html" class="nav-link">
-                <i class="nav-icon far fa-file-alt"></i>
-                <p>
-                    Bagan Event
-                </p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="pages/dashboard.html" class="nav-link">
-                <i class="nav-icon far fa-clone"></i>
-                <p>
-                    Hasil Pertandingan
-                </p>
-            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ url('/berita/tentangevent') }}" class="nav-link {{ Request::segment(2) == 'tentangevent' ? 'active' : '' }} ">
+                        <i class="nav-icon far fa-file-alt"></i>
+                        <p>Tentang Event</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ url('/berita/baganevent') }}" class="nav-link {{ Request::segment(2) == 'baganevent' ? 'active' : '' }} ">
+                        <i class="nav-icon far fa-file-alt"></i>
+                        <p>BaganEvent</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ url('/berita/hasilpertandingan') }}" class="nav-link {{ Request::segment(2) == 'hasilpertandingan' ? 'active' : '' }}">
+                        <i class="nav-icon far fa-file-alt"></i>
+                        <p>Hasil Pertandingan</p>
+                    </a>
+                </li>
+            </ul>
         </li>
     </ul>
 </nav>

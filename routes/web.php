@@ -57,6 +57,7 @@ Route::group(["middleware" => ["guest"]], function () {
     Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 });
 
+
 Route::group(["middleware" => ["autentikasi"]], function () {
 
     // Pengurus
@@ -76,6 +77,7 @@ Route::group(["middleware" => ["autentikasi"]], function () {
             Route::resource('notifikasi', NotifikasiController::class);
         });
     });
+
 
     // Panitia
     Route::group(["middleware" => ["can:panitia"]], function () {
@@ -102,24 +104,25 @@ Route::group(["middleware" => ["autentikasi"]], function () {
     // Pelatih
     Route::group(["middleware" => ["can:pelatih"]], function () {
         Route::get('pelatih/home', [HomeController::class, 'pelatih'])->name('home');
-
-        Route::prefix("berita")->group(function () {
-            Route::get('/tentangevent', function () {
-                return view('/pelatih/berita/tentangevent');
-            });
-            Route::resource('baganevent', BaganEventController::class);
-            Route::resource('hasilpertandingan', HasilpertandinganController::class);
-        });
         Route::get("event", [EventController::class, "data_event"]);
         Route::get("/event/persyaratan/{id}", [EventController::class, "event_persyaratan"]);
         Route::get("/event/persyaratan/{id}/create", [PersyaratanController::class, "create"]);
         Route::post("/event/persyaratan/{id}", [PersyaratanController::class, "store"]);
     });
+    Route::prefix("berita")->group(function () {
+        Route::get('/tentangevent', function () {
+            return view('/pelatih/berita/tentangevent');
+        });
+        Route::resource('baganevent', BaganEventController::class);
+        Route::get("hasilpertandingan", [HasilPertandinganController::class, "data_hasilpertandingan"]);
+    });
+
 
     // Pengunjung
     Route::group(["middleware" => ["can:pengunjung"]], function () {
         Route::get('pengunjung/home', [HomeController::class, 'pengunjung'])->name('home');
     });
+
 
     Route::prefix("akun")->group(function () {
         Route::resource('pelatih', PelatihController::class);

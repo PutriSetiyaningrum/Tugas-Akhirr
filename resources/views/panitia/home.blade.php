@@ -26,7 +26,7 @@
                             <h3>
                                 {{$pelatih}}
                             </h3>
-                            <p>PELATIH</p>
+                            <b><p>PELATIH</p></b>
                         </div>
                         <div class="icon">
                             <i class="nav-icon fas fa-solid fa-users"></i>
@@ -42,7 +42,7 @@
                             <h3>
                                 {{$event}}
                             </h3>
-                            <p>EVENT</p>
+                            <b><p>EVENT</p></b>
                         </div>
                         <div class="icon">
                             <i class="nav-icon far fa-file-alt"></i>
@@ -58,7 +58,7 @@
                             <h3>
                                 {{$kategorievent}}
                             </h3>
-                            <p>KATEGORI EVENT</p>
+                            <b><p>KATEGORI EVENT</p></b>
                         </div>
                         <div class="icon">
                             <i class="nav-icon far fa-file-alt"></i>
@@ -74,7 +74,7 @@
                             <h3>
                                 {{$jeniscabangevent}}
                             </h3>
-                            <p>JENIS CABANG EVENT</p>
+                            <b><p>JENIS CABANG EVENT</p></b>
                         </div>
                         <div class="icon">
                             <i class="nav-icon far fa-file-alt"></i>
@@ -89,7 +89,7 @@
                             <h3>
                                 {{$tentangevent}}
                             </h3>
-                            <p>TENTANG EVENT</p>
+                            <b><p>TENTANG EVENT</p></b>
                         </div>
                         <div class="icon">
                             <i class="nav-icon far fa-file-alt"></i>
@@ -105,7 +105,7 @@
                             <h3>
                                 {{$baganevent}}
                             </h3>
-                            <p>BAGAN EVENT</p>
+                            <b><p>BAGAN EVENT</p></b>
                         </div>
                         <div class="icon">
                             <i class="nav-icon far fa-file-alt"></i>
@@ -121,7 +121,7 @@
                             <h3>
                                 {{$hasilpertandingan}}
                             </h3>
-                            <p>HASIL PERTANDINGAN</p>
+                            <b><p>HASIL PERTANDINGAN</p></b>
                         </div>
                         <div class="icon">
                             <i class="nav-icon far fa-file-alt"></i>

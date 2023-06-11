@@ -111,4 +111,11 @@ class HasilPertandinganController extends Controller
 
         return back();
     }
+
+    public function data_hasilpertandingan()
+    {
+        $data["hasilpertandingan"] = hasilpertandingan::get();
+
+        return view("pelatih.berita.hasilpertandingan", $data);
+    }
 }

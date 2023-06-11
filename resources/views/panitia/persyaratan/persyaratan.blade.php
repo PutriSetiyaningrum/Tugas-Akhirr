@@ -40,8 +40,8 @@
                             @endcan
 
                             @can("panitia")
-                            <th class="text-center">No.</th>
-                            <th>Nama Event</th>
+                            <th class="text-center" style="width: 10px">No.</th>
+                            <th class="text-center">Nama Event</th>
                             <th class="text-center">Aksi</th>
                             @endcan
                         </tr>
@@ -93,7 +93,7 @@
                             @can("panitia")
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}.</td>
-                                <td>{{ $item["Nama_Event"] }}</td>
+                                <td class="text-center">{{ $item["Nama_Event"] }}</td>
                                 <td width="11%" class="text-center">
                                     <a href="{{ url('/persyaratan/'.$item["id"]) }}" class="btn btn-primary btn-sm">
                                         <i class="fa fa-search"></i> Detail

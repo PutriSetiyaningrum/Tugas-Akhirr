@@ -23,7 +23,7 @@
                             <h3>
                                 {{$user}}
                             </h3>
-                            <p>PANITIA</p>
+                            <b><p>PANITIA</p></b>
                         </div>
                         <div class="icon">
                             <i class="nav-icon fas fa-solid fa-users"></i>
@@ -39,7 +39,7 @@
                             <h3>
                                 {{$pelatih}}
                             </h3>
-                            <p>PELATIH</p>
+                            <b><p>PELATIH</p></b>
                         </div>
                         <div class="icon">
                             <i class="nav-icon fas fa-solid fa-users"></i>
@@ -55,7 +55,7 @@
                             <h3>
                                 {{$pengunjung}}
                             </h3>
-                            <p>PENGUNJUNG</p>
+                            <b><p>PENGUNJUNG</p></b>
                         </div>
                         <div class="icon">
                             <i class="nav-icon fas fa-solid fa-users"></i>
@@ -71,7 +71,7 @@
                             <h3>
                                 {{$tentangperbasi}}
                             </h3>
-                            <p>TENTANG PERBASI</p>
+                            <b><p>TENTANG PERBASI</p></b>
                         </div>
                         <div class="icon">
                             <i class="nav-icon far fa-file-alt"></i>
