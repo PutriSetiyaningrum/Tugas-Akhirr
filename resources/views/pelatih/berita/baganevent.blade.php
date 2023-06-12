@@ -1,5 +1,5 @@
 @php
-use App\Models\hasilpertandingan;
+use App\Models\baganevent;
 @endphp
 
 @extends('layouts.main')
