@@ -61,9 +61,9 @@
         </li>
         <li class="nav-item">
             <a href="pages/dashboard.html" class="nav-link">
-                <i class="nav-icon far fa-regular fa-comments"></i>
+                <i class="nav-icon fa fa-history"></i>
                 <p>
-                    Forum
+                    Histori
                 </p>
             </a>
         </li>
