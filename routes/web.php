@@ -113,7 +113,8 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::get('/tentangevent', function () {
             return view('/pelatih/berita/tentangevent');
         });
-        Route::resource('baganevent', BaganEventController::class);
+
+        Route::get("baganevent", [BaganEventController::class, "data_baganevent"]);
         Route::get("hasilpertandingan", [HasilPertandinganController::class, "data_hasilpertandingan"]);
     });
 

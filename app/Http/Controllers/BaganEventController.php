@@ -111,4 +111,11 @@ class BaganEventController extends Controller
 
         return back();
     }
+
+    public function data_baganevent()
+    {
+        $data["baganevent"] = baganevent::get();
+
+        return view("pelatih.berita.baganevent", $data);
+    }
 }

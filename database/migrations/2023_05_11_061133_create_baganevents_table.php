@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('baganevents', function (Blueprint $table) {
             $table->id();
             $table->string('gambar', 255);
-            $table->string('Deskripsi', 300);
+            $table->string('Deskripsi', 500);
             $table->timestamps();
         });
     }

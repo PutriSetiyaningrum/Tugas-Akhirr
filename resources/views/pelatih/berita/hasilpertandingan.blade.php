@@ -25,14 +25,16 @@
             <!-- Info boxes -->
             <div class="row">
                 @foreach ($hasilpertandingan as $data)
-                <div class="col-lg-5 col-sm-10">
+                <div class="col-lg-3 col-sm-5">
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="text-center">
+                            <br>
                             <h3>
                                 <img src="{{ asset('storage/'. $data['gambar']) }}" alt="gambar" width="150px">
                             </h3>
                         </div>
+                        <br>
                         <a href=""class="small-box-footer"><b>{{ $data->Deskripsi }}</b></a>
                     </div>
                 </div>
