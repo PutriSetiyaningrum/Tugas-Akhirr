@@ -34,7 +34,7 @@
                                     src="../../dist/img/user4-128x128.jpg"
                                     alt="User profile picture">
                                 </div>
-                                <h3 class="profile-username text-center">Nina Mcintire</h3>
+                                <h3 class="profile-username text-center">{{ $user->name }}</h3>
                                 <p class="text-muted text-center">Software Engineer</p>
                             </div>
                             <!-- /.card-body -->
@@ -69,7 +69,7 @@
                                         <div class="form-group row">
                                             <label for="sekolah" class="col-sm-2 col-form-label">Sekolah</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="sekolah" placeholder="Sekolah" value="{{ $item2->sekolah }}">
+                                                <input type="text" class="form-control" id="sekolah" placeholder="Sekolah" value="{{ Auth::user()->pelatih->sekolah}}">
                                             </div>
                                         </div>
                                         @endcan
@@ -78,21 +78,29 @@
                                         <div class="form-group row">
                                             <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="alamat" placeholder="Alamat" value="">
+                                                <input type="text" class="form-control" id="alamat" placeholder="Alamat" value="{{ Auth::user()->pengunjung->alamat}}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="telepon" class="col-sm-2 col-form-label">Telepon</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="telepon" placeholder="Telepon" value="">
+                                                <input type="text" class="form-control" id="telepon" placeholder="Telepon" value="{{ Auth::user()->pengunjung->telepon  }}">
                                             </div>
                                         </div>
                                         @endcan
+
+                                        <div class="form-group row">
+                                            <label for="foto" class="col-sm-2 col-form-label">Foto</label>
+                                            <div class="col-sm-10">
+                                                <input type="file" class="form-control" id="foto" placeholder="Foto" value="">
+                                            </div>
+                                        </div>
+
                                         <div class="form-group row">
                                             <div class="offset-sm-2 col-sm-10">
-                                              <button type="submit" class="btn btn-danger">Ubah</button>
+                                                <button type="submit" class="btn btn-danger">Ubah</button>
                                             </div>
-                                          </div>
+                                        </div>
                                     </form>
 
                                 </div>

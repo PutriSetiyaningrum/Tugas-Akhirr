@@ -48,9 +48,9 @@
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="text-center">{{ $item->name }}</td>
                             <td class="text-center">{{ $item->email }}</td>
-                            @foreach ($item->pelatih as $item2)
-                            <td class="text-center">{{ $item2->sekolah }}</td>
-                            @endforeach
+
+                            <td class="text-center">{{ $item->pelatih->sekolah }}</td>
+
                             @can("pengurus")
                             <td class="text-center">
                                 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit-{{ $item->id }}">
@@ -138,10 +138,8 @@
                         <label for="email"> Email </label>
                         <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email" value="{{ $item->email }}">
                     </div>
-                    @foreach ($item->pelatih as $item2)
                     <label for="sekolah"> Sekolah </label>
-                    <input type="text" class="form-control" name="sekolah" id="sekolah" placeholder="Masukkan sekolah" value="{{ $item2->sekolah }}">
-                    @endforeach
+                    <input type="text" class="form-control" name="sekolah" id="sekolah" placeholder="Masukkan sekolah" value="{{ $item->pelatih->sekolah }}">
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="reset" class="btn btn-danger btn-sm">

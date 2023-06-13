@@ -6,6 +6,7 @@ use App\Models\Pelatih;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PelatihController extends Controller
 {
@@ -42,7 +43,7 @@ class PelatihController extends Controller
         // Simpan perubahan pada data pengguna
         $user->save();
 
-        $pelatih = Pelatih::where('user_id', $user->id)->first();
+        $pelatih = Pelatih::where('user_id', Auth::user()->id)->first();
 
         if ($pelatih) {
             $pelatih->sekolah = $request->sekolah;
