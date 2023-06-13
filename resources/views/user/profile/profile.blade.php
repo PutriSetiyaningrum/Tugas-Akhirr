@@ -36,7 +36,6 @@
                                 </div>
                                 <h3 class="profile-username text-center">Nina Mcintire</h3>
                                 <p class="text-muted text-center">Software Engineer</p>
-                                <a href="#" class="btn btn-primary btn-block"><b>Edit Profile</b></a>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -56,39 +55,44 @@
                                         <div class="form-group row">
                                             <label for="name" class="col-sm-2 col-form-label">Nama</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="name" placeholder="Name" value="{{ $user->name }}" readonly>
+                                                <input type="text" class="form-control" id="name" placeholder="Name" value="{{ $user->name }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="email" class="col-sm-2 col-form-label">Email</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="email" placeholder="email" value="{{ $user->email}}" readonly>
+                                                <input type="email" class="form-control" id="email" placeholder="email" value="{{ $user->email}}">
                                             </div>
                                         </div>
 
                                         @can("pelatih")
                                         <div class="form-group row">
-                                            <label for="inputName2" class="col-sm-2 col-form-label">Sekolah</label>
+                                            <label for="sekolah" class="col-sm-2 col-form-label">Sekolah</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputName2" placeholder="Name" value="{{ $user->sekolah}}" readonly>
+                                                <input type="text" class="form-control" id="sekolah" placeholder="Sekolah" value="{{ $item2->sekolah }}">
                                             </div>
                                         </div>
                                         @endcan
 
                                         @can("pengunjung")
                                         <div class="form-group row">
-                                            <label for="inputExperience" class="col-sm-2 col-form-label">Alamat</label>
+                                            <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputName2" placeholder="Name" value="" readonly>
+                                                <input type="text" class="form-control" id="alamat" placeholder="Alamat" value="">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputExperience" class="col-sm-2 col-form-label">Telepon</label>
+                                            <label for="telepon" class="col-sm-2 col-form-label">Telepon</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputName2" placeholder="Name" value="" readonly>
+                                                <input type="text" class="form-control" id="telepon" placeholder="Telepon" value="">
                                             </div>
                                         </div>
                                         @endcan
+                                        <div class="form-group row">
+                                            <div class="offset-sm-2 col-sm-10">
+                                              <button type="submit" class="btn btn-danger">Ubah</button>
+                                            </div>
+                                          </div>
                                     </form>
 
                                 </div>
@@ -103,4 +107,7 @@
             </div>
         </section>
     </div>
+
+    <!--Edit profile-->
+
     @endsection

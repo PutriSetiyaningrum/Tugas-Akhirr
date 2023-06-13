@@ -14,10 +14,10 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    * The attributes that are mass assignable.
+    *
+    * @var array<int, string>
+    */
     protected $fillable = [
         'name',
         'level',
@@ -27,20 +27,20 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+    * The attributes that should be hidden for serialization.
+    *
+    * @var array<int, string>
+    */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
     /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+    * The attributes that should be cast.
+    *
+    * @var array<string, string>
+    */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -48,6 +48,11 @@ class User extends Authenticatable
 
     public function pelatih()
     {
-        return $this->hasMany(Pelatih::class, 'user_id', 'id');
+        return $this->belongsTo("App\Models\Pelatih", "id", "user_id");
+    }
+
+    public function pengunjung()
+    {
+        return $this->belongsTo("App\Models\pengunjung", "user_id", "id");
     }
 }
