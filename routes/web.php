@@ -16,6 +16,7 @@ use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\PelatihController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\PersyaratanController;
+use App\Http\Controllers\ProfileController;
 use Doctrine\DBAL\Driver\Middleware;
 
 /*
@@ -59,6 +60,13 @@ Route::group(["middleware" => ["guest"]], function () {
 
 
 Route::group(["middleware" => ["autentikasi"]], function () {
+
+    //profile
+
+    Route::resource('profile', ProfileController::class);
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
 
     // Pengurus
     Route::group(["middleware" => ["can:pengurus"]], function () {

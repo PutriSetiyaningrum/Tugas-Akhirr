@@ -9,6 +9,14 @@
             </a>
         </li>
         <li class="nav-header">COMPONENT</li>
+        <li class="nav-item">
+            <a href="{{ url('profile')}}" class="nav-link {{ Request::segment(1) == "profile" ? 'active' : '' }} ">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                    Profile
+                </p>
+            </a>
+        </li>
         <li class="nav-item {{ Request::segment(2) == 'pelatih' ? 'menu-open' : '' }}">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-edit"></i>
@@ -100,6 +108,5 @@
                 </p>
             </a>
         </li>
-
     </ul>
 </nav>

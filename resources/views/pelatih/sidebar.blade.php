@@ -10,6 +10,14 @@
         </li>
         <li class="nav-header">COMPONENT</li>
         <li class="nav-item">
+            <a href="{{ url('profile')}}" class="nav-link {{ Request::segment(1) == "profile" ? 'active' : '' }} ">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                    Profile
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="{{ url('/event')}}" class="nav-link {{ Request::segment(1) == "event" ? 'active' : '' }} ">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
@@ -37,7 +45,7 @@
                 <li class="nav-item">
                     <a href="{{ url('/berita/baganevent') }}" class="nav-link {{ Request::segment(2) == 'baganevent' ? 'active' : '' }} ">
                         <i class="nav-icon far fa-file-alt"></i>
-                        <p>BaganEvent</p>
+                        <p>Bagan Event</p>
                     </a>
                 </li>
             </ul>
