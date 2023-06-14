@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Pelatih;
+use App\Models\Pengunjung;
+use App\Http\Controllers\PelatihController;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class ProfileController extends Controller
@@ -60,7 +64,6 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        
     }
 
     /**
@@ -72,6 +75,27 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $pelatih = Pelatih::where('user_id', Auth::user()->id)->first();
+
+        if ($pelatih) {
+            $pelatih->sekolah = $request->sekolah;
+            // Simpan perubahan pada data pelatih
+            $pelatih->save();
+        }
+
+        $pengunjung = Pengunjung::where('user_id', Auth::user()->id)->first();
+
+        if ($pengunjung) {
+            $pengunjung->alamat = $request->alamat;
+            $pengunjung->telepon = $request->telepon;
+            // Simpan perubahan pada data pengunjung
+            $pengunjung->save();
+        }
+        return back();
     }
 
     /**

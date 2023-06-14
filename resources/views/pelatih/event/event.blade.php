@@ -36,7 +36,7 @@
                                 {{ $count }}
                             </h3>
                             <p>
-                                {{ $data->Nama_Event }}
+                                <b>{{ $data->Nama_Event }}</b>
                             </p>
                         </div>
                         <div class="icon">

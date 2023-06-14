@@ -12,9 +12,15 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-10">
-                    <h1 class="m-0">Data Pengunjung</h1>
+                <div class="col-sm-6">
+                    <h1>Data Pengunjung</h1>
                 </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ url('/home') }}">Home</a></li>
+                        <li class="breadcrumb-item active">Pengunjung</li>
+                    </ol>
+                </div>
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -47,7 +53,7 @@
                         @foreach ($pengunjung  as $item)
                         <tr>
                             <td class="text-center">{{ $loop->iteration }}</td>
-                            
+
                             <td class="text-center">{{ $item->users->name }}</td>
                             <td class="text-center">{{ $item->users->email }}</td>
                             <td class="text-center">{{ $item->alamat }}</td>

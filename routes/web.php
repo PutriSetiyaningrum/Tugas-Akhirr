@@ -64,8 +64,8 @@ Route::group(["middleware" => ["autentikasi"]], function () {
     //profile
 
     Route::resource('profile', ProfileController::class);
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile');
 
 
     // Pengurus
@@ -131,7 +131,6 @@ Route::group(["middleware" => ["autentikasi"]], function () {
     Route::group(["middleware" => ["can:pengunjung"]], function () {
         Route::get('pengunjung/home', [HomeController::class, 'pengunjung'])->name('home');
     });
-
 
     Route::prefix("akun")->group(function () {
         Route::resource('pelatih', PelatihController::class);

@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">User Profile</li>
+                            <li class="breadcrumb-item active">Profile</li>
                         </ol>
                     </div>
                 </div>
@@ -31,11 +31,11 @@
                             <div class="card-body box-profile">
                                 <div class="text-center">
                                     <img class="profile-user-img img-fluid img-circle"
-                                    src="../../dist/img/user4-128x128.jpg"
+                                    src="{{ url('/AdminLTE') }}/dist/img/user.png" class="img-circle elevation-2" alt="User Image"
                                     alt="User profile picture">
                                 </div>
                                 <h3 class="profile-username text-center">{{ $user->name }}</h3>
-                                <p class="text-muted text-center">Software Engineer</p>
+                                <p class="text-muted text-center">{{ $user->level}}</p>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -48,9 +48,10 @@
                                     <li class="nav-item"><a class="nav-link"><h4><b>Profil</b></h4></a></li>
                                 </ul>
                             </div><!-- /.card-header -->
+                            @csrf
+                            @method("PUT")
                             <div class="card-body">
                                 <div class="tab-pane" id="settings">
-
                                     <form class="form-horizontal">
                                         <div class="form-group row">
                                             <label for="name" class="col-sm-2 col-form-label">Nama</label>
