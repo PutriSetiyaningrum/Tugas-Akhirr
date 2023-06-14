@@ -64,8 +64,8 @@ Route::group(["middleware" => ["autentikasi"]], function () {
     //profile
 
     Route::resource('profile', ProfileController::class);
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile');
-    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('edit');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('update');
 
 
     // Pengurus

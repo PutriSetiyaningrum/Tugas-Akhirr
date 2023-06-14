@@ -39,6 +39,8 @@
                     <tr>
                         <th style="width: 10px">No</th>
                         <th class="text-center">Nama Event</th>
+                        <th class="text-center">Mulai</th>
+                        <th class="text-center">Selesai</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
@@ -47,6 +49,8 @@
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td >{{ $item->Nama_Event }}</td>
+                        <td >{{ $item->mulai }}</td>
+                        <td >{{ $item->selesai }}</td>
                         <td width="11%" class="text-center">
                             <button type="button" class="btn btn-warning btn-sm">
                                 <a href="{{ url('/master/event/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>

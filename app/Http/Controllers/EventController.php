@@ -43,6 +43,8 @@ class EventController extends Controller
     {
         $dtUpload = new event;
         $dtUpload->Nama_Event = $request->Nama_Event;
+        $dtUpload->mulai = $request->mulai;
+        $dtUpload->selesai = $request->selesai;
         $dtUpload->save();
 
         return redirect("/master/event");
@@ -81,7 +83,9 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         event::where("id", $id)->update([
-            "Nama_Event" => $request->Nama_Event
+            "Nama_Event" => $request->Nama_Event,
+            "mulai" => $request->mulai,
+            "selesai" => $request->selesai
         ]);
         return redirect("/master/event");
     }

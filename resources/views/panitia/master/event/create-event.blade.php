@@ -22,6 +22,14 @@
                             <label for="Nama Event">Nama Event</label>
                             <input type="text" class="form-control" id="Nama_Event" name="Nama_Event" placeholder="Nama Event">
                         </div>
+                        <div class="form-group">
+                            <label for="mulai">Mulai</label>
+                            <input type="text" class="form-control" id="mulai" name="mulai" placeholder="mulai">
+                        </div>
+                        <div class="form-group">
+                            <label for="selesai">Selesai</label>
+                            <input type="text" class="form-control" id="selesai" name="selesai" placeholder="selesai">
+                        </div>
                     </div>
                     <div class="card-body">
                         <button type="submit" class="btn btn-primary">Submit</button>

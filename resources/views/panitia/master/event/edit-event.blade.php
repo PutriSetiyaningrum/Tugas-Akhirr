@@ -24,6 +24,13 @@
                         <div class="form-group">
                             <label for="Nama Event">Event</label>
                             <input type="text" class="form-control" id="Nama_Event" name="Nama_Event" placeholder="Nama_Event" value="{{ $dt->Nama_Event }}">
+                        </div><div class="form-group">
+                            <label for="mulai">Mulai</label>
+                            <input type="text" class="form-control" id="mulai" name="mulai" placeholder="mulai" value="{{ $dt->mulai }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="selesai">Selesai</label>
+                            <input type="text" class="form-control" id="selesai" name="selesai" placeholder="selesai" value="{{ $dt->selesai }}">
                         </div>
                     </div>
                     <!-- /.card-body -->
