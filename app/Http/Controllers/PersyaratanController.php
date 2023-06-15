@@ -197,13 +197,20 @@ class PersyaratanController extends Controller
         return view("panitia.persyaratan.detail-event", $data);
     }
 
+    public function view_status($id)
+    {
+        $persyaratan = Persyaratan::where("id", decrypt($id))->first();
+
+        return view("panitia.persyaratan.ubah_status", compact("persyaratan"));
+    }
+
     public function ubah_status(Request $request, $id)
     {
-        Persyaratan::where("id", $id)->update([
+        Persyaratan::where("id", decrypt($id))->update([
             "status" => $request->status,
             "deskripsi" => $request->deskripsi ? $request->deskripsi : NULL
         ]);
 
-        return back();
+        return redirect("/persyaratan");
     }
 }

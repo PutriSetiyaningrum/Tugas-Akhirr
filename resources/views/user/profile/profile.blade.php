@@ -30,9 +30,11 @@
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    <img class="profile-user-img img-fluid img-circle"
-                                    src="{{ url('/AdminLTE') }}/dist/img/user.png" class="img-circle elevation-2" alt="User Image"
-                                    alt="User profile picture">
+                                    @if (empty(Auth::user()->foto))
+                                        <img class="profile-user-img img-fluid img-circle" src="{{ url('/AdminLTE') }}/dist/img/user.png" class="img-circle elevation-2">
+                                    @else
+                                        <img class="profile-user-img img-fluid img-circle" src="{{ url('/storage/'. Auth::user()->foto) }}" class="img-circle elevation-2">
+                                    @endif
                                 </div>
                                 <h3 class="profile-username text-center">{{ $user->name }}</h3>
                                 <p class="text-muted text-center">{{ $user->level}}</p>
@@ -48,21 +50,21 @@
                                     <li class="nav-item"><a class="nav-link"><h4><b>Profil</b></h4></a></li>
                                 </ul>
                             </div><!-- /.card-header -->
-                            @csrf
-                            @method("PUT")
                             <div class="card-body">
                                 <div class="tab-pane" id="settings">
-                                    <form class="form-horizontal">
+                                    <form class="form-horizontal" action="{{ url('/profile/update') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method("PUT")
                                         <div class="form-group row">
                                             <label for="name" class="col-sm-2 col-form-label">Nama</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="name" placeholder="Name" value="{{ $user->name }}">
+                                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ $user->name }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="email" class="col-sm-2 col-form-label">Email</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="email" placeholder="email" value="{{ $user->email}}">
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="email" value="{{ $user->email}}" readonly>
                                             </div>
                                         </div>
 
@@ -70,7 +72,7 @@
                                         <div class="form-group row">
                                             <label for="sekolah" class="col-sm-2 col-form-label">Sekolah</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="sekolah" placeholder="Sekolah" value="{{ Auth::user()->pelatih->sekolah}}">
+                                                <input type="text" class="form-control" id="sekolah" name="sekolah" placeholder="Sekolah" value="{{ Auth::user()->pelatih->sekolah}}">
                                             </div>
                                         </div>
                                         @endcan
@@ -79,21 +81,31 @@
                                         <div class="form-group row">
                                             <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="alamat" placeholder="Alamat" value="{{ Auth::user()->pengunjung->alamat}}">
+                                                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat" value="{{ Auth::user()->pengunjung->alamat}}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="telepon" class="col-sm-2 col-form-label">Telepon</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="telepon" placeholder="Telepon" value="{{ Auth::user()->pengunjung->telepon  }}">
+                                                <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Telepon" value="{{ Auth::user()->pengunjung->telepon  }}">
                                             </div>
                                         </div>
                                         @endcan
 
+                                        @if (empty(Auth::user()->foto))
+
+                                        @else
+                                            <div class="form-group row">
+                                                <label for="image" class="col-sm-2 col-form-label"> Profil Saya </label>
+                                                <div class="col-sm-10">
+                                                    <img src="{{ url('/storage/'.Auth::user()->foto) }}" style="width: 150px; height: 150px">
+                                                </div>
+                                            </div>
+                                        @endif
                                         <div class="form-group row">
                                             <label for="foto" class="col-sm-2 col-form-label">Foto</label>
                                             <div class="col-sm-10">
-                                                <input type="file" class="form-control" id="foto" placeholder="Foto" value="">
+                                                <input type="file" class="form-control" name="foto" id="foto" placeholder="Foto" value="">
                                             </div>
                                         </div>
 

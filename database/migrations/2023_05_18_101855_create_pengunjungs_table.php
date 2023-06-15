@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer("user_id");
             $table->string('alamat');
             $table->string('telepon');
-            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }

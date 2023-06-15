@@ -71,7 +71,10 @@
                             <td class="text-right" style="width: 200px">Logo Sekolah</td>
                             <td class="text-center">:</td>
                             <td>
-                                <img src="{{ url('/storage/'.$persyaratan->logo_sekolah) }}" alt="">
+                                <a target="_blank" href="{{ url('/persyaratan/file/' . $persyaratan->id . '/logo_sekolah') }}">
+                                    <i class="fa fa-download"></i>
+                                </a>
+
                             </td>
                         </tr>
                         <tr>

@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class FileController extends Controller
 {
+    public function logo_sekolah($id)
+    {
+        $surat = Persyaratan::where("id", $id)->first();
+        $path = storage_path("app/public/" . $surat["logo_sekolah"]);
+
+        return response()->download($path);
+    }
+
     public function surat_rekomendasi($id)
     {
         $surat = Persyaratan::where("id", $id)->first();

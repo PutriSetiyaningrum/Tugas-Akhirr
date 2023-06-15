@@ -9,103 +9,104 @@ use App\Models\Pelatih;
 use App\Models\Pengunjung;
 use App\Http\Controllers\PelatihController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $user = auth()->user();
         return view('user.profile.profile', compact('user'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function update(Request $request)
     {
-        return view('user.profile.profile');
-    }
+        $user = User::where("id", Auth::user()->id)->first();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        if (Auth::user()->level == "pengurus") {
+            if (!$request->file("foto")) {
+            } else {
+                if (empty($user["foto"])) {
+                    if ($request->file("foto")) {
+                        $data = $request->file("foto")->store("profil_pengurus");
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+                        $user->foto = $data;
+                    }
+                } else {
+                    if ($request->file("foto")) {
+                        Storage::delete($user->foto);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-    }
+                        $data = $request->file("foto")->store("profil_pengurus");
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $user = User::find($id);
-        dd ($user); 
+                        $user->foto = $data;
+                    }
+                }
+            }
+        } else if (Auth::user()->level == "panitia") {
+            if (!$request->file("foto")) {
+            } else {
+                if (empty($user["foto"])) {
+                    if ($request->file("foto")) {
+                        $data = $request->file("foto")->store("profil_panitia");
+
+                        $user->foto = $data;
+                    }
+                } else {
+                    if ($request->file("foto")) {
+                        Storage::delete($user->foto);
+
+                        $data = $request->file("foto")->store("profil_panitia");
+
+                        $user->foto = $data;
+                    }
+                }
+            }
+        } else if (Auth::user()->level == "pelatih") {
+            if (!$request->file("foto")) {
+            } else {
+                if (empty($user["foto"])) {
+                    if ($request->file("foto")) {
+                        $data = $request->file("foto")->store("profil_pelatih");
+
+                        $user->foto = $data;
+                    }
+                } else {
+                    if ($request->file("foto")) {
+                        Storage::delete($user->foto);
+
+                        $data = $request->file("foto")->store("profil_pelatih");
+
+                        $user->foto = $data;
+                    }
+                }
+            }
+        } else if (Auth::user()->level == "pengunjung") {
+            if (!$request->file("foto")) {
+            } else {
+                if (empty($user["foto"])) {
+                    if ($request->file("foto")) {
+                        $data = $request->file("foto")->store("profil_pengunjung");
+
+                        $user->foto = $data;
+                    }
+                } else {
+                    if ($request->file("foto")) {
+                        Storage::delete($user->foto);
+
+                        $data = $request->file("foto")->store("profil_pengunjung");
+
+                        $user->foto = $data;
+                    }
+                }
+            }
+            Pengunjung::where("user_id", $user["id"])->update([
+                "alamat" => $request->alamat,
+                "telepon" => $request->telepon
+            ]);
+        }
         $user->name = $request->name;
-        $user->email = $request->email;
-        $pelatih = Pelatih::where('user_id', Auth::user()->id)->first();
+        $user->save();
 
-        if ($pelatih) {
-            $pelatih->sekolah = $request->sekolah;
-            // Simpan perubahan pada data pelatih
-            $pelatih->save();
-        }
-
-        $pengunjung = Pengunjung::where('user_id', Auth::user()->id)->first();
-
-        if ($pengunjung) {
-            $pengunjung->alamat = $request->alamat;
-            $pengunjung->telepon = $request->telepon;
-            // Simpan perubahan pada data pengunjung
-            $pengunjung->save();
-        }
         return back();
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

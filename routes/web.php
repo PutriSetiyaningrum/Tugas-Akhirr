@@ -62,11 +62,8 @@ Route::group(["middleware" => ["guest"]], function () {
 
 Route::group(["middleware" => ["autentikasi"]], function () {
 
-    //profile
-
+    Route::put('/profile/update', [ProfileController::class, 'update']);
     Route::resource('profile', ProfileController::class);
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('edit');
-    Route::post('/profile/update', [ProfileController::class, 'update'])->name('update');
 
 
     // Pengurus
@@ -108,6 +105,7 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::put("/persyaratan/event/{id_event}/persyaratan/{id_persyaratan}", [PersyaratanController::class, "update"]);
         Route::delete("/persyaratan/event/{id_event}/persyaratan/{id_persyaratan}/destroy", [PersyaratanController::class, "destroy"]);
 
+        Route::get("/persyaratan/{id}/ubah_status", [PersyaratanController::class, "view_status"]);
         Route::get("/persyaratan/{id}/detail", [PersyaratanController::class, "detail_event"]);
         Route::put('/persyaratan/{id}/status', [PersyaratanController::class, "ubah_status"]);
         Route::resource('persyaratan', PersyaratanController::class);
@@ -123,16 +121,6 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::get("/event/persyaratan/{id_event}/{id_persyaratan}/edit", [PersyaratanController::class, "edit"]);
         Route::put("/event/persyaratan/{id_event}/{id_persyaratan}/update", [PersyaratanController::class, "update"]);
         Route::post("/event/persyaratan/{id}", [PersyaratanController::class, "store"]);
-
-        Route::prefix("persyaratan")->group(function () {
-            Route::prefix("file")->group(function () {
-                Route::get("/{id}/surat_rekomendasi", [FileController::class, "surat_rekomendasi"]);
-                Route::get("/{id}/form_pendaftaran", [FileController::class, "form_pendaftaran"]);
-                Route::get("/{id}/foto", [FileController::class, "foto"]);
-                Route::get("/{id}/ijazah", [FileController::class, "ijazah"]);
-                Route::get("/{id}/akte", [FileController::class, "akte"]);
-            });
-        });
     });
     Route::prefix("berita")->group(function () {
         Route::get('/tentangevent', function () {
@@ -141,6 +129,17 @@ Route::group(["middleware" => ["autentikasi"]], function () {
 
         Route::get("baganevent", [BaganEventController::class, "data_baganevent"]);
         Route::get("hasilpertandingan", [HasilPertandinganController::class, "data_hasilpertandingan"]);
+    });
+
+    Route::prefix("persyaratan")->group(function () {
+        Route::prefix("file")->group(function () {
+            Route::get("/{id}/surat_rekomendasi", [FileController::class, "surat_rekomendasi"]);
+            Route::get("/{id}/form_pendaftaran", [FileController::class, "form_pendaftaran"]);
+            Route::get("/{id}/foto", [FileController::class, "foto"]);
+            Route::get("/{id}/ijazah", [FileController::class, "ijazah"]);
+            Route::get("/{id}/akte", [FileController::class, "akte"]);
+            Route::get("/{id}/logo_sekolah", [FileController::class, "logo_sekolah"]);
+        });
     });
 
 

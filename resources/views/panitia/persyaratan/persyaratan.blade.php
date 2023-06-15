@@ -134,9 +134,9 @@
                                 </a>
                                 @if ($item["status"] != 0)
                                 @else
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-default-status-{{ $item["id"] }}">
-                                    <i class=" fa fa-edit"></i> Ubah Status
-                                </button>
+                                <a href="{{ url('/persyaratan/'. encrypt($item['id']) . '/ubah_status') }}" class="btn btn-success btn-sm">
+                                    <i class="fa fa-edit"></i> Ubah Status
+                                </a>
                                 @endif
                             </td>
                         </tr>
@@ -164,8 +164,8 @@
                 @method("PUT")
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="status"> Ubah Status Persyaratan </label>
-                        <select name="status" class="form-control" id="cekstatus">
+                        <label for="cekdata"> Ubah Status Persyaratan </label>
+                        <select name="cekdata" class="form-control" id="cekdata">
                             <option value="">- Pilih -</option>
                             <option value="1">Setujui</option>
                             <option value="2">Tolak</option>
@@ -206,8 +206,8 @@
     });
 
     $(document).ready(function() {
-        $("#cekstatus").change(function() {
-            let status= $("#status").val();
+        $("#cekdata").change(function() {
+            let status= $("#cekdata").val();
             if (status == 2) {
                 console.log("ada");
                 $("#alasan").show();
