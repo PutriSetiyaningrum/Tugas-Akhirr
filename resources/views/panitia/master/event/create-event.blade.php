@@ -24,11 +24,11 @@
                         </div>
                         <div class="form-group">
                             <label for="mulai">Mulai</label>
-                            <input type="text" class="form-control" id="mulai" name="mulai" placeholder="mulai">
+                            <input type="datetime-local" class="form-control" id="mulai" name="mulai" placeholder="mulai">
                         </div>
                         <div class="form-group">
                             <label for="selesai">Selesai</label>
-                            <input type="text" class="form-control" id="selesai" name="selesai" placeholder="selesai">
+                            <input type="datetime-local" class="form-control" id="selesai" name="selesai" placeholder="selesai">
                         </div>
                     </div>
                     <div class="card-body">

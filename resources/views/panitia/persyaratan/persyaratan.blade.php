@@ -1,4 +1,11 @@
 @extends('layouts.main')
+
+@section("css")
+<link rel="stylesheet" href="{{ url('/AdminLTE') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="{{ url('/AdminLTE') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="{{ url('/AdminLTE') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+@endsection
+
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -24,12 +31,13 @@
             @can("pelatih")
             <div class="card-header">
                 <div class="card-tools">
-                    <a href="{{ url('/event/persyaratan/'.$id.'/create') }}" class="btn btn-success">Tambah Persyaratan <i class="fas fa-plus-square"></i></a>
+                    <a href="{{ url('/event/persyaratan/'.encrypt($id).'/create') }}" class="btn btn-success">Tambah Persyaratan <i class="fas fa-plus-square"></i></a>
                 </div>
             </div>
             @endcan
             <div class="card-body">
-                <table class="table table-bordered">
+                <table id="example1" class="table table-bordered table-striped">
+
                     <thead>
                         <tr>
                             @can("pelatih")
@@ -37,12 +45,7 @@
                             <th class="text-center">Kategori</th>
                             <th class="text-center">Jenis Cabang</th>
                             <th class="text-center">Sekolah</th>
-                            <th class="text-center">Logo</th>
-                            <th class="text-center">Surat Rekomendasi</th>
-                            <th class="text-center">Form Pendaftaran</th>
-                            <th class="text-center">Foto</th>
-                            <th class="text-center">Ijazah</th>
-                            <th class="text-center">Akte</th>
+                            <th class="text-center">Aksi</th>
                             @endcan
 
                             @can("panitia")
@@ -59,35 +62,10 @@
                                 <td style="width: 10px">{{ $loop->iteration }}.</td>
                                 <td class="text-center">{{$item->kategori->Nama_Kategori_Event}}</td>
                                 <td class="text-center">{{$item->cabang->Nama_Jenis_Cabang_Event}}</td>
-                                <td class="text-center">{{ $item->sekolah }}</td>
-                                <td class="text-center" style="width: 10px">
-                                    <a href="{{ Storage::url($item->logo_sekolah) }}" download="logo_sekolah">
-                                        <i class="fa fa-download"></i>
-                                    </a>
-                                </td>
-                                <td class="text-center" style="width: 10px">
-                                    <a href="">
-                                        <i class="fa fa-download"></i>
-                                    </a>
-                                </td>
-                                <td class="text-center" style="width: 10px">
-                                    <a href="">
-                                        <i class="fa fa-download"></i>
-                                    </a>
-                                </td>
-                                <td class="text-center"  style="width: 10px">
-                                    <a href="">
-                                        <i class="fa fa-download"></i>
-                                    </a>
-                                </td>
-                                <td class="text-center"  style="width: 10px">
-                                    <a href="">
-                                        <i class="fa fa-download"></i>
-                                    </a>
-                                </td>
-                                <td class="text-center"  style="width: 10px">
-                                    <a href="">
-                                        <i class="fa fa-download"></i>
+                                <td class="text-center">{{$item->sekolah}}</td>
+                                <td width="11%" class="text-center">
+                                    <a href="{{ url('/event/persyaratan/'.encrypt($item["id"])) . '/detail-persyaratan' }}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-search"></i> Detail
                                     </a>
                                 </td>
                                 @can("panitia")
@@ -115,4 +93,20 @@
     </div>
 </div>
 @endsection
+@section("js")
+
+    <script src="{{ url('/adminLTE') }}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ url('/adminLTE') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ url('/adminLTE') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{ url('/adminLTE') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="{{ url('/adminLTE') }}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{ url('/adminLTE') }}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+    @endsection
 

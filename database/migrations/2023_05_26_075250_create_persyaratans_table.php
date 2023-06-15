@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('foto');
             $table->string('ijazah');
             $table->string('akte');
+            $table->enum('status', [0, 1, 2])->default(0);
             $table->timestamps();
         });
     }

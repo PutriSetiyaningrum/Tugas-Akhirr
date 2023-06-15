@@ -19,7 +19,7 @@ class EventController extends Controller
 
     public function index()
     {
-        $event = event::latest()->get();
+        $event = event::get();
         return view('panitia.master.event.event', compact('event'));
     }
 
@@ -112,8 +112,8 @@ class EventController extends Controller
 
     public function event_persyaratan($id)
     {
-        $data["id"] = $id;
-        $data["persyaratan"] = Persyaratan::where("event_id", $id)->get();
+        $data["id"] = decrypt($id);
+        $data["persyaratan"] = Persyaratan::where("event_id", decrypt($id))->get();
 
         return view('panitia.persyaratan.persyaratan', $data);
     }

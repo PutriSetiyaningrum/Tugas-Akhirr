@@ -10,6 +10,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\CabangController;
 use App\Http\Controllers\TentangEventController;
 use App\Http\Controllers\BaganEventController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\HasilPertandinganController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PanitiaController;
@@ -106,6 +107,7 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::get("/persyaratan/event/{id_event}/persyaratan/{id_persyaratan}/edit", [PersyaratanController::class, "edit"]);
         Route::put("/persyaratan/event/{id_event}/persyaratan/{id_persyaratan}", [PersyaratanController::class, "update"]);
         Route::delete("/persyaratan/event/{id_event}/persyaratan/{id_persyaratan}/destroy", [PersyaratanController::class, "destroy"]);
+
         Route::resource('persyaratan', PersyaratanController::class);
     });
 
@@ -113,9 +115,20 @@ Route::group(["middleware" => ["autentikasi"]], function () {
     Route::group(["middleware" => ["can:pelatih"]], function () {
         Route::get('pelatih/home', [HomeController::class, 'pelatih'])->name('home');
         Route::get("event", [EventController::class, "data_event"]);
+        Route::get("/event/persyaratan/{id_persyaratan}/detail-persyaratan", [PersyaratanController::class, "detail"]);
         Route::get("/event/persyaratan/{id}", [EventController::class, "event_persyaratan"]);
         Route::get("/event/persyaratan/{id}/create", [PersyaratanController::class, "create"]);
         Route::post("/event/persyaratan/{id}", [PersyaratanController::class, "store"]);
+
+        Route::prefix("persyaratan")->group(function () {
+            Route::prefix("file")->group(function () {
+                Route::get("/{id}/surat_rekomendasi", [FileController::class, "surat_rekomendasi"]);
+                Route::get("/{id}/form_pendaftaran", [FileController::class, "form_pendaftaran"]);
+                Route::get("/{id}/foto", [FileController::class, "foto"]);
+                Route::get("/{id}/ijazah", [FileController::class, "ijazah"]);
+                Route::get("/{id}/akte", [FileController::class, "akte"]);
+            });
+        });
     });
     Route::prefix("berita")->group(function () {
         Route::get('/tentangevent', function () {

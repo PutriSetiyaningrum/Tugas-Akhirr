@@ -1,5 +1,6 @@
 @php
-    use App\Models\Persyaratan;
+use App\Models\Persyaratan;
+use Carbon\Carbon;
 @endphp
 
 @extends('layouts.main')
@@ -31,18 +32,43 @@
                         <div class="inner">
                             <h3>
                                 @php
-                                    $count = Persyaratan::where("event_id", $data->id)->count();
+                                $count = Persyaratan::where("event_id", $data->id)->count();
                                 @endphp
                                 {{ $count }}
                             </h3>
                             <p>
                                 <b>{{ $data->Nama_Event }}</b>
                             </p>
+                            <div class="card-header">
+                                <button type="button" class="btn btn-success btn-block btn-sm" data-toggle="modal" data-target="#modal-default">
+                                    <i class=""></i> detail
+                                </button>
+                            </div>
+
+
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="{{ url ('/event/persyaratan/'.$data->id)}}" class="small-box-footer">Isi Persyaratan<i class="fas fa-arrow-circle-right"></i></a>
+                        @php
+
+                        $waktu = strtotime(date('Y-m-d H:i:s'));
+                        $tanggal = strtotime($data['selesai']);
+
+                        if ($waktu > $tanggal) {
+                            $diff = 1;
+                        } else {
+                            $diff = 0;
+                        }
+                        @endphp
+                        @if ($diff == 1)
+                        <a disabled class="small-box-footer">
+                            Expired
+                        </a>
+                        @elseif($diff == 0)
+                        <a href="{{ url ('/event/persyaratan/'.encrypt($data->id))}}" class="small-box-footer">Isi Persyaratan<i class="fas fa-arrow-circle-right"></i></a>
+                        @endif
+
                     </div>
                 </div>
                 @endforeach
@@ -55,5 +81,46 @@
     </section>
     <!-- /.content -->
 </div>
+
+@foreach ($event as $dat)
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detail Event</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            <b>Mulai pada <br>
+                                @php
+                                $mulai = Carbon::createFromFormat('Y-m-d H:i:s', $data->mulai);
+                                $format = $mulai->isoFormat('dddd, D MMMM YYYY HH:mm:ss');
+                                echo $format;
+                                @endphp
+                            </b>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <b>Selesai pada <br>
+                                @php
+                                $selesai = Carbon::createFromFormat('Y-m-d H:i:s', $data->selesai);
+                                $format = $selesai->isoFormat('dddd, D MMMM YYYY HH:mm:ss');
+                                echo $format;
+                                @endphp
+                            </b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection
 

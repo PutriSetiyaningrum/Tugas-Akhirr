@@ -12,4 +12,6 @@ class event extends Model
     protected $fillable = [
         'id', 'Nama_Event', 'mulai', 'selesai'
     ];
+
+    public $timestamps = false;
 }

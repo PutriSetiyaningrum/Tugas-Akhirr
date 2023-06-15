@@ -28,7 +28,7 @@ class PersyaratanController extends Controller
 
     public function create($id)
     {
-        $data["id"] = $id;
+        $data["id"] = decrypt($id);
         $data["kategorievent"] = kategorievent::get();
         $data["jeniscabang"] = JenisCabangEvent::get();
         return view("pelatih.event.create-persyaratan", $data);
@@ -61,7 +61,7 @@ class PersyaratanController extends Controller
         }
 
         Persyaratan::create([
-            "event_id" => $id,
+            "event_id" => decrypt($id),
             "kategori_id" => $request->kategori_id,
             "jenis_cabang_id" => $request->jenis_cabang_id,
             "sekolah" => $request->sekolah,
@@ -182,5 +182,11 @@ class PersyaratanController extends Controller
         $persyaratan->delete();
 
         return back();
+    }
+
+    public function detail($id)
+    {
+        $data["persyaratan"] = Persyaratan::where("id", decrypt($id))->first();
+        return view("panitia.persyaratan.detail-persyaratan", $data);
     }
 }
