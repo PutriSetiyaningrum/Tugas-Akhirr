@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('ijazah');
             $table->string('akte');
             $table->enum('status', [0, 1, 2])->default(0);
+            $table->text("deskripsi")->nullable();
             $table->timestamps();
         });
     }

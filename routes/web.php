@@ -108,6 +108,8 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::put("/persyaratan/event/{id_event}/persyaratan/{id_persyaratan}", [PersyaratanController::class, "update"]);
         Route::delete("/persyaratan/event/{id_event}/persyaratan/{id_persyaratan}/destroy", [PersyaratanController::class, "destroy"]);
 
+        Route::get("/persyaratan/{id}/detail", [PersyaratanController::class, "detail_event"]);
+        Route::put('/persyaratan/{id}/status', [PersyaratanController::class, "ubah_status"]);
         Route::resource('persyaratan', PersyaratanController::class);
     });
 
@@ -118,6 +120,8 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::get("/event/persyaratan/{id_persyaratan}/detail-persyaratan", [PersyaratanController::class, "detail"]);
         Route::get("/event/persyaratan/{id}", [EventController::class, "event_persyaratan"]);
         Route::get("/event/persyaratan/{id}/create", [PersyaratanController::class, "create"]);
+        Route::get("/event/persyaratan/{id_event}/{id_persyaratan}/edit", [PersyaratanController::class, "edit"]);
+        Route::put("/event/persyaratan/{id_event}/{id_persyaratan}/update", [PersyaratanController::class, "update"]);
         Route::post("/event/persyaratan/{id}", [PersyaratanController::class, "store"]);
 
         Route::prefix("persyaratan")->group(function () {

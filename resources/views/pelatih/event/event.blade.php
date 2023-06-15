@@ -25,7 +25,7 @@ use Carbon\Carbon;
         <div class="container-fluid">
             <!-- Info boxes -->
             <div class="row">
-                @foreach ($event as $data)
+                @forelse ($event as $data)
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-success">
@@ -71,7 +71,9 @@ use Carbon\Carbon;
 
                     </div>
                 </div>
-                @endforeach
+                @empty
+                Data Tidak Ada
+                @endforelse
                 <!-- fix for small devices only -->
                 {{-- <div class="clearfix hidden-md-up"></div> --}}
                 <!-- /.col -->

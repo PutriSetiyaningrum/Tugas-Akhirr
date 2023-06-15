@@ -45,46 +45,102 @@
                             <th class="text-center">Kategori</th>
                             <th class="text-center">Jenis Cabang</th>
                             <th class="text-center">Sekolah</th>
-                            <th class="text-center">Aksi</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Detail</th>
+
                             @endcan
 
                             @can("panitia")
                             <th class="text-center" style="width: 10px">No.</th>
                             <th class="text-center">Nama Event</th>
+                            <th class="text-center">Kategori</th>
+                            <th class="text-center">Jenis Cabang</th>
+                            <th class="text-center">Status</th>
                             <th class="text-center">Aksi</th>
                             @endcan
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($persyaratan as $item)
-                            @can("pelatih")
-                            <tr>
-                                <td style="width: 10px">{{ $loop->iteration }}.</td>
-                                <td class="text-center">{{$item->kategori->Nama_Kategori_Event}}</td>
-                                <td class="text-center">{{$item->cabang->Nama_Jenis_Cabang_Event}}</td>
-                                <td class="text-center">{{$item->sekolah}}</td>
-                                <td width="11%" class="text-center">
-                                    <a href="{{ url('/event/persyaratan/'.encrypt($item["id"])) . '/detail-persyaratan' }}" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-search"></i> Detail
-                                    </a>
-                                </td>
-                                @can("panitia")
+                        @can("pelatih")
+                        <tr>
+                            <td style="width: 10px">{{ $loop->iteration }}.</td>
+                            <td class="text-center">{{$item->kategori->Nama_Kategori_Event}}</td>
+                            <td class="text-center">{{$item->cabang->Nama_Jenis_Cabang_Event}}</td>
+                            <td class="text-center">{{$item->sekolah}}</td>
+                            <td class="text-center">
+                                @if ($item["status"] == 0)
+                                <span class="badge badge-warning">
+                                    Belum Di Konfirmasi
+                                </span>
+                                @elseif ($item["status"] == 1)
+                                <span class="badge badge-success">
+                                    Sudah Disetujui
+                                </span>
+                                @elseif ($item["status"] == 2)
+                                <span class="badge badge-danger">
+                                    Ditolak
+                                </span>
+                                <br>
+                                <small>
+                                    Alasan {{ $item["deskripsi"] }}
+                                </small>
+                                @endif
+                            </td>
+                            <td width="11%" class="text-center">
+                                <a href="{{ url('/event/persyaratan/'.encrypt($item["id"])) . '/detail-persyaratan' }}" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search"></i> Detail
+                                </a>
+                                @if ($item["status"] != 0)
 
-                                @endcan
-                            </tr>
-                            @endcan
+                                @else
+
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    <a href="{{ url('/event/persyaratan/'. encrypt($id) . '/' . $item['id'] . '/edit') }}"><i class="fa fa-edit"></i>Edit</a>
+                                </button>
+                                @endif
+                            </td>
 
                             @can("panitia")
-                            <tr>
-                                <td class="text-center">{{ $loop->iteration }}.</td>
-                                <td class="text-center">{{ $item["Nama_Event"] }}</td>
-                                <td width="11%" class="text-center">
-                                    <a href="{{ url('/persyaratan/'.$item["id"]) }}" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-search"></i> Detail
-                                    </a>
-                                </td>
-                            </tr>
+
                             @endcan
+                        </tr>
+                        @endcan
+
+                        @can("panitia")
+                        <tr>
+                            <td class="text-center">{{ $loop->iteration }}.</td>
+                            <td class="text-center">{{ $item["event"]["Nama_Event"] }}</td>
+                            <td class="text-center">{{ $item["kategori"]["Nama_Kategori_Event"] }}</td>
+                            <td class="text-center">{{ $item["cabang"]["Nama_Jenis_Cabang_Event"]}}</td>
+                            <td class="text-center">
+                                @if ($item["status"] == 0)
+                                <span class="badge badge-warning">
+                                    Belum Di Konfirmasi
+                                </span>
+                                @elseif ($item["status"] == 1)
+                                <span class="badge badge-success">
+                                    Sudah Disetujui
+                                </span>
+                                @elseif ($item["status"] == 2)
+                                <span class="badge badge-danger">
+                                    Ditolak
+                                </span>
+                                @endif
+                            </td>
+                            <td class="text-center">
+                                <a href="{{ url('/persyaratan/'.encrypt($item["id"])) . '/detail' }}" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search"></i> Detail
+                                </a>
+                                @if ($item["status"] != 0)
+                                @else
+                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-default-status-{{ $item["id"] }}">
+                                    <i class=" fa fa-edit"></i> Ubah Status
+                                </button>
+                                @endif
+                            </td>
+                        </tr>
+                        @endcan
                         @endforeach
                     </tbody>
                 </table>
@@ -92,21 +148,75 @@
         </div>
     </div>
 </div>
+
+@foreach ($persyaratan as $item)
+<div class="modal fade" id="modal-default-status-{{ $item["id"] }}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Ubah Status</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ url('/persyaratan/' . $item["id"]) . '/status' }}" method="POST">
+                @csrf
+                @method("PUT")
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="status"> Ubah Status Persyaratan </label>
+                        <select name="status" class="form-control" id="cekstatus">
+                            <option value="">- Pilih -</option>
+                            <option value="1">Setujui</option>
+                            <option value="2">Tolak</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="display: none" id="alasan">
+                        <label for="deskripsi"> Alasan </label>
+                        <textarea name="deskripsi" class="form-control" id="deskripsi" rows="5" placeholder="Masukkan Alasan"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="reset" class="btn btn-danger btn-sm">
+                        <i class="fa fa-times"></i> Batal
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="fa fa-plus"></i> Tambah
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection
 @section("js")
 
-    <script src="{{ url('/adminLTE') }}/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{ url('/adminLTE') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="{{ url('/adminLTE') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="{{ url('/adminLTE') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="{{ url('/adminLTE') }}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="{{ url('/adminLTE') }}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script>
-        $(function () {
-            $("#example1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        });
-    </script>
-    @endsection
+<script src="{{ url('/adminLTE') }}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{ url('/adminLTE') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ url('/adminLTE') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{ url('/adminLTE') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="{{ url('/adminLTE') }}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="{{ url('/adminLTE') }}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+
+    $(document).ready(function() {
+        $("#cekstatus").change(function() {
+            let status= $("#status").val();
+            if (status == 2) {
+                console.log("ada");
+                $("#alasan").show();
+            } else {
+                $("#alasan").hide();
+            }
+        })
+    })
+</script>
+@endsection
+
 

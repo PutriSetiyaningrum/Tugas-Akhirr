@@ -18,7 +18,7 @@ class PersyaratanController extends Controller
     public function index()
     {
         if (Auth::user()->level == "panitia") {
-            $data["persyaratan"] = event::get();
+            $data["persyaratan"] = Persyaratan::get();
         } else {
             $data["persyaratan"] = event::get();
         }
@@ -165,7 +165,7 @@ class PersyaratanController extends Controller
             "akte" => $akte,
         ]);
 
-        return redirect('/persyaratan/' . $id_event);
+        return redirect('/event/persyaratan/' . $id_event);
     }
 
     public function destroy($id_event, $id_persyaratan)
@@ -188,5 +188,22 @@ class PersyaratanController extends Controller
     {
         $data["persyaratan"] = Persyaratan::where("id", decrypt($id))->first();
         return view("panitia.persyaratan.detail-persyaratan", $data);
+    }
+
+    public function detail_event($id)
+    {
+        $data["persyaratan"] = Persyaratan::where("id", decrypt($id))->first();
+
+        return view("panitia.persyaratan.detail-event", $data);
+    }
+
+    public function ubah_status(Request $request, $id)
+    {
+        Persyaratan::where("id", $id)->update([
+            "status" => $request->status,
+            "deskripsi" => $request->deskripsi ? $request->deskripsi : NULL
+        ]);
+
+        return back();
     }
 }
