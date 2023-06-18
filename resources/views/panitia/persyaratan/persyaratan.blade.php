@@ -87,17 +87,16 @@
                                 </small>
                                 @endif
                             </td>
-                            <td width="11%" class="text-center">
+                            <td class="text-center">
                                 <a href="{{ url('/event/persyaratan/'.encrypt($item["id"])) . '/detail-persyaratan' }}" class="btn btn-primary btn-sm">
                                     <i class="fa fa-search"></i> Detail
                                 </a>
                                 @if ($item["status"] != 0)
-
-                                @else
-
                                 <button type="button" class="btn btn-warning btn-sm">
                                     <a href="{{ url('/event/persyaratan/'. encrypt($id) . '/' . $item['id'] . '/edit') }}"><i class="fa fa-edit"></i>Edit</a>
                                 </button>
+                                @else
+
                                 @endif
                             </td>
 

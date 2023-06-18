@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\event;
 use App\Models\Persyaratan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
@@ -113,7 +114,7 @@ class EventController extends Controller
     public function event_persyaratan($id)
     {
         $data["id"] = decrypt($id);
-        $data["persyaratan"] = Persyaratan::where("event_id", decrypt($id))->get();
+        $data["persyaratan"] = Persyaratan::where("pelatih_id", decrypt($id))->where("event_id", Auth::user()->pelatih->id);
 
         return view('panitia.persyaratan.persyaratan', $data);
     }

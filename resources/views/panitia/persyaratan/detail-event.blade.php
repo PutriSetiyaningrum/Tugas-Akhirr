@@ -13,12 +13,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Persyaratan</h1>
+                    <h1>Detail</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ url('/panitia/home') }}">Panitia</a></li>
-                        <li class="breadcrumb-item active">Persyaratan</li>
+                        <li class="breadcrumb-item active">Detail</li>
                     </ol>
                 </div>
             </div><!-- /.row -->
@@ -31,7 +31,7 @@
 
             <div class="card-header">
                 <h5 class="card-title">
-                    <a href="{{ url('/event/persyaratan/'.encrypt($persyaratan->event_id)) }}">
+                    <a href="{{ url('/persyaratan/')}}">
                         Kembali
                     </a>
                 </h5>

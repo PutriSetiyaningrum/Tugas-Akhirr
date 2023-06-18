@@ -71,6 +71,7 @@ class PersyaratanController extends Controller
             "foto" => $foto,
             "ijazah" => $ijazah,
             "akte" => $akte,
+            "pelatih_id" => Auth::user()->pelatih->id
         ]);
 
         return redirect('/event/persyaratan/' . $id);
@@ -163,6 +164,7 @@ class PersyaratanController extends Controller
             "foto" => $foto,
             "ijazah" => $ijazah,
             "akte" => $akte,
+            "pelatih_id" => Auth::user()->pelatih->id
         ]);
 
         return redirect('/event/persyaratan/' . $id_event);

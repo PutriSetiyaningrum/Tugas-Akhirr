@@ -116,12 +116,14 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::get('pelatih/home', [HomeController::class, 'pelatih'])->name('home');
         Route::get("event", [EventController::class, "data_event"]);
         Route::get("/event/persyaratan/{id_persyaratan}/detail-persyaratan", [PersyaratanController::class, "detail"]);
-        Route::get("/event/persyaratan/{id}", [EventController::class, "event_persyaratan"]);
+
         Route::get("/event/persyaratan/{id}/create", [PersyaratanController::class, "create"]);
         Route::get("/event/persyaratan/{id_event}/{id_persyaratan}/edit", [PersyaratanController::class, "edit"]);
         Route::put("/event/persyaratan/{id_event}/{id_persyaratan}/update", [PersyaratanController::class, "update"]);
         Route::post("/event/persyaratan/{id}", [PersyaratanController::class, "store"]);
+
     });
+    Route::get("/event/persyaratan/{id}", [EventController::class, "event_persyaratan"]);
     Route::prefix("berita")->group(function () {
         Route::get('/tentangevent', function () {
             return view('/pelatih/berita/tentangevent');

@@ -12,7 +12,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ url('/panitia/home') }}">Panitia</a></li>
-                        <li class="breadcrumb-item active">Persyaratan</li>
+                        <li class="breadcrumb-item active">Ubah Status</li>
                     </ol>
                 </div>
             </div><!-- /.row -->

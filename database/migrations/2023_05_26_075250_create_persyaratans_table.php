@@ -28,6 +28,7 @@ return new class extends Migration
             $table->enum('status', [0, 1, 2])->default(0);
             $table->text("deskripsi")->nullable();
             $table->timestamps();
+            $table->integer('pelatih_id');
         });
     }
 
