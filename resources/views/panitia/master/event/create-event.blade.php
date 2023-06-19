@@ -30,6 +30,14 @@
                             <label for="selesai">Selesai</label>
                             <input type="datetime-local" class="form-control" id="selesai" name="selesai" placeholder="selesai">
                         </div>
+                        <div class="form-group">
+                            <label for="gambar">Gambar</label>
+                            <input type="file" class="form-control" id="gambar" name="gambar" placeholder="gambar">
+                        </div>
+                        <div class="form-group">
+                            <label for="deskripsi">Deskripsi</label>
+                            <input type="text" class="form-control" id="Deskripsi" name="deskripsi" placeholder="Deskripsi" autocomplete="off">
+                        </div>
                     </div>
                     <div class="card-body">
                         <button type="submit" class="btn btn-primary">Submit</button>

@@ -43,10 +43,18 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->file("gambar")) {
+            $gambar = $request->file("gambar")->store("img");
+        }
+
         $dtUpload = new event;
         $dtUpload->Nama_Event = $request->Nama_Event;
+        $dtUpload->slug = Str::slug($request->Nama_Event);
         $dtUpload->mulai = $request->mulai;
         $dtUpload->selesai = $request->selesai;
+        $dtUpload->gambar = $gambar;
+        $dtUpload->deskripsi = $request->deskripsi;
+        $dtUpload->user_id = Auth::user()->id;
         $dtUpload->save();
 
         return redirect("/master/event")->with(
@@ -63,7 +71,9 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        $data["persyaratan"] = Persyaratan::where("id", decrypt($id))->withTrashed()->first();
+
+        return view("panitia.master.event.detail-event", $data);
     }
 
     /**
@@ -87,10 +97,22 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if ($request->file("gambar")) {
+            if ($request->gambarLama) {
+                Storage::delete($request->gambarLama);
+            }
+
+            $gambar = $request->file("gambar")->store("img");
+        } else {
+            $gambar = $request->gambarLama;
+        }
         event::where("id", $id)->update([
             "Nama_Event" => $request->Nama_Event,
             "mulai" => $request->mulai,
-            "selesai" => $request->selesai
+            "selesai" => $request->selesai,
+            "gambar" => $gambar,
+            "deskripsi" => $request->deskripsi
+
         ]);
         return redirect("/master/event")->with(
             "message",

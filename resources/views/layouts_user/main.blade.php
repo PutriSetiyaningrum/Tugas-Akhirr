@@ -25,29 +25,29 @@
     <!-- [if lt IE 9]>
         <script src="javascript/html5shiv.js"></script>
         <script src="javascript/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body class="header-fixed counter-scroll">
-    @include('layouts_user.navbar')
+        <![endif]-->
+    </head>
+    <body class="header-fixed counter-scroll">
+        @include('layouts_user.navbar')
 
-    <div>
-        @yield('container')
-    </div>
+        <div>
+            @yield('container')
+        </div>
 
-    @include('layouts_user.footer')
+        @include('layouts_user.footer')
 
-    
-    <script src="../../assets/user/js/jquery.min.js"></script>
-    <script src="../../assets/user/js/countto.js"></script>
-    <script src="../../assets/user/js/wow.min.js"></script>
-    <script src="../../assets/user/js/main.js"></script>
-    <script src="../../assets/user/js/shortcodes.js"></script>
-    <script src="../../assets/user/js/jquery.easing.js"></script>
-    <script src="../../assets/user/js/jquery.fancybox.js"></script>
-    <script src="../../assets/user/js/plugin.js"></script>
 
-    <!-- Swiper slide -->
-    <script src="../../assets/user/js/swiper-bundle.min.js"></script>
-    <script src="../../assets/user/js/swiper.js"></script>
-</body>
-</html>
+        <script src="../../assets/user/js/jquery.min.js"></script>
+        <script src="../../assets/user/js/countto.js"></script>
+        <script src="../../assets/user/js/wow.min.js"></script>
+        <script src="../../assets/user/js/main.js"></script>
+        <script src="../../assets/user/js/shortcodes.js"></script>
+        <script src="../../assets/user/js/jquery.easing.js"></script>
+        <script src="../../assets/user/js/jquery.fancybox.js"></script>
+        <script src="../../assets/user/js/plugin.js"></script>
+
+        <!-- Swiper slide -->
+        <script src="../../assets/user/js/swiper-bundle.min.js"></script>
+        <script src="../../assets/user/js/swiper.js"></script>
+    </body>
+    </html>

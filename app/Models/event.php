@@ -11,10 +11,13 @@ class event extends Model
     use SoftDeletes;
 
     protected $table = "events";
-    protected $primaryKey = "id";
-    protected $fillable = [
-        'id', 'Nama_Event', 'mulai', 'selesai'
-    ];
+
+    protected $guarded = [''];
 
     public $timestamps = false;
+
+    public function user()
+    {
+        return $this->belongsTo("App\Models\User", "user_id", "id");
+    }
 }

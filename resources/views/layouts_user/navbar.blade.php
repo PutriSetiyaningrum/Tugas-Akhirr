@@ -54,16 +54,19 @@
                                                 <a href="{{ route('app.about') }}">Tentang PERBASI</a>
                                             </li>
                                             <li class="menu-item {{ Request::is("s&k") ? 'current-menu-item' : '' }}">
-                                                <a href="/s&k">Syarat & Ketentuan</a>
+                                                <a href="{{ url('s&k')}}">Syarat & Ketentuan</a>
                                             </li>
                                             <li class="menu-item {{ Request::is("kontak") ? 'current-menu-item' : '' }}">
-                                                <a href="/kontak">Kontak</a>
+                                                <a href="{{ url('kontak')}}">Kontak</a>
+                                            </li>
+                                            <li class="menu-item {{ Request::is("tentang-event") ? 'current-menu-item' : '' }}">
+                                                <a href="{{ url('tentang-event')}}">Event</a>
                                             </li>
                                             <li class="menu-item">
-                                                <a href="/login">Login</a>
+                                                <a href="{{ url('login')}}">Login</a>
                                             </li>
                                             <li class="menu-item">
-                                                <a href="register">Daftar</a>
+                                                <a href="{{ url('register')}}">Daftar</a>
                                             </li>
                                         </ul>
                                     </nav>

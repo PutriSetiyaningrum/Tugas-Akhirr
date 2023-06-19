@@ -51,7 +51,11 @@
                         <td >{{ $item->Nama_Event }}</td>
                         <td >{{ $item->mulai }}</td>
                         <td >{{ $item->selesai }}</td>
-                        <td width="11%" class="text-center">
+                        <td class="text-center">
+                            <a href="{{ url('/master/event/' .encrypt($item["id"])) }}" class="btn btn-primary btn-sm">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                            |
                             <button type="button" class="btn btn-warning btn-sm">
                                 <a href="{{ url('/master/event/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
                             </button>

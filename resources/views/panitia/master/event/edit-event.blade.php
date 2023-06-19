@@ -20,6 +20,7 @@
                 <form action="{{ url('/master/event/' . $dt->id) }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @method("PUT")
+                    <input type="hidden" name="gambarLama" value="{{ $dt["gambar"] }}">
                     <div class="card-body">
                         <div class="form-group">
                             <label for="Nama Event">Event</label>
@@ -32,6 +33,17 @@
                             <label for="selesai">Selesai</label>
                             <input type="datetime-local" class="form-control" id="selesai" name="selesai" placeholder="selesai" value="{{ $dt->selesai }}">
                         </div>
+                        <div class="form-group">
+                            <label for="gambar">Gambar</label>
+                            <input type="file" class="form-control" id="gambar" name="gambar" placeholder="gambar">
+                          </div>
+                          <div class="form-group">
+                            <img src="{{ url('/storage/'.$dt->gambar) }}" height="100%" width="150" alt="srcset">
+                          </div>
+                          <div class="form-group">
+                            <label for="deskripsi">Deskripsi</label>
+                            <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="deskripsi" value="{{ $dt->deskripsi }}" autocomplete="off">
+                          </div>
                     </div>
                     <!-- /.card-body -->
 
