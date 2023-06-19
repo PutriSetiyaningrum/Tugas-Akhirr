@@ -63,7 +63,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="sekolah">Sekolah</label>
-                                    <input type="text" class="form-control" id="sekolah" name="sekolah" placeholder="Sekolah" value="{{ $edit->sekolah }}">
+                                    <input type="text" class="form-control" id="sekolah" name="sekolah" placeholder="Sekolah" value="{{ $edit->sekolah }}" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-md-6">

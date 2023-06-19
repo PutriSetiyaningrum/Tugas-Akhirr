@@ -44,7 +44,10 @@ class CabangController extends Controller
         $dtUpload->Nama_Jenis_Cabang_Event = $request->Nama_Jenis_Cabang_Event;
         $dtUpload->save();
 
-        return redirect("/master/jeniscabangevent");
+        return redirect("/master/jeniscabangevent")->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Tambahkan</div>"
+        );
     }
 
     /**
@@ -82,7 +85,10 @@ class CabangController extends Controller
         jeniscabangevent::where("id", $id)->update([
             "Nama_Jenis_Cabang_Event" => $request->Nama_Jenis_Cabang_Event
         ]);
-        return redirect("/master/jeniscabangevent");
+        return redirect("/master/jeniscabangevent")->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Edit</div>"
+        );
     }
 
     /**
@@ -95,6 +101,9 @@ class CabangController extends Controller
     {
         jeniscabangevent::where("id", $id)->delete();
 
-        return back();
+        return back()->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Hapus</div>"
+        );
     }
 }

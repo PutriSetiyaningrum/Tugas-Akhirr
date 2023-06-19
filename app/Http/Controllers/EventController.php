@@ -49,7 +49,10 @@ class EventController extends Controller
         $dtUpload->selesai = $request->selesai;
         $dtUpload->save();
 
-        return redirect("/master/event");
+        return redirect("/master/event")->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Tambahkan</div>"
+        );
     }
 
     /**
@@ -89,7 +92,10 @@ class EventController extends Controller
             "mulai" => $request->mulai,
             "selesai" => $request->selesai
         ]);
-        return redirect("/master/event");
+        return redirect("/master/event")->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Edit</div>"
+        );
     }
 
     /**
@@ -102,7 +108,10 @@ class EventController extends Controller
     {
         event::where("id", $id)->delete();
 
-        return back();
+        return back()->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Hapus</div>"
+        );
     }
 
     public function data_event()

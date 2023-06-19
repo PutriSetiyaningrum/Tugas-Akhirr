@@ -48,7 +48,10 @@ class BaganEventController extends Controller
         $dtUpload->deskripsi = $request->deskripsi;
         $dtUpload->save();
 
-        return redirect("/informasi/baganevent");
+        return redirect("/informasi/baganevent")->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Tambahkan</div>"
+        );
     }
 
     /**
@@ -96,7 +99,10 @@ class BaganEventController extends Controller
             "gambar" => $gambar,
             "Deskripsi" => "$request->Deskripsi"
         ]);
-        return redirect("/informasi/baganevent");
+        return redirect("/informasi/baganevent")->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Edit</div>"
+        );
     }
 
     /**
@@ -116,6 +122,9 @@ class BaganEventController extends Controller
     {
         $data["baganevent"] = baganevent::get();
 
-        return view("pelatih.berita.baganevent", $data);
+        return view("pelatih.berita.baganevent", $data)->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Hapus</div>"
+        );
     }
 }

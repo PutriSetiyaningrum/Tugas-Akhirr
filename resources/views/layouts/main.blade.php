@@ -7,6 +7,8 @@
 
     @include("layouts.partials.css.style_css")
 
+    <link rel="stylesheet" href="{{ url('/AdminLTE') }}/plugins/toastr/toastr.min.css">
+
     @yield("css")
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -28,5 +30,28 @@
         @include("layouts.partials.js.style_js")
 
         @yield("js")
+
+        <script>
+            $(function() {
+
+                var Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+
+                var toastData = @json(session('message'));
+
+                if (toastData != null) {
+                    Toast.fire({
+                        icon: 'success',
+                        title: toastData
+                    })
+                }
+            });
+
+        </script>
+
     </body>
     </html>

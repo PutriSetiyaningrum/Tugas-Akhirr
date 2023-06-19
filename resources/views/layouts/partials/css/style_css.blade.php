@@ -2,3 +2,5 @@
 <link rel="stylesheet" href="{{ url('/AdminLTE') }}/plugins/fontawesome-free/css/all.min.css">
 <link rel="stylesheet" href="{{ url('/AdminLTE') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 <link rel="stylesheet" href="{{ url('/AdminLTE') }}/dist/css/adminlte.min.css">
+<link rel="stylesheet" href="{{ url('/AdminLTE') }}/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+<link rel="stylesheet" href="{{ url('/AdminLTE') }}/plugins/toastr/toastr.min.css">

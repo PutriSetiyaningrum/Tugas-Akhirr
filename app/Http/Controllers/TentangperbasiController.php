@@ -48,7 +48,10 @@ class TentangperbasiController extends Controller
         $dtUpload->deskripsi = $request->deskripsi;
         $dtUpload->save();
 
-        return redirect("/master/tentangperbasi");
+        return redirect("/master/tentangperbasi")->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Tambahkan</div>"
+        );
     }
 
     /**
@@ -97,7 +100,10 @@ class TentangperbasiController extends Controller
             "gambar" => $gambar,
             "Deskripsi" => $request->Deskripsi
         ]);
-        return redirect("/master/tentangperbasi");
+        return redirect("/master/tentangperbasi")->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Edit</div>"
+        );
     }
 
     /**
@@ -110,6 +116,9 @@ class TentangperbasiController extends Controller
     {
         tentangperbasi::where("id", $id)->delete();
 
-        return back();
+        return back()->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Hapus</div>"
+        );
     }
 }

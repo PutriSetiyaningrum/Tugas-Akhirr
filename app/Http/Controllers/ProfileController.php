@@ -102,8 +102,12 @@ class ProfileController extends Controller
             ]);
         }
         $user->name = $request->name;
+        $user->email = $request->email;
         $user->save();
 
-        return back();
+        return back()->with(
+            "message",
+            "<div style='margin-top: 7px'>Profil Anda Berhasil di Edit</div>"
+        );
     }
 }

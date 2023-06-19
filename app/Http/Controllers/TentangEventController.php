@@ -48,7 +48,10 @@ class TentangEventController extends Controller
         $dtUpload->deskripsi = $request->deskripsi;
         $dtUpload->save();
 
-        return redirect("/informasi/tentangevent");
+        return redirect("/informasi/tentangevent")->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Tambahkan</div>"
+        );
     }
 
     /**
@@ -96,7 +99,10 @@ class TentangEventController extends Controller
             "gambar" => $gambar,
             "Deskripsi" => $request->Deskripsi
         ]);
-        return redirect("/informasi/tentangevent");
+        return redirect("/informasi/tentangevent")->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Edit</div>"
+        );
     }
 
     /**
@@ -109,6 +115,9 @@ class TentangEventController extends Controller
     {
         tentangevent::where("id", $id)->delete();
 
-        return back();
+        return back()->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Hapus</div>"
+        );
     }
 }

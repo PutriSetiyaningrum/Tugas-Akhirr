@@ -58,13 +58,13 @@
                                         <div class="form-group row">
                                             <label for="name" class="col-sm-2 col-form-label">Nama</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ $user->name }}">
+                                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ $user->name }}" autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="email" class="col-sm-2 col-form-label">Email</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="email" name="email" placeholder="email" value="{{ $user->email}}" readonly>
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="email" value="{{ $user->email}}" autocomplete="off">
                                             </div>
                                         </div>
 
@@ -72,7 +72,7 @@
                                         <div class="form-group row">
                                             <label for="sekolah" class="col-sm-2 col-form-label">Sekolah</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="sekolah" name="sekolah" placeholder="Sekolah" value="{{ Auth::user()->pelatih->sekolah}}">
+                                                <input type="text" class="form-control" id="sekolah" name="sekolah" placeholder="Sekolah" value="{{ Auth::user()->pelatih->sekolah}}" autocomplete="off">
                                             </div>
                                         </div>
                                         @endcan
@@ -81,13 +81,13 @@
                                         <div class="form-group row">
                                             <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat" value="{{ Auth::user()->pengunjung->alamat}}">
+                                                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat" value="{{ Auth::user()->pengunjung->alamat}}" autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="telepon" class="col-sm-2 col-form-label">Telepon</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Telepon" value="{{ Auth::user()->pengunjung->telepon  }}">
+                                                <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Telepon" value="{{ Auth::user()->pengunjung->telepon}}" autocomplete="off">
                                             </div>
                                         </div>
                                         @endcan

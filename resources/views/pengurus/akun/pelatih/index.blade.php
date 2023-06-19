@@ -96,15 +96,15 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name"> Name </label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan Nama Lengkap">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan Nama Lengkap" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="email"> Email </label>
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email">
+                        <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="sekolah"> Sekolah </label>
-                        <input type="text" class="form-control" name="sekolah" id="sekolah" placeholder="Masukkan Sekolah">
+                        <input type="text" class="form-control" name="sekolah" id="sekolah" placeholder="Masukkan Sekolah" autocomplete="off">
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -138,14 +138,14 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name"> Name </label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan Nama Lengkap" value="{{ $item->name }}">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan Nama Lengkap" value="{{ $item->name }}" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="email"> Email </label>
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email" value="{{ $item->email }}">
+                        <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email" value="{{ $item->email }}" autocomplete="off">
                     </div>
                     <label for="sekolah"> Sekolah </label>
-                    <input type="text" class="form-control" name="sekolah" id="sekolah" placeholder="Masukkan sekolah" value="{{ $item->pelatih->sekolah }}">
+                    <input type="text" class="form-control" name="sekolah" id="sekolah" placeholder="Masukkan sekolah" value="{{ $item->pelatih->sekolah }}" autocomplete="off">
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="reset" class="btn btn-danger btn-sm">

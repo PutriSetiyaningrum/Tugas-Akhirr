@@ -23,7 +23,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="Nama Event">Event</label>
-                            <input type="text" class="form-control" id="Nama_Event" name="Nama_Event" placeholder="Nama_Event" value="{{ $dt->Nama_Event }}">
+                            <input type="text" class="form-control" id="Nama_Event" name="Nama_Event" placeholder="Nama_Event" value="{{ $dt->Nama_Event }}" autocomplete="off">
                         </div><div class="form-group">
                             <label for="mulai">Mulai</label>
                             <input type="datetime-local" class="form-control" id="mulai" name="mulai" placeholder="mulai" value="{{ $dt->mulai }}">

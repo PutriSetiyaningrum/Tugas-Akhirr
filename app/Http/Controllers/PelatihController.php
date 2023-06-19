@@ -30,7 +30,10 @@ class PelatihController extends Controller
             'sekolah' => $request->sekolah,
         ]);
 
-        return back();
+        return back()->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Tambahkan</div>"
+        );
     }
 
     public function update(Request $request, $id)
@@ -51,7 +54,10 @@ class PelatihController extends Controller
             $pelatih->save();
         }
 
-        return back();
+        return back()->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Edit</div>"
+        );
     }
 
     public function destroy($id)
@@ -62,6 +68,9 @@ class PelatihController extends Controller
 
         $pelatih->delete();
 
-        return back();
+        return back()->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Hapus</div>"
+        );
     }
 }

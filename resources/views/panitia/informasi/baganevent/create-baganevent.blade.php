@@ -26,7 +26,7 @@
                   </div>
                   <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
-                    <input type="text" class="form-control" id="Deskripsi" name="deskripsi" placeholder="Deskripsi">
+                    <textarea class="form-control" id="Deskripsi" name="deskripsi" placeholder="Deskripsi" rows="6"></textarea>
                   </div>
                 </div>
                 <!-- /.card-body -->

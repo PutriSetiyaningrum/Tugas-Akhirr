@@ -20,7 +20,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="Nama Kategori Event">Nama Kategori Event</label>
-                    <input type="text" class="form-control" id="Nama_Kategori_Event" name="Nama_Kategori_Event" placeholder="Nama kategori Event">
+                    <input type="text" class="form-control" id="Nama_Kategori_Event" name="Nama_Kategori_Event" placeholder="Nama kategori Event" autocomplete="off">
                   </div>
                 </div>
                 <div class="card-body">

@@ -43,7 +43,10 @@ class KategoriController extends Controller
         $dtUpload->Nama_Kategori_Event = $request->Nama_Kategori_Event;
         $dtUpload->save();
 
-        return redirect("/master/kategorievent");
+        return redirect("/master/kategorievent")->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Tambahkan</div>"
+        );
     }
 
     /**
@@ -81,7 +84,10 @@ class KategoriController extends Controller
         kategorievent::where("id", $id)->update([
             "Nama_Kategori_Event" => $request->Nama_Kategori_Event
         ]);
-        return redirect("/master/kategorievent");
+        return redirect("/master/kategorievent")->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Edit</div>"
+        );
     }
 
     /**
@@ -94,6 +100,9 @@ class KategoriController extends Controller
     {
         kategorievent::where("id", $id)->delete();
 
-        return back();
+        return back()->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Hapus</div>"
+        );
     }
 }

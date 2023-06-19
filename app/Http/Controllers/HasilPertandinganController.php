@@ -48,7 +48,10 @@ class HasilPertandinganController extends Controller
         $dtUpload->deskripsi = $request->deskripsi;
         $dtUpload->save();
 
-        return redirect("/informasi/hasilpertandingan");
+        return redirect("/informasi/hasilpertandingan")->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Tambahkan</div>"
+        );
     }
 
     /**
@@ -96,7 +99,10 @@ class HasilPertandinganController extends Controller
             "gambar" => $gambar,
             "Deskripsi" => $request->Deskripsi
         ]);
-        return redirect("/informasi/hasilpertandingan");
+        return redirect("/informasi/hasilpertandingan")->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Edit</div>"
+        );
     }
 
     /**
@@ -109,7 +115,10 @@ class HasilPertandinganController extends Controller
     {
         hasilpertandingan::where("id", $id)->delete();
 
-        return back();
+        return back()->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Hapus</div>"
+        );
     }
 
     public function data_hasilpertandingan()

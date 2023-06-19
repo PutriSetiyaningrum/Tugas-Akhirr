@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="Nama Kategori Event">kategori Event</label>
-                            <input type="text" class="form-control" id="Nama_Kategori_Event" name="Nama_Kategori_Event" placeholder="Nama Kategori Event" value="{{ $dt->Nama_Kategori_Event }}">
+                            <input type="text" class="form-control" id="Nama_Kategori_Event" name="Nama_Kategori_Event" placeholder="Nama Kategori Event" value="{{ $dt->Nama_Kategori_Event }}" autocomplete="off">
                         </div>
                     </div>
                     <!-- /.card-body -->

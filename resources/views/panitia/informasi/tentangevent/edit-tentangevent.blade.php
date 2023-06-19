@@ -31,7 +31,7 @@
                   </div>
                   <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
-                    <input type="text" class="form-control" id="Deskripsi" name="Deskripsi" placeholder="Deskripsi" value="{{ $dt->Deskripsi }}">
+                    <input type="text" class="form-control" id="Deskripsi" name="Deskripsi" placeholder="Deskripsi" value="{{ $dt->Deskripsi }}" autocomplete="off">
                   </div>
                 </div>
                 <!-- /.card-body -->

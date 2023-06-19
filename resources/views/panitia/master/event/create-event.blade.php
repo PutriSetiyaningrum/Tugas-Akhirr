@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="Nama Event">Nama Event</label>
-                            <input type="text" class="form-control" id="Nama_Event" name="Nama_Event" placeholder="Nama Event">
+                            <input type="text" class="form-control" id="Nama_Event" name="Nama_Event" placeholder="Nama Event" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="mulai">Mulai</label>

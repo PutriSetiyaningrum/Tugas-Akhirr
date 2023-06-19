@@ -50,7 +50,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="deskripsi">Sekolah</label>
-                                    <input type="text" class="form-control" id="Deskripsi" name="sekolah" placeholder="Sekolah">
+                                    <input type="text" class="form-control" id="Deskripsi" name="sekolah" placeholder="Sekolah" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-md-6">

@@ -74,7 +74,10 @@ class PersyaratanController extends Controller
             "pelatih_id" => Auth::user()->pelatih->id
         ]);
 
-        return redirect('/event/persyaratan/' . $id);
+        return redirect('/event/persyaratan/' . $id)->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Tambahkan</div>"
+        );
     }
 
     public function edit($id_event, $id_persyaratan)
@@ -168,7 +171,10 @@ class PersyaratanController extends Controller
 
         ]);
 
-        return redirect('/event/persyaratan/' . $id_event);
+        return redirect('/event/persyaratan/' . $id_event)->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Edit</div>"
+        );
     }
 
     public function destroy(Request $request, $id_event, $id_persyaratan)

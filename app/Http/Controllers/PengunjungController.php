@@ -94,6 +94,9 @@ class PengunjungController extends Controller
 
         $pengunjung->delete();
 
-        return back();
+        return back()->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Hapus</div>"
+        );
     }
 }

@@ -22,11 +22,11 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="gambar">Gambar</label>
-                    <input type="file" class="form-control" id="gambar" name="gambar" placeholder="gambar">
+                    <input type="file" class="form-control" id="gambar" name="gambar" placeholder="gambar" >
                   </div>
                   <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
-                    <input type="text" class="form-control" id="Deskripsi" name="deskripsi" placeholder="Deskripsi">
+                    <textarea class="form-control" id="Deskripsi" name="deskripsi" placeholder="Deskripsi" rows="6"></textarea>
                   </div>
                 </div>
                 <!-- /.card-body -->
