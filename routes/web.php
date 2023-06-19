@@ -12,6 +12,7 @@ use App\Http\Controllers\TentangEventController;
 use App\Http\Controllers\BaganEventController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HasilPertandinganController;
+use App\Http\Controllers\HistoriController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\PelatihController;
@@ -68,7 +69,7 @@ Route::group(["middleware" => ["autentikasi"]], function () {
 
     // Pengurus
     Route::group(["middleware" => ["can:pengurus"]], function () {
-        Route::get('/home', [HomeController::class, 'index'])->name('home');
+        Route::get('/home', [HomeController::class, 'index']);
 
         Route::prefix("akun")->group(function () {
             Route::resource('panitia', PanitiaController::class);
@@ -82,12 +83,14 @@ Route::group(["middleware" => ["autentikasi"]], function () {
             Route::resource('tentangperbasi', TentangperbasiController::class);
             Route::resource('notifikasi', NotifikasiController::class);
         });
+
+        Route::resource('histori', HistoriController::class);
     });
 
 
     // Panitia
     Route::group(["middleware" => ["can:panitia"]], function () {
-        Route::get('panitia/home', [HomeController::class, 'home'])->name('home');
+        Route::get('panitia/home', [HomeController::class, 'home']);
 
         Route::prefix("master")->group(function () {
             Route::resource('event', EventController::class);
@@ -113,7 +116,7 @@ Route::group(["middleware" => ["autentikasi"]], function () {
 
     // Pelatih
     Route::group(["middleware" => ["can:pelatih"]], function () {
-        Route::get('pelatih/home', [HomeController::class, 'pelatih'])->name('home');
+        Route::get('pelatih/home', [HomeController::class, 'pelatih']);
         Route::get("event", [EventController::class, "data_event"]);
         Route::get("/event/persyaratan/{id_persyaratan}/detail-persyaratan", [PersyaratanController::class, "detail"]);
 
@@ -121,7 +124,6 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::get("/event/persyaratan/{id_event}/{id_persyaratan}/edit", [PersyaratanController::class, "edit"]);
         Route::put("/event/persyaratan/{id_event}/{id_persyaratan}/update", [PersyaratanController::class, "update"]);
         Route::post("/event/persyaratan/{id}", [PersyaratanController::class, "store"]);
-
     });
     Route::get("/event/persyaratan/{id}", [EventController::class, "event_persyaratan"]);
     Route::prefix("berita")->group(function () {
@@ -147,7 +149,7 @@ Route::group(["middleware" => ["autentikasi"]], function () {
 
     // Pengunjung
     Route::group(["middleware" => ["can:pengunjung"]], function () {
-        Route::get('pengunjung/home', [HomeController::class, 'pengunjung'])->name('home');
+        Route::get('pengunjung/home', [HomeController::class, 'pengunjung']);
     });
 
     Route::prefix("akun")->group(function () {

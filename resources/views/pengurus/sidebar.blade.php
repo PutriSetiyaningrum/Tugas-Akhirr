@@ -1,7 +1,7 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-            <a href="{{ url('/home') }}" class="nav-link {{ Request::segment(1) == "pengurus" ? 'active' : '' }}">
+            <a href="{{ url('/home') }}" class="nav-link {{ Request::segment(1) == "home" ? 'active' : '' }}">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                     Dashboard
@@ -68,7 +68,7 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a href="pages/dashboard.html" class="nav-link">
+            <a href="{{ url('histori')}}" class="nav-link {{ Request::segment(1) == "histori" ? 'active' : '' }}">
                 <i class="nav-icon fa fa-history"></i>
                 <p>
                     Histori

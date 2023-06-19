@@ -164,26 +164,30 @@ class PersyaratanController extends Controller
             "foto" => $foto,
             "ijazah" => $ijazah,
             "akte" => $akte,
-            "pelatih_id" => Auth::user()->pelatih->id
+            "status" => '3'
+
         ]);
 
         return redirect('/event/persyaratan/' . $id_event);
     }
 
-    public function destroy($id_event, $id_persyaratan)
+    public function destroy(Request $request, $id_event, $id_persyaratan)
     {
-        $persyaratan = Persyaratan::where("id", $id_persyaratan)->first();
+        $persyaratan = Persyaratan::find($id_persyaratan);
 
-        Storage::delete($persyaratan->logo_sekolah);
-        Storage::delete($persyaratan->surat_rekomendasi_kepala_sekolah);
-        Storage::delete($persyaratan->form_pendaftaran);
-        Storage::delete($persyaratan->foto);
-        Storage::delete($persyaratan->ijazah);
-        Storage::delete($persyaratan->akte);
+
+        Storage::delete([
+            $persyaratan->logo_sekolah,
+            $persyaratan->surat_rekomendasi_kepala_sekolah,
+            $persyaratan->form_pendaftaran,
+            $persyaratan->foto,
+            $persyaratan->ijazah,
+            $persyaratan->akte
+        ]);
 
         $persyaratan->delete();
 
-        return back();
+        return redirect('/event/persyaratan/' . $id_event);
     }
 
     public function detail($id)
@@ -208,9 +212,25 @@ class PersyaratanController extends Controller
 
     public function ubah_status(Request $request, $id)
     {
+        $cek = Persyaratan::where("id", decrypt($id))->first();
+
+        if ($cek["deskripsi"] != NULL) {
+            if ($request["deskripsi"] == NULL) {
+                $deskripsi = NULL;
+            } else {
+                $deskripsi = $request->deskripsi;
+            }
+        } else {
+            if ($request["deskripsi"]) {
+                $deskripsi = $request["deskripsi"];
+            } else {
+                $deskripsi = NULL;
+            }
+        }
+
         Persyaratan::where("id", decrypt($id))->update([
             "status" => $request->status,
-            "deskripsi" => $request->deskripsi ? $request->deskripsi : NULL
+            "deskripsi" => $deskripsi
         ]);
 
         return redirect("/persyaratan");

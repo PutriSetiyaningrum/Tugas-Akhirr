@@ -19,6 +19,7 @@ return new class extends Migration
             $table->datetime('mulai');
             $table->datetime('selesai');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

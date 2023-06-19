@@ -55,6 +55,7 @@
                             <th class="text-center">Nama Event</th>
                             <th class="text-center">Kategori</th>
                             <th class="text-center">Jenis Cabang</th>
+                            <th class="text-center">Sekolah</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Aksi</th>
                             @endcan
@@ -85,18 +86,23 @@
                                 <small>
                                     Alasan {{ $item["deskripsi"] }}
                                 </small>
+                                @elseif($item["status"] == 3)
+                                <span class="badge badge-info">
+                                    Pengajuan Ulang
+                                </span>
                                 @endif
                             </td>
                             <td class="text-center">
                                 <a href="{{ url('/event/persyaratan/'.encrypt($item["id"])) . '/detail-persyaratan' }}" class="btn btn-primary btn-sm">
                                     <i class="fa fa-search"></i> Detail
                                 </a>
-                                @if ($item["status"] != 0)
+                                @if ($item["status"] == 2)
                                 <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('/event/persyaratan/'. encrypt($id) . '/' . $item['id'] . '/edit') }}"><i class="fa fa-edit"></i>Edit</a>
+                                    <a href="{{ url('/event/persyaratan/'. encrypt($id) . '/' . $item['id'] . '/edit') }}">
+                                        <i class="fa fa-edit"></i>
+                                        Edit
+                                    </a>
                                 </button>
-                                @else
-
                                 @endif
                             </td>
 
@@ -112,6 +118,7 @@
                             <td class="text-center">{{ $item["event"]["Nama_Event"] }}</td>
                             <td class="text-center">{{ $item["kategori"]["Nama_Kategori_Event"] }}</td>
                             <td class="text-center">{{ $item["cabang"]["Nama_Jenis_Cabang_Event"]}}</td>
+                            <td class="text-center">{{ $item->sekolah }}</td>
                             <td class="text-center">
                                 @if ($item["status"] == 0)
                                 <span class="badge badge-warning">
@@ -125,17 +132,22 @@
                                 <span class="badge badge-danger">
                                     Ditolak
                                 </span>
+                                @elseif($item["status"] == 3)
+                                <span class="badge badge-info">
+                                    Pengajuan Ulang
+                                </span>
                                 @endif
                             </td>
                             <td class="text-center">
                                 <a href="{{ url('/persyaratan/'.encrypt($item["id"])) . '/detail' }}" class="btn btn-primary btn-sm">
                                     <i class="fa fa-search"></i> Detail
                                 </a>
-                                @if ($item["status"] != 0)
-                                @else
+                                @if ($item->status == 0 || $item->status == 3)
                                 <a href="{{ url('/persyaratan/'. encrypt($item['id']) . '/ubah_status') }}" class="btn btn-success btn-sm">
                                     <i class="fa fa-edit"></i> Ubah Status
                                 </a>
+                                @else
+
                                 @endif
                             </td>
                         </tr>

@@ -25,10 +25,11 @@ return new class extends Migration
             $table->string('foto');
             $table->string('ijazah');
             $table->string('akte');
-            $table->enum('status', [0, 1, 2])->default(0);
+            $table->enum('status', [0, 1, 2, 3])->default(0);
             $table->text("deskripsi")->nullable();
             $table->timestamps();
             $table->integer('pelatih_id');
+            $table->softDeletes();
         });
     }
 

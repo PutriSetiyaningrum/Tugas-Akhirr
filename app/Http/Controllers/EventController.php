@@ -21,6 +21,7 @@ class EventController extends Controller
     public function index()
     {
         $event = event::get();
+
         return view('panitia.master.event.event', compact('event'));
     }
 
@@ -108,13 +109,25 @@ class EventController extends Controller
     {
         $data["event"] = event::get();
 
+        $waktu = strtotime(date('Y-m-d H:i:s'));
+
+        foreach ($data["event"] as $item) {
+            $tanggal = strtotime($item['selesai']);
+
+            if ($waktu > $tanggal) {
+                Persyaratan::where("event_id", $item->id)->delete();
+                $item->delete();
+                return redirect("/event");
+            }
+        }
+
         return view("pelatih.event.event", $data);
     }
 
     public function event_persyaratan($id)
     {
         $data["id"] = decrypt($id);
-        $data["persyaratan"] = Persyaratan::where("pelatih_id", decrypt($id))->where("event_id", Auth::user()->pelatih->id);
+        $data["persyaratan"] = Persyaratan::where("event_id", decrypt($id))->where("pelatih_id", Auth::user()->pelatih->id)->get();
 
         return view('panitia.persyaratan.persyaratan', $data);
     }
