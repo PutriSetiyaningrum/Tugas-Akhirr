@@ -27,14 +27,6 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ url('/berita/tentangevent') }}" class="nav-link {{ Request::segment(2) == 'tentangevent' ? 'active' : '' }} ">
-                        <i class="nav-icon far fa-file-alt"></i>
-                        <p>Tentang Event</p>
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
                     <a href="{{ url('/berita/baganevent') }}" class="nav-link {{ Request::segment(2) == 'baganevent' ? 'active' : '' }} ">
                         <i class="nav-icon far fa-file-alt"></i>
                         <p>BaganEvent</p>

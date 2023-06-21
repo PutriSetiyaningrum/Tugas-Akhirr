@@ -11,11 +11,11 @@ use App\Models\Pengunjung;
 use App\Models\Event;
 use App\Models\Kategori;
 use App\Models\Cabang;
-use App\Models\TentangEvent;
 use App\Models\BaganEvent;
 use App\Models\HasilPertandingan;
 use App\Models\JenisCabangEvent;
 use App\Models\tentangperbasi;
+use App\Models\Persyaratan;
 
 class HomeController extends Controller
 {
@@ -25,7 +25,8 @@ class HomeController extends Controller
         $user = User::where('level', 'panitia')->count();
         $pengunjung = Pengunjung::count();
         $tentangperbasi = tentangperbasi::count();
-        return view('pengurus.home', compact('pelatih', 'user', 'pengunjung', 'tentangperbasi'));
+        $histori = Persyaratan::count();
+        return view('pengurus.home', compact('pelatih', 'user', 'pengunjung', 'tentangperbasi', 'histori'));
     }
 
     public function home()
@@ -34,26 +35,24 @@ class HomeController extends Controller
         $event = event::count();
         $kategorievent = kategorievent::count();
         $jeniscabangevent = JenisCabangEvent::count();
-        $tentangevent = TentangEvent::count();
         $baganevent = BaganEvent::count();
         $hasilpertandingan = HasilPertandingan::count();
-        return view('panitia.home', compact('pelatih', 'event', 'kategorievent', 'jeniscabangevent', 'tentangevent', 'baganevent', 'hasilpertandingan'));
+        $persyaratan = Persyaratan::count();
+        return view('panitia.home', compact('pelatih', 'event', 'kategorievent', 'jeniscabangevent', 'baganevent', 'hasilpertandingan', 'persyaratan'));
     }
 
     public function pelatih()
     {
         $event = event::count();
-        $tentangevent = TentangEvent::count();
         $baganevent = BaganEvent::count();
         $hasilpertandingan = HasilPertandingan::count();
-        return view('pelatih.home', compact('event', 'tentangevent', 'baganevent', 'hasilpertandingan'));
+        return view('pelatih.home', compact('event', 'baganevent', 'hasilpertandingan'));
     }
 
     public function pengunjung()
     {
-        $tentangevent = TentangEvent::count();
         $baganevent = BaganEvent::count();
         $hasilpertandingan = HasilPertandingan::count();
-        return view('pengunjung.home', compact('tentangevent', 'baganevent', 'hasilpertandingan'));
+        return view('pengunjung.home', compact('baganevent', 'hasilpertandingan'));
     }
 }
