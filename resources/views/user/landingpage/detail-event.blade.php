@@ -29,99 +29,117 @@ use Carbon\Carbon;
                     <div id="comments">
                         <h2 class="title-comment">02 <span class="text-color-3">[COMMENTS]</span></h2>
                         <p class="text">{{ $event->deskripsi}}</p>
+                        @if (empty(Auth::user()))
+                        <div class="alert alert-danger">
+                            Anda Harus Login Terlebih Dahulu Untuk Mengisi Komentar
+                        </div>
+                        @else
+                        <fieldset class="message-wrap">
+                            <div class="btn-group">
+                                <button class="btn btn-danger" id="btn-komentar" style="height: 40px; font-size: 16px; border-radius: 5px; width: 120px">
+                                    <i class="fa fa-comment"></i> Komentar
+                                </button>
+                            </div>
+                        </fieldset>
+                        <form action="" style="display:none" id="komentar" method="POST">
+                            @csrf
+                            <input type="hidden" name="id_event" value="{{$event->id}}">
+                            <input type="hidden" name="parent" value="0">
+                            <textarea class="form-control mt-3" name="komentar" rows="8" tabindex="4"
+                            placeholder="Enter Your Message" aria-required="true" style="font-size: 16px"></textarea>
+                            <button class="btn btn-primary" style="margin-top: 10px; height: 40px; font-size: 16px; border-radius: 5px; width: 120px">
+                                <i class="fa fa-save"></i> Submit
+                            </button>
+                        </form>
+                        @endif
+                        <hr>
                         <ol class="comment-list">
+                            @foreach ($event->komentar()->where("parent", 0)->orderBy("created_at", "DESC")->get() as $item)
                             <li class="comment-01">
                                 <div class="comment-avatar">
-                                    <img src="{{ url('') }}/assets/user/images/image-box/comment-avatar-01.png" alt="images">
+                                    @if (empty($item->user->foto))
+                                    <img src="{{ url('/AdminLTE/dist/img/user.png') }}" width="50">
+                                    @else
+                                    <img src="{{ url('/storage/'.$item->user->foto) }}" width="50">
+                                    @endif
                                 </div>
-                                <div class="comment-content">
+                                <div class="comment-content" >
                                     <div class="comment-meta">
                                         <div class="comment-author">
-                                            <h5> Monsur Rahman Lito </h5>
+                                            <h5>
+                                                {{ $item["user"]["name"] }}
+                                            </h5>
                                         </div>
                                         <div class="star">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
+                                            {{ $item["created_at"]->diffForHumans() }}
                                         </div>
                                     </div>
                                     <div class="comment-text">
                                         <p>
-                                            Phasellus ac consequat turpis, sit amet fermentum nulla. Donec dignissim augue nunc. Praesent bibendum
-                                            erat ac lectus molestie lobortis. Curabitur ultrices justo ac leo facilisis tincidunt. Maecenas et
-                                            dui eget nisl ornare scelerisque.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
                                         </p>
                                     </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="comment-avatar">
-                                    <img src="{{ url('') }}/assets/user/images/image-box/comment-avatar-02.png"
-                                    alt="images">
-                                </div>
-                                <div class="comment-content">
-                                    <div class="comment-meta">
-                                        <div class="comment-author"><h5> Monsur Rahman Lito </h5></div>
-                                        <div class="star">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
+                                    @foreach ($item->childs()->orderBy("created_at", "DESC")->get() as $child)
+
+                                    <div class="comment-meta pt-3">
+                                        @if (empty($item->user->foto))
+                                        <img src="{{ url('/AdminLTE/dist/img/user.png') }}" width="50">
+                                        @else
+                                        <img src="{{ url('/storage/'.$item->user->foto) }}" width="50">
+                                        @endif
+                                        <div class="comment-author pl-3" style="margin-top: 15px;">
+                                            <h5>
+                                                {{ $child["user"]["name"] }}
+                                            </h5>
+                                        </div>
+                                        <div class="star" style="margin-top: 15px">
+                                            {{ $child["created_at"]->diffForHumans() }}
                                         </div>
                                     </div>
                                     <div class="comment-text">
-                                        <p>Phasellus ac consequat turpis, sit amet fermentum nulla. Donec dignissim augue nunc. Praesent bibendum
-                                            erat ac lectus molestie lobortis. Curabitur ultrices justo ac leo facilisis tincidunt. Maecenas et
-                                            dui eget nisl ornare scelerisque.</p>
-                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
+                                        </p>
                                     </div>
-                                </li>
-                            </ol>
-                            <div id="respond" class="respond-comment">
-                                <h2 class="title-comment">good <span class="text-color-3">[COMMENTS]</span></h2>
-                                <p class="text"> Nunc velit metus, volutpat elementum euismod eget, cursus nec nunc.</p>
-                                <form method="post" id="contactform" class="comment-form form-submit"
-                                action="./contact/contact-process.php" accept-charset="utf-8"
-                                novalidate="novalidate">
+                                    @endforeach
 
-                                <div class="text-wrap clearfix">
-                                    <fieldset class="name-wrap style-text">
-                                        <input type="text" id="name" class="tb-my-input" name="name"
-                                        tabindex="1" placeholder="Enter Full Name" value="" size="32"
-                                        aria-required="true" required="">
-                                    </fieldset>
-                                    <fieldset class="email-wrap style-text">
-                                        <input type="email" id="email" class="tb-my-input" name="email"
-                                        tabindex="2" placeholder="Enter Your Email Address" value="" size="32"
-                                        aria-required="true" required="">
-                                    </fieldset>
-                                    <fieldset class="phone-wrap style-text">
-                                        <input type="tel" id="phone" class="tb-my-input" name="phone"
-                                        tabindex="1" placeholder="+55 (121) 234 444" value="" size="32"
-                                        aria-required="true" required="">
-                                    </fieldset>
-                                    <fieldset class="site-wrap style-text">
-                                        <input type="text" id="site" class="tb-my-input" name="site"
-                                        tabindex="1" placeholder="Enter Your Website" value="" size="32"
-                                        aria-required="true" required="">
-                                    </fieldset>
+                                    <form action="" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id_event" value="{{$item->id_event}}">
+                                        <input type="hidden" name="parent" value="{{$item->id}}">
+                                        <textarea name="komentar" class="form-control" rows="5" style="margin-top: 10px; font-size: 16px" placeholder="Masukkan Balasan Komentar"></textarea>
+                                        <button type="reset" class="btn btn-danger mt-3" style="height: 40px; font-size: 16px; border-radius: 5px; width: 70px">
+                                            <i class="fa fa-times"></i> Batal
+                                        </button>
+                                        <button type="submit" class="btn btn-primary mt-3" style="height: 40px; font-size: 16px; border-radius: 5px; width: 80px">
+                                            <i class="fa fa-save"></i> Balas
+                                        </button>
+                                    </form>
                                 </div>
-                                <fieldset class="message-wrap">
-                                    <textarea id="comment-message" name="message" rows="8" tabindex="4"
-                                    placeholder="Enter Your Message"
-                                    aria-required="true"></textarea>
-                                </fieldset>
-                                <button name="submit" type="submit" id="comment-reply"
-                                class="button btn-style4 btn-submit-comment"><span>Submit Now </span></button>
-                            </form>
-                        </div>
+                            </li>
+                            @endforeach
+                        </ol>
                     </div>
-                </article>
-            </div>
+                </div>
+            </article>
         </div>
     </div>
+</div>
 </section>
+@endsection
+
+@section("javascript")
+<script>
+    $(document).ready(function() {
+        $("#btn-komentar").click(function() {
+            $('#komentar').toggle('slide')
+        });
+    })
+</script>
 @endsection

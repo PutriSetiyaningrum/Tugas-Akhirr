@@ -49,6 +49,14 @@
                     </a>
                 </li>
             </ul>
+            <li class="nav-item">
+                <a href="{{ url('/komentar_event')}}" class="nav-link {{ Request::segment(1) == "komentar_event" ? 'active' : '' }} ">
+                    <i class="nav-icon far fa-comment"></i>
+                    <p>
+                        Komentar Event
+                    </p>
+                </a>
+            </li>
         </li>
     </ul>
 </nav>

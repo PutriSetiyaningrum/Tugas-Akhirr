@@ -20,4 +20,9 @@ class event extends Model
     {
         return $this->belongsTo("App\Models\User", "user_id", "id");
     }
+
+    public function komentar()
+    {
+        return $this->hasMany("App\Models\Komentar", "id_event", "id");
+    }
 }

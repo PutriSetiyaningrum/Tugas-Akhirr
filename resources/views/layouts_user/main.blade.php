@@ -36,18 +36,20 @@
 
         @include('layouts_user.footer')
 
-
-        <script src="../../assets/user/js/jquery.min.js"></script>
-        <script src="../../assets/user/js/countto.js"></script>
-        <script src="../../assets/user/js/wow.min.js"></script>
-        <script src="../../assets/user/js/main.js"></script>
-        <script src="../../assets/user/js/shortcodes.js"></script>
-        <script src="../../assets/user/js/jquery.easing.js"></script>
-        <script src="../../assets/user/js/jquery.fancybox.js"></script>
-        <script src="../../assets/user/js/plugin.js"></script>
+        <script src="{{ url('') }}/assets/user/js/jquery.min.js"></script>
+        <script src="{{ url('') }}/assets/user/js/countto.js"></script>
+        <script src="{{ url('') }}/assets/user/js/wow.min.js"></script>
+        <script src="{{ url('') }}/assets/user/js/main.js"></script>
+        <script src="{{ url('') }}/assets/user/js/shortcodes.js"></script>
+        <script src="{{ url('') }}/assets/user/js/jquery.easing.js"></script>
+        <script src="{{ url('') }}/assets/user/js/jquery.fancybox.js"></script>
+        <script src="{{ url('') }}/assets/user/js/plugin.js"></script>
 
         <!-- Swiper slide -->
-        <script src="../../assets/user/js/swiper-bundle.min.js"></script>
-        <script src="../../assets/user/js/swiper.js"></script>
+        <script src="{{ url('') }}/assets/user/js/swiper-bundle.min.js"></script>
+        <script src="{{ url('') }}/assets/user/js/swiper.js"></script>
+
+        @yield("javascript")
+
     </body>
     </html>

@@ -56,18 +56,53 @@
                                             <li class="menu-item {{ Request::is("s&k") ? 'current-menu-item' : '' }}">
                                                 <a href="{{ url('s&k')}}">Syarat & Ketentuan</a>
                                             </li>
-                                            <li class="menu-item {{ Request::is("kontak") ? 'current-menu-item' : '' }}">
-                                                <a href="{{ url('kontak')}}">Kontak</a>
-                                            </li>
                                             <li class="menu-item {{ Request::is("tentang-event") ? 'current-menu-item' : '' }}">
                                                 <a href="{{ url('tentang-event')}}">Event</a>
                                             </li>
+                                            @if (empty(Auth::user()))
                                             <li class="menu-item">
                                                 <a href="{{ url('login')}}">Login</a>
                                             </li>
                                             <li class="menu-item">
                                                 <a href="{{ url('register')}}">Daftar</a>
                                             </li>
+                                            @else
+                                            <li class="menu-item">
+                                                <a href="{{ url('/logout') }}">
+                                                    Logout
+                                                </a>
+                                            </li>
+                                            @if (Auth::user()->level == "pengunjung")
+                                            <li class="menu-item">
+                                                <a href="{{ url('/profil') }}">
+                                                    Profil
+                                                </a>
+                                            </li>
+                                            @else
+
+                                            @endif
+                                            @if (Auth::user()->level != "pengunjung")
+                                            <li class="menu-item">
+                                                @if (Auth::user()->level == "pengurus")
+
+                                                <a href="{{ url('/home') }}">
+
+                                                @elseif(Auth::user()->level == "panitia")
+
+                                                <a href="{{ url('/panitia/home') }}">
+
+                                                @elseif(Auth::user()->level == "pelatih")
+
+                                                <a href="{{ url('/pelatih/home') }}">
+
+                                                @endif
+                                                    Dashboard
+                                                </a>
+                                            </li>
+                                            @else
+
+                                            @endif
+                                            @endif
                                         </ul>
                                     </nav>
                                     <!-- /#main-nav -->

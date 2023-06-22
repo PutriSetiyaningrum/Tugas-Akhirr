@@ -30,7 +30,7 @@ class LoginController extends Controller
             } else if ($cek->level == "pelatih") {
                 return redirect()->intended("/pelatih/home");
             } else if ($cek->level == "pengunjung") {
-                return redirect()->intended("/pengunjung/home");
+                return redirect()->intended("/");
             }
         } else {
             return back();

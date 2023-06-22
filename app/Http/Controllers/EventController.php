@@ -162,4 +162,11 @@ class EventController extends Controller
 
         return view('panitia.persyaratan.persyaratan', $data);
     }
+
+    public function komentar_event()
+    {
+        $data["event"] = event::get();
+
+        return view("public.komentar_event", $data);
+    }
 }

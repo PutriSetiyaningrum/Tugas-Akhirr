@@ -13,11 +13,13 @@ use App\Http\Controllers\BaganEventController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HasilPertandinganController;
 use App\Http\Controllers\HistoriController;
+use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\PelatihController;
 use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\PersyaratanController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProfileController;
 use Doctrine\DBAL\Driver\Middleware;
 
@@ -46,7 +48,9 @@ Route::get('/kontak', function () {
 });
 Route::get('/tentang-event', [AppController::class, "event"]);
 Route::get('/tentang-event/{slug}', [AppController::class, 'tentang_event']);
+Route::post('/tentang-event/{slug}', [AppController::class, 'detail_event']);
 Route::get('/tentang-perbasi', [AppController::class, 'about'])->name('app.about');
+
 Route::get('/login', function () {
     return view('/user/landingpage/login');
 });
@@ -127,6 +131,9 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::put("/event/persyaratan/{id_event}/{id_persyaratan}/update", [PersyaratanController::class, "update"]);
         Route::post("/event/persyaratan/{id}", [PersyaratanController::class, "store"]);
     });
+
+    Route::get("/komentar_event", [EventController::class, "komentar_event"]);
+
     Route::get("/event/persyaratan/{id}", [EventController::class, "event_persyaratan"]);
     Route::prefix("berita")->group(function () {
         Route::get('/tentangevent', function () {
@@ -151,6 +158,7 @@ Route::group(["middleware" => ["autentikasi"]], function () {
 
     // Pengunjung
     Route::group(["middleware" => ["can:pengunjung"]], function () {
+        Route::resource('profil', ProfilController::class);
         Route::get('pengunjung/home', [HomeController::class, 'pengunjung']);
     });
 
