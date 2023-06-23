@@ -51,10 +51,10 @@
                                                 <a href="/">Home</a>
                                             </li>
                                             <li class="menu-item {{ Request::is("tentang-perbasi") ? 'current-menu-item' : '' }}">
-                                                <a href="{{ route('app.about') }}">Tentang PERBASI</a>
+                                                <a href="{{ route('app.about') }}">Tentang PERBASI IMY</a>
                                             </li>
                                             <li class="menu-item {{ Request::is("s&k") ? 'current-menu-item' : '' }}">
-                                                <a href="{{ url('s&k')}}">Syarat & Ketentuan</a>
+                                                <a href="{{ url('s&k')}}">Syarat & Panduan</a>
                                             </li>
                                             <li class="menu-item {{ Request::is("tentang-event") ? 'current-menu-item' : '' }}">
                                                 <a href="{{ url('tentang-event')}}">Event</a>

@@ -7,11 +7,13 @@ use Carbon\Carbon;
 
 <section class="flat-title-page"><div class="overlay-page"></div>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="breadcrumbs">
-                    <h1>Event<span class="style-color"></span>
-                    </h1>
+        <div class="team-heading wow fadeInDown" data-wow-delay="0ms" data-wow-duration="500ms">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="breadcrumbs">
+                        <h1>Event<span class="style-color"></span>
+                        </h1>
+                    </div>
                 </div>
             </div>
         </div>
