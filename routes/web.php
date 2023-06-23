@@ -135,14 +135,6 @@ Route::group(["middleware" => ["autentikasi"]], function () {
     Route::get("/komentar_event", [EventController::class, "komentar_event"]);
 
     Route::get("/event/persyaratan/{id}", [EventController::class, "event_persyaratan"]);
-    Route::prefix("berita")->group(function () {
-        Route::get('/tentangevent', function () {
-            return view('/pelatih/berita/tentangevent');
-        });
-
-        Route::get("baganevent", [BaganEventController::class, "data_baganevent"]);
-        Route::get("hasilpertandingan", [HasilPertandinganController::class, "data_hasilpertandingan"]);
-    });
 
     Route::prefix("persyaratan")->group(function () {
         Route::prefix("file")->group(function () {

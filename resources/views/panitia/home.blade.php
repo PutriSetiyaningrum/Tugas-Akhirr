@@ -117,14 +117,14 @@
                     <div class="small-box bg-white">
                         <div class="inner">
                             <h3>
-{{$persyaratan}}
+                                {{$persyaratan}}
                             </h3>
                             <b><p>PERSYARATAN</p></b>
                         </div>
                         <div class="icon">
                             <i class="nav-icon far fa-calendar-alt"></i>
                         </div>
-                        <a href="{{ url ('/persyaratan/persyaratan')}}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ url('persyaratan')}}" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- /.col -->

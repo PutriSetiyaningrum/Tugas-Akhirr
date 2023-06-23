@@ -76,10 +76,7 @@ use Carbon\Carbon;
                                     </div>
                                     <div class="comment-text">
                                         <p>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
+                                            {{ $item["komentar"] }}
                                         </p>
                                     </div>
                                     @foreach ($item->childs()->orderBy("created_at", "DESC")->get() as $child)
@@ -101,10 +98,7 @@ use Carbon\Carbon;
                                     </div>
                                     <div class="comment-text">
                                         <p>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eius quidem optio veritatis atque autem quia quam consequuntur, nemo, necessitatibus hic? Accusantium quod cumque explicabo, reiciendis labore quo ratione quae.
+                                            {{ $child["komentar"] }}
                                         </p>
                                     </div>
                                     @endforeach
