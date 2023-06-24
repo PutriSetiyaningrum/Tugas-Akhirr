@@ -23,7 +23,7 @@ use Carbon\Carbon;
 <section class="flat-contact flat-blog-details">
     <div class="container">
         <div class="row">
-            @foreach ($event as $item)
+            @forelse ($event as $item)
             <div class="col-md-12">
                 <div class="blog-wrap flat-blog-grid">
                     <div class="grid-post post-1">
@@ -45,9 +45,9 @@ use Carbon\Carbon;
                         </div>
                         <div class="content">
                             <div class="meta link-style-3 font">
-                                <a class="entry-author" href="team.html">
+                                <a class="entry-author">
                                     {{ $item["user"]["name"] }}
-                                </a> <a class="entry-comment" href="blog.html">0 Comments</a>
+                                </a> <a class="entry-comment" href="{{ url('/tentang-event') . '/' . $item->slug }}">0 Comments</a>
                             </div>
                             <h3 class="title-item">
                                 <a href="{{ url('/tentang-event') . '/' . $item->slug }}">
@@ -58,7 +58,9 @@ use Carbon\Carbon;
                     </div>
                 </div>
             </div>
-            @endforeach
+            @empty
+            <h4 class="text-center">Data tidak ada!</h4>
+            @endforelse
         </div>
     </div>
 </section>

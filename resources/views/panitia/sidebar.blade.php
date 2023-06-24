@@ -77,14 +77,6 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ url('/informasi/baganevent') }}" class="nav-link {{ Request::segment(2) == 'baganevent' ? 'active' : '' }}" class="nav-link">
-                        <i class="nav-icon far fa-file-alt"></i>
-                        <p>Bagan Event</p>
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
                     <a href="{{ url('/informasi/hasilpertandingan') }}" class="nav-link {{ Request::segment(2) == 'hasilpertandingan' ? 'active' : '' }}" class="nav-link">
                         <i class="nav-icon far fa-file-alt"></i>
                         <p>Hasil Pertandingan</p>

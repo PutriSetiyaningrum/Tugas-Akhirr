@@ -27,7 +27,7 @@
                             <h3 class="text-center">{{ $data['Deskripsi'] }}</h3>
                         </div>
                         @empty
-                        <p class="text-center">Data tidak ada!</p>
+                        <h4 class="text-center">Data Tentang Perbasi Tidak Ada</h4>
                         @endforelse
                     </div>
                 </div>

@@ -82,10 +82,10 @@ use Carbon\Carbon;
                                     @foreach ($item->childs()->orderBy("created_at", "DESC")->get() as $child)
 
                                     <div class="comment-meta pt-3">
-                                        @if (empty($item->user->foto))
+                                        @if (empty($child->user->foto))
                                         <img src="{{ url('/AdminLTE/dist/img/user.png') }}" width="50">
                                         @else
-                                        <img src="{{ url('/storage/'.$item->user->foto) }}" width="50">
+                                        <img src="{{ url('/storage/'.$child->user->foto) }}" width="50">
                                         @endif
                                         <div class="comment-author pl-3" style="margin-top: 15px;">
                                             <h5>
@@ -108,12 +108,16 @@ use Carbon\Carbon;
                                         <input type="hidden" name="id_event" value="{{$item->id_event}}">
                                         <input type="hidden" name="parent" value="{{$item->id}}">
                                         <textarea name="komentar" class="form-control" rows="5" style="margin-top: 10px; font-size: 16px" placeholder="Masukkan Balasan Komentar"></textarea>
+                                        @if (empty(Auth::user()))
+
+                                        @else
                                         <button type="reset" class="btn btn-danger mt-3" style="height: 40px; font-size: 16px; border-radius: 5px; width: 70px">
                                             <i class="fa fa-times"></i> Batal
                                         </button>
                                         <button type="submit" class="btn btn-primary mt-3" style="height: 40px; font-size: 16px; border-radius: 5px; width: 80px">
                                             <i class="fa fa-save"></i> Balas
                                         </button>
+                                        @endif
                                     </form>
                                 </div>
                             </li>
