@@ -51,13 +51,18 @@
                                                 <a href="/">Home</a>
                                             </li>
                                             <li class="menu-item {{ Request::is("tentang-perbasi") ? 'current-menu-item' : '' }}">
-                                                <a href="{{ route('app.about') }}">Tentang PERBASI IMY</a>
+                                                <a href="{{ url('/tentang-perbasi') }}">Tentang PERBASI IMY</a>
                                             </li>
                                             <li class="menu-item {{ Request::is("s&k") ? 'current-menu-item' : '' }}">
                                                 <a href="{{ url('s&k')}}">Syarat & Panduan</a>
                                             </li>
-                                            <li class="menu-item {{ Request::is("tentang-event") ? 'current-menu-item' : '' }}">
-                                                <a href="{{ url('tentang-event')}}">Event</a>
+                                            <li class="menu-item {{Request::segment(1) == "informasi" ? 'current-menu-item' : ''}}">
+                                                <a>Informasi</a>
+                                                <ul class="sub-menu">
+                                                    <li class="menu-item "><a href="{{ url('/informasi/tentang-event')}}">Event</a></li>
+                                                    <li class="menu-item"><a href="case-study.html">Jadwal Pertandingan</a></li>
+                                                    <li class="menu-item"><a href="case-sidebar.html">Hasil Pertandingan</a></li>
+                                                </ul>
                                             </li>
                                             @if (empty(Auth::user()))
                                             <li class="menu-item">

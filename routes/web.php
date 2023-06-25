@@ -46,9 +46,11 @@ Route::get('/s&k', function () {
 Route::get('/kontak', function () {
     return view('/user/landingpage/kontak');
 });
-Route::get('/tentang-event', [AppController::class, "event"]);
-Route::get('/tentang-event/{slug}', [AppController::class, 'tentang_event']);
-Route::post('/tentang-event/{slug}', [AppController::class, 'detail_event']);
+Route::prefix("informasi")->group(function () {
+    Route::get('/tentang-event', [AppController::class, "event"]);
+    Route::get('/tentang-event/{slug}', [AppController::class, 'tentang_event']);
+    Route::post('/tentang-event/{slug}', [AppController::class, 'detail_event']);
+});
 Route::get('/tentang-perbasi', [AppController::class, 'about'])->name('app.about');
 
 Route::get('/login', function () {
