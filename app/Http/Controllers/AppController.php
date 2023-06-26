@@ -45,17 +45,17 @@ class AppController extends Controller
         );
     }
 
-    public function hasil_pertandingan()
-    {
-        $data["hasilpertandingan"] = hasilpertandingan::get();
-
-        return view("user.landingpage.hasil-pertandingan", $data);
-    }
-
     public function jadwal_pertandingan()
     {
         $data["jadwalpertandingan"] = hasilpertandingan::get();
 
         return view("user.landingpage.jadwal-pertandingan", $data);
+    }
+
+    public function hasil_pertandingan()
+    {
+        $data["hasilpertandingan"] = hasilpertandingan::orderBy("created_at", "DESC")->get();
+
+        return view("user.landingpage.hasil-pertandingan", $data);
     }
 }
