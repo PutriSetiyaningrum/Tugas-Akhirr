@@ -30,7 +30,7 @@
         <div class="card card-info card-outline">
             <div class="card-header">
                 <h5 class="card-title">
-                    <a href="{{ url('/master/event/'.encrypt($persyaratan->event_id)) }}">
+                    <a href="{{ url('/master/event/') }}">
                         Kembali
                     </a>
                 </h5>
@@ -42,14 +42,14 @@
                             <td class="text-center" style="width: 200px"><b>Gambar</b></td>
                             <td class="text-center">:</td>
                             <td>
-                                <img src="{{ url('/storage/'.$persyaratan->event->gambar) }}" height="100%" width="150" alt="srcset">
+                                <img src="{{ url('/storage/'.$persyaratan->gambar) }}" height="100%" width="150" alt="srcset">
                             </td>
                         </tr>
                         <tr>
                             <td class="text-center" style="width: 200px"><b>Deskripsi</b></td>
                             <td class="text-center">:</td>
                             <td>
-                                {{ $persyaratan->event->deskripsi }}
+                                {{ $persyaratan->deskripsi }}
                             </td>
                         </tr>
                     </tbody>

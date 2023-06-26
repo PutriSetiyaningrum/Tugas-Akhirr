@@ -71,7 +71,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $data["persyaratan"] = Persyaratan::where("id", decrypt($id))->withTrashed()->first();
+        $data["persyaratan"] = event::where("id", decrypt($id))->withTrashed()->first();
 
         return view("panitia.master.event.detail-event", $data);
     }

@@ -56,9 +56,6 @@
                         <td class="text-center">{{ $item->selesai }}</td>
                         <td class="text-center">{{ $count }} Orang</td>
                         <td class="text-center">
-                            <a href="{{ url('/komentar/event/'.$item["slug"]) }}" class="btn btn-warning btn-sm">
-                                <i class="fa fa-search"></i>
-                            </a>
                             <a href="{{ url('/informasi/tentang-event/' . $item["slug"]) }}" target="_blank" class="btn btn-primary btn-sm">
                                 <i class="fa fa-eye"></i>
                             </a>
