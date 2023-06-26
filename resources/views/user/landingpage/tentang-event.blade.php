@@ -11,7 +11,7 @@ use Carbon\Carbon;
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="breadcrumbs">
-                        <h1>Event<span class="style-color"></span>
+                        <h1> Tentang Event<span class="style-color"></span>
                         </h1>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\CounterArtikel;
 use App\Models\event;
+use App\Models\hasilpertandingan;
 use App\Models\tentangperbasi;
 use App\Models\Komentar;
 use Illuminate\Http\Request;
@@ -42,5 +43,19 @@ class AppController extends Controller
             "message",
             "<div style='margin-top: 7px'>Success Komentar Anda Berhasil di Tambahkan</div>"
         );
+    }
+
+    public function hasil_pertandingan()
+    {
+        $data["hasilpertandingan"] = hasilpertandingan::get();
+
+        return view("user.landingpage.hasil-pertandingan", $data);
+    }
+
+    public function jadwal_pertandingan()
+    {
+        $data["jadwalpertandingan"] = hasilpertandingan::get();
+
+        return view("user.landingpage.jadwal-pertandingan", $data);
     }
 }

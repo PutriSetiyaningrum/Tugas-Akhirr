@@ -59,9 +59,9 @@
                                             <li class="menu-item {{Request::segment(1) == "informasi" ? 'current-menu-item' : ''}}">
                                                 <a>Informasi</a>
                                                 <ul class="sub-menu">
-                                                    <li class="menu-item "><a href="{{ url('/informasi/tentang-event')}}">Event</a></li>
-                                                    <li class="menu-item"><a href="case-study.html">Jadwal Pertandingan</a></li>
-                                                    <li class="menu-item"><a href="case-sidebar.html">Hasil Pertandingan</a></li>
+                                                    <li class="menu-item"><a href="{{ url('/informasi/tentang-event') }}">Tentang Event</a></li>
+                                                    <li class="menu-item"><a href="{{ url('/informasi/jadwal-pertandingan') }}">Jadwal Pertandingan</a></li>
+                                                    <li class="menu-item"><a href="{{ url('/informasi/hasil-pertandingan') }}">Hasil Pertandingan</a></li>
                                                 </ul>
                                             </li>
                                             @if (empty(Auth::user()))
