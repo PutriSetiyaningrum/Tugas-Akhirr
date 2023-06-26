@@ -13,6 +13,7 @@ use App\Http\Controllers\BaganEventController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HasilPertandinganController;
 use App\Http\Controllers\HistoriController;
+use App\Http\Controllers\JadwalPertandinganController;
 use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PanitiaController;
@@ -110,8 +111,7 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         });
 
         Route::prefix("informasi")->group(function () {
-            Route::resource('tentangevent', TentangeventController::class);
-            Route::resource('baganevent', BaganEventController::class);
+            Route::resource('jadwalpertandingan', JadwalPertandinganController::class);
             Route::resource('hasilpertandingan', HasilpertandinganController::class);
         });
 

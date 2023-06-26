@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CounterArtikel;
 use App\Models\event;
 use App\Models\hasilpertandingan;
+use App\Models\JadwalPertandingan;
 use App\Models\tentangperbasi;
 use App\Models\Komentar;
 use Illuminate\Http\Request;
@@ -47,7 +48,7 @@ class AppController extends Controller
 
     public function jadwal_pertandingan()
     {
-        $data["jadwalpertandingan"] = hasilpertandingan::get();
+        $data["jadwalpertandingan"] = JadwalPertandingan::get();
 
         return view("user.landingpage.jadwal-pertandingan", $data);
     }

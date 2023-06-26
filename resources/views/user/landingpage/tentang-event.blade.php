@@ -59,7 +59,11 @@ use Carbon\Carbon;
                 </div>
             </div>
             @empty
-            <h4 class="text-center">Data tidak ada!</h4>
+            <div class="col-lg-12">
+                <div class="work-heading wow fadeInDown" data-wow-delay="0ms" data-wow-duration="500ms">
+                    <h2>Tidak Ada Event</h2>
+                </div>
+            </div>
             @endforelse
         </div>
     </div>
