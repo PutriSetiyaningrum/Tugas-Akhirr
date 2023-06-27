@@ -26,7 +26,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="deskripsi">Deskripsi</label>
-                                <input type="text" class="form-control" id="Deskripsi" name="deskripsi" placeholder="Deskripsi" autocomplete="off">
+                                <textarea type="text" class="form-control" id="Deskripsi" name="deskripsi" placeholder="Deskripsi" autocomplete="off"></textarea>
                             </div>
                         </div>
                         <!-- /.card-body -->
