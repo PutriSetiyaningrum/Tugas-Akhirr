@@ -27,8 +27,9 @@ use Carbon\Carbon;
             <div class="col-md-12">
                 <article class="post">
                     <div id="comments">
-                        <h2 class="title-comment">02 <span class="text-color-3">[COMMENTS]</span></h2>
+                        <h2 class="title-comment">deskripsi event <span class="text-color-3"></span></h2>
                         <p class="text">{{ $event->deskripsi}}</p>
+                        <h2 class="title-comment"><span class="text-color-3">berikan komentarmu</span></h2>
                         @if (empty(Auth::user()))
                         <div class="alert alert-danger">
                             Anda Harus Login Terlebih Dahulu Untuk Mengisi Komentar

@@ -42,7 +42,7 @@
                           </div>
                           <div class="form-group">
                             <label for="deskripsi">Deskripsi</label>
-                            <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="deskripsi" value="{{ $dt->deskripsi }}" autocomplete="off">
+                            <textarea type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="deskripsi" value="" autocomplete="off" rows="8" tabindex="4">{{ $dt->deskripsi }}</textarea>
                           </div>
                     </div>
                     <!-- /.card-body -->

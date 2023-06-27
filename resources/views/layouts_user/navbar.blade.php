@@ -53,8 +53,8 @@
                                             <li class="menu-item {{ Request::is("tentang-perbasi") ? 'current-menu-item' : '' }}">
                                                 <a href="{{ url('/tentang-perbasi') }}">Tentang PERBASI IMY</a>
                                             </li>
-                                            <li class="menu-item {{ Request::is("s&k") ? 'current-menu-item' : '' }}">
-                                                <a href="{{ url('s&k')}}">Syarat & Panduan</a>
+                                            <li class="menu-item {{ Request::is("syarat&panduan") ? 'current-menu-item' : '' }}">
+                                                <a href="{{ url('/syarat&panduan')}}">Syarat & Panduan</a>
                                             </li>
                                             <li class="menu-item {{Request::segment(1) == "informasi" ? 'current-menu-item' : ''}}">
                                                 <a>Informasi</a>

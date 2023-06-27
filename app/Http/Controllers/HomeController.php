@@ -12,6 +12,7 @@ use App\Models\Event;
 use App\Models\Kategori;
 use App\Models\Cabang;
 use App\Models\HasilPertandingan;
+use App\Models\JadwalPertandingan;
 use App\Models\JenisCabangEvent;
 use App\Models\tentangperbasi;
 use App\Models\Persyaratan;
@@ -34,9 +35,10 @@ class HomeController extends Controller
         $event = event::count();
         $kategorievent = kategorievent::count();
         $jeniscabangevent = JenisCabangEvent::count();
+        $jadwalpertandingan = JadwalPertandingan::count();
         $hasilpertandingan = HasilPertandingan::count();
         $persyaratan = Persyaratan::count();
-        return view('panitia.home', compact('pelatih', 'event', 'kategorievent', 'jeniscabangevent', 'hasilpertandingan', 'persyaratan'));
+        return view('panitia.home', compact('pelatih', 'event', 'kategorievent', 'jeniscabangevent', 'jadwalpertandingan', 'hasilpertandingan', 'persyaratan'));
     }
 
     public function pelatih()

@@ -44,8 +44,8 @@ Route::get('/', function () {
 
 Route::get('/tentang-perbasi', [AppController::class, 'about'])->name('app.about');
 
-Route::get('/s&k', function () {
-    return view('/user/landingpage/s&k');
+Route::get('/syarat&panduan', function () {
+    return view('/user/landingpage/syarat&panduan');
 });
 
 Route::prefix("informasi")->group(function () {
