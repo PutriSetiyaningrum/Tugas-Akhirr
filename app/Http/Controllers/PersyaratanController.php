@@ -36,6 +36,15 @@ class PersyaratanController extends Controller
 
     public function store(Request $request, $id)
     {
+        $messages = [
+            "required" => "Kolom :attribute Harus diisi"
+        ];
+
+        $this->validate($request, [
+            "kategori_id" => "required"
+        ], $messages);
+
+
         if ($request->file("logo_sekolah")) {
             $logo_sekolah = $request->file("logo_sekolah")->store("logo_sekolah");
         }

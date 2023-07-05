@@ -24,14 +24,19 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="kategori_id">Kategori Event</label>
-                                    <select name="kategori_id" class="form-control" id="kategori_id">
+                                    <select name="kategori_id" class="form-control @error("kategori_id") {{ 'is-invalid' }} @enderror" id="kategori_id">
                                         <option value="">- Pilih -</option>
                                         @foreach ($kategorievent as $item)
-                                        <option value="{{$item->id}}">
+                                        <option value="{{ $item["id"] }}" {{ old('kategori_id') == $item["id"] ? 'selected' : '' }}>
                                             {{$item->Nama_Kategori_Event}}
                                         </option>
                                         @endforeach
                                     </select>
+                                    @error("kategori_id")
+                                    <span class="error invalid-feedback">
+                                        {{ $message }}
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -78,16 +83,16 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="gambar">Ijazah</label>
-                                <input type="file" class="form-control" id="ijazah" name="ijazah" placeholder="Ijazah">
-                            </div>
+                                <div class="form-group">
+                                    <label for="gambar">Ijazah</label>
+                                    <input type="file" class="form-control" id="ijazah" name="ijazah" placeholder="Ijazah">
+                                </div>
                             </div>
                             <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="gambar">Akte</label>
-                                <input type="file" class="form-control" id="akte" name="akte" placeholder="Akte">
-                            </div>
+                                <div class="form-group">
+                                    <label for="gambar">Akte</label>
+                                    <input type="file" class="form-control" id="akte" name="akte" placeholder="Akte">
+                                </div>
                             </div>
                         </div>
                     </div>
