@@ -7,7 +7,6 @@
 <script src="{{ url('/AdminLTE') }}/plugins/jquery-mapael/jquery.mapael.min.js"></script>
 <script src="{{ url('/AdminLTE') }}/plugins/jquery-mapael/maps/usa_states.min.js"></script>
 <script src="{{ url('/AdminLTE') }}/plugins/chart.js/Chart.min.js"></script>
-<script src="{{ url('/AdminLTE') }}/dist/js/demo.js"></script>
 <script src="{{ url('/AdminLTE') }}/dist/js/pages/dashboard2.js"></script>
 <script src="{{ url('/AdminLTE') }}/plugins/sweetalert2/sweetalert2.min.js"></script>
 

@@ -82,8 +82,8 @@ class TentangperbasiController extends Controller
      */
     public function edit($id)
     {
-        $dt = tentangperbasi::findorfail($id);
-        return view('pengurus.master.tentangperbasi.edit-tentangperbasi', compact('dt'));
+        $item = tentangperbasi::findorfail($id);
+        return view('pengurus.master.tentangperbasi.edit-tentangperbasi', compact('item'));
     }
 
     /**
@@ -95,6 +95,13 @@ class TentangperbasiController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            "required" => "Kolom :attribute Harus Diisi"
+        ];
+
+        $this->validate($request, [
+            'Deskripsi' => "required"
+        ], $messages);
 
         if ($request->file("gambar")) {
             if ($request->gambarLama) {

@@ -56,25 +56,16 @@ Route::prefix("informasi")->group(function () {
     Route::get('/jadwal-pertandingan', [AppController::class, "jadwal_pertandingan"]);
 });
 
-
-Route::get('/login', function () {
-    return view('/user/landingpage/login');
-});
-Route::get('/register', function () {
-    return view('/user/landingpage/register');
-});
-Route::get('/register', [LoginController::class, 'registrasi'])->name('registrasi');
-Route::post('/simpanregister', [LoginController::class, 'simpanregistrasi'])->name('simpanregistrasi');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-
 Route::group(["middleware" => ["guest"]], function () {
     Route::get('/login', [LoginController::class, 'halamanlogin'])->name('login');
     Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
+    Route::get('/register', [LoginController::class, 'registrasi'])->name('registrasi');
+    Route::post('/simpanregister', [LoginController::class, 'simpanregistrasi'])->name('simpanregistrasi');
 });
 
 
 Route::group(["middleware" => ["autentikasi"]], function () {
-
+    Route::get('/logout', [LoginController::class, 'logout']);
     Route::put('/profile/update', [ProfileController::class, 'update']);
     Route::resource('profile', ProfileController::class);
 

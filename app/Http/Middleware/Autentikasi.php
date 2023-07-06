@@ -21,6 +21,6 @@ class Autentikasi
             return $next($request);
         }
 
-        return redirect("/login");
+        return redirect("/login")->with("message", "Harus Login Terlebih Dahulu");
     }
 }

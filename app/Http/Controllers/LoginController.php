@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -18,22 +19,38 @@ class LoginController extends Controller
 
     public function postlogin(Request $request)
     {
+        $messages = [
+            "required" => "Kolom :attribute Harus Diisi",
+            "min" => "Kolom :attribute Harus :min Digit",
+            "max" => "Kolom :attribute Harus :max Digit"
+        ];
+
+        $this->validate($request, [
+            "email" => "required",
+            "password" => "required|min:8|max:15"
+        ], $messages);
 
         $cek = User::where("email", $request->email)->first();
 
-        if (Auth::attempt(["email" => $request->email, "password" => $request->password])) {
-            $request->session()->regenerate();
-            if ($cek->level == "pengurus") {
-                return redirect()->intended("/home");
-            } else if ($cek->level == "panitia") {
-                return redirect()->intended("/panitia/home");
-            } else if ($cek->level == "pelatih") {
-                return redirect()->intended("/pelatih/home");
-            } else if ($cek->level == "pengunjung") {
-                return redirect()->intended("/");
+        if ($cek) {
+            if (Hash::check($request->password, $cek->password)) {
+                $request->session()->regenerate();
+                if (Auth::attempt(["email" => $request->email, "password" => $request->password])) {
+                    if ($cek->level == "pengurus") {
+                        return redirect()->intended("/home");
+                    } else if ($cek->level == "panitia") {
+                        return redirect()->intended("/panitia/home");
+                    } else if ($cek->level == "pelatih") {
+                        return redirect()->intended("/pelatih/home");
+                    } else if ($cek->level == "pengunjung") {
+                        return redirect()->intended("/");
+                    }
+                }
+            } else {
+                return back()->withInput()->with("message", "Password Salah"); // Password Salah dan Email Benar
             }
         } else {
-            return back();
+            return back()->withInput()->with("message", "Email Tidak Ditemukan"); // Email Tidak Ditemukan;
         }
     }
 
