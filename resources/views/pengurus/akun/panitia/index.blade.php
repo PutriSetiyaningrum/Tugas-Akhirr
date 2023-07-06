@@ -27,6 +27,11 @@
     <!-- /.content-header -->
     <!-- Main Content -->
     <div class="content">
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            Maaf , Data Anda Ada Yang Salah
+        </div>
+        @endif
         <div class="card card-info card-outline">
             <div class="card-header">
                 <button type="button" class="btn btn-success float-right btn-sm" data-toggle="modal" data-target="#modal-default">
@@ -133,12 +138,22 @@
                 @method("PUT")
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="name"> Name </label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan Nama Lengkap" value="{{ $item->name }}" autocomplete="off">
+                        <label for="name_edit"> Name </label>
+                        <input type="text" class="form-control @error("name_edit") {{ 'is-invalid' }} @enderror" name="name_edit" id="name_edit" placeholder="Masukkan Nama Lengkap" value="{{ old("name_edit") ?? $item->name ?? '' }}" autocomplete="off">
+                        @error("name_edit")
+                        <span class="error invalid-feedback">
+                            {{ $message }}
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <label for="email"> Email </label>
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email" value="{{ $item->email }}" autocomplete="off">
+                        <label for="email_edit"> Email </label>
+                        <input type="text" class="form-control @error("email_edit") {{ 'is-invalid' }} @enderror " name="email_edit" id="email_edit" placeholder="Masukkan Email" value="{{ old('email_edit') ?? $item->email ?? '' }}" autocomplete="off">
+                        @error("email_edit")
+                        <span class="error invalid-feedback">
+                            {{ $message }}
+                        </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">

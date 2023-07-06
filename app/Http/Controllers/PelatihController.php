@@ -48,21 +48,27 @@ class PelatihController extends Controller
 
     public function update(Request $request, $id)
     {
+        $messages = [
+            "required" => "Kolom :attribute Harus diisi",
+        ];
+
+        $this->validate($request, [
+            "name_edit" => "required",
+            "email_edit" => "required",
+            "sekolah_edit" => "required"
+        ], $messages);
+
         $user = User::findOrFail($id);
 
-        $user->name = $request->name;
-        $user->email = $request->email;
+        $user->name = $request->name_edit;
+        $user->email = $request->email_edit;
 
         // Simpan perubahan pada data pengguna
         $user->save();
 
-        $pelatih = Pelatih::where('user_id', Auth::user()->id)->first();
-
-        if ($pelatih) {
-            $pelatih->sekolah = $request->sekolah;
-            // Simpan perubahan pada data pelatih
-            $pelatih->save();
-        }
+        Pelatih::where("user_id", $id)->update([
+            "sekolah" => $request["sekolah_edit"]
+        ]);
 
         return back()->with(
             "message",

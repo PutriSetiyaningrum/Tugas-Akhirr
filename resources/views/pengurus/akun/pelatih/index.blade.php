@@ -153,14 +153,32 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name"> Name </label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan Nama Lengkap" value="{{ $item->name }}" autocomplete="off">
+                        <input type="text" class="form-control @error("name_edit") {{ 'is-invalid'}} @enderror"
+                        name="name_edit" id="name" placeholder="Masukkan Nama Lengkap" value="{{ old("name_edit") ?? $item->name ?? '' }}" autocomplete="off">
+                        @error("name_edit")
+                        <span class="error invalid-feedback">
+                            {{ $message }}
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="email"> Email </label>
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email" value="{{ $item->email }}" autocomplete="off">
+                        <input type="text" class="form-control @error("email_edit") {{ 'is-invalid'}} @enderror"
+                        name="email_edit" id="email" placeholder="Masukkan Email" value="{{ old("email_edit") ?? $item->email ?? '' }}" autocomplete="off">
+                        @error("email_edit")
+                        <span class="error invalid-feedback">
+                            {{ $message }}
+                        </span>
+                        @enderror
                     </div>
                     <label for="sekolah"> Sekolah </label>
-                    <input type="text" class="form-control" name="sekolah" id="sekolah" placeholder="Masukkan sekolah" value="{{ $item->pelatih->sekolah }}" autocomplete="off">
+                    <input type="text" class="form-control @error("sekolah_edit") {{ 'is-invalid' }} @enderror"
+                    name="sekolah_edit" id="sekolah" placeholder="Masukkan sekolah" value="{{ old("sekolah_edit") ?? $item->pelatih->sekolah  ?? '' }}" autocomplete="off">
+                    @error("sekolah_edit")
+                    <span class="error invalid-feedback">
+                        {{ $message }}
+                    </span>
+                    @enderror
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="reset" class="btn btn-danger btn-sm">

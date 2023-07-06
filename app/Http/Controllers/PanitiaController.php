@@ -53,9 +53,18 @@ class PanitiaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            "required" => "Kolom :attribute Harus Diisi"
+        ];
+
+        $this->validate($request, [
+            "name_edit" => "required",
+            'email_edit' => "required"
+        ], $messages);
+
         User::where("id", $id)->update([
-            "name" => $request->name,
-            "email" => $request->email,
+            "name" => $request->name_edit,
+            "email" => $request->email_edit,
         ]);
 
         return back()->with(
