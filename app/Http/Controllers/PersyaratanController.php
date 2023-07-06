@@ -117,6 +117,15 @@ class PersyaratanController extends Controller
 
     public function update(Request $request, $id_event, $id_persyaratan)
     {
+        $messages = [
+            "required" => "Kolom :attribute Harus diisi"
+        ];
+
+        $this->validate($request, [
+            "kategori_id" => "required",
+            "jenis_cabang_id" => "required"
+        ], $messages);
+
         if ($request->file("logo_sekolah")) {
             if ($request->logo_sekolah_lama) {
                 Storage::delete($request->logo_sekolah_lama);

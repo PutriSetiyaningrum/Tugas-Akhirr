@@ -25,30 +25,31 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="kategori_id">Kategori Event</label>
-                                    <select name="kategori_id" class="form-control" id="kategori_id">
+                                    <select name="kategori_id" class="form-control @error("kategori_id") {{ 'is-invalid' }} @enderror" id="kategori_id">
                                         <option value="">- Pilih -</option>
                                         @foreach ($kategorievent as $item)
-                                        @if($edit->kategori_id == $item->id)
-                                        <option value="{{$item->id}}" selected>
-                                            {{$item->Nama_Kategori_Event}}
-                                        </option>
-                                        @else
-                                        <option value="{{$item->id}}">
-                                            {{$item->Nama_Kategori_Event}}
-                                        </option>
-                                        @endif
+                                            @if ($item->id == $edit->kategori_id)
+                                                <option value="{{ $item->id }}" {{ old('kategori_id', $edit->kategori_id) == $item->id ? 'selected' : '' }} selected>{{ $item->Nama_Kategori_Event }}</option>
+                                            @else
+                                                <option value="{{ $item->id }}" {{ old('kategori_id', $edit->kategori_id) == $item->id ? 'selected' : '' }} >{{ $item->Nama_Kategori_Event }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
+                                    @error("kategori_id")
+                                    <span class="error invalid-feedback">
+                                        {{ $message }}
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="deskripsi">Jenis Cabang Event</label>
-                                    <select name="jenis_cabang_id" class="form-control" id="jenis_cabang_id">
+                                    <select name="jenis_cabang_id" class="form-control @error("jenis_cabang_id") {{ 'is-invalid' }} @enderror" id="jenis_cabang_id">
                                         <option value="">- Pilih -</option>
                                         @foreach ($jeniscabang as $item)
                                         @if($edit->jenis_cabang_id == $item->id)
-                                        <option value="{{$item->id}}" selected>
+                                        <option value="{{$item->id}}" {{ (old("jenis_cabang_id", $item->id) == $item->id ) ? 'selected' : ''}}>
                                             {{$item->Nama_Jenis_Cabang_Event}}
                                         </option>
                                         @else
@@ -58,6 +59,11 @@
                                         @endif
                                         @endforeach
                                     </select>
+                                    @error("jenis_cabang_id")
+                                    <span class="error invalid-feedback">
+                                        {{ $message }}
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
