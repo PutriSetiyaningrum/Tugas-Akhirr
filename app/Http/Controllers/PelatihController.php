@@ -18,6 +18,16 @@ class PelatihController extends Controller
 
     public function store(Request $request)
     {
+        $messages = [
+            "required" => "Kolom :attribute Harus diisi",
+        ];
+
+        $this->validate($request, [
+            "name" => "required",
+            "email" => "required",
+            "sekolah" => "required"
+        ], $messages);
+
         $users = User::create([
             "name" => $request->name,
             "email" => $request->email,

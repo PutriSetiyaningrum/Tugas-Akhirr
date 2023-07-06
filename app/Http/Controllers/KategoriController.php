@@ -39,6 +39,14 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            "required" => "Kolom :attribute Harus diisi"
+        ];
+
+        $this->validate($request, [
+            "Nama_Kategori_Event" => "required"
+        ], $messages);
+
         $dtUpload = new kategorievent;
         $dtUpload->Nama_Kategori_Event = $request->Nama_Kategori_Event;
         $dtUpload->save();

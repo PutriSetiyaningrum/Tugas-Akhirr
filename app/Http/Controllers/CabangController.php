@@ -40,6 +40,14 @@ class CabangController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            "required" => "Kolom :attribute Harus diisi"
+        ];
+
+        $this->validate($request, [
+            "Nama_Jenis_Cabang_Event" => "required"
+        ], $messages);
+
         $dtUpload = new jeniscabangevent;
         $dtUpload->Nama_Jenis_Cabang_Event = $request->Nama_Jenis_Cabang_Event;
         $dtUpload->save();

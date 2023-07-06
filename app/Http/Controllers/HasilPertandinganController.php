@@ -39,13 +39,22 @@ class HasilPertandinganController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            "required" => "Kolom :attribute Harus diisi"
+        ];
+
+        $this->validate($request, [
+            "gambar" => "required",
+            "Deskripsi" => "required"
+        ], $messages);
+
         if ($request->file("gambar")) {
             $gambar = $request->file("gambar")->store("img");
         }
 
         $dtUpload = new hasilpertandingan();
         $dtUpload->gambar = $gambar;
-        $dtUpload->deskripsi = $request->deskripsi;
+        $dtUpload->Deskripsi = $request->Deskripsi;
         $dtUpload->save();
 
         return redirect("/informasi/hasilpertandingan")->with(

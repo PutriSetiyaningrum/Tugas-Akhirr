@@ -38,14 +38,6 @@ class PersyaratanController extends Controller
     {
         $messages = [
             "required" => "Kolom :attribute Harus diisi",
-            "required" => "Kolom :attribute Harus diisi",
-            "required" => "Kolom :attribute Harus diisi",
-            "required" => "Kolom :attribute Harus diisi",
-            "required" => "Kolom :attribute Harus diisi",
-            "required" => "Kolom :attribute Harus diisi",
-            "required" => "Kolom :attribute Harus diisi",
-            "required" => "Kolom :attribute Harus diisi",
-            "required" => "Kolom :attribute Harus diisi"
         ];
 
         $this->validate($request, [
@@ -59,7 +51,6 @@ class PersyaratanController extends Controller
             "ijazah" => "required",
             "akte" => "required"
         ], $messages);
-
 
         if ($request->file("logo_sekolah")) {
             $logo_sekolah = $request->file("logo_sekolah")->store("logo_sekolah");

@@ -43,6 +43,18 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            "required" => "Kolom :attribute Harus diisi"
+        ];
+
+        $this->validate($request, [
+            "Nama_Event" => "required",
+            "mulai" => "required",
+            "selesai" => "required",
+            "gambar" => "required",
+            "deskripsi" => "required"
+        ], $messages);
+
         if ($request->file("gambar")) {
             $gambar = $request->file("gambar")->store("img");
         }

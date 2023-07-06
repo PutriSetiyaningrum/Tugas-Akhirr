@@ -22,11 +22,23 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="gambar">Gambar</label>
-                                <input type="file" class="form-control" id="gambar" name="gambar" placeholder="gambar">
+                                <input type="file" class="form-control @error("gambar") {{ 'is-invalid' }} @enderror" id="gambar"
+                                value="{{ old('gambar') }}" name="gambar" placeholder="gambar">
+                                @error("gambar")
+                                <span class="error invalid-feedback">
+                                    {{ $message }}
+                                </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="deskripsi">Deskripsi</label>
-                                <textarea type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="deskripsi" autocomplete="off"></textarea>
+                                <textarea type="text" class="form-control @error("deskripsi") {{ 'is-invalid' }} @enderror" id="deskripsi"
+                                name="deskripsi" placeholder="deskripsi" autocomplete="off">{{ old('deskripsi') }}</textarea>
+                                @error("deskripsi")
+                                <span class="error invalid-feedback">
+                                    {{ $message }}
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <!-- /.card-body -->

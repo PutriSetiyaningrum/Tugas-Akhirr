@@ -96,21 +96,36 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name"> Name </label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan Nama Lengkap" autocomplete="off">
+                        <input type="text" class="form-control @error("name") {{ 'is-invalid' }} @enderror" name="name"
+                        id="name" placeholder="Masukkan Nama Lengkap" value="{{ old('name') }}" autocomplete="off">
+                        @error("name")
+                        <span class="error invalid-feedback">
+                            {{ $message }}
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="email"> Email </label>
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email" autocomplete="off">
+                        <input type="text" class="form-control @error("email") {{ 'is-invalid' }} @enderror" name="email"
+                        id="email" placeholder="Masukkan Email" value="{{ old('email') }}" autocomplete="off">
+                        @error("email")
+                        <span class="error invalid-feedback">
+                            {{ $message }}
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="sekolah"> Sekolah </label>
-                        <input type="text" class="form-control" name="sekolah" id="sekolah" placeholder="Masukkan Sekolah" autocomplete="off">
+                        <input type="text" class="form-control @error("sekolah") {{ 'is-invalid' }} @enderror" name="sekolah"
+                        id="sekolah" placeholder="Masukkan Sekolah" value="{{ old('sekolah') }}" autocomplete="off">
+                        @error("sekolah")
+                        <span class="error invalid-feedback">
+                            {{ $message }}
+                        </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="reset" class="btn btn-danger btn-sm">
-                        <i class="fa fa-times"></i> Batal
-                    </button>
                     <button type="submit" class="btn btn-primary btn-sm">
                         <i class="fa fa-plus"></i> Tambah
                     </button>

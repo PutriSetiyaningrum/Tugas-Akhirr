@@ -22,6 +22,15 @@ class PanitiaController extends Controller
 
     public function store(Request $request)
     {
+        $messages = [
+            "required" => "Kolom :attribute Harus diisi",
+        ];
+
+        $this->validate($request, [
+            "name" => "required",
+            "email" => "required"
+        ], $messages);
+
         User::create([
             "name" => $request->name,
             "email" => $request->email,

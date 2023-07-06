@@ -50,6 +50,18 @@ class LoginController extends Controller
 
     public function simpanregistrasi(Request $request)
     {
+        $messages = [
+            "required" => "Kolom :attribute Harus diisi"
+        ];
+
+        $this->validate($request, [
+            "name" => "required",
+            "email" => "required",
+            "password" => "required",
+            "alamat" => "required",
+            "telepon" => "required"
+        ], $messages);
+
         $user = User::create([
             'name' => $request->name,
             'level' => 'pengunjung',

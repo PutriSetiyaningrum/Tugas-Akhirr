@@ -39,6 +39,15 @@ class JadwalPertandinganController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            "required" => "Kolom :attribute Harus diisi"
+        ];
+
+        $this->validate($request, [
+            "gambar" => "required",
+            "deskripsi" => "required"
+        ], $messages);
+
         if ($request->file("gambar")) {
             $gambar = $request->file("gambar")->store("img");
         }
