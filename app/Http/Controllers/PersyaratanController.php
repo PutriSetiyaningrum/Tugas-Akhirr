@@ -37,11 +37,27 @@ class PersyaratanController extends Controller
     public function store(Request $request, $id)
     {
         $messages = [
+            "required" => "Kolom :attribute Harus diisi",
+            "required" => "Kolom :attribute Harus diisi",
+            "required" => "Kolom :attribute Harus diisi",
+            "required" => "Kolom :attribute Harus diisi",
+            "required" => "Kolom :attribute Harus diisi",
+            "required" => "Kolom :attribute Harus diisi",
+            "required" => "Kolom :attribute Harus diisi",
+            "required" => "Kolom :attribute Harus diisi",
             "required" => "Kolom :attribute Harus diisi"
         ];
 
         $this->validate($request, [
-            "kategori_id" => "required"
+            "kategori_id" => "required",
+            "jenis_cabang_id" => "required",
+            "sekolah" => "required",
+            "logo_sekolah" => "required",
+            "surat_rekomendasi_kepala_sekolah" => "required",
+            "form_pendaftaran" => "required",
+            "foto" => "required",
+            "ijazah" => "required",
+            "akte" => "required"
         ], $messages);
 
 
