@@ -90,6 +90,14 @@ class CabangController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            "required" => "Kolom :attribute Data tidak boleh kosong"
+        ];
+
+        $this->validate($request, [
+            "Nama_Jenis_Cabang_Event" => "required"
+        ], $messages);
+
         jeniscabangevent::where("id", $id)->update([
             "Nama_Jenis_Cabang_Event" => $request->Nama_Jenis_Cabang_Event
         ]);
