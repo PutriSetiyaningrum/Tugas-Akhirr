@@ -123,7 +123,8 @@ class PersyaratanController extends Controller
 
         $this->validate($request, [
             "kategori_id" => "required",
-            "jenis_cabang_id" => "required"
+            "jenis_cabang_id" => "required",
+            "sekolah" => "required",
         ], $messages);
 
         if ($request->file("logo_sekolah")) {

@@ -23,15 +23,34 @@
                     <input type="hidden" name="gambarLama" value="{{ $dt["gambar"] }}">
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="Nama Event">Event</label>
-                            <input type="text" class="form-control" id="Nama_Event" name="Nama_Event" placeholder="Nama_Event" value="{{ $dt->Nama_Event }}" autocomplete="off">
+                            <label for="Nama_Event">Event</label>
+                            <input type="text" class="form-control @error("Nama_Event") {{ 'is-invalid' }} @enderror"
+                            id="Nama_Event" name="Nama_Event" placeholder="Nama_Event" value="{{ $dt->Nama_Event }}"
+                            autocomplete="off">
+                            @error("Nama_Event")
+                            <span class="error invalid-feedback">
+                                {{ $message }}
+                            </span>
+                            @enderror
                         </div><div class="form-group">
                             <label for="mulai">Mulai</label>
-                            <input type="datetime-local" class="form-control" id="mulai" name="mulai" placeholder="mulai" value="{{ $dt->mulai }}">
+                            <input type="datetime-local" class="form-control @error("mulai") {{ 'is-invalid' }} @enderror"
+                            id="mulai" name="mulai" placeholder="mulai" value="{{ $dt->mulai }}">
+                            @error("mulai")
+                            <span class="error invalid-feedback">
+                                {{ $message }}
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="selesai">Selesai</label>
-                            <input type="datetime-local" class="form-control" id="selesai" name="selesai" placeholder="selesai" value="{{ $dt->selesai }}">
+                            <input type="datetime-local" class="form-control @error("selesai") {{ 'is-invalid' }} @enderror" id="selesai"
+                            name="selesai" placeholder="selesai" value="{{ $dt->selesai }}">
+                            @error("selesai")
+                            <span class="error invalid-feedback">
+                                {{ $message }}
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="gambar">Gambar</label>
@@ -42,7 +61,13 @@
                           </div>
                           <div class="form-group">
                             <label for="deskripsi">Deskripsi</label>
-                            <textarea type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="deskripsi" value="" autocomplete="off" rows="8" tabindex="4">{{ $dt->deskripsi }}</textarea>
+                            <textarea type="text" class="form-control @error("deskripsi") {{ 'is-invalid' }} @enderror" id="deskripsi"
+                            name="deskripsi" placeholder="deskripsi" value="" autocomplete="off" rows="8" tabindex="4">{{ $dt->deskripsi }}</textarea>
+                            @error("deskripsi")
+                            <span class="error invalid-feedback">
+                                {{ $message }}
+                            </span>
+                            @enderror
                           </div>
                     </div>
                     <!-- /.card-body -->

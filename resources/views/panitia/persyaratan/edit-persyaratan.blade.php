@@ -48,15 +48,11 @@
                                     <select name="jenis_cabang_id" class="form-control @error("jenis_cabang_id") {{ 'is-invalid' }} @enderror" id="jenis_cabang_id">
                                         <option value="">- Pilih -</option>
                                         @foreach ($jeniscabang as $item)
-                                        @if($edit->jenis_cabang_id == $item->id)
-                                        <option value="{{$item->id}}" {{ (old("jenis_cabang_id", $item->id) == $item->id ) ? 'selected' : ''}}>
-                                            {{$item->Nama_Jenis_Cabang_Event}}
-                                        </option>
-                                        @else
-                                        <option value="{{$item->id}}">
-                                            {{$item->Nama_Jenis_Cabang_Event}}
-                                        </option>
-                                        @endif
+                                            @if ($item->id == $edit->jenis_cabang_id)
+                                                <option value="{{ $item->id }}" {{ old('jenis_cabang_id', $edit->jenis_cabang_id) == $item->id ? 'selected' : '' }} selected>{{ $item->Nama_Jenis_Cabang_Event }}</option>
+                                            @else
+                                                <option value="{{ $item->id }}" {{ old('jenis_cabang_id', $edit->jenis_cabang_id) == $item->id ? 'selected' : '' }} >{{ $item->Nama_Jenis_Cabang_Event }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                     @error("jenis_cabang_id")
@@ -69,7 +65,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="sekolah">Sekolah</label>
-                                    <input type="text" class="form-control" id="sekolah" name="sekolah" placeholder="Sekolah" value="{{ $edit->sekolah }}" autocomplete="off">
+                                    <input type="text" class="form-control @error("sekolah") {{ 'is-invalid' }} @enderror" id="sekolah" name="sekolah" placeholder="Sekolah" value="{{ $edit->sekolah }}" autocomplete="off">
+                                    @error("sekolah")
+                                    <span class="error invalid-feedback">
+                                        {{ $message }}
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">

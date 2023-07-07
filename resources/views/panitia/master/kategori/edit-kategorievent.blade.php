@@ -21,7 +21,14 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="Nama Kategori Event">kategori Event</label>
-                            <input type="text" class="form-control" id="Nama_Kategori_Event" name="Nama_Kategori_Event" placeholder="Nama Kategori Event" value="{{ $dt->Nama_Kategori_Event }}" autocomplete="off">
+                            <input type="text" class="form-control @error("Nama_Kategori_Event") {{ 'is-invalid' }} @enderror"
+                            id="Nama_Kategori_Event" name="Nama_Kategori_Event" placeholder="Nama Kategori Event"
+                            value="{{ $dt->Nama_Kategori_Event }}"  autocomplete="off">
+                            @error("Nama_Kategori_Event")
+                            <span class="error invalid-feedback">
+                                {{ $message }}
+                            </span>
+                            @enderror
                         </div>
                     </div>
                     <!-- /.card-body -->

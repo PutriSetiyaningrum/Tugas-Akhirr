@@ -109,6 +109,17 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            "required" => "Kolom :attribute Data tidak boleh kosong"
+        ];
+
+        $this->validate($request, [
+            "Nama_Event" => "required",
+            "mulai" => "required",
+            "selesai" => "required",
+            "deskripsi" => "required",
+        ], $messages);
+
         if ($request->file("gambar")) {
             if ($request->gambarLama) {
                 Storage::delete($request->gambarLama);

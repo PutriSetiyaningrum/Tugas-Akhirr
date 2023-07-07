@@ -22,7 +22,7 @@
                         <div class="form-group">
                             <label for="Nama Jenis Cabang Event">Nama Jenis Cabang Event</label>
                             <input type="text" class="form-control @error("Nama_Jenis_Cabang_Event") {{ 'is-invalid' }} @enderror"
-                             id="Nama_Jenis_Cabang_Event" name="Nama_Jenis_Cabang_Event"
+                            id="Nama_Jenis_Cabang_Event" name="Nama_Jenis_Cabang_Event"
                             placeholder="Nama Jenis Cabang Event" value="{{ old('Nama_Jenis_Cabang_Event') ?? $dt->Nama_Jenis_Cabang_Event ?? '' }}" autocomplete="off">
                             @error("Nama_Jenis_Cabang_Event")
                             <span class="error invalid-feedback">

@@ -27,6 +27,11 @@
     <!-- /.content-header -->
     <!-- Main Content -->
     <div class="content">
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            Maaf , Data Anda Ada Yang Salah
+        </div>
+        @endif
         <div class="card card-info card-outline">
             @can("pengurus")
             <div class="card-header">

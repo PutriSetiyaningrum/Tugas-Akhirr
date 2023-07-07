@@ -89,6 +89,14 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            "required" => "Kolom :attribute Data tidak boleh kosong"
+        ];
+
+        $this->validate($request, [
+            "Nama_Kategori_Event" => "required"
+        ], $messages);
+
         kategorievent::where("id", $id)->update([
             "Nama_Kategori_Event" => $request->Nama_Kategori_Event
         ]);

@@ -50,22 +50,22 @@
                             </fieldset>
                             <fieldset class="name-wrap style-text">
                                 <input type="text" id="name" class="form-control" name="name"
-                                tabindex="1" placeholder="Enter Full Name" value="{{ Auth::user()->name }}" size="32"
+                                tabindex="1" placeholder="Masukan Nama" value="{{ Auth::user()->name }}" size="32"
                                 aria-required="true" required="" autocomplete="off" style="font-size: 16px">
                             </fieldset>
                             <fieldset class="email-wrap style-text">
                                 <input type="email" id="email" class="form-control" name="email"
-                                tabindex="2" placeholder="email" value="{{ Auth::user()->email}}" size="32"
+                                tabindex="2" placeholder="Masukan Email" value="{{ Auth::user()->email}}" size="32"
                                 aria-required="true" required="" autocomplete="off" style="font-size: 16px">
                             </fieldset>
                             <fieldset class="phone-wrap style-text">
                                 <input type="tel" id="telepon" class="tb-my-input" name="telepon"
-                                tabindex="1" placeholder="telepon" value="{{ Auth::user()->pengunjung->telepon}}" size="32"
+                                tabindex="1" placeholder="Masukan Telepon" value="{{ Auth::user()->pengunjung->telepon}}" size="32"
                                 aria-required="true" required="" autocomplete="off" style="font-size: 16px">
                             </fieldset>
                             <fieldset class="phone-wrap style-text">
                                 <input type="tel" id="alamat" class="tb-my-input" name="alamat"
-                                tabindex="1" placeholder="alamat" value="{{ Auth::user()->pengunjung->alamat}}" size="32"
+                                tabindex="1" placeholder="Masukakn Alamat" value="{{ Auth::user()->pengunjung->alamat}}" size="32"
                                 aria-required="true" required="" autocomplete="off" style="font-size: 16px">
                             </fieldset>
                         </div>

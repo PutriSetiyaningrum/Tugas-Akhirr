@@ -30,8 +30,14 @@
                     <img src="{{ url('/storage/'.$dt->gambar) }}" height="100%" width="150" alt="srcset">
                   </div>
                   <div class="form-group">
-                    <label for="deskripsi">Deskripsi</label>
-                    <input type="text" class="form-control" id="Deskripsi" name="Deskripsi" placeholder="Deskripsi" value="{{ $dt->Deskripsi }}" autocomplete="off">
+                    <label for="Deskripsi">Deskripsi</label>
+                    <input type="text" class="form-control @error("Deskripsi") {{ 'is-invalid' }} @enderror" id="Deskripsi"
+                    name="Deskripsi" placeholder="Deskripsi" value="{{ $dt->Deskripsi }}" autocomplete="off">
+                    @error("Deskripsi")
+                    <span class="error invalid-feedback">
+                        {{ $message }}
+                    </span>
+                    @enderror
                   </div>
                 </div>
                 <!-- /.card-body -->

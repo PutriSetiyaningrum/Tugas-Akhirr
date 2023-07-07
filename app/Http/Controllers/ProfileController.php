@@ -18,6 +18,18 @@ class ProfileController extends Controller
     }
     public function update(Request $request)
     {
+        $messages = [
+            "required" => "Kolom :attribute tidak boleh kosong"
+        ];
+
+        $this->validate($request, [
+            "name" => "required",
+            "email" => "required",
+            "sekolah" => "required",
+            "alamat" => "required",
+            "telepon" => "required"
+        ], $messages);
+
         $user = User::where("id", Auth::user()->id)->first();
 
         if (Auth::user()->level == "pengurus") {

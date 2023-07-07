@@ -31,7 +31,13 @@
                   </div>
                   <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
-                    <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="deskripsi" value="{{ $dt->deskripsi }}" autocomplete="off">
+                    <input type="text" class="form-control @error("deskripsi") {{ 'is-invalid' }} @enderror"
+                    id="deskripsi" name="deskripsi" placeholder="deskripsi" value="{{ $dt->deskripsi }}" autocomplete="off">
+                    @error("deskripsi")
+                    <span class="error invalid-feedback">
+                        {{ $message }}
+                    </span>
+                    @enderror
                   </div>
                 </div>
                 <!-- /.card-body -->

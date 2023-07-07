@@ -95,6 +95,14 @@ class JadwalPertandinganController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            "required" => "Kolom :attribute tidak boleh kosong"
+        ];
+
+        $this->validate($request, [
+            "deskripsi" => "required"
+        ], $messages);
+
         if ($request->file("gambar")) {
             if ($request->gambarLama) {
                 Storage::delete($request->gambarLama);
