@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Pengunjung;
+use App\Models\Pelatih;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,20 +24,16 @@ class ProfileController extends Controller
             "required" => "Kolom :attribute tidak boleh kosong"
         ];
 
-        if (Auth::user()->level == "pengurus" || Auth::user()->level == "panitia") {
+        if ((Auth::user()->level == "panitia") || (Auth::user()->level == "pengurus")) {
             $this->validate($request, [
-                $messages = [
-                    "nama" => "required",
-                    "email" => "required"
-                ]
+                "name" => "required",
+                "email" => "required"
             ], $messages);
         } else if (Auth::user()->level == "pelatih") {
             $this->validate($request, [
-                $messages = [
-                    "nama" => "required",
-                    "email" => "required",
-                    "sekolah" => "required",
-                ]
+                "name" => "required",
+                "email" => "required",
+                "sekolah" => "required"
             ], $messages);
         }
 
@@ -99,6 +96,10 @@ class ProfileController extends Controller
                     }
                 }
             }
+
+            Pelatih::where("user_id", Auth::user()->id)->update([
+                "sekolah" => $request["sekolah"]
+            ]);
         } else if (Auth::user()->level == "pengunjung") {
             if (!$request->file("foto")) {
             } else {

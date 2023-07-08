@@ -51,7 +51,7 @@
                                                 <a href="/">Beranda</a>
                                             </li>
                                             <li class="menu-item {{ Request::is("tentang-perbasi") ? 'current-menu-item' : '' }}">
-                                                <a href="{{ url('/tentang-perbasi') }}">Tentang PERBASI IMY</a>
+                                                <a href="{{ url('/tentang-perbasi') }}">Tentang PERBASI</a>
                                             </li>
                                             <li class="menu-item {{ Request::is("syarat&panduan") ? 'current-menu-item' : '' }}">
                                                 <a href="{{ url('/syarat&panduan')}}">Syarat & Panduan</a>
@@ -66,10 +66,10 @@
                                             </li>
                                             @if (empty(Auth::user()))
                                             <li class="menu-item">
-                                                <a href="{{ url('login')}}">Masuk</a>
+                                                <a href="{{ url('login')}}">Login</a>
                                             </li>
                                             <li class="menu-item">
-                                                <a href="{{ url('register')}}">Daftar</a>
+                                                <a href="{{ url('register')}}">Register</a>
                                             </li>
                                             @else
                                             <li class="menu-item">
