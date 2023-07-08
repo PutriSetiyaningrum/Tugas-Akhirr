@@ -16,19 +16,29 @@ class ProfileController extends Controller
         $user = auth()->user();
         return view('user.profile.profile', compact('user'));
     }
+
     public function update(Request $request)
     {
         $messages = [
             "required" => "Kolom :attribute tidak boleh kosong"
         ];
 
-        $this->validate($request, [
-            "name" => "required",
-            "email" => "required",
-            "sekolah" => "required",
-            "alamat" => "required",
-            "telepon" => "required"
-        ], $messages);
+        if (Auth::user()->level == "pengurus" || Auth::user()->level == "panitia") {
+            $this->validate($request, [
+                $messages = [
+                    "nama" => "required",
+                    "email" => "required"
+                ]
+            ], $messages);
+        } else if (Auth::user()->level == "pelatih") {
+            $this->validate($request, [
+                $messages = [
+                    "nama" => "required",
+                    "email" => "required",
+                    "sekolah" => "required",
+                ]
+            ], $messages);
+        }
 
         $user = User::where("id", Auth::user()->id)->first();
 

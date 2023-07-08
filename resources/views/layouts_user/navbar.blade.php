@@ -48,7 +48,7 @@
                                     <nav id="main-nav" class="main-nav ">
                                         <ul id="menu-primary-menu" class="menu">
                                             <li class="menu-item {{ Request::is("/") ? 'current-menu-item' : '' }}">
-                                                <a href="/">Home</a>
+                                                <a href="/">Beranda</a>
                                             </li>
                                             <li class="menu-item {{ Request::is("tentang-perbasi") ? 'current-menu-item' : '' }}">
                                                 <a href="{{ url('/tentang-perbasi') }}">Tentang PERBASI IMY</a>
@@ -66,7 +66,7 @@
                                             </li>
                                             @if (empty(Auth::user()))
                                             <li class="menu-item">
-                                                <a href="{{ url('login')}}">Login</a>
+                                                <a href="{{ url('login')}}">Masuk</a>
                                             </li>
                                             <li class="menu-item">
                                                 <a href="{{ url('register')}}">Daftar</a>

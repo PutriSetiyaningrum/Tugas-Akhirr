@@ -80,7 +80,7 @@
                                             </div>
                                         </div>
 
-                                        @can("pelatih")
+                                        @if (Auth::user()->level == "pelatih")
                                         <div class="form-group row">
                                             <label for="sekolah" class="col-sm-2 col-form-label">Sekolah</label>
                                             <div class="col-sm-10">
@@ -93,34 +93,9 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        @endcan
+                                        @else
 
-                                        @can("pengunjung")
-                                        <div class="form-group row">
-                                            <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control @error("alamat") {{ 'is-invalid' }} @enderror"
-                                                id="alamat" name="alamat" placeholder="Alamat" value="{{ Auth::user()->pengunjung->alamat}}" autocomplete="off">
-                                                @error("alamat")
-                                                <span class="error invalid-feedback">
-                                                    {{ $message }}
-                                                </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="telepon" class="col-sm-2 col-form-label">Telepon</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control @error("telepon") {{ 'is-invalid' }} @enderror"
-                                                id="telepon" name="telepon" placeholder="Telepon" value="{{ Auth::user()->pengunjung->telepon}}" autocomplete="off">
-                                                @error("telepon")
-                                                <span class="error invalid-feedback">
-                                                    {{ $message }}
-                                                </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        @endcan
+                                        @endif
 
                                         @if (empty(Auth::user()->foto))
 
