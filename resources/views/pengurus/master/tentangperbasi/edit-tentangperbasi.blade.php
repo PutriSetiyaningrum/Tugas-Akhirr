@@ -37,8 +37,8 @@
                         </div>
                         <div class="form-group">
                             <label for="deskripsi">Deskripsi</label>
-                            <input type="text" class="form-control @error("Deskripsi") {{ 'is-invalid'}} @enderror"
-                            value="{{ old("Deskripsi") ?? $item->Deskripsi ?? '' }}" id="Deskripsi" name="Deskripsi" placeholder="Deskripsi" autocomplete="off">
+                            <textarea type="text" class="form-control @error("Deskripsi") {{ 'is-invalid'}} @enderror"
+                            id="Deskripsi" name="Deskripsi" placeholder="Deskripsi" autocomplete="off" rows="6">{{ old("Deskripsi") ?? $item->Deskripsi ?? '' }}</textarea>
                             @error("Deskripsi")
                             <span class="error invalid-feedback">
                                 {{ $message }}

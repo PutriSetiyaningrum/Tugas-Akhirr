@@ -96,7 +96,7 @@ class TentangperbasiController extends Controller
     public function update(Request $request, $id)
     {
         $messages = [
-            "required" => "Kolom :attribute Harus Diisi"
+            "required" => "Kolom :attribute tidak boleh kosong"
         ];
 
         $this->validate($request, [

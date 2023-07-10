@@ -34,7 +34,7 @@
             @yield('container')
         </div>
 
-        @include('layouts_user.footer')
+        {{-- @include('layouts_user.footer') --}}
 
         <script src="{{ url('') }}/assets/user/js/jquery.min.js"></script>
         <script src="{{ url('') }}/assets/user/js/countto.js"></script>

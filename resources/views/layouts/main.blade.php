@@ -18,7 +18,7 @@
 
         @include("layouts.partials.sidebar.sidebar")
         @yield('content')
-        @include('panitia.footer')
+        {{-- @include('panitia.footer') --}}
 
 
         <!-- Control Sidebar -->

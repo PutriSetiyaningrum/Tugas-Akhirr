@@ -91,7 +91,7 @@ class CabangController extends Controller
     public function update(Request $request, $id)
     {
         $messages = [
-            "required" => "Kolom :attribute Data tidak boleh kosong"
+            "required" => "Kolom :attribute tidak boleh kosong"
         ];
 
         $this->validate($request, [
