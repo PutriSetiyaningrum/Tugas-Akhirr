@@ -35,9 +35,14 @@
                                     @else
                                     <img class="profile-user-img img-fluid img-circle" src="{{ url('/storage/'. Auth::user()->foto) }}" class="img-circle elevation-2">
                                     @endif
+                                    <h3 class="profile-username text-center">{{ $user->name }}</h3>
+                                    <p class="text-muted text-center">{{ $user->level}}</p>
+                                    <div class="card-header">
+                                        <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default">
+                                            <i class=""></i>Ganti Password
+                                        </button>
+                                    </div>
                                 </div>
-                                <h3 class="profile-username text-center">{{ $user->name }}</h3>
-                                <p class="text-muted text-center">{{ $user->level}}</p>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -113,7 +118,6 @@
                                                 <input type="file" class="form-control" name="foto" id="foto" placeholder="Foto" value="">
                                             </div>
                                         </div>
-
                                         <div class="form-group row">
                                             <div class="offset-sm-2 col-sm-10">
                                                 <button type="submit" class="btn btn-danger">Ubah</button>
@@ -134,6 +138,58 @@
         </section>
     </div>
 
-    <!--Edit profile-->
-
+    <!-- Ganti Password -->
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Ganti Password</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ url('/akun/panitia') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="Password Lama"> Password Lama </label>
+                            <input type="text" class="form-control @error("passwordlama") {{ 'is-invalid' }} @enderror" name="passwordlama"
+                            id="passwordlama" placeholder="Masukkan Password Lama" value="{{ old('name') }}" autocomplete="off">
+                            @error("passswordlama")
+                            <span class="error invalid-feedback">
+                                {{ $message }}
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="Password baru"> Password Baru </label>
+                            <input type="text" class="form-control @error("passwordbaru") {{ 'is-invalid' }} @enderror" name="passwordbaru"
+                            id="passwordbaru" placeholder="Masukkan password Baru" value="{{ old('passwordbaru') }}" autocomplete="off">
+                            @error("passwordbaru")
+                            <span class="error invalid-feedback">
+                                {{ $message }}
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="konfirmasi Password Baru"> Konfirmasi Password Baru </label>
+                            <input type="text" class="form-control @error("konfirpass") {{ 'is-invalid' }} @enderror" name="konfirpass"
+                            id="konfirpass" placeholder="Konfirmasi Password Baru" value="{{ old('konfirpass') }}" autocomplete="off">
+                            @error("konfirpass")
+                            <span class="error invalid-feedback">
+                                {{ $message }}
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class=""></i> Ganti Password
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END -->
     @endsection

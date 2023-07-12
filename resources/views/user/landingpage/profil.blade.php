@@ -27,7 +27,6 @@
                     <div id="respond" class="respond-comment">
                         <h2 class="title-comment">Profil <span class="text-color-3">Pengunjung</span></h2>
                         <p class="text"></p>
-
                         <form method="post" id="contactform" class="comment-form form-submit"
                         action="{{ url('/profil/'.Auth::user()->id) }}" enctype="multipart/form-data">
                         @csrf
@@ -71,6 +70,9 @@
                         </div>
                         <button name="submit" type="submit" id="comment-reply"
                         class="button btn-style4 btn-submit-comment"><span>Edit</span></button>
+                        <button type="button" class="btn btn-primary btn-style4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Ganti Password
+                        </button>
                     </form>
                 </div>
 
@@ -79,4 +81,33 @@
     </div>
 </div>
 </section>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section("javascript")
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+crossorigin="anonymous">
+</script>
 @endsection
