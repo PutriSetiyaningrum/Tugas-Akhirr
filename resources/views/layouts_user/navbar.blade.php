@@ -56,7 +56,7 @@
                                             <li class="menu-item {{ Request::is("syarat&panduan") ? 'current-menu-item' : '' }}">
                                                 <a href="{{ url('/syarat&panduan')}}">Syarat & Panduan</a>
                                             </li>
-                                            <li class="menu-item {{Request::segment(1) == "informasi" ? 'current-menu-item' : ''}}">
+                                            <li class="menu-item menu-item-has-children {{Request::segment(1) == "informasi" ? 'current-menu-item' : ''}}">
                                                 <a>Informasi</a>
                                                 <ul class="sub-menu">
                                                     <li class="menu-item {{ Request::segment(2) == 'tentang-event' ? 'current-item' : '' }}"><a href="{{ url('/informasi/tentang-event') }}">Tentang Event</a></li>

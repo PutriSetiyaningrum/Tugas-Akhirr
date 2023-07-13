@@ -1,5 +1,4 @@
 @extends('layouts_user.main')
-
 @section('container')
 
 <section class="flat-title-page"><div class="overlay-page"></div>

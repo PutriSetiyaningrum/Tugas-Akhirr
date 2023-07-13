@@ -39,7 +39,7 @@
                                     <p class="text-muted text-center">{{ $user->level}}</p>
                                     <div class="card-header">
                                         <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default">
-                                            <i class=""></i>Ganti Password
+                                            <i class=""></i>Ubah Password
                                         </button>
                                     </div>
                                 </div>
@@ -143,7 +143,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Ganti Password</h4>
+                    <h4 class="modal-title">Ubah Password</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -184,7 +184,7 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="submit" class="btn btn-primary btn-sm">
-                            <i class=""></i> Ganti Password
+                            <i class=""></i>Ubah Password
                         </button>
                     </div>
                 </form>
