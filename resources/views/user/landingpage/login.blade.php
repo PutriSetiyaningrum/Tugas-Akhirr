@@ -26,6 +26,12 @@
                 {!! session("message") !!}
             </div>
         @endif
+
+        @if (session("info"))
+            <div class="alert alert-info">
+                {!! session("info") !!}
+            </div>
+        @endif
         <!-- END -->
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
@@ -38,7 +44,8 @@
                 <form action="{{ route('postlogin') }}" method="post">
                     {{ csrf_field() }}
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control @error("email") {{ 'is-invalid' }} @enderror" name="email" placeholder="Email" value="{{ old('email') }}">
+                        <input type="email" class="form-control @error("email") {{ 'is-invalid' }} @enderror" name="email"
+                        placeholder="Email" value="{{ Session::get('verifiedEmail') ? Session::get('verifiedEmail') : old('email') }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>

@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Pengunjung;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\VerifyUser;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
@@ -74,9 +76,9 @@ class LoginController extends Controller
         $this->validate($request, [
             "name" => "required",
             "email" => "required",
-            "password" => "required",
             "alamat" => "required",
-            "telepon" => "required"
+            "telepon" => "required",
+            "password" => "required",
         ], $messages);
 
         $user = User::create([
@@ -92,6 +94,56 @@ class LoginController extends Controller
             "telepon" => $request->telepon
         ]);
 
-        return redirect('/');
+        $last_id = $user->id;
+
+        $token = $last_id.hash('sha256', Str::random(120));
+
+        $verifyUrl = route('/login/verify', ['token' => $token, 'service' => 'Email Verification']);
+
+        VerifyUser::create([
+            'user_id' => $last_id,
+            'token' => $token
+        ]);
+
+        $message = 'Dear <b>'.$request['name'].'</b>';
+        $message.= 'Terima Kasih telah mendaftar, kami hanya perlu anda memverifikasi alamat email anda
+        untuk menyelesaikan pengaturan akun anda';
+
+        $mail_data = [
+            'recipient' => $request['email'],
+            'fromEmail' => $request['email'],
+            'fromName' => $request['name'],
+            'subject' => 'Email Verification',
+            'body' => $message,
+            'actionLink' => $verifyUrl,
+        ];
+
+        Mail::send('email-template', $mail_data, function($message) use ($mail_data) {
+            $message->to($mail_data['recipient'])
+            ->from($mail_data['fromEmail'], $mail_data['fromName'])
+            ->subject($mail_data['subject']);
+        });
+
+            return back();
+    }
+
+    public function verify(Request $request)
+    {
+        $token = $request->token;
+        $verifyUser = VerifyUser::where("token", $token)->first();
+        if (!is_null($verifyUser)) {
+            $user = $verifyUser->user;
+
+            if (!$user->email_verified) {
+                $verifyUser->user->email_verify = 1;
+                $verifyUser->user->save();
+
+                return redirect()->route('/login')->with('info', 'Email mu berhasil di verifikasi.
+                Kamu bisa login sekarang')->with('verifiedEmail', $user->email);
+            } else {
+                return redirect()->route('/login')->with('info', 'Email mu sudah di verifikasi.
+                Kamu bisa login sekarang')->with('verifiedEmail', $user->email);
+            }
+        }
     }
 }
