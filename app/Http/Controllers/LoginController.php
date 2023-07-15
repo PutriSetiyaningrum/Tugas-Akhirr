@@ -96,17 +96,17 @@ class LoginController extends Controller
 
         $last_id = $user->id;
 
-        $token = $last_id.hash('sha256', Str::random(120));
+        $token = $last_id . hash('sha256', Str::random(120));
 
-        $verifyUrl = route('/login/verify', ['token' => $token, 'service' => 'Email Verification']);
+        $verifyUrl = url('/login/verify', ['token' => $token, 'service' => 'Email Verification']);
 
         VerifyUser::create([
             'user_id' => $last_id,
             'token' => $token
         ]);
 
-        $message = 'Dear <b>'.$request['name'].'</b>';
-        $message.= 'Terima Kasih telah mendaftar, kami hanya perlu anda memverifikasi alamat email anda
+        $message = 'Dear <b>' . $request['name'] . '</b>';
+        $message .= 'Terima Kasih telah mendaftar, kami hanya perlu anda memverifikasi alamat email anda
         untuk menyelesaikan pengaturan akun anda';
 
         $mail_data = [
@@ -118,13 +118,13 @@ class LoginController extends Controller
             'actionLink' => $verifyUrl,
         ];
 
-        Mail::send('email-template', $mail_data, function($message) use ($mail_data) {
+        Mail::send('user/landingpage/email-template', $mail_data, function ($message) use ($mail_data) {
             $message->to($mail_data['recipient'])
-            ->from($mail_data['fromEmail'], $mail_data['fromName'])
-            ->subject($mail_data['subject']);
+                ->from($mail_data['fromEmail'], $mail_data['fromName'])
+                ->subject($mail_data['subject']);
         });
 
-            return back();
+        return back();
     }
 
     public function verify(Request $request)
