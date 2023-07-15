@@ -36,17 +36,26 @@ class LoginController extends Controller
 
         if ($cek) {
             if (Hash::check($request->password, $cek->password)) {
-                $request->session()->regenerate();
-                if (Auth::attempt(["email" => $request->email, "password" => $request->password])) {
-                    if ($cek->level == "pengurus") {
-                        return redirect()->intended("/home");
-                    } else if ($cek->level == "panitia") {
-                        return redirect()->intended("/panitia/home");
-                    } else if ($cek->level == "pelatih") {
-                        return redirect()->intended("/pelatih/home");
-                    } else if ($cek->level == "pengunjung") {
-                        
+                if ($cek->level == "pengunjung") {
+                    if ($cek->email_verified == null) {
+                        return back()->with("message", "Akun anda belum di verifikasi. cek email anda untuk memverifikasinya");
+                    } else {
+                        $request->session()->regenerate();
+
+                        Auth::attempt(["email" => $request["email"], "password" => $request["password"]]);
+
                         return redirect()->intended("/");
+                    }
+                } else {
+                    $request->session()->regenerate();
+                    if (Auth::attempt(["email" => $request->email, "password" => $request->password])) {
+                        if ($cek->level == "pengurus") {
+                            return redirect()->intended("/home");
+                        } else if ($cek->level == "panitia") {
+                            return redirect()->intended("/panitia/home");
+                        } else if ($cek->level == "pelatih") {
+                            return redirect()->intended("/pelatih/home");
+                        }
                     }
                 }
             } else {

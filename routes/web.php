@@ -150,7 +150,6 @@ Route::group(["middleware" => ["autentikasi"]], function () {
     // Pengunjung
     Route::group(["middleware" => ["can:pengunjung"]], function () {
         Route::resource('profil', ProfilController::class);
-        Route::get('pengunjung/home', [HomeController::class, 'pengunjung']);
     });
 
     Route::prefix("akun")->group(function () {

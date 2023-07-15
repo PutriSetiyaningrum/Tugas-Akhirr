@@ -32,6 +32,12 @@
                 {!! session("info") !!}
             </div>
         @endif
+
+        @if (session("message"))
+            <div class="alert alert-danger">
+                {!! session("message") !!}
+            </div>
+        @endif
         <!-- END -->
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
