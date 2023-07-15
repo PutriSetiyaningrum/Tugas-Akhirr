@@ -45,6 +45,7 @@ class LoginController extends Controller
                     } else if ($cek->level == "pelatih") {
                         return redirect()->intended("/pelatih/home");
                     } else if ($cek->level == "pengunjung") {
+                        
                         return redirect()->intended("/");
                     }
                 }
@@ -98,7 +99,7 @@ class LoginController extends Controller
 
         $token = $last_id . hash('sha256', Str::random(120));
 
-        $verifyUrl = url('/login/verify', ['token' => $token, 'service' => 'Email Verification']);
+        $verifyUrl = url('/verify', ['token' => $token, 'service' => 'Email_Verification']);
 
         VerifyUser::create([
             'user_id' => $last_id,
@@ -124,7 +125,11 @@ class LoginController extends Controller
                 ->subject($mail_data['subject']);
         });
 
-        return back();
+        if ($user) {
+            return back()->with('Berhasil', 'registrasi kamu sekarang berhasil. Silahkan cek email kamu untuk memverifikasi');
+        } else {
+            return back()->with('Gagal', 'ada masalah');
+        }
     }
 
     public function verify(Request $request)
@@ -135,14 +140,14 @@ class LoginController extends Controller
             $user = $verifyUser->user;
 
             if (!$user->email_verified) {
-                $verifyUser->user->email_verify = 1;
+                $verifyUser->user->email_verified = 1;
                 $verifyUser->user->save();
 
-                return redirect()->route('/login')->with('info', 'Email mu berhasil di verifikasi.
+                return redirect("/login")->with('info', 'Email mu berhasil di verifikasi.
                 Kamu bisa login sekarang')->with('verifiedEmail', $user->email);
             } else {
-                return redirect()->route('/login')->with('info', 'Email mu sudah di verifikasi.
-                Kamu bisa login sekarang')->with('verifiedEmail', $user->email);
+                return redirect("/login")->with('peringatan', 'Email mu belum di verifikasi.
+                Cek email mu untuk verifikasi')->with('verifiedEmail', $user->email);
             }
         }
     }

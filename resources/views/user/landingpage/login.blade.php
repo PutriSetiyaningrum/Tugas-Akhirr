@@ -21,9 +21,9 @@
     <div class="login-box">
 
         <!-- Validasi -->
-        @if (session("message"))
+        @if (session("peringatan"))
             <div class="alert alert-danger">
-                {!! session("message") !!}
+                {!! session("peringatan") !!}
             </div>
         @endif
 

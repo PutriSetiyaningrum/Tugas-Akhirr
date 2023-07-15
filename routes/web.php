@@ -61,11 +61,10 @@ Route::group(["middleware" => ["guest"]], function () {
     Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
     Route::get('/register', [LoginController::class, 'registrasi'])->name('registrasi');
     Route::post('/simpanregister', [LoginController::class, 'simpanregistrasi'])->name('simpanregistrasi');
-    Route::get('/verify', [LoginController::class, 'verify'])->name('verify');
+    Route::get('/verify/{token}/{service}', [LoginController::class, 'verify'])->name('verify');
 });
 
 Route::group(["middleware" => ["is_user_verify_email"]], function () {
-
 });
 
 Route::group(["middleware" => ["autentikasi"]], function () {

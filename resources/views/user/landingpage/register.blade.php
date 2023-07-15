@@ -20,6 +20,19 @@
 </head>
 <body class="hold-transition register-page">
     <div class="register-box">
+
+        @if (session("Gagal"))
+        <div class="alert alert-danger">
+            {!! session("Gagal") !!}
+        </div>
+        @endif
+
+        @if (session("Berhasil"))
+        <div class="alert alert-info">
+            {!! session("Berhasil") !!}
+        </div>
+        @endif
+        
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
                 <a href="{{ url('/') }}" class="h1"><b>PERBASI IMY</b></a>
