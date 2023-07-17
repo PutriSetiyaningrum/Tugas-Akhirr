@@ -71,7 +71,7 @@ Route::group(["middleware" => ["autentikasi"]], function () {
     Route::get('/logout', [LoginController::class, 'logout']);
     Route::put('/profile/update', [ProfileController::class, 'update']);
     Route::resource('profile', ProfileController::class);
-
+    Route::post('/user/profile', [ProfileController::class, 'ubahpassword']);
 
     // Pengurus
     Route::group(["middleware" => ["can:pengurus"]], function () {

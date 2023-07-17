@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Pengunjung;
 use App\Models\Pelatih;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -132,5 +133,28 @@ class ProfileController extends Controller
             "message",
             "<div style='margin-top: 7px'>Profil Anda Berhasil di Edit</div>"
         );
+    }
+
+    public function ubahpassword(Request $request)
+    {
+        $messages = [
+            "required" => "Kolom :attribute Harus Diisi"
+        ];
+
+        $this->validate($request, [
+            "passwordlama" => "required",
+            "passwordbaru" => "required|min:8|max:15",
+            "konfirpass" => "required"
+        ], $messages);
+
+        if ($request->passwordbaru != $request->konfirpass) {
+            return back()->with("error", "Konfirmasi Password Tidak Sesuai");
+        } else {
+            User::where("id", Auth::user()->id)->update([
+                "password" => bcrypt($request->passwordbaru)
+            ]);
+
+            return back()->with("sukses", "Password Kami Berhasil di Ubah");
+        }
     }
 }

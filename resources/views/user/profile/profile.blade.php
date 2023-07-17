@@ -148,22 +148,29 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ url('/akun/panitia') }}" method="POST">
+
+                @if (session("sukses"))
+                <div class="alert alert-success">
+                    {!! session("sukses") !!}
+                </div>
+                @endif
+                <form action="{{ url('/user/profile') }}" method="POST">
                     @csrf
+                    @method("post")
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="Password Lama"> Password Lama </label>
-                            <input type="text" class="form-control @error("passwordlama") {{ 'is-invalid' }} @enderror" name="passwordlama"
-                            id="passwordlama" placeholder="Masukkan Password Lama" value="{{ old('name') }}" autocomplete="off">
-                            @error("passswordlama")
+                            <label for="passwordlama"> Password Lama </label>
+                            <input type="password" class="form-control @error("passwordlama") {{ 'is-invalid' }} @enderror" name="passwordlama"
+                            id="passwordlama" placeholder="Masukkan Password Lama" value="{{ old('passwordlama') }}" autocomplete="off">
+                            @error("passwordlama")
                             <span class="error invalid-feedback">
                                 {{ $message }}
                             </span>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="Password baru"> Password Baru </label>
-                            <input type="text" class="form-control @error("passwordbaru") {{ 'is-invalid' }} @enderror" name="passwordbaru"
+                            <label for="passwordbaru"> Password Baru </label>
+                            <input type="password" class="form-control @error("passwordbaru") {{ 'is-invalid' }} @enderror" name="passwordbaru"
                             id="passwordbaru" placeholder="Masukkan password Baru" value="{{ old('passwordbaru') }}" autocomplete="off">
                             @error("passwordbaru")
                             <span class="error invalid-feedback">
@@ -172,8 +179,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="konfirmasi Password Baru"> Konfirmasi Password Baru </label>
-                            <input type="text" class="form-control @error("konfirpass") {{ 'is-invalid' }} @enderror" name="konfirpass"
+                            <label for="konfirpass"> Konfirmasi Password Baru </label>
+                            <input type="password" class="form-control @error("konfirpass") {{ 'is-invalid' }} @enderror" name="konfirpass"
                             id="konfirpass" placeholder="Konfirmasi Password Baru" value="{{ old('konfirpass') }}" autocomplete="off">
                             @error("konfirpass")
                             <span class="error invalid-feedback">
