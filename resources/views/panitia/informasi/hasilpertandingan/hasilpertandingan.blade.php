@@ -34,40 +34,42 @@
                 </div>
             </div>
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th style="width: 10px">No</th>
-                            <th class="text-center">Gambar</th>
-                            <th class="text-center">Deskripsi</th>
-                            <th class="text-center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($hasilpertandingan  as $item)
-                        <tr>
-                            <td class="text-center">{{ $loop->iteration }}</td>
-                            <td width="11%" class="text-center">
-                                <img src="{{ url('/storage/'.$item->gambar) }}" height="100%" width="60" alt="srcset">
-                            </td>
-                            <td class="text-center">{{ $item->Deskripsi }}</td>
-                            <td width="11%" class="text-center">
-                                <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('/informasi/hasilpertandingan/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
-                                </button>
-                                |
-                                <form action="{{ url('/informasi/hasilpertandingan/'.$item->id) }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i>
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">No</th>
+                                <th class="text-center">Gambar</th>
+                                <th class="text-center">Deskripsi</th>
+                                <th class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($hasilpertandingan  as $item)
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}</td>
+                                <td width="11%" class="text-center">
+                                    <img src="{{ url('/storage/'.$item->gambar) }}" height="100%" width="60" alt="srcset">
+                                </td>
+                                <td class="text-center">{{ $item->Deskripsi }}</td>
+                                <td width="11%" class="text-center">
+                                    <button type="button" class="btn btn-warning btn-sm">
+                                        <a href="{{ url('/informasi/hasilpertandingan/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
                                     </button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                                    |
+                                    <form action="{{ url('/informasi/hasilpertandingan/'.$item->id) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
