@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Pelatih;
 use App\Models\User;
 use App\Models\Pengunjung;
-use App\Models\Event;
+use App\Models\event;
 use App\Models\Kategori;
 use App\Models\Cabang;
 use App\Models\HasilPertandingan;
