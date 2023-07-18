@@ -162,7 +162,7 @@ class ProfileController extends Controller
                 "password" => bcrypt($request->passwordbaru)
             ]);
 
-            return back()->with("sukses", "Password Kami Berhasil di Ubah");
+            return back()->with("sukses", "Password Kamu Berhasil di Ubah");
         }
     }
 
