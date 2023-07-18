@@ -140,7 +140,7 @@
                                 <br>
                                 <fieldset class="email-wrap style-text">
                                     <label for="email" style="font-size: 16px">Email :</label>
-                                    <input type="email" id="email" class="form-control @error("email") {{ 'is-invalid' }} @enderror" name="email"
+                                    <input type="text" id="email" class="form-control @error("email") {{ 'is-invalid' }} @enderror" name="email"
                                     tabindex="1" placeholder="Masukan Email" value="{{ old('email') ?? old('name') ?? Auth::user()->email}}" size="32"
                                     aria-required="true" autocomplete="off" style="font-size: 16px">
                                     @error("email")
@@ -152,7 +152,7 @@
                                 <br>
                                 <fieldset class="phone-wrap style-text">
                                     <label for="telepon" style="font-size: 16px">Telepon :</label>
-                                    <input type="tel" id="telepon" class="form-control @error("telepon") {{ 'is-invalid'}} @enderror" name="telepon"
+                                    <input type="number" id="telepon" class="form-control @error("telepon") {{ 'is-invalid'}} @enderror" name="telepon"
                                     tabindex="1" placeholder="Masukan Telepon" value="{{ old('telepon') ?? Auth::user()->pengunjung->telepon}}" size="32"
                                     aria-required="true" autocomplete="off" style="font-size: 16px">
                                     @error("telepon")
@@ -164,7 +164,7 @@
                                 <br>
                                 <fieldset class="phone-wrap style-text">
                                     <label for="alamat" style="font-size: 16px">Alamat :</label>
-                                    <input type="tel" id="alamat" class="form-control @error("alamat") {{ 'is-invalid'}} @enderror" name="alamat"
+                                    <input type="text" id="alamat" class="form-control @error("alamat") {{ 'is-invalid'}} @enderror" name="alamat"
                                     tabindex="2" placeholder="Masukakn Alamat" value="{{ old('alamat') ?? Auth::user()->pengunjung->alamat}}" size="32"
                                     aria-required="true" autocomplete="off" style="font-size: 16px">
                                     @error("alamat")
