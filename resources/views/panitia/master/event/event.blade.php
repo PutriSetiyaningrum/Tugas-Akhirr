@@ -34,44 +34,46 @@
                 </div>
             </div>
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th style="width: 10px">No</th>
-                        <th class="text-center">Nama Event</th>
-                        <th class="text-center">Mulai</th>
-                        <th class="text-center">Selesai</th>
-                        <th class="text-center">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($event  as $item)
-                    <tr>
-                        <td class="text-center">{{ $loop->iteration }}</td>
-                        <td >{{ $item->Nama_Event }}</td>
-                        <td >{{ $item->mulai }}</td>
-                        <td >{{ $item->selesai }}</td>
-                        <td class="text-center">
-                            <a href="{{ url('/master/event/' .encrypt($item["id"])) }}" class="btn btn-primary btn-sm">
-                                <i class="fa fa-eye"></i>
-                            </a>
-                            |
-                            <button type="button" class="btn btn-warning btn-sm">
-                                <a href="{{ url('/master/event/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
-                            </button>
-                            |
-                            <form action="{{ url('/master/event/'.$item->id) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method("DELETE")
-                                <button type="submit" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">No</th>
+                                <th class="text-center">Nama Event</th>
+                                <th class="text-center">Mulai</th>
+                                <th class="text-center">Selesai</th>
+                                <th class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($event  as $item)
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}</td>
+                                <td >{{ $item->Nama_Event }}</td>
+                                <td >{{ $item->mulai }}</td>
+                                <td >{{ $item->selesai }}</td>
+                                <td class="text-center">
+                                    <a href="{{ url('/master/event/' .encrypt($item["id"])) }}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                    |
+                                    <button type="button" class="btn btn-warning btn-sm">
+                                        <a href="{{ url('/master/event/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
+                                    </button>
+                                    |
+                                    <form action="{{ url('/master/event/'.$item->id) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
