@@ -19,7 +19,7 @@ class ProfileController extends Controller
         return view('user.profile.profile', compact('user'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $messages = [
             "required" => "Kolom :attribute tidak boleh kosong"
