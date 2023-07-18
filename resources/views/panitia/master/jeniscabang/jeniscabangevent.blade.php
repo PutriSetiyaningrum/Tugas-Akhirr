@@ -27,33 +27,35 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
-                    <tr>
-                        <th style="width: 10px">No</th>
-                        <th class="text-center">Nama Jenis Cabang Event</th>
-                        <th class="text-center">Aksi</th>
-                    </tr>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width: 10px">No</th>
+                            <th class="text-center">Nama Jenis Cabang Event</th>
+                            <th class="text-center">Aksi</th>
+                        </tr>
 
-                    @foreach ($jeniscabangevent  as $item)
-                    <tr>
-                        <td class="text-center">{{ $loop->iteration }}</td>
-                        <td>{{ $item->Nama_Jenis_Cabang_Event }}</td>
-                        <td width="11%" class="text-center">
-                            <button type="button" class="btn btn-warning btn-sm">
-                                <a href="{{ url('/master/jeniscabangevent/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
-                            </button>
-                            |
-                            <form action="{{ url('/master/jeniscabangevent/'.$item->id) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method("DELETE")
-                                <button type="submit" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-trash"></i>
+                        @foreach ($jeniscabangevent  as $item)
+                        <tr>
+                            <td class="text-center">{{ $loop->iteration }}</td>
+                            <td>{{ $item->Nama_Jenis_Cabang_Event }}</td>
+                            <td width="11%" class="text-center">
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    <a href="{{ url('/master/jeniscabangevent/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
                                 </button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </table>
+                                |
+                                <form action="{{ url('/master/jeniscabangevent/'.$item->id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
+                </div>
             </div>
         </div>
     </div>

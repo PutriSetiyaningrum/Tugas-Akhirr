@@ -37,92 +37,94 @@
                 </h5>
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
-                    <tbody>
-                        <tr>
-                            <td class="text-right" style="width: 200px">Event</td>
-                            <td class="text-center">:</td>
-                            <td>
-                                {{ $persyaratan->event->Nama_Event }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-right" style="width: 200px">Kategori</td>
-                            <td class="text-center">:</td>
-                            <td>
-                                {{ $persyaratan->kategori->Nama_Kategori_Event }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-right" style="width: 200px">Jenis Cabang Event</td>
-                            <td class="text-center">:</td>
-                            <td>
-                                {{ $persyaratan->cabang->Nama_Jenis_Cabang_Event }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-right" style="width: 200px">Sekolah</td>
-                            <td class="text-center">:</td>
-                            <td>
-                                {{ $persyaratan->sekolah }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-right" style="width: 200px">Logo Sekolah</td>
-                            <td class="text-center">:</td>
-                            <td>
-                                <a target="_blank" href="{{ url('/persyaratan/file/' . $persyaratan->id . '/logo_sekolah') }}">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-right" style="width: 200px">Surat Rekomendasi Kepala Sekolah</td>
-                            <td class="text-center">:</td>
-                            <td>
-                                <a target="_blank" href="{{ url('/persyaratan/file/' . $persyaratan->id . '/surat_rekomendasi') }}">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-right" style="width: 200px">Form Pendaftaran</td>
-                            <td class="text-center">:</td>
-                            <td>
-                                <a target="_blank" href="{{ url('/persyaratan/file/' . $persyaratan->id . '/form_pendaftaran') }}">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-right" style="width: 200px">Foto</td>
-                            <td class="text-center">:</td>
-                            <td>
-                                <a target="_blank" href="{{ url('/persyaratan/file/' . $persyaratan->id . '/foto') }}">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-right" style="width: 200px">Ijazah</td>
-                            <td class="text-center">:</td>
-                            <td>
-                                <a target="_blank" href="{{ url('/persyaratan/file/' . $persyaratan->id . '/ijazah') }}">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-right" style="width: 200px">Akte</td>
-                            <td class="text-center">:</td>
-                            <td>
-                                <a target="_blank" href="{{ url('/persyaratan/file/' . $persyaratan->id . '/akte') }}">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="text-right" style="width: 200px">Event</td>
+                                <td class="text-center">:</td>
+                                <td>
+                                    {{ $persyaratan->event->Nama_Event }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right" style="width: 200px">Kategori</td>
+                                <td class="text-center">:</td>
+                                <td>
+                                    {{ $persyaratan->kategori->Nama_Kategori_Event }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right" style="width: 200px">Jenis Cabang Event</td>
+                                <td class="text-center">:</td>
+                                <td>
+                                    {{ $persyaratan->cabang->Nama_Jenis_Cabang_Event }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right" style="width: 200px">Sekolah</td>
+                                <td class="text-center">:</td>
+                                <td>
+                                    {{ $persyaratan->sekolah }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right" style="width: 200px">Logo Sekolah</td>
+                                <td class="text-center">:</td>
+                                <td>
+                                    <a target="_blank" href="{{ url('/persyaratan/file/' . $persyaratan->id . '/logo_sekolah') }}">
+                                        <i class="fa fa-download"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right" style="width: 200px">Surat Rekomendasi Kepala Sekolah</td>
+                                <td class="text-center">:</td>
+                                <td>
+                                    <a target="_blank" href="{{ url('/persyaratan/file/' . $persyaratan->id . '/surat_rekomendasi') }}">
+                                        <i class="fa fa-download"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right" style="width: 200px">Form Pendaftaran</td>
+                                <td class="text-center">:</td>
+                                <td>
+                                    <a target="_blank" href="{{ url('/persyaratan/file/' . $persyaratan->id . '/form_pendaftaran') }}">
+                                        <i class="fa fa-download"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right" style="width: 200px">Foto</td>
+                                <td class="text-center">:</td>
+                                <td>
+                                    <a target="_blank" href="{{ url('/persyaratan/file/' . $persyaratan->id . '/foto') }}">
+                                        <i class="fa fa-download"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right" style="width: 200px">Ijazah</td>
+                                <td class="text-center">:</td>
+                                <td>
+                                    <a target="_blank" href="{{ url('/persyaratan/file/' . $persyaratan->id . '/ijazah') }}">
+                                        <i class="fa fa-download"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right" style="width: 200px">Akte</td>
+                                <td class="text-center">:</td>
+                                <td>
+                                    <a target="_blank" href="{{ url('/persyaratan/file/' . $persyaratan->id . '/akte') }}">
+                                        <i class="fa fa-download"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -73,7 +73,7 @@
                                 <div class="form-group">
                                     <label for="gambar">Logo Sekolah</label>
                                     <input type="file" class="form-control @error("logo_sekolah") {{ 'is-invalid' }} @enderror" id="logo_sekolah"
-                                    value="{{ old('logo_sekolah') == $item["id"] ? 'selected' : '' }}" name="logo_sekolah" placeholder="Logo Sekolah">
+                                    value="{{ old('logo_sekolah') }}" name="logo_sekolah" placeholder="Logo Sekolah">
                                     @error("logo_sekolah")
                                     <span class="error invalid-feedback">
                                         {{ $message }}
@@ -85,7 +85,7 @@
                                 <div class="form-group">
                                     <label for="gambar">Surat Rekomendasi Kepala Sekolah</label>
                                     <input type="file" class="form-control @error("surat_rekomendasi_kepala_sekolah") {{ 'is-invalid' }} @enderror" id="surat_rekomendasi_kepala_sekolah"
-                                    value="{{ old('surat_rekomendasi_kepala_sekolah') == $item["id"] ? 'selected' : '' }}" name="surat_rekomendasi_kepala_sekolah" placeholder="Surat Rekomendasi Sekolah">
+                                    value="{{ old('surat_rekomendasi_kepala_sekolah') }}" name="surat_rekomendasi_kepala_sekolah" placeholder="Surat Rekomendasi Sekolah">
                                     @error("surat_rekomendasi_kepala_sekolah")
                                     <span class="error invalid-feedback">
                                         {{ $message }}
@@ -97,7 +97,7 @@
                                 <div class="form-group">
                                     <label for="gambar">Form Pendaftaran</label>
                                     <input type="file" class="form-control  @error("form_pendaftaran") {{ 'is-invalid' }} @enderror"
-                                    value="{{ old('form_pendaftaran') == $item["id"] ? 'selected' : '' }}" id="form_pendaftaran" name="form_pendaftaran" placeholder="From Pendaftaran">
+                                    value="{{ old('form_pendaftaran') }}" id="form_pendaftaran" name="form_pendaftaran" placeholder="From Pendaftaran">
                                     @error("form_pendaftaran")
                                     <span class="error invalid-feedback">
                                         {{ $message }}
@@ -109,7 +109,7 @@
                                 <div class="form-group">
                                     <label for="gambar">Foto</label>
                                     <input type="file" class="form-control @error("foto") {{ 'is-invalid' }} @enderror"
-                                    value="{{ old('foto') == $item["id"] ? 'selected' : '' }}" id="foto" name="foto" placeholder="Foto">
+                                    value="{{ old('foto') }}" id="foto" name="foto" placeholder="Foto">
                                     @error("foto")
                                     <span class="error invalid-feedback">
                                         {{ $message }}
@@ -121,7 +121,7 @@
                                 <div class="form-group">
                                     <label for="gambar">Ijazah</label>
                                     <input type="file" class="form-control @error("ijazah") {{ 'is-invalid' }} @enderror"
-                                    value="{{ old('ijazah') == $item["id"] ? 'selected' : '' }}" id="ijazah" name="ijazah" placeholder="Ijazah">
+                                    value="{{ old('ijazah') }}" id="ijazah" name="ijazah" placeholder="Ijazah">
                                     @error("ijazah")
                                     <span class="error invalid-feedback">
                                         {{ $message }}
@@ -133,7 +133,7 @@
                                 <div class="form-group">
                                     <label for="gambar">Akte</label>
                                     <input type="file" class="form-control @error("akte") {{ 'is-invalid' }} @enderror"
-                                    value="{{ old('akte') == $item["id"] ? 'selected' : '' }}" id="akte" name="akte" placeholder="Akte">
+                                    value="{{ old('akte') }}" id="akte" name="akte" placeholder="Akte">
                                     @error("akte")
                                     <span class="error invalid-feedback">
                                         {{ $message }}

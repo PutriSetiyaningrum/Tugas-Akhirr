@@ -27,35 +27,37 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
-                    <tr>
-                        <th style="width: 10px">No</th>
-                        <th class="text-center">Gambar</th>
-                        <th class="text-center">Deskripsi</th>
-                        <th class="text-center">Aksi</th>
-                    </tr>
-
-                    @foreach ($tentangperbasi  as $item)
-                    <tr>
-                        <td class="text-center">{{ $loop->iteration }}</td>
-                        <td width="10%" class="text-center">
-                            <img src="{{ url('/storage/'.$item->gambar) }}" height="100%" width="150" alt="srcset">
-                            <td class="text-center">{{ $item->Deskripsi }}</td>
-                            <td width="11%" class="text-center">
-                                <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('/master/tentangperbasi/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
-                                </button>
-                                |
-                                <form action="{{ url('/master/tentangperbasi/'.$item->id) }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width: 10px">No</th>
+                            <th class="text-center">Gambar</th>
+                            <th class="text-center">Deskripsi</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
-                        @endforeach
+
+                        @foreach ($tentangperbasi  as $item)
+                        <tr>
+                            <td class="text-center">{{ $loop->iteration }}</td>
+                            <td width="10%" class="text-center">
+                                <img src="{{ url('/storage/'.$item->gambar) }}" height="100%" width="150" alt="srcset">
+                                <td class="text-center">{{ $item->Deskripsi }}</td>
+                                <td width="11%" class="text-center">
+                                    <button type="button" class="btn btn-warning btn-sm">
+                                        <a href="{{ url('/master/tentangperbasi/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
+                                    </button>
+                                    |
+                                    <form action="{{ url('/master/tentangperbasi/'.$item->id) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </div>
                     </table>
                 </div>
             </div>

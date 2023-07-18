@@ -37,30 +37,32 @@
             </div>
             @endcan
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th style="width: 10px">No</th>
-                            <th class="text-center">Kategori</th>
-                            <th class="text-center">Jenis Cabang</th>
-                            <th class="text-center">Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($detail as $item)
-                        <tr>
-                            <td style="width: 10px">{{ $loop->iteration }}.</td>
-                            <td class="text-center">{{$item->kategori->Nama_Kategori_Event}}</td>
-                            <td class="text-center">{{$item->cabang->Nama_Jenis_Cabang_Event}}</td>
-                            <td width="11%" class="text-center">
-                                <a href="{{ url('/event/persyaratan/'.encrypt($item["id"])) . '/detail-persyaratan' }}" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-search"></i> Detail
-                                </a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">No</th>
+                                <th class="text-center">Kategori</th>
+                                <th class="text-center">Jenis Cabang</th>
+                                <th class="text-center">Detail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($detail as $item)
+                            <tr>
+                                <td style="width: 10px">{{ $loop->iteration }}.</td>
+                                <td class="text-center">{{$item->kategori->Nama_Kategori_Event}}</td>
+                                <td class="text-center">{{$item->cabang->Nama_Jenis_Cabang_Event}}</td>
+                                <td width="11%" class="text-center">
+                                    <a href="{{ url('/event/persyaratan/'.encrypt($item["id"])) . '/detail-persyaratan' }}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-search"></i> Detail
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
