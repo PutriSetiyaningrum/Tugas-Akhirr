@@ -13,7 +13,7 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="flat-slider">  <div class="overlay-slider style"></div>
-                                <div class="sld-img"></div>
+                                <div class="sld-img"><img src="/../../assets/user/images/image-slider/panitia-perbasii.jpg" alt=""></div>
                                     <div class="content">
                                         <div class="heading">
                                             <h1>SELAMAT DATANG <br>
@@ -21,7 +21,6 @@
                                             <p>Yuk cari tau tentang event basket yang sedang dilaksanakan
                                             </p>
                                         </div>
-                                        <img src="/../../assets/user/images/image-slider/panitia-perbasii.jpg" alt="">
                                     </div>
                                 </div>
                             </div>
