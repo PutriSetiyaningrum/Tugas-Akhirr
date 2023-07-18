@@ -47,7 +47,7 @@ use Carbon\Carbon;
                             <div class="meta link-style-3 font">
                                 <a class="entry-author">
                                     {{ $item["user"]["name"] }}
-                                </a> <a class="entry-comment" href="{{ url('/informasi/tentang-event') . '/' . $item->slug }}">0 Comments</a>
+                                </a> <a class="entry-comment" href="{{ url('/informasi/tentang-event') . '/' . $item->slug }}">Komentar</a>
                             </div>
                             <h3 class="title-item">
                                 <a href="{{ url('/informasi/tentang-event') . '/' . $item->slug }}">
