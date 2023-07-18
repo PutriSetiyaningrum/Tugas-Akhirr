@@ -154,11 +154,10 @@ class LoginController extends Controller
                 $verifyUser->user->email_verified = 1;
                 $verifyUser->user->save();
 
-                return redirect("/login")->with('info', 'Email mu berhasil di verifikasi.
-                Kamu bisa login sekarang')->with('verifiedEmail', $user->email);
+                return redirect("/login")->with('info', 'Email Kamu Berhasil di Verifikasi');
             } else {
                 return redirect("/login")->with('peringatan', 'Email mu belum di verifikasi.
-                Cek email mu untuk verifikasi')->with('verifiedEmail', $user->email);
+                Cek email mu untuk verifikasi');
             }
         }
     }
