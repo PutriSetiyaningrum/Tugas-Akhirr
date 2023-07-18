@@ -1,5 +1,5 @@
 @php
-    use App\Models\CounterArtikel;
+use App\Models\CounterArtikel;
 @endphp
 
 @extends('layouts.main')
@@ -33,37 +33,39 @@
     <div class="content">
         <div class="card card-info card-outline">
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th style="width: 10px">No</th>
-                        <th class="text-center">Nama Event</th>
-                        <th class="text-center">Mulai</th>
-                        <th class="text-center">Selesai</th>
-                        <th class="text-center">Penonton</th>
-                        <th class="text-center">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($event  as $item)
-                        @php
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">No</th>
+                                <th class="text-center">Nama Event</th>
+                                <th class="text-center">Mulai</th>
+                                <th class="text-center">Selesai</th>
+                                <th class="text-center">Penonton</th>
+                                <th class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($event  as $item)
+                            @php
                             $count = CounterArtikel::where("id_event", $item["id"])->count();
-                        @endphp
-                    <tr>
-                        <td class="text-center">{{ $loop->iteration }}</td>
-                        <td class="text-center">{{ $item->Nama_Event }}</td>
-                        <td class="text-center">{{ $item->mulai }}</td>
-                        <td class="text-center">{{ $item->selesai }}</td>
-                        <td class="text-center">{{ $count }} Orang</td>
-                        <td class="text-center">
-                            <a href="{{ url('/informasi/tentang-event/' . $item["slug"]) }}" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="fa fa-eye"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-                </table>
+                            @endphp
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}</td>
+                                <td class="text-center">{{ $item->Nama_Event }}</td>
+                                <td class="text-center">{{ $item->mulai }}</td>
+                                <td class="text-center">{{ $item->selesai }}</td>
+                                <td class="text-center">{{ $count }} Orang</td>
+                                <td class="text-center">
+                                    <a href="{{ url('/informasi/tentang-event/' . $item["slug"]) }}" target="_blank" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
