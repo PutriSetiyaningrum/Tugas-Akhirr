@@ -9,23 +9,24 @@
                     <img src="/../../assets/user/images/logo/logo-perbasi.png" alt="perbasi" width="200" height="150">
                 </div> -->
                 <div class="container-fuild">
-                    <div class="swiper-container mainslider">                            
+                    <div class="swiper-container mainslider">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="flat-slider">  <div class="overlay-slider style"></div>
-                                <div class="sld-img"><img src="/../../assets/user/images/image-slider/panitia-perbasii.jpg" alt=""></div>
+                                <div class="sld-img"></div>
                                     <div class="content">
                                         <div class="heading">
                                             <h1>SELAMAT DATANG <br>
                                                 SOBAT BASKET . . . <br>
-                                            <p>Yuk cari tau tentang event basket yang sedang dilaksanakan 
+                                            <p>Yuk cari tau tentang event basket yang sedang dilaksanakan
                                             </p>
                                         </div>
+                                        <img src="/../../assets/user/images/image-slider/panitia-perbasii.jpg" alt="">
                                     </div>
-                                </div>                           
-                            </div>          
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>               
-            </section> 
+                </div>
+            </section>
 @endsection
