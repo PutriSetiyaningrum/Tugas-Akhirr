@@ -36,125 +36,126 @@
             </div>
             @endcan
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                @can("pelatih")
+                                <th style="width: 10px">No</th>
+                                <th class="text-center">Kategori</th>
+                                <th class="text-center">Jenis Cabang</th>
+                                <th class="text-center">Sekolah</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Detail</th>
 
-                    <thead>
-                        <tr>
+                                @endcan
+
+                                @can("panitia")
+                                <th class="text-center" style="width: 10px">No.</th>
+                                <th class="text-center">Nama Event</th>
+                                <th class="text-center">Kategori</th>
+                                <th class="text-center">Jenis Cabang</th>
+                                <th class="text-center">Sekolah</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Aksi</th>
+                                @endcan
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($persyaratan as $item)
                             @can("pelatih")
-                            <th style="width: 10px">No</th>
-                            <th class="text-center">Kategori</th>
-                            <th class="text-center">Jenis Cabang</th>
-                            <th class="text-center">Sekolah</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-center">Detail</th>
-
-                            @endcan
-
-                            @can("panitia")
-                            <th class="text-center" style="width: 10px">No.</th>
-                            <th class="text-center">Nama Event</th>
-                            <th class="text-center">Kategori</th>
-                            <th class="text-center">Jenis Cabang</th>
-                            <th class="text-center">Sekolah</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-center">Aksi</th>
-                            @endcan
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($persyaratan as $item)
-                        @can("pelatih")
-                        <tr>
-                            <td style="width: 10px">{{ $loop->iteration }}.</td>
-                            <td class="text-center">{{$item->kategori->Nama_Kategori_Event}}</td>
-                            <td class="text-center">{{$item->cabang->Nama_Jenis_Cabang_Event}}</td>
-                            <td class="text-center">{{$item->sekolah}}</td>
-                            <td class="text-center">
-                                @if ($item["status"] == 0)
-                                <span class="badge badge-warning">
-                                    Belum Di Konfirmasi
-                                </span>
-                                @elseif ($item["status"] == 1)
-                                <span class="badge badge-success">
-                                    Sudah Disetujui
-                                </span>
-                                @elseif ($item["status"] == 2)
-                                <span class="badge badge-danger">
-                                    Ditolak
-                                </span>
-                                <br>
-                                <small>
-                                    Alasan {{ $item["deskripsi"] }}
-                                </small>
-                                @elseif($item["status"] == 3)
-                                <span class="badge badge-info">
-                                    Pengajuan Ulang
-                                </span>
-                                @endif
-                            </td>
-                            <td class="text-center">
-                                <a href="{{ url('/event/persyaratan/'.encrypt($item["id"])) . '/detail-persyaratan' }}" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-search"></i> Detail
-                                </a>
-                                @if ($item["status"] == 2)
-                                <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('/event/persyaratan/'. encrypt($id) . '/' . $item['id'] . '/edit') }}">
-                                        <i class="fa fa-edit"></i>
-                                        Edit
+                            <tr>
+                                <td style="width: 10px">{{ $loop->iteration }}.</td>
+                                <td class="text-center">{{$item->kategori->Nama_Kategori_Event}}</td>
+                                <td class="text-center">{{$item->cabang->Nama_Jenis_Cabang_Event}}</td>
+                                <td class="text-center">{{$item->sekolah}}</td>
+                                <td class="text-center">
+                                    @if ($item["status"] == 0)
+                                    <span class="badge badge-warning">
+                                        Belum Di Konfirmasi
+                                    </span>
+                                    @elseif ($item["status"] == 1)
+                                    <span class="badge badge-success">
+                                        Sudah Disetujui
+                                    </span>
+                                    @elseif ($item["status"] == 2)
+                                    <span class="badge badge-danger">
+                                        Ditolak
+                                    </span>
+                                    <br>
+                                    <small>
+                                        Alasan {{ $item["deskripsi"] }}
+                                    </small>
+                                    @elseif($item["status"] == 3)
+                                    <span class="badge badge-info">
+                                        Pengajuan Ulang
+                                    </span>
+                                    @endif
+                                </td>
+                                <td class="text-center">
+                                    <a href="{{ url('/event/persyaratan/'.encrypt($item["id"])) . '/detail-persyaratan' }}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-search"></i> Detail
                                     </a>
-                                </button>
-                                @endif
-                            </td>
+                                    @if ($item["status"] == 2)
+                                    <button type="button" class="btn btn-warning btn-sm">
+                                        <a href="{{ url('/event/persyaratan/'. encrypt($id) . '/' . $item['id'] . '/edit') }}">
+                                            <i class="fa fa-edit"></i>
+                                            Edit
+                                        </a>
+                                    </button>
+                                    @endif
+                                </td>
+
+                                @can("panitia")
+
+                                @endcan
+                            </tr>
+                            @endcan
 
                             @can("panitia")
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}.</td>
+                                <td class="text-center">{{ $item["event"]["Nama_Event"] }}</td>
+                                <td class="text-center">{{ $item["kategori"]["Nama_Kategori_Event"] }}</td>
+                                <td class="text-center">{{ $item["cabang"]["Nama_Jenis_Cabang_Event"]}}</td>
+                                <td class="text-center">{{ $item->sekolah }}</td>
+                                <td class="text-center">
+                                    @if ($item["status"] == 0)
+                                    <span class="badge badge-warning">
+                                        Belum Di Konfirmasi
+                                    </span>
+                                    @elseif ($item["status"] == 1)
+                                    <span class="badge badge-success">
+                                        Sudah Disetujui
+                                    </span>
+                                    @elseif ($item["status"] == 2)
+                                    <span class="badge badge-danger">
+                                        Ditolak
+                                    </span>
+                                    @elseif($item["status"] == 3)
+                                    <span class="badge badge-info">
+                                        Pengajuan Ulang
+                                    </span>
+                                    @endif
+                                </td>
+                                <td class="text-center">
+                                    <a href="{{ url('/persyaratan/'.encrypt($item["id"])) . '/detail' }}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-search"></i> Detail
+                                    </a>
+                                    @if ($item->status == 0 || $item->status == 3)
+                                    <a href="{{ url('/persyaratan/'. encrypt($item['id']) . '/ubah_status') }}" class="btn btn-success btn-sm">
+                                        <i class="fa fa-edit"></i> Ubah Status
+                                    </a>
+                                    @else
 
+                                    @endif
+                                </td>
+                            </tr>
                             @endcan
-                        </tr>
-                        @endcan
-
-                        @can("panitia")
-                        <tr>
-                            <td class="text-center">{{ $loop->iteration }}.</td>
-                            <td class="text-center">{{ $item["event"]["Nama_Event"] }}</td>
-                            <td class="text-center">{{ $item["kategori"]["Nama_Kategori_Event"] }}</td>
-                            <td class="text-center">{{ $item["cabang"]["Nama_Jenis_Cabang_Event"]}}</td>
-                            <td class="text-center">{{ $item->sekolah }}</td>
-                            <td class="text-center">
-                                @if ($item["status"] == 0)
-                                <span class="badge badge-warning">
-                                    Belum Di Konfirmasi
-                                </span>
-                                @elseif ($item["status"] == 1)
-                                <span class="badge badge-success">
-                                    Sudah Disetujui
-                                </span>
-                                @elseif ($item["status"] == 2)
-                                <span class="badge badge-danger">
-                                    Ditolak
-                                </span>
-                                @elseif($item["status"] == 3)
-                                <span class="badge badge-info">
-                                    Pengajuan Ulang
-                                </span>
-                                @endif
-                            </td>
-                            <td class="text-center">
-                                <a href="{{ url('/persyaratan/'.encrypt($item["id"])) . '/detail' }}" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-search"></i> Detail
-                                </a>
-                                @if ($item->status == 0 || $item->status == 3)
-                                <a href="{{ url('/persyaratan/'. encrypt($item['id']) . '/ubah_status') }}" class="btn btn-success btn-sm">
-                                    <i class="fa fa-edit"></i> Ubah Status
-                                </a>
-                                @else
-
-                                @endif
-                            </td>
-                        </tr>
-                        @endcan
-                        @endforeach
-                    </tbody>
-                </table>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
