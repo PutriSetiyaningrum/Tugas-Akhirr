@@ -41,46 +41,48 @@
             </div>
             @endcan
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th style="width: 10px">No</th>
-                            <th class="text-center">Nama</th>
-                            <th class="text-center">Email</th>
-                            <th class="text-center">Sekolah</th>
-                            @can("pengurus")
-                            <th class="text-center">Aksi</th>
-                            @endcan
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($pelatih as $item)
-                        <tr>
-                            <td class="text-center">{{ $loop->iteration }}</td>
-                            <td class="text-center">{{ $item->name }}</td>
-                            <td class="text-center">{{ $item->email }}</td>
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">No</th>
+                                <th class="text-center">Nama</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Sekolah</th>
+                                @can("pengurus")
+                                <th class="text-center">Aksi</th>
+                                @endcan
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($pelatih as $item)
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}</td>
+                                <td class="text-center">{{ $item->name }}</td>
+                                <td class="text-center">{{ $item->email }}</td>
 
-                            <td class="text-center">{{ $item->pelatih->sekolah }}</td>
+                                <td class="text-center">{{ $item->pelatih->sekolah }}</td>
 
-                            @can("pengurus")
-                            <td class="text-center">
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit-{{ $item->id }}">
-                                    <i class="fa fa-edit"></i> Edit
-                                </button>
-                                |
-                                <form action="{{ url('/akun/pelatih/'.$item->id) }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i> Hapus
+                                @can("pengurus")
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit-{{ $item->id }}">
+                                        <i class="fa fa-edit"></i> Edit
                                     </button>
-                                </form>
-                            </td>
-                            @endcan
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                                    |
+                                    <form action="{{ url('/akun/pelatih/'.$item->id) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-trash"></i> Hapus
+                                        </button>
+                                    </form>
+                                </td>
+                                @endcan
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

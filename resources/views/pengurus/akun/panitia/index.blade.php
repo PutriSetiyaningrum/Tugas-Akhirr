@@ -39,39 +39,41 @@
                 </button>
             </div>
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th style="width: 10px" >No</th>
-                            <th class="text-center">Nama</th>
-                            <th class="text-center">Email</th>
-                            <th class="text-center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($panitia  as $item)
-                        <tr>
-                            <td class="text-center">{{ $loop->iteration }}</td>
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px" >No</th>
+                                <th class="text-center">Nama</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($panitia  as $item)
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}</td>
 
-                            <td class="text-center">{{ $item->name }}</td>
-                            <td class="text-center">{{ $item->email }}</td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit-{{ $item->id }}">
-                                    <i class="fa fa-edit"></i> Edit
-                                </button>
-                                |
-                                <form action="{{ url('/akun/panitia/'.$item->id) }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i> Hapus
+                                <td class="text-center">{{ $item->name }}</td>
+                                <td class="text-center">{{ $item->email }}</td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-edit-{{ $item->id }}">
+                                        <i class="fa fa-edit"></i> Edit
                                     </button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                                    |
+                                    <form action="{{ url('/akun/panitia/'.$item->id) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-trash"></i> Hapus
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

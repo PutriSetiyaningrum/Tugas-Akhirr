@@ -36,43 +36,45 @@
             </div>
             @endcan
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th style="width: 10px">No</th>
-                            <th class="text-center">Nama</th>
-                            <th class="text-center">Email</th>
-                            <th class="text-center">Alamat</th>
-                            <th class="text-center">Telepon</th>
-                            @can("pengurus")
-                            <th class="text-center">Aksi</th>
-                            @endcan
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($pengunjung  as $item)
-                        <tr>
-                            <td class="text-center">{{ $loop->iteration }}</td>
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">No</th>
+                                <th class="text-center">Nama</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Alamat</th>
+                                <th class="text-center">Telepon</th>
+                                @can("pengurus")
+                                <th class="text-center">Aksi</th>
+                                @endcan
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($pengunjung  as $item)
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}</td>
 
-                            <td class="text-center">{{ $item->users->name }}</td>
-                            <td class="text-center">{{ $item->users->email }}</td>
-                            <td class="text-center">{{ $item->alamat }}</td>
-                            <td class="text-center">{{ $item->telepon }}</td>
-                            @can("pengurus")
-                            <td class="text-center">
-                                <form action="{{ url('/akun/pengunjung/'.$item->users->id) }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i> Hapus
-                                    </button>
-                                </form>
-                            </td>
-                            @endcan
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                                <td class="text-center">{{ $item->users->name }}</td>
+                                <td class="text-center">{{ $item->users->email }}</td>
+                                <td class="text-center">{{ $item->alamat }}</td>
+                                <td class="text-center">{{ $item->telepon }}</td>
+                                @can("pengurus")
+                                <td class="text-center">
+                                    <form action="{{ url('/akun/pengunjung/'.$item->users->id) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-trash"></i> Hapus
+                                        </button>
+                                    </form>
+                                </td>
+                                @endcan
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
