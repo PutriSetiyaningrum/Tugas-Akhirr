@@ -80,7 +80,9 @@ class LoginController extends Controller
     public function simpanregistrasi(Request $request)
     {
         $messages = [
-            "required" => "Kolom :attribute Harus diisi"
+            "required" => "Kolom :attribute Harus diisi",
+            "min" => "Kolom :attribute Minimal :min Karakter",
+            "max" => "Kolom :attribute Maksimal :max Karakter"
         ];
 
         $this->validate($request, [
@@ -88,7 +90,7 @@ class LoginController extends Controller
             "email" => "required",
             "alamat" => "required",
             "telepon" => "required",
-            "password" => "required",
+            "password" => "required|min:8|max:15",
         ], $messages);
 
         $user = User::create([

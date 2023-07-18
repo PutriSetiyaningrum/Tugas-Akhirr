@@ -102,6 +102,14 @@ class ProfileController extends Controller
                 "sekolah" => $request["sekolah"]
             ]);
         } else if (Auth::user()->level == "pengunjung") {
+
+            $this->validate($request, [
+                "name" => "required",
+                "email" => "required",
+                "telepon" => "required",
+                "alamat" => "required"
+            ], $messages);
+
             if (!$request->file("foto")) {
             } else {
                 if (empty($user["foto"])) {
@@ -155,6 +163,29 @@ class ProfileController extends Controller
             ]);
 
             return back()->with("sukses", "Password Kami Berhasil di Ubah");
+        }
+    }
+
+    public function ubahpasspengunjung(Request $request)
+    {
+        $messages = [
+            "required" => "Kolom :attribute Harus Diisi"
+        ];
+
+        $this->validate($request, [
+            "passwordsekarang" => "required",
+            "passwordbaru" => "required|min:8|max:15",
+            "konfirpassword" => "required"
+        ], $messages);
+
+        if ($request->passwordbaru != $request->konfirpassword) {
+            return back()->with("error", "Konfirmasi Password Tidak Sesuai");
+        } else {
+            User::where("id", Auth::user()->id)->update([
+                "password" => bcrypt($request->passwordbaru)
+            ]);
+
+            return back()->with("sukses", "Password Kamu Berhasil di Ubah");
         }
     }
 }

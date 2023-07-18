@@ -14,7 +14,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\HasilPertandinganController;
 use App\Http\Controllers\HistoriController;
 use App\Http\Controllers\JadwalPertandinganController;
-use App\Http\Controllers\KomentarController;
+use App\Http\Controllers\KomentarCrontroller;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\PelatihController;
@@ -72,6 +72,7 @@ Route::group(["middleware" => ["autentikasi"]], function () {
     Route::put('/profile/update', [ProfileController::class, 'update']);
     Route::resource('profile', ProfileController::class);
     Route::post('/user/profile', [ProfileController::class, 'ubahpassword']);
+    Route::post('/ubahpasswordpengunjung', [ProfileController::class, 'ubahpasspengunjung']);
 
     // Pengurus
     Route::group(["middleware" => ["can:pengurus"]], function () {
