@@ -23,6 +23,19 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+
+                @if (session("error"))
+                    <div class="alert alert-danger">
+                        {!! session("error") !!}
+                    </div>
+                @endif
+
+                @if (session("sukses"))
+                    <div class="alert alert-success">
+                        {!! session("sukses") !!}
+                    </div>
+                @endif
+
                 <div class="row">
                     <div class="col-md-3">
 
@@ -156,7 +169,6 @@
                 @endif
                 <form action="{{ url('/user/profile') }}" method="POST">
                     @csrf
-                    @method("post")
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="passwordlama"> Password Lama </label>
