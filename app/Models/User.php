@@ -50,6 +50,6 @@ class User extends Authenticatable
 
     public function pengunjung()
     {
-        return $this->belongsTo("App\Models\pengunjung", "id", "user_id");
+        return $this->belongsTo("App\Models\Pengunjung", "id", "user_id");
     }
 }
