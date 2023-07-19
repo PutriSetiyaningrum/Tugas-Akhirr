@@ -31,7 +31,7 @@ class PelatihController extends Controller
         $users = User::create([
             "name" => $request->name,
             "email" => $request->email,
-            "password" => bcrypt("pelatih"),
+            "password" => bcrypt("pelatih123"),
             "level" => "pelatih",
         ]);
 

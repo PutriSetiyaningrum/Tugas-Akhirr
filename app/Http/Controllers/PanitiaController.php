@@ -34,7 +34,7 @@ class PanitiaController extends Controller
         User::create([
             "name" => $request->name,
             "email" => $request->email,
-            "password" => bcrypt("panitia"),
+            "password" => bcrypt("panitia123"),
             "level" => "panitia",
         ]);
 

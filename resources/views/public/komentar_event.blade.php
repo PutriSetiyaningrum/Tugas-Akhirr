@@ -19,12 +19,6 @@ use App\Models\CounterArtikel;
                 <div class="col-sm-6">
                     <h1>Data Event</h1>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ url('/panitia/home') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Event</li>
-                    </ol>
-                </div>
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>

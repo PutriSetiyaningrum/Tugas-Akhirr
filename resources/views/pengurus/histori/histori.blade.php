@@ -23,7 +23,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ url('/panitia/home') }}">Panitia</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Histori</li>
                     </ol>
                 </div>
@@ -42,34 +42,36 @@
             </div>
             @endcan
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th style="width: 10px">No</th>
-                            <th class="text-center">Nama Event</th>
-                            <th class="text-center">Kategori</th>
-                            <th class="text-center">Jenis Cabang</th>
-                            <th class="text-center">Sekolah</th>
-                            <th class="text-center">Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($histori as $item)
-                        <tr>
-                            <td style="width: 10px">{{ $loop->iteration }}.</td>
-                            <td class="text-center">{{$item->event->Nama_Event}}</td>
-                            <td class="text-center">{{$item->kategori->Nama_Kategori_Event}}</td>
-                            <td class="text-center">{{$item->cabang->Nama_Jenis_Cabang_Event}}</td>
-                            <td class="text-center">{{$item->sekolah}}</td>
-                            <td class="text-center">
-                                <a href="{{ url('/histori/'.encrypt($item["id"])) }}" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-search"></i> Detail
-                                </a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">No</th>
+                                <th class="text-center">Nama Event</th>
+                                <th class="text-center">Kategori</th>
+                                <th class="text-center">Jenis Cabang</th>
+                                <th class="text-center">Sekolah</th>
+                                <th class="text-center">Detail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($histori as $item)
+                            <tr>
+                                <td style="width: 10px">{{ $loop->iteration }}.</td>
+                                <td class="text-center">{{$item->event->Nama_Event}}</td>
+                                <td class="text-center">{{$item->kategori->Nama_Kategori_Event}}</td>
+                                <td class="text-center">{{$item->cabang->Nama_Jenis_Cabang_Event}}</td>
+                                <td class="text-center">{{$item->sekolah}}</td>
+                                <td class="text-center">
+                                    <a href="{{ url('/histori/'.encrypt($item["id"])) }}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-search"></i> Detail
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
