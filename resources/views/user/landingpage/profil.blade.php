@@ -141,7 +141,7 @@
                                 <fieldset class="email-wrap style-text">
                                     <label for="email" style="font-size: 16px">Email :</label>
                                     <input type="text" id="email" class="form-control @error("email") {{ 'is-invalid' }} @enderror" name="email"
-                                    tabindex="1" placeholder="Masukan Email" value="{{ old('email') ?? old('name') ?? Auth::user()->email}}" size="32"
+                                    tabindex="1" placeholder="Masukan Email" value="{{ old('email') ?? Auth::user()->email}}" size="32"
                                     aria-required="true" autocomplete="off" style="font-size: 16px">
                                     @error("email")
                                     <span class="error invalid-feedback">

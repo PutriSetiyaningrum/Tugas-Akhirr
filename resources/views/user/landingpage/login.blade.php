@@ -21,16 +21,22 @@
     <div class="login-box">
 
         <!-- Validasi -->
-        @if (session("peringatan"))
-            <div class="alert alert-danger">
-                {!! session("peringatan") !!}
-            </div>
+        @if (session("message"))
+        <div class="alert alert-danger">
+            {!! session("message") !!}
+        </div>
         @endif
 
         @if (session("info"))
-            <div class="alert alert-info">
-                {!! session("info") !!}
-            </div>
+        <div class="alert alert-info">
+            {!! session("info") !!}
+        </div>
+        @endif
+
+        @if (session("peringatan"))
+        <div class="alert alert-danger">
+            {!! session("peringatan") !!}
+        </div>
         @endif
 
         <!-- END -->
@@ -46,7 +52,7 @@
                     {{ csrf_field() }}
                     <div class="input-group mb-3">
                         <input type="email" class="form-control @error("email") {{ 'is-invalid' }} @enderror" name="email"
-                        placeholder="Email" value="{{ Session::get('verifiedEmail') ? Session::get('verifiedEmail') : old('email') }}">
+                        placeholder="Email" value="{{ Session::get('verifiedEmail') ? Session::get('verifiedEmail') : old('email') }}" autocomplete="off">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -66,9 +72,9 @@
                             </div>
                         </div>
                         @error("password")
-                            <span class="error invalid-feedback">
-                                {{ $message }}
-                            </span>
+                        <span class="error invalid-feedback">
+                            {{ $message }}
+                        </span>
                         @enderror
                     </div>
                     <div class="row">
@@ -92,9 +98,7 @@
                 </div> -->
                 <!-- /.social-auth-links -->
 
-                <p class="mb-1">
-                    <a href="forgot-password.html">Lupa password?</a>
-                </p>
+
                 <p class="mb-0">
                     <a href="/register" class="text-center">Daftar</a>
                 </p>

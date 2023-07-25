@@ -42,7 +42,7 @@
                             <td class="text-center" style="width: 200px"><b>Gambar</b></td>
                             <td class="text-center">:</td>
                             <td>
-                                <img src="{{ url('/storage/'.$persyaratan->gambar) }}" height="100%" width="150" alt="srcset">
+                                <img src="{{ url('/storage/'.$persyaratan->gambar) }}" height="100%" width="60" alt="srcset">
                             </td>
                         </tr>
                         <tr>

@@ -38,7 +38,7 @@ class LoginController extends Controller
             if (Hash::check($request->password, $cek->password)) {
                 if ($cek->level == "pengunjung") {
                     if ($cek->email_verified == null) {
-                        return back()->with("message", "Akun anda belum di verifikasi. cek email anda untuk memverifikasinya");
+                        return back()->with("message", "Akun anda belum di verifikasi. Cek email anda untuk memverifikasinya");
                     } else {
                         $request->session()->regenerate();
 
@@ -117,7 +117,7 @@ class LoginController extends Controller
             'token' => $token
         ]);
 
-        $message = 'Dear <b>' . $request['name'] . '</b>';
+        $message = 'Untuk <b>' . $request['name'] . '</b>';
         $message .= 'Terima Kasih telah mendaftar, kami hanya perlu anda memverifikasi alamat email anda
         untuk menyelesaikan pengaturan akun anda';
 

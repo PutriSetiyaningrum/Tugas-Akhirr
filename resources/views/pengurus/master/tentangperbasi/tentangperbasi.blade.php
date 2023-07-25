@@ -40,7 +40,7 @@
                         <tr>
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td width="10%" class="text-center">
-                                <img src="{{ url('/storage/'.$item->gambar) }}" height="100%" width="150" alt="srcset">
+                                <img src="{{ url('/storage/'.$item->gambar) }}" height="100%" width="60" alt="srcset">
                                 <td class="text-center">{{ $item->Deskripsi }}</td>
                                 <td width="11%" class="text-center">
                                     <button type="button" class="btn btn-warning btn-sm">
