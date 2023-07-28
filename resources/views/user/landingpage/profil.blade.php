@@ -176,7 +176,7 @@
                             </div>
                             <br>
                             <button name="submit" type="submit" id="comment-reply"
-                            class="button btn-style4 btn-submit-comment">Ubah</button>
+                            class="button btn-style4 btn-submit-comment">Ubah Profil</button>
                         </div>
                     </div>
                 </form>

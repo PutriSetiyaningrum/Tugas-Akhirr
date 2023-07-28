@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-10">
-                    <h1 class="m-0">Tambah Data Event</h1>
+                    <h1 class="m-0">Tambah Event</h1>
                 </div>
             </div>
         </div>

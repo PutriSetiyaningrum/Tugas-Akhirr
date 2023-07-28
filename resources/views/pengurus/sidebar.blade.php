@@ -62,7 +62,7 @@
                 <li class="nav-item">
                     <a href="{{ url('/master/tentangperbasi') }}" class="nav-link {{ Request::segment(2) == 'tentangperbasi' ? 'active' : '' }} ">
                         <i class="nav-icon far fa-file-alt"></i>
-                        <p>Tentang PERBASI</p>
+                        <p>Tentang Perbasi</p>
                     </a>
                 </li>
             </ul>

@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="breadcrumbs">
-                        <h1>Tentang PERBASI Indramayu<span class="style-color"></h1>
+                        <h1>Tentang Perbasi Indramayu<span class="style-color"></h1>
                         </div>
                     </div>
                 </div>
