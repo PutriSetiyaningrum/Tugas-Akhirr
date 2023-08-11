@@ -40,7 +40,7 @@ class TentangperbasiController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            "required" => "Kolom :attribute Harus diisi"
+            "required" => "Kolom :attribute Harus di Isi",
         ];
 
         $this->validate($request, [
