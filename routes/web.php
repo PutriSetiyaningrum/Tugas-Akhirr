@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\AtletController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
@@ -146,6 +147,9 @@ Route::group(["middleware" => ["autentikasi"]], function () {
             Route::get("/{id}/logo_sekolah", [FileController::class, "logo_sekolah"]);
         });
     });
+
+    Route::resource('atlet', AtletController::class);
+
 
 
     // Pengunjung

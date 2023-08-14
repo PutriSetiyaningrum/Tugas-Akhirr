@@ -26,6 +26,14 @@
             </a>
         </li>
         <li class="nav-item">
+            <a href="{{ url('/atlet')}}" class="nav-link {{ Request::segment(1) == "atlet" ? 'active' : '' }} ">
+                <i class="nav-icon fas fa-restroom"></i>
+                <p>
+                    Atlet
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="{{ url('/komentar_event')}}" class="nav-link {{ Request::segment(1) == "komentar_event" ? 'active' : '' }} ">
                 <i class="nav-icon far fa-comment"></i>
                 <p>

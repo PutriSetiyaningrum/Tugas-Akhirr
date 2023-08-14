@@ -84,7 +84,7 @@ use Carbon\Carbon;
     <!-- /.content -->
 </div>
 
-@foreach ($event as $dat)
+@foreach ($event as $data)
 <div class="modal fade" id="modal-default">
     <div class="modal-dialog">
         <div class="modal-content">
