@@ -31,7 +31,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="tanggal_lahir">kategori Event</label>
+                            <label for="tanggal_lahir">Tanggal Lahir</label>
                             <input type="text" class="form-control @error("tanggal_lahir") {{ 'is-invalid' }} @enderror"
                             id="tanggal_lahir" name="tanggal_lahir" placeholder="tanggal_lahir"
                             value="{{ $dt->tanggal_lahir }}"  autocomplete="off">

@@ -149,6 +149,8 @@ Route::group(["middleware" => ["autentikasi"]], function () {
     });
 
     Route::resource('atlet', AtletController::class);
+    Route::post('/atlet/create-atlet', [AtletController::class, "store"]);
+
 
 
 
