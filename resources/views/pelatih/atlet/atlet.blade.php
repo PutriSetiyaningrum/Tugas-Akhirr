@@ -44,10 +44,10 @@
                             <td>{{ $item->tanggal_lahir }}</td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('/atlet' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ url('/atlet/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
                                 </button>
                                 |
-                                <form action="{{ url('/atlet'.$item->id) }}" method="POST" style="display: inline;">
+                                <form action="{{ url('/atlet/'.$item->id) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method("DELETE")
                                     <button type="submit" class="btn btn-danger btn-sm">

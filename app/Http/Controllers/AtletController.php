@@ -116,6 +116,11 @@ class AtletController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Atlet::where("id", $id)->delete();
+
+        return back()->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Hapus</div>"
+        );
     }
 }
