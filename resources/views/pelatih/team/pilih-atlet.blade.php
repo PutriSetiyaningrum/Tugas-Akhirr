@@ -17,7 +17,7 @@
     <div class="content">
         <div class="card card-info card-outline">
             <div class="card-body">
-                <form action="{{ url('/team/pilih-team') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('/team/pilih-atlet') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="card-body">
                         <div class="row">
@@ -99,16 +99,20 @@
                                         <table class="table table-bordered">
                                             <tr>
                                                 <th class="text-center">Nama</th>
+                                                <th class="text-center">Posisi</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
 
                                             @foreach ($atlet  as $item)
                                             <tr>
                                                 <td>{{ $item->nama }}</td>
-                                                <td class="text-center"><div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="atlet_id[]" value="{{ $item->id }}">
-                                                    <label class="form-check-label">Pilih</label>
-                                                  </div></td>
+                                                <td>{{ $item->posisi }}</td>
+                                                <td class="text-center">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="atlet_id[]" value="{{ $item->id }}">
+                                                        <label class="form-check-label">Pilih</label>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </table>

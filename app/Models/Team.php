@@ -20,6 +20,6 @@ class Team extends Model
 
     public function event()
     {
-        return $this->belongsTo("App\Models\event", "event_id");
+        return $this->belongsTo(event::class, "event_id", "id")->withTrashed();
     }
 }

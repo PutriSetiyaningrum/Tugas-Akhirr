@@ -32,23 +32,21 @@
                         <tr>
                             <th style="width: 10px">No</th>
                             <th class="text-center">Event</th>
-                            <th class="text-center">Pelatih</th>
                             <th class="text-center">Sekolah</th>
                             <th class="text-center">Kategori</th>
-                            <th class="text-center">Jenis Cabang Event</th>
-                            <th class="text-center">Detail</th>
+                            <th class="text-center">Jenis Cabang</th>
+                            <th class="text-center">Nama Atlet</th>
                         </tr>
 
                         @foreach ($team  as $item)
                         <tr>
-                            <td class="text-center"></td>
+                            <td class="text-center">{{ $loop->iteration }}</td>
                             <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$item->sekolah}}</td>
+                            <td>{{$item->Nama_Kategori_Event}}</td>
+                            <td>{{$item->cabang}}</td>
                             <td class="text-center">
-                                <a href="{{ url('/team/team/'.encrypt($item["id"])) . '/detail-team' }}" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-search"></i> Nama Atlet
-                                </a>
+
                             </td>
                         </tr>
                         @endforeach

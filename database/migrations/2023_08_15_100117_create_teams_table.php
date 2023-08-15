@@ -18,9 +18,9 @@ return new class extends Migration
             $table->integer('event_id');
             $table->integer('atlet_id');
             $table->integer('pelatih_id');
-            $table->integer('kategori_id');
-            $table->integer('jeniscabang_id');
-            $table->enum('status', [0, 1])->default(0);
+            $table->integer('kategori_id',);
+            $table->integer('jenis_cabang_id');
+            $table->enum('status', [0, 1])->default(1);
             $table->timestamps();
         });
     }

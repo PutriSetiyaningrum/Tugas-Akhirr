@@ -133,11 +133,12 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::put("/event/persyaratan/{id_event}/{id_persyaratan}/update", [PersyaratanController::class, "update"]);
         Route::post("/event/persyaratan/{id}", [PersyaratanController::class, "store"]);
 
-        Route::resource('atlet', AtletController::class);
         Route::post('/atlet/create-atlet', [AtletController::class, "store"]);
         Route::get('/team', [TeamController::class, "index"]);
         Route::get('/team/pilih-atlet', [TeamController::class, "create"]);
+        Route::post('/team/pilih-atlet', [TeamController::class, "store"]);
         Route::get("/team/{id}/detail-team", [TeamController::class, "detail_event"]);
+        Route::resource('atlet', AtletController::class);
     });
 
     Route::get("/komentar_event", [EventController::class, "komentar_event"]);

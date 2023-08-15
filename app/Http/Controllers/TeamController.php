@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Team;
 use App\Models\Atlet;
-use App\Models\event;
 use App\Models\Pelatih;
 use App\Models\kategorievent;
 use App\Models\JenisCabangEvent;
+use App\Models\event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,19 +47,24 @@ class TeamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        Team::create([
-            "event_id" => decrypt($id),
-            "Pelatih" => $request->sekolah,
-            "kategori_id" => $request->kategori_id,
-            "jenis_cabang_id" => $request->jenis_cabang_id,
-        ]);
+        foreach ($request->atlet_id as $item) {
+            Team::create([
+                "event_id" => 1,
+                "pelatih_id" => 1,
+                "kategori_id" => $request->kategori_id,
+                "jenis_cabang_id" => $request->jenis_cabang_id,
+                "status" => 1,
+                "atlet_id" => $item
+            ]);
 
-        return redirect('/team/' . $id)->with(
-            "message",
-            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Tambahkan</div>"
-        );
+
+            return redirect('/team/')->with(
+                "message",
+                "<div style='margin-top: 7px'>Success Data Anda Berhasil di Tambahkan</div>"
+            );
+        }
     }
 
     /**
