@@ -23,6 +23,7 @@ use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeamController;
 use Doctrine\DBAL\Driver\Middleware;
 
 /*
@@ -131,6 +132,12 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::get("/event/persyaratan/{id_event}/{id_persyaratan}/edit", [PersyaratanController::class, "edit"]);
         Route::put("/event/persyaratan/{id_event}/{id_persyaratan}/update", [PersyaratanController::class, "update"]);
         Route::post("/event/persyaratan/{id}", [PersyaratanController::class, "store"]);
+
+        Route::resource('atlet', AtletController::class);
+        Route::post('/atlet/create-atlet', [AtletController::class, "store"]);
+        Route::get('/team', [TeamController::class, "index"]);
+        Route::get('/team/pilih-atlet', [TeamController::class, "create"]);
+        Route::get("/team/{id}/detail-team", [TeamController::class, "detail_event"]);
     });
 
     Route::get("/komentar_event", [EventController::class, "komentar_event"]);
@@ -147,10 +154,6 @@ Route::group(["middleware" => ["autentikasi"]], function () {
             Route::get("/{id}/logo_sekolah", [FileController::class, "logo_sekolah"]);
         });
     });
-
-    Route::resource('atlet', AtletController::class);
-    Route::post('/atlet/create-atlet', [AtletController::class, "store"]);
-
 
 
 

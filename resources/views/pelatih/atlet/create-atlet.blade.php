@@ -40,6 +40,17 @@
                             </span>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="posisi">Posisi</label>
+                            <input type="text" class="form-control @error("posisi") {{ 'is-invalid' }} @enderror"
+                            value="{{ old('posisi') }}" id="posisi" name="posisi"
+                            placeholder="posisi" autocomplete="off">
+                            @error("posisi")
+                            <span class="error invalid-feedback">
+                                {{ $message }}
+                            </span>
+                            @enderror
+                        </div>
                     </div>
                     <!-- /.card-body -->
 

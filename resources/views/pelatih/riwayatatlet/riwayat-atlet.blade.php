@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Data Atlet</h1>
+                    <h1>Riwayat Atlet</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Atlet</li>
+                        <li class="breadcrumb-item active"> Riwayat Atlet</li>
                     </ol>
                 </div>
             </div><!-- /.row -->
@@ -44,17 +44,9 @@
                             <td>{{ $item->tanggal_lahir }}</td>
                             <td>{{ $item->posisi }}</td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('/atlet/' . $item->id) . '/edit' }}"><i class="fa fa-edit"></i></a>
-                                </button>
-                                |
-                                <form action="{{ url('/atlet/'.$item->id) }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </form>
+                                <a href="{{ url('/team/team/'.encrypt($item["id"])) . '/detail-team' }}" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search"></i> Nama Atlet
+                                </a>
                             </td>
                         </tr>
                         @endforeach

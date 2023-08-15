@@ -43,12 +43,14 @@ class AtletController extends Controller
 
         $this->validate($request, [
             "nama" => "required",
-            "tanggal_lahir" => "required"
+            "tanggal_lahir" => "required",
+            "posisi" => "required"
         ], $messages);
 
         $dtUpload = new Atlet();
         $dtUpload->nama = $request->nama;
         $dtUpload->tanggal_lahir = $request->tanggal_lahir;
+        $dtUpload->posisi = $request->posisi;
         $dtUpload->save();
 
         return redirect("/atlet")->with(
@@ -95,12 +97,14 @@ class AtletController extends Controller
 
         $this->validate($request, [
             "nama" => "required",
-            "tanggal_lahir" => "required"
+            "tanggal_lahir" => "required",
+            "posisi" => "required"
         ], $messages);
 
         Atlet::where("id", $id)->update([
             "nama" => $request->nama,
-            "tanggal_lahir" => $request->tanggal_lahir
+            "tanggal_lahir" => $request->tanggal_lahir,
+            "posisi" => $request->posisi
         ]);
         return redirect("/atlet")->with(
             "message",

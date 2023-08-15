@@ -10,6 +10,6 @@ class Atlet extends Model
     protected $table = "atlets";
     protected $primaryKey = "id";
     protected $fillable = [
-        'id', 'nama', 'tanggal_lahir'
+        'id', 'nama', 'tanggal_lahir', 'posisi'
     ];
 }
