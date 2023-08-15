@@ -15,11 +15,26 @@ class Team extends Model
 
     public function pelatih()
     {
-        return $this->belongsTo("App\Models\Pelatih", "id", "user_id", "sekolah");
+        return $this->belongsTo("App\Models\Pelatih", "pelatih_id", "id");
     }
 
     public function event()
     {
-        return $this->belongsTo(event::class, "event_id", "id")->withTrashed();
+        return $this->belongsTo("App\Models\Event", "event_id", "id");
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo("App\Models\kategorievent", "kategori_id", "id");
+    }
+
+    public function cabang()
+    {
+        return $this->belongsTo("App\Models\JenisCabangEvent", "jenis_cabang_id", "id");
+    }
+
+    public function atlet()
+    {
+        return $this->belongsTo("App\Models\Atlet", "atlet_id", "id");
     }
 }

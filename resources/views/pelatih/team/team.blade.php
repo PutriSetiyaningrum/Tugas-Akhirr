@@ -41,13 +41,11 @@
                         @foreach ($team  as $item)
                         <tr>
                             <td class="text-center">{{ $loop->iteration }}</td>
-                            <td></td>
-                            <td>{{$item->sekolah}}</td>
-                            <td>{{$item->Nama_Kategori_Event}}</td>
-                            <td>{{$item->cabang}}</td>
-                            <td class="text-center">
-
-                            </td>
+                            <td>{{ $item->event->Nama_Event }}</td>
+                            <td>{{ $item->pelatih->sekolah }}</td>
+                            <td>{{ $item->kategori->Nama_Kategori_Event }}</td>
+                            <td>{{ $item->cabang->Nama_Jenis_Cabang_Event }}</td>
+                            <td class="text-center">{{ $item->atlet->nama }}</td>
                         </tr>
                         @endforeach
                     </table>
