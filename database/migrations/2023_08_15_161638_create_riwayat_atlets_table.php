@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('atlets', function (Blueprint $table) {
+        Schema::create('riwayat_atlets', function (Blueprint $table) {
             $table->id();
-            $table->string('nama', 255);
-            $table->string('tanggal_lahir', 255);
-            $table->string('posisi', 255);
-            $table->integer('pelatih_id');
+            $table->integer("atlet_id");
+            $table->integer("posisi_id");
+            $table->enum('status', [0, 1])->default(0);
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('atlets');
+        Schema::dropIfExists('riwayat_atlets');
     }
 };

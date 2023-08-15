@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Atlet;
+use Illuminate\Support\Facades\Auth;
 
 class AtletController extends Controller
 {
@@ -15,7 +16,8 @@ class AtletController extends Controller
      */
     public function index()
     {
-        $atlet = Atlet::latest()->get();
+        $user = Auth::user();
+        $atlet = Atlet::where('pelatih_id', $user->pelatih->id)->latest()->get();
         return view('pelatih.atlet.atlet', compact('atlet'));
     }
 
@@ -44,13 +46,14 @@ class AtletController extends Controller
         $this->validate($request, [
             "nama" => "required",
             "tanggal_lahir" => "required",
-            "posisi" => "required"
+            "posisi" => "required",
         ], $messages);
 
         $dtUpload = new Atlet();
         $dtUpload->nama = $request->nama;
         $dtUpload->tanggal_lahir = $request->tanggal_lahir;
         $dtUpload->posisi = $request->posisi;
+        $dtUpload->pelatih_id = Auth::user()->pelatih->id;
         $dtUpload->save();
 
         return redirect("/atlet")->with(

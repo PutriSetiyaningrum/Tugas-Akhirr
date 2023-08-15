@@ -3,16 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Team;
-use App\Models\Atlet;
-use App\Models\event;
-use App\Models\Pelatih;
-use App\Models\kategorievent;
-use App\Models\JenisCabangEvent;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class TeamController extends Controller
+class RiwayatatletController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,8 +14,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $team = Team::latest()->get();
-        return view('pelatih.team.team', compact('team'));
+        //
     }
 
     /**
@@ -32,13 +24,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
-        $data["atlet"]  = Atlet::where('pelatih_id', $user->pelatih->id)->latest()->get();
-        $data["event"] = event::get();
-        $data["Pelatih"] = Pelatih::get();
-        $data["kategorievent"] = kategorievent::get();
-        $data["jeniscabang"] = JenisCabangEvent::get();
-        return view('pelatih.team.pilih-atlet', $data);
+        //
     }
 
     /**
@@ -47,19 +33,9 @@ class TeamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        Team::create([
-            "event_id" => decrypt($id),
-            "Pelatih" => $request->sekolah,
-            "kategori_id" => $request->kategori_id,
-            "jenis_cabang_id" => $request->jenis_cabang_id,
-        ]);
-
-        return redirect('/team/' . $id)->with(
-            "message",
-            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Tambahkan</div>"
-        );
+        //
     }
 
     /**
@@ -105,12 +81,5 @@ class TeamController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function detail_atlet($id)
-    {
-        $data["team"] = Team::where("id", decrypt($id))->first();
-
-        return view("pelatih.team.detail-team", $data);
     }
 }

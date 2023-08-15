@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
+    use HasFactory;
+
+    protected $table = "teams";
+
     protected $guarded = [''];
-    
+
     public function pelatih()
     {
         return $this->belongsTo("App\Models\Pelatih", "id", "user_id", "sekolah");
