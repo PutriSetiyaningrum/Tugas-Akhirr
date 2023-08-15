@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->integer("atlet_id");
             $table->integer("posisi_id");
+            $table->string('event_id');
+            $table->datetime('mulai');
+            $table->datetime('selesai');
             $table->enum('status', [0, 1])->default(0);
             $table->timestamps();
         });
