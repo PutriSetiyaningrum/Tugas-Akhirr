@@ -231,7 +231,6 @@ class PersyaratanController extends Controller
     public function detail_event($id)
     {
         $data["persyaratan"] = Persyaratan::where("id", decrypt($id))->first();
-
         return view("panitia.persyaratan.detail-event", $data);
     }
 

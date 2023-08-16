@@ -137,7 +137,7 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::get('/team', [TeamController::class, "index"]);
         Route::get('/team/pilih-atlet', [TeamController::class, "create"]);
         Route::post('/team/pilih-atlet', [TeamController::class, "store"]);
-        Route::get("/team/{id}/detail-team", [TeamController::class, "detail_event"]);
+        Route::get("/team/{pelatih_id}/event/{event_id}/detail", [TeamController::class, "detail"]);
         Route::resource('atlet', AtletController::class);
     });
 

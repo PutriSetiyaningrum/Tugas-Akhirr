@@ -35,17 +35,21 @@
                             <th class="text-center">Sekolah</th>
                             <th class="text-center">Kategori</th>
                             <th class="text-center">Jenis Cabang</th>
-                            <th class="text-center">Nama Atlet</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
 
-                        @foreach ($team  as $item)
+                        @foreach ($groupedTeams  as $item)
                         <tr>
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td>{{ $item->event->Nama_Event }}</td>
                             <td>{{ $item->pelatih->sekolah }}</td>
                             <td>{{ $item->kategori->Nama_Kategori_Event }}</td>
                             <td>{{ $item->cabang->Nama_Jenis_Cabang_Event }}</td>
-                            <td class="text-center">{{ $item->atlet->nama }}</td>
+                            <td class="text-center">
+                                <a href="{{ url('/team/' . encrypt($item->pelatih_id) . '/event/' . $item->event_id . '/detail') }}" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search"></i> Detail
+                                </a>
+                            </td>
                         </tr>
                         @endforeach
                     </table>

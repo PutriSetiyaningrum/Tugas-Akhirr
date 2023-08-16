@@ -13,12 +13,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Nama Atlet</h1>
+                    <h1>Detail</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ url('/pelatih/home') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Nama Atlet</li>
+                        <li class="breadcrumb-item active">Detail</li>
                     </ol>
                 </div>
             </div><!-- /.row -->
@@ -39,15 +39,21 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="text-right" style="width: 200px">Event</td>
-                                <td class="text-center">:</td>
-                                <td>
+                        <tr>
+                            <th style="width: 10px">No</th>
+                            <th class="text-center">Nama</th>
+                            <th class="text-center">Tanggal Lahir</th>
+                            <th class="text-center">Posisi</th>
+                        </tr>
 
-                                </td>
+                        @foreach ($team as $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->atlet->nama }}</td>
+                                <td>{{ $item->atlet->tanggal_lahir }}</td>
+                                <td>{{ $item->atlet->posisi }}</td>
                             </tr>
-                        </tbody>
+                            @endforeach
                     </table>
                 </div>
             </div>

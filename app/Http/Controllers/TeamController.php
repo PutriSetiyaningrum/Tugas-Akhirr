@@ -11,6 +11,7 @@ use App\Models\JenisCabangEvent;
 use App\Models\event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Termwind\Components\Dd;
 
 class TeamController extends Controller
 {
@@ -21,8 +22,18 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $team = Team::latest()->get();
-        return view('pelatih.team.team', compact('team'));
+        // $team = Team::latest()->get();
+        $loggedInPelatih = auth()->user()->pelatih; // Pastikan relasi dengan model User adalah pelatih
+
+        // Ambil tim yang terhubung dengan pelatih yang login
+        $team = Team::where('pelatih_id', $loggedInPelatih->id)
+            ->latest()
+            ->get();
+
+        $groupedTeams = $team->groupBy(['event_id'])->map(function ($group) {
+            return $group->first();
+        });
+        return view('pelatih.team.team', compact('groupedTeams'));
     }
 
     /**
@@ -51,20 +62,19 @@ class TeamController extends Controller
     {
         foreach ($request->atlet_id as $item) {
             Team::create([
-                "event_id" => 1,
-                "pelatih_id" => 1,
+                "event_id" => $request->event,
+                "pelatih_id" => $request->pelatih,
                 "kategori_id" => $request->kategori_id,
                 "jenis_cabang_id" => $request->jenis_cabang_id,
                 "status" => 1,
                 "atlet_id" => $item
             ]);
-
-
-            return redirect('/team/')->with(
-                "message",
-                "<div style='margin-top: 7px'>Success Data Anda Berhasil di Tambahkan</div>"
-            );
         }
+
+        return redirect('/team/')->with(
+            "message",
+            "<div style='margin-top: 7px'>Success Data Anda Berhasil di Tambahkan</div>"
+        );
     }
 
     /**
@@ -112,10 +122,12 @@ class TeamController extends Controller
         //
     }
 
-    public function detail_atlet($id)
+    public function detail($pelatih_id, $event_id)
     {
-        $data["team"] = Team::where("id", decrypt($id))->first();
+        $team = Team::where("pelatih_id", decrypt($pelatih_id))
+            ->where("event_id", $event_id)
+            ->get();
 
-        return view("pelatih.team.detail-team", $data);
+        return view("pelatih.team.detail-team", compact('team'));
     }
 }
