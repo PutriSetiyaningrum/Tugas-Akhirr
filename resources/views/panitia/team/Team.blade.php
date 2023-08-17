@@ -21,11 +21,6 @@
     <!-- Main Content -->
     <div class="content">
         <div class="card card-info card-outline">
-            <div class="card-header">
-                <div class="card-tools">
-                    <a href="{{ url('/team/pilih-atlet') }}" class="btn btn-success">Pilih Atlet<i class="fas fa-plus-square"></i></a>
-                </div>
-            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -46,7 +41,7 @@
                             <td>{{ $item->kategori->Nama_Kategori_Event }}</td>
                             <td>{{ $item->cabang->Nama_Jenis_Cabang_Event }}</td>
                             <td class="text-center">
-                                <a href="{{ url('/team/' . encrypt($item->pelatih_id) . '/event/' . $item->event_id . '/detail') }}" class="btn btn-primary btn-sm">
+                                <a href="{{ url('/team/' . '/event/' . $item->event_id . '/detail') }}" class="btn btn-primary btn-sm">
                                     <i class="fa fa-search"></i> Nama Atlet
                                 </a>
                             </td>

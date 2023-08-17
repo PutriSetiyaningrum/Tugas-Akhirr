@@ -120,6 +120,8 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::get("/persyaratan/{id}/detail", [PersyaratanController::class, "detail_event"]);
         Route::put('/persyaratan/{id}/status', [PersyaratanController::class, "ubah_status"]);
         Route::resource('persyaratan', PersyaratanController::class);
+
+        Route::get('/Team', [TeamController::class, "team"]);
     });
 
     // Pelatih

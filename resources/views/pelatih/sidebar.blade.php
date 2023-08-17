@@ -41,14 +41,14 @@
                 </p>
             </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a href="{{ url('/riwayat-atlet')}}" class="nav-link {{ Request::segment(1) == "riwayat-atlet" ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-users-cog"></i>
                 <p>
                     Riwayat Atlet
                 </p>
             </a>
-        </li>
+        </li> --}}
         <li class="nav-item">
             <a href="{{ url('/komentar_event')}}" class="nav-link {{ Request::segment(1) == "komentar_event" ? 'active' : '' }} ">
                 <i class="nav-icon far fa-comment"></i>

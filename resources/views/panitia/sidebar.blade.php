@@ -93,7 +93,7 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a href="{{ url('persyaratan')}}" class="nav-link {{ Request::segment(1) == "persyaratan" ? 'active' : '' }} ">
+            <a href="{{ url('persyaratan') }}" class="nav-link {{ Request::segment(1) == "persyaratan" ? 'active' : '' }} ">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
                     Persyaratan
@@ -101,10 +101,10 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="" class="nav-link {{ Request::segment(1) == "atlet" ? 'active' : '' }} ">
+            <a href="{{ url('/Team') }}" class="nav-link {{ Request::segment(1) == "Team" ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-restroom"></i>
                 <p>
-                    Atlet
+                    Team
                 </p>
             </a>
         </li>
