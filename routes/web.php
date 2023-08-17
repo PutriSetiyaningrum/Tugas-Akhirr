@@ -96,7 +96,6 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::resource('histori', HistoriController::class);
     });
 
-
     // Panitia
     Route::group(["middleware" => ["can:panitia"]], function () {
         Route::get('panitia/home', [HomeController::class, 'home']);
@@ -120,9 +119,10 @@ Route::group(["middleware" => ["autentikasi"]], function () {
         Route::get("/persyaratan/{id}/detail", [PersyaratanController::class, "detail_event"]);
         Route::put('/persyaratan/{id}/status', [PersyaratanController::class, "ubah_status"]);
         Route::resource('persyaratan', PersyaratanController::class);
-
-        Route::get('/Team', [TeamController::class, "team"]);
     });
+
+    Route::get('/Team', [TeamController::class, "team"]);
+    Route::get("/Team/event/{event_id}/Detail", [TeamController::class, "detailteam"]);
 
     // Pelatih
     Route::group(["middleware" => ["can:pelatih"]], function () {
@@ -157,8 +157,6 @@ Route::group(["middleware" => ["autentikasi"]], function () {
             Route::get("/{id}/logo_sekolah", [FileController::class, "logo_sekolah"]);
         });
     });
-
-
 
     // Pengunjung
     Route::group(["middleware" => ["can:pengunjung"]], function () {

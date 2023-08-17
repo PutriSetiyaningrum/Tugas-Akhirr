@@ -41,7 +41,7 @@
                             <td>{{ $item->kategori->Nama_Kategori_Event }}</td>
                             <td>{{ $item->cabang->Nama_Jenis_Cabang_Event }}</td>
                             <td class="text-center">
-                                <a href="{{ url('/team/' . '/event/' . $item->event_id . '/detail') }}" class="btn btn-primary btn-sm">
+                                <a href="{{ url('/Team' . '/event/' . $item->event_id . '/Detail') }}" class="btn btn-primary btn-sm">
                                     <i class="fa fa-search"></i> Nama Atlet
                                 </a>
                             </td>

@@ -134,7 +134,7 @@ class TeamController extends Controller
     public function team()
     {
         // Ambil tim yang terhubung dengan pelatih yang login
-        $team = Team::all()->latest()->get();
+        $team = Team::latest()->get();
 
         $groupedTeams = $team->groupBy(['event_id'])->map(function ($group) {
             return $group->first();
@@ -142,11 +142,11 @@ class TeamController extends Controller
         return view('panitia.team.team', compact('groupedTeams'));
     }
 
-    public function detailteam($pelatih_id, $event_id)
+    public function detailteam($event_id)
     {
         $team = Team::where("event_id", $event_id)
             ->get();
 
-        return view("pelatih.team.detail-team", compact('team'));
+        return view("panitia.team.Detail-Team", compact('team'));
     }
 }
