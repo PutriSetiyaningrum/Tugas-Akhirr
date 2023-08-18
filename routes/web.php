@@ -16,6 +16,7 @@ use App\Http\Controllers\HasilPertandinganController;
 use App\Http\Controllers\HistoriController;
 use App\Http\Controllers\JadwalPertandinganController;
 use App\Http\Controllers\KomentarCrontroller;
+use App\Http\Controllers\LupaPasswordController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\PelatihController;
@@ -64,6 +65,7 @@ Route::group(["middleware" => ["guest"]], function () {
     Route::get('/register', [LoginController::class, 'registrasi'])->name('registrasi');
     Route::post('/simpanregister', [LoginController::class, 'simpanregistrasi'])->name('simpanregistrasi');
     Route::get('/verify/{token}/{service}', [LoginController::class, 'verify'])->name('verify');
+    Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('index');
 });
 
 Route::group(["middleware" => ["is_user_verify_email"]], function () {

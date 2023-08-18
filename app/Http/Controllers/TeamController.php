@@ -146,7 +146,7 @@ class TeamController extends Controller
     {
         $team = Team::where("event_id", $event_id)
             ->get();
-
+        // var_dump($team);
         return view("panitia.team.Detail-Team", compact('team'));
     }
 }
