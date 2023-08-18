@@ -16,7 +16,7 @@ use App\Http\Controllers\HasilPertandinganController;
 use App\Http\Controllers\HistoriController;
 use App\Http\Controllers\JadwalPertandinganController;
 use App\Http\Controllers\KomentarCrontroller;
-use App\Http\Controllers\LupaPasswordController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\PelatihController;
@@ -66,10 +66,10 @@ Route::group(["middleware" => ["guest"]], function () {
     Route::post('/simpanregister', [LoginController::class, 'simpanregistrasi'])->name('simpanregistrasi');
     Route::get('/verify/{token}/{service}', [LoginController::class, 'verify'])->name('verify');
 
-    Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('forget.password.get');
-    Route::post('forget-password', [LupaPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
-    Route::get('reset-password/{token}', [LupaPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
-    Route::post('reset-password', [LupaPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+    Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+    Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+    Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+    Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 });
 
 Route::group(["middleware" => ["is_user_verify_email"]], function () {
