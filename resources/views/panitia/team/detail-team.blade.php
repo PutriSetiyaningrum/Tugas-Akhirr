@@ -31,7 +31,7 @@
 
             <div class="card-header">
                 <h5 class="card-title">
-                    <a href="{{ url('/team/')}}">
+                    <a href="{{ url('/Team/')}}">
                         Kembali
                     </a>
                 </h5>
