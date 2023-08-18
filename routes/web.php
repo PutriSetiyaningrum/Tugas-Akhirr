@@ -65,7 +65,11 @@ Route::group(["middleware" => ["guest"]], function () {
     Route::get('/register', [LoginController::class, 'registrasi'])->name('registrasi');
     Route::post('/simpanregister', [LoginController::class, 'simpanregistrasi'])->name('simpanregistrasi');
     Route::get('/verify/{token}/{service}', [LoginController::class, 'verify'])->name('verify');
-    Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('index');
+
+    Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('forget.password.get');
+    Route::post('forget-password', [LupaPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+    Route::get('reset-password/{token}', [LupaPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+    Route::post('reset-password', [LupaPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 });
 
 Route::group(["middleware" => ["is_user_verify_email"]], function () {
